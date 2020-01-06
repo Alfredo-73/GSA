@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('control', 'controlController@control');
+Route::get('control_quincenal', 'controlController@control');
 
 Route::get('agregar_control', 'controlController@agregar_control');
+
+Route::get('ver_imprimir','ver_imprimirController@ver_imprimir');

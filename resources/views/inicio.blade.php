@@ -20,7 +20,7 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <a href="/../control" class="card hoverable">
+                <a href="/../control_quincenal" class="card hoverable">
 
                     <!-- Card content -->
                     <div class="card-body">
