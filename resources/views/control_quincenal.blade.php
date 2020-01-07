@@ -8,10 +8,13 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
-                        <!--BOTON AGREGAR PRODUCTO--------------------->
+                         <a id="agregar" class="btn btn-success mb-5" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:75rem" >NUEVO </a>
+
+                        <!--BOTON AGREGAR PRODUCTO-------------------
+                        
                         <form method="POST" action="">
                             <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
-                        </form>
+                        </form> -->
                     </div>
                     <!--Table-->
                     <table class="table table-hover text-center">
@@ -119,9 +122,11 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <form method="POST" action="">
+                                    <a id="modificar" class="btn btn-primary" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>
+
+                                 <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
-                                    </form>
+                                    </form> -->
                                 </td>
 
                                 <td>
