@@ -9,7 +9,8 @@ class controlController extends Controller
 {
     public function control(Request $req)
     {
-        $controles = Control::all();
+        $controles = Control::all()->sortBy('quincena');
+        
 
         // dd($productos);
         $vac = compact('controles');
@@ -137,4 +138,18 @@ class controlController extends Controller
 
                
     }
+
+
+    public function borrar(Request $form)
+    //public function borrar($id)
+    {
+        $id = $form['id'];
+
+        $control = Control::find($id);
+        $control->delete();
+
+        
+        return redirect('/control_quincenal');
+    }
+    
 }
