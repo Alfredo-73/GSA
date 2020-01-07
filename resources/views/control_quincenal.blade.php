@@ -86,7 +86,7 @@
                                     <a>VER/IMP.
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
-                                </th>
+                                </th> 
                             </tr>
                         </thead>
                         <!--Table head-->
