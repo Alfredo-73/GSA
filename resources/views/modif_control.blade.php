@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="pago_transporte" class="col-md-4 col-form-label text-md-right">{{ __('PAGO TRNSPORTE') }}</label>
+                            <label for="pago_transporte" class="col-md-4 col-form-label text-md-right">{{ __('PAGO TRANSPORTE') }}</label>
 
                             <div class="col-md-6">
                                 <input id="pago_transporte" type="text" class="form-control @error('pago_transporte') is-invalid @enderror" name="pago_transporte" value="{{ $control->pago_transporte }}" required autocomplete="pago_transporte">

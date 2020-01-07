@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
-                         <a id="agregar" class="btn btn-success mb-5" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:75rem" >NUEVO </a>
+                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:75rem" >NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -115,14 +115,22 @@
 
                                 <td class="text-center"></td>
                                 <td>
-                                    <form method="POST" action="">
+                                        <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el articulo?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                            </button>
+
+                                           <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
+                                        </form>
+                                   <!-- <form method="POST" action="">
 
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
-                                    </form>
+                                    </form> -->
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>
 
                                  <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
