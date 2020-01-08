@@ -40,3 +40,25 @@ Route::get('modif_control/{id}', 'controlController@edit');
 Route::put('modif_control/{id}', 'controlController@update');
 
 Route::delete('/borrar_control/{id}', 'controlController@borrar');
+
+
+
+
+
+//cosecha
+
+Route::get('cosecha', 'cosechaController@listado');
+
+Route::get('nueva_cosecha', function () {
+    return view('nueva_cosecha');
+}); 
+
+Route::post('nueva_cosecha', 'cosechaController@agregar_cosecha');
+
+Route::get('modif_cosecha/{id}', 'cosechaController@edit');
+
+Route::put('modif_cosecha/{id}', 'cosechaController@update');
+
+Route::delete('/borrar_cosecha/{id}', 'cosechaController@borrar');
+
+

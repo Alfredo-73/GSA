@@ -7,8 +7,8 @@
             <div class="mx-auto">
                 <div class="px-4">
                     <div class="table-wrapper">
-                        <h1 class="text-center">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
-                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:75rem" >NUEVO </a>
+                        <h1 class="text-center">PARTE DIARIO DE COSECHA</h1>
+                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem" >NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -27,73 +27,64 @@
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
                                 <th class="th-lg text-center">
-                                    <a>QUINCENA
+                                    <a>FECHA
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>Num. FACTURA
+                                    <a>CLIENTE
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>IMPORTE
+                                    <a>CAPATAZ
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>MONTO COBRADO
+                                    <a>JORNALES
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>GASTOS BANCARIOS
+                                    <a>COSECHEROS
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>DISPONIBLE
+                                    <a>BINES
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>TOTAL PAGO
+                                    <a>MALETAS
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>NETO QCNA
+                                    <a>TONELADAS
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
                                 <th class="th-lg text-center">
-                                    <a>COSTO TN
+                                    <a>PROMEDIO KG/BIN
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
 
                                 <th class="th-lg text-center">
-                                    <a>BORRAR
+                                    <a>SUPERVISOR
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
-                                <th class="th-lg text-center">
-                                    <a>MODIFICAR
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>VER/IMP.
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th> 
+                                 
                             </tr>
                         </thead>
                         <!--Table head-->
 
                         <!--Table body-->
                         <tbody>
-                             @foreach ($controles as $control)
+                             @foreach ($cosechas as $cosecha)
                             <tr>
                              
 
@@ -101,24 +92,24 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                                <?php $disponible = $control->importe-($control->retencion + $control->gasto_bancario); ?>
-                                <?php $totalPago = $control->pago_personal + $control->pago_transporte; ?>
-                                <td> {{$control->quincena}}</td>
-                                <td>$ {{$control->num_factura}}</td>
-                                <td>$ {{$control->importe}}</td>
-                                <td>$ {{$control->monto_cobrado}}</td>
-                                <td>$ {{$control->gasto_bancario}}</td>
-                                <td>$ {{$disponible}}</td>
-                                <td>$ {{$totalPago}}</td>
-                                <td>$ {{$disponible - $totalPago}}</td>
-                                <td>$ {{($disponible - $totalPago)/$control->toneladas}}</td>
+                                <td> {{$cosecha->fecha}}</td>
+                                <td> {{$cosecha->id_cliente}}</td>
+                                <td> {{$cosecha->id_capataz}}</td>
+                                <td> {{$cosecha->jornales}}</td>
+                                <td> {{$cosecha->cosecheros}}</td>
+                                <td> {{$cosecha->bines}}</td>
+                                <td> {{$cosecha->maletas}}</td>
+                                <td> {{$cosecha->toneladas}}</td>
+                                <td> {{$cosecha->prom_kg_bin}}</td>
+                                <td> {{$cosecha->supervisor}}</td>
+
 
                                 <td class="text-center"></td>
                                 <td>
-                                        <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
+                                        <form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
                                             </button>
 
                                            <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
@@ -130,7 +121,7 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cosecha/{{$cosecha->id}}" role="button" >Modificar </a>
 
                                  <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
@@ -157,7 +148,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CONTROL {{$control->quincena}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">COSECHA {{$cosecha->fecha}}</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -166,51 +157,51 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Numero Factura {{$control->num_factura}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Cliente {{$cosecha->id_cliente}}</label>
                                     </div>
                                     <div class="md-form mb-5">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Importe Factura  {{$control->importe}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Capataz  {{$cosecha->id_capataz}}</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Retenciones  {{$control->retencion}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Jornales  {{$cosecha->jornales}}</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Monto Cobrado   {{$control->monto_cobrado}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Cosecheros   {{$cosecha->cosecheros}}</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Gastos Bancarios   {{$control->gasto_bancario}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Bines   {{$cosecha->bines}}</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Libre Disponibilidad  {{$disponible}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Maletas  {{$cosecha->maletas}}</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Cosecha   {{$control->pago_personal}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Toneladas   {{$cosecha->toneladas}}</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Transporte   {{$control->pago_transporte}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Promedio KG/BIN   {{$cosecha->prom_kg_bin}}</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">SALDO QUINCENA  {{$disponible - $totalPago}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Supervisor  {{$cosecha->supervisor}}</label>
                                     </div>
 
                                 </div>

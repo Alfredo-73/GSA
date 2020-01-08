@@ -30,7 +30,7 @@
                             <label for="num_factura" class="col-md-4 col-form-label text-md-right">{{ __('Nº DE FACTURA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="num_factura" type="text" class="form-control @error('email') is-invalid @enderror" name="num_factura" value="{{ $control->num_factura }}" required autocomplete="num_factura">
+                                <input id="num_factura" type="text" class="form-control @error('num_factura') is-invalid @enderror" name="num_factura" value="{{ $control->num_factura }}" required autocomplete="num_factura">
 
                                 @error('num_factura')
                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                             <div class="col-md-6">
                                 <input id="importe" type="text" class="form-control @error('importe') is-invalid @enderror" name="importe"  value="{{ $control->importe }}" required autocomplete="importe">
 
-                                @error('password')
+                                @error('importe')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -58,7 +58,7 @@
                             <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
 
                             <div class="col-md-6">
-                                <input id="id_cliente" type="text" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
+                                <input id="id_cliente" type="number" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
 
                                 @error('id_cliente')
                                 <span class="invalid-feedback" role="alert">
@@ -154,7 +154,7 @@
                             <label for="observacion" class="col-md-4 col-form-label text-md-right">{{ __('OBSERVACION') }}</label>
 
                             <div class="col-md-6">
-                                <input id="observacion" type="textarea" class="form-control @error('observacion') is-invalid @enderror" name="observacion"value="{{ $control->observacion }}"  >
+                                <input id="observacion" type="text" class="form-control @error('observacion') is-invalid @enderror" name="observacion"value="{{ $control->observacion }}"  >
 
                                 @error('observacion')
                                 <span class="invalid-feedback" role="alert">

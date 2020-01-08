@@ -14,5 +14,9 @@ class Cliente extends Model
     {
         return $this->hasMany('App\Control', 'id_cliente');
     }
+    public function cosecha()
+    {
+        return $this->hasMany('App\Cosecha', 'id_cliente');
+    }
     //
 }
