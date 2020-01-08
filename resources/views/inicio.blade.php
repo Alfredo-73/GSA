@@ -47,7 +47,7 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <a href="" class="card hoverable">
+                <a href="/../cosecha" class="card hoverable">
 
                     <!-- Card content -->
                     <div class="card-body">
