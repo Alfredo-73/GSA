@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container mt-5">
+    <section>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -166,6 +167,7 @@
             </div>
         </div>
     </div>
+    </section>
 </div>
 
 @endsection
