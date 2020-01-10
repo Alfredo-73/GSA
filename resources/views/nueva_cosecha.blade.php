@@ -26,6 +26,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">   
+                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                    
+                            <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                            <option selected>Elegir Cliente</option>
+                            @foreach($clientes as $cliente)
+                         
+                            <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                           
+                            @endforeach
+                           
+                            </select>                              
+                        
+                        </div>
+<!--
                         <div class="form-group row">
                             <label for="cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
 
@@ -38,21 +53,38 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
+
+                        <div class="form-group row">   
+
+                            <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
+                    
+                            <select class="mdb-select md-form colorful-select dropdown-primary" name="capataz">
+                                <option selected>Elegir Capataz</option>
+                                @foreach($capataz as $capat)
+                         
+                                <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                           
+                                @endforeach
+                           
+                            </select>                              
+                        
+                        </div> 
+<!--
                         <div class="form-group row">
                             <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="capataz" type="text" class="form-control @error('capataz') is-invalid @enderror" name="capataz"  value="{{ old('capataz') }}" required autocomplete="capataz">
 
-                                @error('password')
+                                @error('capataz')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="jornales" class="col-md-4 col-form-label text-md-right">{{ __('JORNALES') }}</label>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cosecha;
+use App\Capataz;
+use App\Cliente;
 
 class cosechaController extends Controller
 {
@@ -17,8 +19,12 @@ class cosechaController extends Controller
         return view("cosecha", $vac);
     }
   
-    public function agregar(){
-       return view('agregar_cosecha');
+    public function agregar(Request $req){
+        $clientes = Cliente::all();
+        $capataz = Capataz::all();
+
+        $vac = compact('capataz', 'clientes');
+       return view('nueva_cosecha', $vac);
    }
 
     public function agregar_cosecha(Request $req)
@@ -27,9 +33,9 @@ class cosechaController extends Controller
 
  
         $reglas = [
-            'id_cliente' => 'numeric|max:10',
+           // 'id_cliente' => 'numeric|max:10',
             'fecha' => 'date',
-            'id_capataz' => 'numeric|max:10',
+           // 'id_capataz' => 'numeric|max:10',
 
             'jornales' => 'numeric|min:00001|max:99999',
             'cosecheros' => 'numeric|min:00001|max:99999',
@@ -54,7 +60,7 @@ class cosechaController extends Controller
 
         $cosecha_nueva = new Cosecha();
         
-        $cosecha_nueva->id_cliente = $req['cliente'];
+        $cosecha_nueva->id_cliente = $req['id_cliente'];
         $cosecha_nueva->fecha = $req['fecha'];
         $cosecha_nueva->id_capataz = $req['capataz'];
         $cosecha_nueva->jornales = $req['jornales'];

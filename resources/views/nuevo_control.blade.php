@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container mt-5">
+    <section>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -54,6 +55,28 @@
                             </div>
                         </div>
 
+                    
+         
+               
+                         
+                    <div class="form-group row">   
+
+                        <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                    
+                        <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                            <option selected>Elegir Cliente</option>
+                            @foreach($clientes as $cliente)
+                         
+                            <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                           
+                            @endforeach
+                           
+                        </select>                              
+                        
+                    </div>  
+                         
+                        
+<!--
                         <div class="form-group row">
                             <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
 
@@ -66,7 +89,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="retencion" class="col-md-4 col-form-label text-md-right">{{ __('RETENCION') }}</label>
@@ -150,7 +173,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row shadow-textarea green-border-focus">
+
+                         <!--   <div class="form-group shadow-textarea"> -->
+                            <label for="observacion">{{ __('OBSERVACION') }}</label>
+                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion"value="{{ old('observacion') }} placeholder="Observaciones..."></textarea>
+                            </div>
+
+<!--
                             <label for="observacion" class="col-md-4 col-form-label text-md-right">{{ __('OBSERVACION') }}</label>
 
                             <div class="col-md-6">
@@ -161,7 +191,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
+                            </div> -->
                         </div>
 
                         
@@ -178,6 +208,7 @@
             </div>
         </div>
     </div>
+    </section>
 </div>
 
 @endsection

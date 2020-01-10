@@ -1,0 +1,121 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Cliente;
+
+
+use Illuminate\Http\Request;
+
+class clienteController extends Controller
+{
+     public function listado(Request $req)
+    {
+        $clientes = Cliente::all()->sortBy('nombre');
+        
+
+        // dd($productos);
+        $vac = compact('clientes');
+        return view("abm_cliente", $vac);
+    }
+  
+    public function agregar(Request $req){
+       
+        $clientes = Cliente::all();
+
+        
+        $vac = compact( 'clientes');
+        
+       return view('nuevo_cliente', $vac);
+   }
+
+    public function agregar_cliente(Request $req)
+    {
+
+
+ 
+        $reglas = [
+            'nombre' => 'string|min:0|max:255',
+            'cuit' => 'integer',
+
+            
+        ];
+        $mensajes = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'min' => 'El campo :attribute tiene un minimo de :min',
+            'max' => 'El campo :attribute tiene un maximo de :max',
+            'numeric' => 'El campo :attribute debe ser un numero',
+            'integer' => 'El campo :attribute debe ser un numero entero',
+        ];
+
+        $this->validate($req, $reglas, $mensajes);
+
+        $cliente_nuevo = new Cliente();
+        
+        $cliente_nuevo->nombre = $req['nombre'];
+        $cliente_nuevo->cuit = $req['cuit'];
+        
+        //grabar
+        $cliente_nuevo->save();
+
+      
+    
+
+
+        return redirect('abm_cliente');
+    }
+
+    public function edit($id)
+    {
+
+        $cliente = Cliente::Find($id);
+    
+        $vac = compact('cliente');
+
+        return view('modif_cliente', $vac);
+        
+    }
+    public function update(Request $req, $id)
+    {
+
+        $cliente = Cliente::Find($id);
+        $reglas = [
+            'nombre' => 'string|min:0|max:255',
+            'cuit' => 'integer',
+            
+        ];
+        $mensajes = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'min' => 'El campo :attribute tiene un minimo de :min',
+            'max' => 'El campo :attribute tiene un maximo de :max',
+            'numeric' => 'El campo :attribute debe ser un numero',
+            'integer' => 'El campo :attribute debe ser un numero entero',
+        ];
+
+        $this->validate($req, $reglas, $mensajes);
+        $cliente->nombre = $req['nombre'];
+        $cliente->cuit = $req['cuit'];
+        
+        //grabar
+        $cliente->save();
+
+        return redirect('abm_cliente');
+
+
+
+               
+    }
+
+
+    public function borrar(Request $form)
+    //public function borrar($id)
+    {
+        $id = $form['id'];
+
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        
+        return redirect('/abm_cliente');
+    }
+   
+}
