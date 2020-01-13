@@ -92,15 +92,12 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-<<<<<<< HEAD
-                                <td> {{$cosecha->fecha}}</td>
-                                <td> {{$cosecha->cliente->nombre}}</td>
-                                <td> {{$cosecha->capataz->nombre}}</td>
-=======
+
+   
                                 <td hidden="true"> {{$cosecha->fecha}}</td>
                                 <td> {{$cosecha->id_cliente}}</td>
                                 <td> {{$cosecha->id_capataz}}</td>
->>>>>>> master
+
                                 <td> {{$cosecha->jornales}}</td>
                                 <td> {{$cosecha->cosecheros}}</td>
                                 <td> {{$cosecha->bines}}</td>
@@ -143,81 +140,6 @@
                         </tbody>
                         <!--Table body-->
                     </table>
-<<<<<<< HEAD
-
-                    <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              
-
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">COSECHA @if(!empty($cosecha)){{$cosecha->fecha}} @endif</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body mx-3">
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-book prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Cliente @if(!empty($cosecha)) {{$cosecha->id_cliente}} @endif</label>
-                                    </div>
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Capataz @if(!empty($cosecha)) {{$cosecha->id_capataz}} @endif</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Jornales @if(!empty($cosecha)) {{$cosecha->jornales}} @endif</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Cosecheros  @if(!empty($cosecha)) {{$cosecha->cosecheros}} @endif</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Bines  @if(!empty($cosecha)) {{$cosecha->bines}} @endif</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Maletas @if(!empty($cosecha)) {{$cosecha->maletas}} @endif</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Toneladas  @if(!empty($cosecha)) {{$cosecha->toneladas}} @endif</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Promedio KG/BIN  @if(!empty($cosecha)) {{$cosecha->prom_kg_bin}} @endif</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Supervisor   @if(!empty($cosecha)) {{$cosecha->supervisor}} @endif</label>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button class="btn btn-deep-orange">Imprimir</button>
-                                </div>
-                             
-                            </div>
-                        </div>
-                    </div>
-
-=======
->>>>>>> master
                     <!--Table-->
                 </div>
 
