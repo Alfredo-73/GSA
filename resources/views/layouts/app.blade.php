@@ -86,5 +86,11 @@
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
 </body>
-
+<!--
+<script>
+    // Material Select Initialization
+$(document).ready(function() {
+$('.mdb-select').materialSelect();
+});
+</script> -->
 </html>
