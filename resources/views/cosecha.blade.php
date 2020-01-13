@@ -93,8 +93,8 @@
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
                                 <td> {{$cosecha->fecha}}</td>
-                                <td> {{$cosecha->id_cliente}}</td>
-                                <td> {{$cosecha->id_capataz}}</td>
+                                <td> {{$cosecha->cliente->nombre}}</td>
+                                <td> {{$cosecha->capataz->nombre}}</td>
                                 <td> {{$cosecha->jornales}}</td>
                                 <td> {{$cosecha->cosecheros}}</td>
                                 <td> {{$cosecha->bines}}</td>
@@ -148,7 +148,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">COSECHA {{$cosecha->fecha}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">COSECHA @if(!empty($cosecha)){{$cosecha->fecha}} @endif</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -157,51 +157,51 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Cliente {{$cosecha->id_cliente}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Cliente @if(!empty($cosecha)) {{$cosecha->id_cliente}} @endif</label>
                                     </div>
                                     <div class="md-form mb-5">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Capataz  {{$cosecha->id_capataz}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Capataz @if(!empty($cosecha)) {{$cosecha->id_capataz}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Jornales  {{$cosecha->jornales}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Jornales @if(!empty($cosecha)) {{$cosecha->jornales}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Cosecheros   {{$cosecha->cosecheros}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Cosecheros  @if(!empty($cosecha)) {{$cosecha->cosecheros}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Bines   {{$cosecha->bines}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Bines  @if(!empty($cosecha)) {{$cosecha->bines}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Maletas  {{$cosecha->maletas}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Maletas @if(!empty($cosecha)) {{$cosecha->maletas}} @endif</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Toneladas   {{$cosecha->toneladas}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Toneladas  @if(!empty($cosecha)) {{$cosecha->toneladas}} @endif</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Promedio KG/BIN   {{$cosecha->prom_kg_bin}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Promedio KG/BIN  @if(!empty($cosecha)) {{$cosecha->prom_kg_bin}} @endif</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Supervisor  {{$cosecha->supervisor}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Supervisor   @if(!empty($cosecha)) {{$cosecha->supervisor}} @endif</label>
                                     </div>
 
                                 </div>

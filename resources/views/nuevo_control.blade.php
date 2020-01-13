@@ -13,6 +13,23 @@
                     <form method="POST" action="{{ url('/nuevo_control') }}">
                         @csrf
 
+                                
+                        <div class="form-group row">   
+
+                            <label for="quincena_id" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
+                    
+                            <select class="mdb-select md-form colorful-select dropdown-primary" name="quincena_id">
+                                <option selected>Elegir Quincena</option>
+                                 @foreach($quincenas as $quincena)
+                                
+                                 <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
+                           
+                                @endforeach
+                           
+                             </select>                              
+                        
+                        </div> 
+                 <!--
                         <div class="form-group row">
                             <label for="quincena" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
 
@@ -25,7 +42,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="num_factura" class="col-md-4 col-form-label text-md-right">{{ __('Nº DE FACTURA') }}</label>

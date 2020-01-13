@@ -106,3 +106,27 @@ Route::put('modif_capataz/{id}', 'capatazController@update');
 
 Route::delete('/borrar_capataz/{id}', 'capatazController@borrar');
 
+
+//quincena
+
+Route::get('abm', function () {
+    return view('../abm');
+});
+
+Route::get('abm_quincena', 'quincenaController@listado');
+Route::get('nueva_quincena', 'quincenaController@agregar');
+
+
+Route::post('nueva_quincena', 'quincenaController@agregar_quincena');
+
+Route::get('nueva_quincenas', 'quincenaController@agregar_vs');
+
+
+Route::post('nueva_quincenas', 'quincenaController@agregar_quincenas');
+
+Route::get('modif_quincena/{id}', 'quincenaController@edit');
+
+Route::put('modif_quincena/{id}', 'quincenaController@update');
+
+Route::delete('/borrar_quincena/{id}', 'quincenaController@borrar');
+

@@ -15,4 +15,8 @@ class Control extends Model
     {
         return $this->belongsTo('App\Cliente', 'id_cliente');
     }
+     public function quincena()
+    {
+        return $this->belongsTo('App\Quincena', 'quincena_id');
+    }
 }

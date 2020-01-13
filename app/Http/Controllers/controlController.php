@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Control;
 use App\Cliente;
+use App\Quincena;
 
 class controlController extends Controller
 {
@@ -21,9 +22,10 @@ class controlController extends Controller
     public function agregar(Request $req){
         $controles = Control::all();
         $clientes = Cliente::all();
+        $quincenas = Quincena::all();
 
         
-        $vac = compact('controles', 'clientes');
+        $vac = compact('controles', 'clientes', 'quincenas');
         
        return view('nuevo_control', $vac);
    }
@@ -34,7 +36,7 @@ class controlController extends Controller
 
  
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
+            'quincena_id' => 'numeric|max:30',
             'id_cliente' => 'numeric|max:10',
 
             'num_factura' => 'numeric|min:0000000001|max:99999999999',
@@ -62,7 +64,8 @@ class controlController extends Controller
 
         $control_nuevo = new Control();
         
-        $control_nuevo->quincena = $req['quincena'];
+        $control_nuevo->quincena_id = $req['quincena_id'];
+        $control_nuevo->nombre_quincena = $req['quincena_id'];
         $control_nuevo->id_cliente = $req['id_cliente'];
         $control_nuevo->num_factura = $req['num_factura'];
         $control_nuevo->importe = $req['importe'];
@@ -89,8 +92,9 @@ class controlController extends Controller
 
         $control = Control::Find($id);
         $clientes = Cliente::all();
+        $quincenas= Quincena::all();
 
-        $vac = compact('control', 'clientes');
+        $vac = compact('control', 'clientes', 'quincenas');
 
         return view('modif_control', $vac);
         
@@ -100,7 +104,7 @@ class controlController extends Controller
 
         $control = Control::Find($id);
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
+            'quincena_id' => 'numeric|min:1|max:30',
             'id_cliente' => 'numeric|max:10',
 
             'num_factura' => 'numeric|min:0000000001|max:99999999999',
@@ -125,7 +129,8 @@ class controlController extends Controller
         ];
 
         $this->validate($req, $reglas, $mensajes);
-        $control->quincena = $req['quincena'];
+        $control->quincena_id = $req['quincena_id'];
+        $control->nombre_quincena = $req['quincena_id'];
         $control->id_cliente = $req['id_cliente'];
         $control->num_factura = $req['num_factura'];
         $control->importe = $req['importe'];
