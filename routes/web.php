@@ -130,3 +130,10 @@ Route::put('modif_quincena/{id}', 'quincenaController@update');
 
 Route::delete('/borrar_quincena/{id}', 'quincenaController@borrar');
 
+
+//pdf
+Route::get('control/list', 'controlController@index');
+//download
+
+Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
+
