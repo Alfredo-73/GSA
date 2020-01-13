@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Control;
 use App\Cliente;
 use App\Quincena;
+use PDF;
 
 class controlController extends Controller
 {
@@ -84,7 +85,7 @@ class controlController extends Controller
     
 
 
-        return redirect('control_quincenal');
+        return redirect('control_quincenal')->with('success', 'El control quincenal ha sido grabado con exito');
     }
 
     public function edit($id)
@@ -145,7 +146,7 @@ class controlController extends Controller
         //grabar
         $control->save();
 
-        return redirect('control_quincenal');
+        return redirect('control_quincenal')->with('success', 'El control quincenal ha sido modificado con exito');
 
 
 
@@ -164,5 +165,35 @@ class controlController extends Controller
         
         return redirect('/control_quincenal');
     }
+
+    //pdf
+    public function index()
+    {
+        $controles = Control::all();
+
+        return view('list', compact('controles'));
+    }
+
+    public function downloadPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf', compact('control'));
+
+        return $pdf->download('control.pdf');
+
+        //para verlo
+    }
+
+    //para ver y apaisar la hoja
+   /* public function download()
+    {
+        $data = [
+            'titulo' => 'Styde.net'
+        ];
+
+        return PDF::loadView('vista-pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');
+    }*/
     
 }

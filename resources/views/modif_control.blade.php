@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('CONTROL DE FACTURACION Y PAGO') }}</div>
+                <div class="card-header green text-white text-center">{{ __('MODIFICACION CONTROL DE FACTURACION Y PAGO') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/modif_control/{{$control->id}}" >
@@ -29,12 +29,12 @@
                         </div> -->
 
 
-                         <div class="form-group row">   
+                    <div class="form-group row">   
 
                      <label for="quincena_id" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
                    
-
-                    <select class="mdb-select md-form colorful-select dropdown-primary" name="quincena_id">
+                    <div class="col-md-6">
+                    <select class="selectpicker show-menu-arrow" name="quincena_id" data-style="btn-success" data-width="auto">
                             <option selected>{{$control->quincena->nombre}}</option>
                             @foreach($quincenas as $quincena)
                             
@@ -44,8 +44,8 @@
                          @endforeach
                            
                             </select>                              
-                        
-                        </div> 
+                        </div>
+                    </div> 
 
                         <div class="form-group row">
                             <label for="num_factura" class="col-md-4 col-form-label text-md-right">{{ __('Nº DE FACTURA') }}</label>
@@ -80,7 +80,7 @@
                      <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
                    
 
-                    <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                    <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
                             <option selected>{{$control->cliente->nombre}}</option>
                             @foreach($clientes as $cliente)
                             

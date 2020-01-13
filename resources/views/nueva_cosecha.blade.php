@@ -29,7 +29,7 @@
                         <div class="form-group row">   
                             <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
                     
-                            <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                            <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
                             <option selected>Elegir Cliente</option>
                             @foreach($clientes as $cliente)
                          
@@ -60,7 +60,7 @@
 
                             <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
                     
-                            <select class="mdb-select md-form colorful-select dropdown-primary" name="capataz">
+                            <select class="selectpicker show-menu-arrow" name="capataz" data-style="btn-success" data-width="auto">
                                 <option selected>Elegir Capataz</option>
                                 @foreach($capataz as $capat)
                          
