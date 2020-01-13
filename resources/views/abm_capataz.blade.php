@@ -100,7 +100,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CAPATAZ{{$capat->id}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">CAPATAZ @if(!empty($capat)){{$capat->id}} @endif</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -109,7 +109,7 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre {{$capat->nombre}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre @if(!empty($capat)){{$capat->nombre}} @endif</label>
                                     </div>
                                     
                                     

@@ -7,8 +7,9 @@
             <div class="mx-auto">
                 <div class="px-4">
                     <div class="table-wrapper">
-                        <h1 class="text-center">LISTADO DE CLIENTES</h1>
-                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:75rem" >NUEVO </a>
+                        <h1 class="text-center">LISTADO DE QUINCENAS</h1>
+                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:75rem" >NUEVA </a>
+                        <a id="agregar_varios" class="btn btn-success mb-5 rounded" href="{{ url('/nueva_quincenas') }}" role="button" style="margin-left:75rem" >NUEVAS </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -36,11 +37,7 @@
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
-                                <th class="th-lg text-center">
-                                    <a>CUIT
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
+                               
                                  
                             </tr>
                         </thead>
@@ -48,7 +45,7 @@
 
                         <!--Table body-->
                         <tbody>
-                             @foreach ($clientes as $cliente)
+                             @foreach ($quincenas as $quincena)
                             <tr>
                              
 
@@ -56,16 +53,16 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                                <td> {{$cliente->id}}</td>
-                                <td> {{$cliente->nombre}}</td>
-                                <td> {{$cliente->cuit}}</td>
+                                <td> {{$quincena->id}}</td>
+                                <td> {{$quincena->nombre}}</td>
+                                
                                 
                                 <td class="text-center"></td>
                                 <td>
-                                        <form method="POST" action="{{ url('/borrar_cliente/'.$cliente->id) }}">
+                                        <form method="POST" action="{{ url('/borrar_quincena/'.$quincena->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el cliente?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar la quincena?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
                                             </button>
 
                                            <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
@@ -77,7 +74,7 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cliente/{{$cliente->id}}" role="button" >Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </a>
 
                                  <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
@@ -104,7 +101,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CLIENTE @if(!empty($cleinte)) {{$cliente->id}} @endif</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">quincena @if(!empty($quincena)){{$quincena->id}} @endif</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -113,14 +110,9 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre @if(!empty($cleinte)) {{$cliente->nombre}} @endif</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre @if(!empty($quincena)){{$quincena->nombre}} @endif</label>
                                     </div>
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">CUIT  @if(!empty($cleinte)) {{$cliente->cuit}} @endif</label>
-                                    </div>
-
+                                    
                                     
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">

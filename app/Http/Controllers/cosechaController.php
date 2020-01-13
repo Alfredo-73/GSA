@@ -84,8 +84,10 @@ class cosechaController extends Controller
     {
 
         $cosecha = cosecha::Find($id);
+        $clientes = Cliente::all();
+         $capataz = Capataz::all();
 
-        $vac = compact('cosecha');
+        $vac = compact('cosecha', 'clientes', 'capataz');
 
         return view('modif_cosecha', $vac);
         
@@ -118,9 +120,9 @@ class cosechaController extends Controller
         ];
 
         $this->validate($req, $reglas, $mensajes);
-        $cosecha->id_cliente = $req['cliente'];
+        $cosecha->id_cliente = $req['id_cliente'];
         $cosecha->fecha = $req['fecha'];
-        $cosecha->id_capataz = $req['capataz'];
+        $cosecha->id_capataz = $req['id_capataz'];
         $cosecha->jornales = $req['jornales'];
         $cosecha->cosecheros = $req['cosecheros'];
         $cosecha->bines = $req['bines'];

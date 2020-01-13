@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaCliente extends Migration
+class BorrarCampoQuincena extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CrearTablaCliente extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table)        {
-            $table->increments('id');
-
-            $table->string('nombre')->lenght(100);
-            $table->biginteger('cuit')->lenght(11);
-            $table->timestamps();
-        } );
         //
+        Schema::table('control', function ($table) {
+             $table->renameColumn('quincena', 'nombre_quincena');
+        });
     }
 
     /**
@@ -30,7 +26,9 @@ class CrearTablaCliente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente');
         //
+        Schema::table('control', function ($table) {
+             $table->renameColumn('nombre_quincena', 'quincena');
+        });
     }
 }

@@ -72,27 +72,13 @@
                                     </a>
                                 </th>
 
-                                <th class="th-lg text-center">
-                                    <a>BORRAR
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>MODIFICAR
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>VER/IMP.
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th> 
                             </tr>
                         </thead>
                         <!--Table head-->
 
                         <!--Table body-->
                         <tbody>
+                            
                              @foreach ($controles as $control)
                             <tr>
                              
@@ -103,8 +89,9 @@
                                     </th>-->
                                 <?php $disponible = $control->importe-($control->retencion + $control->gasto_bancario); ?>
                                 <?php $totalPago = $control->pago_personal + $control->pago_transporte; ?>
-                                <td> {{$control->quincena}}</td>
-                                <td>$ {{$control->num_factura}}</td>
+                                
+                                <td> {{$control->quincena->nombre}}</td>
+                                <td> {{$control->num_factura}}</td>
                                 <td>$ {{$control->importe}}</td>
                                 <td>$ {{$control->monto_cobrado}}</td>
                                 <td>$ {{$control->gasto_bancario}}</td>
@@ -146,6 +133,7 @@
                               
                             </tr>
                         @endforeach
+                        
 
                         </tbody>
                         <!--Table body-->
@@ -157,7 +145,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CONTROL {{$control->quincena}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">CONTROL @if(!empty($control->quincena)){{$control->quincena}}@endif</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -166,51 +154,51 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Numero Factura {{$control->num_factura}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Numero Factura @if(!empty($control->num_factura)) {{$control->num_factura}} @endif</label>
                                     </div>
                                     <div class="md-form mb-5">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Importe Factura  {{$control->importe}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Importe Factura @if(!empty($control)) {{$control->importe}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Retenciones  {{$control->retencion}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Retenciones  @if(!empty($control)){{$control->retencion}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Monto Cobrado   {{$control->monto_cobrado}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Monto Cobrado  @if(!empty($control)) {{$control->monto_cobrado}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Gastos Bancarios   {{$control->gasto_bancario}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Gastos Bancarios   @if(!empty($control)){{$control->gasto_bancario}} @endif</label>
                                     </div>
 
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Libre Disponibilidad  {{$disponible}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Libre Disponibilidad @if(!empty($control)) {{$disponible}} @endif</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Cosecha   {{$control->pago_personal}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Cosecha   @if(!empty($control)){{$control->pago_personal}} @endif </label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Transporte   {{$control->pago_transporte}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Transporte @if(!empty($control))  {{$control->pago_transporte}} @endif</label>
                                     </div>
                                     <div class="md-form mb-4">
                                         <i class="fas fa-dollar-sign grey-text"></i>
                                         <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">SALDO QUINCENA  {{$disponible - $totalPago}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">SALDO QUINCENA @if(!empty($control)) {{$disponible - $totalPago}} @endif</label>
                                     </div>
 
                                 </div>

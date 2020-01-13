@@ -27,6 +27,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">   
+
+                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                   
+
+                            <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                                 <option selected>{{$cosecha->cliente->nombre}}</option>
+                                    @foreach($clientes as $cliente)
+                            
+                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                            
+                           
+                                    @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  
+                      
+<!--
                         <div class="form-group row">
                             <label for="cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
 
@@ -39,8 +58,28 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
+
+                        <div class="form-group row">   
+
+                            <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
+                   
+
+                            <select class="mdb-select md-form colorful-select dropdown-primary" name="id_capataz">
+                                <option selected>{{$cosecha->capataz->nombre}}</option>
+                                    @foreach($capataz as $capat)
+                            
+                                <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                            
+                           
+                                    @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  
+                      
+<!--
                         <div class="form-group row">
                             <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
 
@@ -53,7 +92,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="jornales" class="col-md-4 col-form-label text-md-right">{{ __('JORNALES') }}</label>

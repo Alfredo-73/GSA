@@ -33,7 +33,7 @@ class capatazController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:capataz',
             
 
             
@@ -43,6 +43,8 @@ class capatazController extends Controller
             'min' => 'El campo :attribute tiene un minimo de :min',
             'max' => 'El campo :attribute tiene un maximo de :max',
             'numeric' => 'El campo :attribute debe ser un numero',
+            'unique' => 'El capataz ya existe',
+
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
 
@@ -78,13 +80,15 @@ class capatazController extends Controller
 
         $capat = Capataz::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:capataz',
            
             
         ];
         $mensajes = [
             'string' => 'El campo :attribute debe ser un texto',
             'min' => 'El campo :attribute tiene un minimo de :min',
+            'unique' => 'El capataz ya existe',
+
             'max' => 'El campo :attribute tiene un maximo de :max',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
