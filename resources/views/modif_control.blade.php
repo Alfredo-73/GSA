@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container mt-5">
+    <section>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -53,9 +54,29 @@
                                 @enderror
                             </div>
                         </div>
+<!--
+                        <div class="form-group row">   
+
+                     <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                   
+
+                    <select class="mdb-select md-form colorful-select dropdown-primary" name="id_cliente">
+                            <option selected>{{$control->cliente->nombre}}</option>
+                            @foreach($clientes as $cliente)
+                            
+                            <option value="id_cliente">{{$cliente->nombre}}</option>
+                            
+                           
+                         @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  -->
+                        
+
 
                         <div class="form-group row">
-                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE')  }} {{$control->cliente->nombre}} </label>
 
                             <div class="col-md-6">
                                 <input id="id_cliente" type="number" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
@@ -66,7 +87,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> 
 
                         <div class="form-group row">
                             <label for="retencion" class="col-md-4 col-form-label text-md-right">{{ __('RETENCION') }}</label>
@@ -178,6 +199,7 @@
             </div>
         </div>
     </div>
+    </section>
 </div>
 
 @endsection

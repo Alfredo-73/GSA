@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
+use App\Cliente;
 
 class controlController extends Controller
 {
@@ -17,8 +18,14 @@ class controlController extends Controller
         return view("control_quincenal", $vac);
     }
   
-    public function agregar(){
-       return view('agregar_control');
+    public function agregar(Request $req){
+        $controles = Control::all();
+        $clientes = Cliente::all();
+
+        
+        $vac = compact('controles', 'clientes');
+        
+       return view('nuevo_control', $vac);
    }
 
     public function agregar_control(Request $req)
@@ -81,8 +88,9 @@ class controlController extends Controller
     {
 
         $control = Control::Find($id);
+        $clientes = Cliente::all();
 
-        $vac = compact('control');
+        $vac = compact('control', 'clientes');
 
         return view('modif_control', $vac);
         

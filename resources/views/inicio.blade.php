@@ -97,6 +97,43 @@
                     </div>
 
                 </a>
+            </div>
+       
+
+        
+
+            <!--First column-->
+            <div class="col-md-6 mb-4">
+
+                <!-- Card -->
+                <a href="/../abm" class="card hoverable">
+
+                    <!-- Card content -->
+                    <div class="card-body">
+
+                        <div class="media">
+                            <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                                <i class="fab fa-react fa-2x text-info"></i>
+                            </span>
+                            <div class="media-body">
+                                <h5 class="dark-grey-text mb-3"></h5>ABM CLIENTES/CAPATACES
+                                <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
+                                <p>
+                                <a href="/../abm_cliente" class="card-link">CLIENTES</a>
+                                <a href="/../abm_capataz" class="card-link">CAPATACES</a>
+                                </p>
+
+
+                               
+                            </div>
+                        </div>
+
+                    </div>
+
+                </a>
+            </div>
+         </div>
+        
 
     </section>
 
