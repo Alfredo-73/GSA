@@ -17,8 +17,8 @@
                         </form> -->
                     </div>
                     <!--Table-->
-                    <table class="table table-hover text-center">
-
+                    <table class="table-responsive-sm table-striped w-auto">
+                        
                         <!--Table head-->
                         <thead>
                             <tr>
@@ -26,12 +26,12 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                                <th class="th-lg text-center">
+                                <th class="th-lg text-center" hidden="true">
                                     <a>FECHA
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
-                                <th class="th-lg text-center" hidden="true">
+                                <th class="th-lg text-center">
                                     <a>CLIENTE
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
@@ -86,34 +86,26 @@
                         <tbody>
                             @foreach ($cosechas as $cosecha)
                             <tr>
-
-
                                 <!--<th scope="row">
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-
-   
-                                <td hidden="true"> {{$cosecha->fecha}}</td>
-                                <td> {{$cosecha->id_cliente}}</td>
-                                <td> {{$cosecha->id_capataz}}</td>
-
-                                <td> {{$cosecha->jornales}}</td>
-                                <td> {{$cosecha->cosecheros}}</td>
-                                <td> {{$cosecha->bines}}</td>
-                                <td> {{$cosecha->maletas}}</td>
-                                <td> {{$cosecha->toneladas}}</td>
-                                <td> {{$cosecha->prom_kg_bin}}</td>
-                                <td hidden="true"> {{$cosecha->supervisor}}</td>
-
-
-                                <td class="text-center"></td>
+                                <td class="text-center" hidden="true"> {{$cosecha->fecha}}</td>
+                                <td class="text-center"> {{$cosecha->id_cliente}}</td>
+                                <td class="text-center"> {{$cosecha->id_capataz}}</td>
+                                <td class="text-center"> {{$cosecha->jornales}}</td>
+                                <td class="text-center"> {{$cosecha->cosecheros}}</td>
+                                <td class="text-center"> {{$cosecha->bines}}</td>
+                                <td class="text-center"> {{$cosecha->maletas}}</td>
+                                <td class="text-center"> {{$cosecha->toneladas}}</td>
+                                <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
+                                <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
                                 <td>
-                                    <form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
+                                    <!--<form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
-                                        </button>
+                                        <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
+                                        </button>-->
 
                                         <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                     </form>
@@ -124,15 +116,20 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cosecha/{{$cosecha->id}}" role="button">Modificar </a>
+                                    
+                                   <!--<a id="modificar" class="btn btn-primary btn-rounded mb-4 btn-sm m-0 text-center" href="/modalcosecha/{{$cosecha->id}}" role="button">Modificar </a>-->
                                     <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
                                 </td>
                                 <td>
-                                    <a href="/modalcosecha/{{ $cosecha->id }}" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}">Ver/Imp.
-                                        @include('modalcosecha')
-                                    </a>
+                                    <form method="" action="/modalcosecha/{{$cosecha->id}}">
+                                        @csrf
+                                        {{method_field('PUT')}}
+                                    <a href="/modalcosecha/{{ $cosecha->id }}" class="btn btn-default btn-rounded mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}"">Ver/Imp.</a>
+                                    @csrf
+                                        {{method_field('PUT')}}
+                                    @include('modalcosecha')
                                 </td>
 
                             </tr>
@@ -140,6 +137,7 @@
                         </tbody>
                         <!--Table body-->
                     </table>
+                    </div>
                     <!--Table-->
                 </div>
 
