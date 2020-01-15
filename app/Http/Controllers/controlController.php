@@ -7,6 +7,8 @@ use App\Control;
 use App\Cliente;
 use App\Quincena;
 use PDF;
+use Laracasts\Flash\Flash;
+use dateTranslator;
 
 class controlController extends Controller
 {
@@ -81,11 +83,12 @@ class controlController extends Controller
         //grabar
         $control_nuevo->save();
 
-      
+        Flash::success('Se ha dado de alta el control ' . $control_nuevo->quincena_id . ' de forma exitosa !');
+
     
 
 
-        return redirect('control_quincenal')->with('success', 'El control quincenal ha sido grabado con exito');
+        return redirect('control_quincenal');
     }
 
     public function edit($id)
@@ -145,8 +148,9 @@ class controlController extends Controller
         $control->observacion = $req['observacion'];
         //grabar
         $control->save();
+        Flash::success('Se ha modificado el control ' . $control->quincena_id . ' de forma exitosa !');
 
-        return redirect('control_quincenal')->with('success', 'El control quincenal ha sido modificado con exito');
+        return redirect('control_quincenal');
 
 
 
@@ -177,13 +181,30 @@ class controlController extends Controller
     public function downloadPDF($id)
     {
         $control = Control::find($id);
-        $pdf = PDF::loadView('pdf', compact('control'));
+        $pdf = PDF::loadView('pdf1', compact('control'));
 
         return $pdf->download('control.pdf');
 
         //para verlo
     }
 
+    public function verPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf1', compact('control'));
+
+        $data = [
+            'titulo' => 'Control.net'
+        ];
+
+        return $pdf->setPaper('a4', 'portrait')
+            ->stream('archivo.pdf');
+
+       // return $pdf->download('control.pdf')
+        ;
+
+        //para verlo
+    }
     //para ver y apaisar la hoja
    /* public function download()
     {
@@ -195,5 +216,12 @@ class controlController extends Controller
             ->setPaper('a4', 'landscape')
             ->stream('archivo.pdf');
     }*/
+    public function imprimir()
+    {
+        $controles = Control::all();
+        $pdf = PDF::loadview('pdf', compact('controles'));
+        return $pdf->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');
+    }
     
 }

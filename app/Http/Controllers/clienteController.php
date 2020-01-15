@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Cliente;
+use Laracasts\Flash\Flash;
 
 
 use Illuminate\Http\Request;
@@ -59,7 +60,7 @@ class clienteController extends Controller
         $cliente_nuevo->save();
 
       
-    
+        Flash::success('Se ha dado de alta el cliente ' . $cliente_nuevo->nombre . ' de forma exitosa !' );
 
 
         return redirect('abm_cliente');
@@ -99,6 +100,7 @@ class clienteController extends Controller
         
         //grabar
         $cliente->save();
+        Flash::success('Se ha modificado el cliente ' . $cliente->nombre . ' de forma exitosa !');
 
         return redirect('abm_cliente');
 

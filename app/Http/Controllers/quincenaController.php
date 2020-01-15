@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Quincena;
+use Laracasts\Flash\Flash;
 
 class quincenaController extends Controller
 {
@@ -43,7 +44,7 @@ class quincenaController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:quincena',
             
 
             
@@ -52,6 +53,7 @@ class quincenaController extends Controller
             'string' => 'El campo :attribute debe ser un texto',
             'min' => 'El campo :attribute tiene un minimo de :min',
             'max' => 'El campo :attribute tiene un maximo de :max',
+            'unique' => 'La quincena ya existe',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
@@ -66,8 +68,9 @@ class quincenaController extends Controller
         //grabar
         $quincena_nuevo->save();
 
-      
-    
+
+        Flash::success('Se ha dado de alta la quincena ' . $quincena_nuevo->nombre . ' de forma exitosa !');
+
 
 
         return redirect('abm_quincena');
@@ -103,7 +106,8 @@ class quincenaController extends Controller
         //grabar
         $quincena_nuevo->save();
 
-      
+        Flash::success('Se ha modificado la quincena ' . $quincena_nuevo->nombre . ' de forma exitosa !');
+
     
 
 
@@ -146,6 +150,7 @@ class quincenaController extends Controller
         
         //grabar
         $quincena->save();
+        Flash::success('Se ha modificado la quincena ' . $quincena->nombre . ' de forma exitosa !');
 
         return redirect('abm_quincena');
 

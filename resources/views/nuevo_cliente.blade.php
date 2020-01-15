@@ -10,7 +10,7 @@
                 <div class="card-header green text-white text-center">{{ __('ABM CLIENTES') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('/nuevo_cliente') }}">
+                    <form method="POST" action="{{ url('/nuevo_cliente') }}" name="tuformulario">
                         @csrf
 
                         <div class="form-group row">
@@ -42,9 +42,14 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                              <!--   <input type="button" onclick="pregunta()" value="Enviar"> -->
+                               
+                                <button type="submit"  class="btn btn-success">
                                     {{ __('Grabar') }}
-                                </button>
+                                </button> 
+
+
+                                
                             </div>
                         </div>
                     </form>
