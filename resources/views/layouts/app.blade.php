@@ -7,23 +7,32 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>GSA</title>
     <!-- GSA icon -->
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+     <title>Confirmación de envío de formulario</title>
+<script language="JavaScript">
+function pregunta(){
+    if (confirm('¿Estas seguro de enviar este formulario?')){
+       document.tuformulario.submit()
+    }
+}
+</script>
 </head>
 
 <body>
     <div id="app">
+        @include('flash::message')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="/../home">
-                    <img src="img/gsagricolas.jpg" alt="" style="width: 150px">
+                    <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px">
                 </a>
                 V 1.0
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -76,13 +85,13 @@
         </main>
     </div>
     <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
 </body>

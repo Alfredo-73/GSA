@@ -17,7 +17,7 @@ class CrearTablaCliente extends Migration
             $table->increments('id');
 
             $table->string('nombre')->lenght(100);
-            $table->integer('cuit')->lenght(11);
+            $table->biginteger('cuit')->lenght(11);
             $table->timestamps();
         } );
         //

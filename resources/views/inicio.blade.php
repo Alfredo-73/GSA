@@ -118,11 +118,13 @@
                                 <i class="fab fa-react fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
-                                <h5 class="dark-grey-text mb-3"></h5>ABM CLIENTES/CAPATACES
+                                <h5 class="dark-grey-text mb-3">ABM CLIENTES/CAPATACES/QUINCENAS</h5>
                                 <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
                                 <p>
                                 <a href="/../abm_cliente" class="card-link">CLIENTES</a>
                                 <a href="/../abm_capataz" class="card-link">CAPATACES</a>
+                                <a href="/../abm_quincena" class="card-link">QUINCENAS</a>
+
                                 </p>
 
 

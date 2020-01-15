@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Capataz;
+use Laracasts\Flash\Flash;
 
 class capatazController extends Controller
 {
@@ -33,7 +34,7 @@ class capatazController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:capataz',
             
 
             
@@ -43,6 +44,8 @@ class capatazController extends Controller
             'min' => 'El campo :attribute tiene un minimo de :min',
             'max' => 'El campo :attribute tiene un maximo de :max',
             'numeric' => 'El campo :attribute debe ser un numero',
+            'unique' => 'El capataz ya existe',
+
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
 
@@ -51,7 +54,9 @@ class capatazController extends Controller
         $capataz_nuevo = new Capataz();
         
         $capataz_nuevo->nombre = $req['nombre'];
-      
+
+        Flash::success('Se ha dado de alta el capataz ' . $capataz_nuevo->nombre . ' de forma exitosa !');
+
         
         //grabar
         $capataz_nuevo->save();
@@ -78,13 +83,15 @@ class capatazController extends Controller
 
         $capat = Capataz::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:capataz',
            
             
         ];
         $mensajes = [
             'string' => 'El campo :attribute debe ser un texto',
             'min' => 'El campo :attribute tiene un minimo de :min',
+            'unique' => 'El capataz ya existe',
+
             'max' => 'El campo :attribute tiene un maximo de :max',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
@@ -96,6 +103,7 @@ class capatazController extends Controller
         
         //grabar
         $capat->save();
+        Flash::success('Se ha modificado el capataz ' . $capat->nombre . ' de forma exitosa !');
 
         return redirect('abm_capataz');
 

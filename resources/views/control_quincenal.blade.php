@@ -72,27 +72,13 @@
                                     </a>
                                 </th>
 
-                                <th class="th-lg text-center">
-                                    <a>BORRAR
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>MODIFICAR
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>VER/IMP.
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th> 
                             </tr>
                         </thead>
                         <!--Table head-->
 
                         <!--Table body-->
                         <tbody>
+                            
                              @foreach ($controles as $control)
                             <tr>
                              
@@ -103,8 +89,9 @@
                                     </th>-->
                                 <?php $disponible = $control->importe-($control->retencion + $control->gasto_bancario); ?>
                                 <?php $totalPago = $control->pago_personal + $control->pago_transporte; ?>
-                                <td> {{$control->quincena}}</td>
-                                <td>$ {{$control->num_factura}}</td>
+                                
+                                <td> {{$control->quincena->nombre}}</td>
+                                <td> {{$control->num_factura}}</td>
                                 <td>$ {{$control->importe}}</td>
                                 <td>$ {{$control->monto_cobrado}}</td>
                                 <td>$ {{$control->gasto_bancario}}</td>
@@ -136,92 +123,21 @@
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
                                 </td>
-
                                 <td>
-                                    <!-- Button trigger modal -->
-                                    <div class="text-center">
-                                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Ver/Imp.</a>
-                                    </div>
+                                    <a href="/modal_control/{{ $control->id }}" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modal_control{{ $control->id }}">Ver/Imp.
+                                        @include('modal_control')
+                                    </a>
                                 </td>
-                              
+                                    
                             </tr>
                         @endforeach
+                        
 
                         </tbody>
                         <!--Table body-->
                     </table>
 
-                    <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              
-
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CONTROL {{$control->quincena}}</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body mx-3">
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-book prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Numero Factura {{$control->num_factura}}</label>
-                                    </div>
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">Importe Factura  {{$control->importe}}</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Retenciones  {{$control->retencion}}</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Monto Cobrado   {{$control->monto_cobrado}}</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Gastos Bancarios   {{$control->gasto_bancario}}</label>
-                                    </div>
-
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Libre Disponibilidad  {{$disponible}}</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Cosecha   {{$control->pago_personal}}</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">Pago Transporte   {{$control->pago_transporte}}</label>
-                                    </div>
-                                    <div class="md-form mb-4">
-                                        <i class="fas fa-dollar-sign grey-text"></i>
-                                        <input type="text" id="orangeForm-pass" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-pass">SALDO QUINCENA  {{$disponible - $totalPago}}</label>
-                                    </div>
-
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button class="btn btn-deep-orange">Imprimir</button>
-                                </div>
-                             
-                            </div>
-                        </div>
-                    </div>
-
+                   
                     <!--Table-->
                 </div>
 

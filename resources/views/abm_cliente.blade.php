@@ -104,7 +104,7 @@
                               
 
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">CLIENTE {{$cliente->id}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">CLIENTE @if(!empty($cleinte)) {{$cliente->id}} @endif</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -113,12 +113,12 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-book prefix grey-text"></i>
                                         <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre {{$cliente->nombre}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre @if(!empty($cleinte)) {{$cliente->nombre}} @endif</label>
                                     </div>
                                     <div class="md-form mb-5">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">CUIT  {{$cliente->cuit}}</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-email">CUIT  @if(!empty($cleinte)) {{$cliente->cuit}} @endif</label>
                                     </div>
 
                                     

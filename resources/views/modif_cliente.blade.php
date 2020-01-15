@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('CLIENTE') }}</div>
+                <div class="card-header green text-white text-center">{{ __('MODIFICACION CLIENTE') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/modif_cliente/{{$cliente->id}}" >
@@ -51,7 +51,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" onclick="return confirm('¿Desea modificar el cliente?')" class="btn btn-success">
                                     {{ __('Grabar') }}
                                 </button>
                             </div>

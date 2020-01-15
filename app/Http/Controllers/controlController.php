@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Control;
 use App\Cliente;
+use App\Quincena;
+use PDF;
+use Laracasts\Flash\Flash;
+use dateTranslator;
 
 class controlController extends Controller
 {
@@ -21,9 +25,10 @@ class controlController extends Controller
     public function agregar(Request $req){
         $controles = Control::all();
         $clientes = Cliente::all();
+        $quincenas = Quincena::all();
 
         
-        $vac = compact('controles', 'clientes');
+        $vac = compact('controles', 'clientes', 'quincenas');
         
        return view('nuevo_control', $vac);
    }
@@ -34,7 +39,7 @@ class controlController extends Controller
 
  
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
+            'quincena_id' => 'numeric|max:30',
             'id_cliente' => 'numeric|max:10',
 
             'num_factura' => 'numeric|min:0000000001|max:99999999999',
@@ -62,7 +67,8 @@ class controlController extends Controller
 
         $control_nuevo = new Control();
         
-        $control_nuevo->quincena = $req['quincena'];
+        $control_nuevo->quincena_id = $req['quincena_id'];
+        $control_nuevo->nombre_quincena = $req['quincena_id'];
         $control_nuevo->id_cliente = $req['id_cliente'];
         $control_nuevo->num_factura = $req['num_factura'];
         $control_nuevo->importe = $req['importe'];
@@ -77,7 +83,8 @@ class controlController extends Controller
         //grabar
         $control_nuevo->save();
 
-      
+        Flash::success('Se ha dado de alta el control ' . $control_nuevo->quincena_id . ' de forma exitosa !');
+
     
 
 
@@ -89,8 +96,9 @@ class controlController extends Controller
 
         $control = Control::Find($id);
         $clientes = Cliente::all();
+        $quincenas= Quincena::all();
 
-        $vac = compact('control', 'clientes');
+        $vac = compact('control', 'clientes', 'quincenas');
 
         return view('modif_control', $vac);
         
@@ -100,7 +108,7 @@ class controlController extends Controller
 
         $control = Control::Find($id);
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
+            'quincena_id' => 'numeric|min:1|max:30',
             'id_cliente' => 'numeric|max:10',
 
             'num_factura' => 'numeric|min:0000000001|max:99999999999',
@@ -125,7 +133,8 @@ class controlController extends Controller
         ];
 
         $this->validate($req, $reglas, $mensajes);
-        $control->quincena = $req['quincena'];
+        $control->quincena_id = $req['quincena_id'];
+        $control->nombre_quincena = $req['quincena_id'];
         $control->id_cliente = $req['id_cliente'];
         $control->num_factura = $req['num_factura'];
         $control->importe = $req['importe'];
@@ -139,6 +148,7 @@ class controlController extends Controller
         $control->observacion = $req['observacion'];
         //grabar
         $control->save();
+        Flash::success('Se ha modificado el control ' . $control->quincena_id . ' de forma exitosa !');
 
         return redirect('control_quincenal');
 
@@ -158,6 +168,60 @@ class controlController extends Controller
 
         
         return redirect('/control_quincenal');
+    }
+
+    //pdf
+    public function index()
+    {
+        $controles = Control::all();
+
+        return view('list', compact('controles'));
+    }
+
+    public function downloadPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf1', compact('control'));
+
+        return $pdf->download('control.pdf');
+
+        //para verlo
+    }
+
+    public function verPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf1', compact('control'));
+
+        $data = [
+            'titulo' => 'Control.net'
+        ];
+
+        return $pdf->setPaper('a4', 'portrait')
+            ->stream('archivo.pdf');
+
+       // return $pdf->download('control.pdf')
+        ;
+
+        //para verlo
+    }
+    //para ver y apaisar la hoja
+   /* public function download()
+    {
+        $data = [
+            'titulo' => 'Styde.net'
+        ];
+
+        return PDF::loadView('vista-pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');
+    }*/
+    public function imprimir()
+    {
+        $controles = Control::all();
+        $pdf = PDF::loadview('pdf', compact('controles'));
+        return $pdf->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');
     }
     
 }

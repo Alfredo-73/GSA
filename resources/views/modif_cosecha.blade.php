@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('PARTE DIARIO DE COSECHA') }}</div>
+                <div class="card-header green text-white text-center">{{ __('MODIFICACION PARTE DIARIO DE COSECHA') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/modif_cosecha/{{$cosecha->id}}" >
@@ -27,6 +27,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">   
+
+                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                   
+
+                            <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
+                                 <option selected>{{$cosecha->cliente->nombre}}</option>
+                                    @foreach($clientes as $cliente)
+                            
+                                <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                            
+                           
+                                    @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  
+                      
+<!--
                         <div class="form-group row">
                             <label for="cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
 
@@ -39,8 +58,28 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
+
+                        <div class="form-group row">   
+
+                            <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
+                   
+
+                            <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
+                                <option selected>{{$cosecha->capataz->nombre}}</option>
+                                    @foreach($capataz as $capat)
+                            
+                                <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                            
+                           
+                                    @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  
+                      
+<!--
                         <div class="form-group row">
                             <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
 
@@ -53,7 +92,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="jornales" class="col-md-4 col-form-label text-md-right">{{ __('JORNALES') }}</label>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Cliente;
+use Laracasts\Flash\Flash;
 
 
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class clienteController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:cliente',
             'cuit' => 'integer',
 
             
@@ -42,6 +43,7 @@ class clienteController extends Controller
         $mensajes = [
             'string' => 'El campo :attribute debe ser un texto',
             'min' => 'El campo :attribute tiene un minimo de :min',
+            'unique' => 'El cliente ya existe',
             'max' => 'El campo :attribute tiene un maximo de :max',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
@@ -58,7 +60,7 @@ class clienteController extends Controller
         $cliente_nuevo->save();
 
       
-    
+        Flash::success('Se ha dado de alta el cliente ' . $cliente_nuevo->nombre . ' de forma exitosa !' );
 
 
         return redirect('abm_cliente');
@@ -79,7 +81,7 @@ class clienteController extends Controller
 
         $cliente = Cliente::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255',
+            'nombre' => 'string|min:0|max:255|unique:cliente',
             'cuit' => 'integer',
             
         ];
@@ -87,6 +89,7 @@ class clienteController extends Controller
             'string' => 'El campo :attribute debe ser un texto',
             'min' => 'El campo :attribute tiene un minimo de :min',
             'max' => 'El campo :attribute tiene un maximo de :max',
+            'unique' => 'El cliente ya existe',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
@@ -97,6 +100,7 @@ class clienteController extends Controller
         
         //grabar
         $cliente->save();
+        Flash::success('Se ha modificado el cliente ' . $cliente->nombre . ' de forma exitosa !');
 
         return redirect('abm_cliente');
 
