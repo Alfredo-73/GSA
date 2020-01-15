@@ -136,4 +136,7 @@ Route::get('control/list', 'controlController@index');
 //download
 
 Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
+//ver pdf
+Route::get('/verPDF/{id}', 'controlController@verPDF');
 
+Route::get('/imprimir', 'controlController@imprimir');

@@ -16,10 +16,19 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+     <title>Confirmación de envío de formulario</title>
+<script language="JavaScript">
+function pregunta(){
+    if (confirm('¿Estas seguro de enviar este formulario?')){
+       document.tuformulario.submit()
+    }
+}
+</script>
 </head>
 
 <body>
     <div id="app">
+        @include('flash::message')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="/../home">

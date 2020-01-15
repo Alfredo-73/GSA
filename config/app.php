@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 /* pdf */
         Barryvdh\DomPDF\ServiceProvider::class,
+        
 
     ],
 

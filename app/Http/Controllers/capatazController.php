@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Capataz;
+use Laracasts\Flash\Flash;
 
 class capatazController extends Controller
 {
@@ -53,7 +54,9 @@ class capatazController extends Controller
         $capataz_nuevo = new Capataz();
         
         $capataz_nuevo->nombre = $req['nombre'];
-      
+
+        Flash::success('Se ha dado de alta el capataz ' . $capataz_nuevo->nombre . ' de forma exitosa !');
+
         
         //grabar
         $capataz_nuevo->save();
@@ -100,6 +103,7 @@ class capatazController extends Controller
         
         //grabar
         $capat->save();
+        Flash::success('Se ha modificado el capataz ' . $capat->nombre . ' de forma exitosa !');
 
         return redirect('abm_capataz');
 

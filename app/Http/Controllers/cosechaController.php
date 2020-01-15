@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Cosecha;
 use App\Capataz;
 use App\Cliente;
+use PDF;
+use Laracasts\Flash\Flash;
+use dateTranslator;
+
 
 class cosechaController extends Controller
 {
@@ -73,8 +77,9 @@ class cosechaController extends Controller
         //grabar
         $cosecha_nueva->save();
 
-      
-    
+
+        Flash::success('Se ha dado de alta la cosecha de ' . $cosecha_nueva->fecha . ' de forma exitosa !');
+
 
 
         return redirect('cosecha');
@@ -132,6 +137,7 @@ class cosechaController extends Controller
         $cosecha->supervisor = $req['supervisor'];
         //grabar
         $cosecha->save();
+        Flash::success('Se ha modificado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
 
         return redirect('cosecha');
 
