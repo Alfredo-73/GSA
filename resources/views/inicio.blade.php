@@ -27,7 +27,9 @@
 
                         <div class="media">
                             <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                                <i class="fab fa-react fa-2x text-info"></i>
+                                <i class="fas fa-tasks fa-2x text-info"></i>
+                                
+                                <!--<i class="fab fa-react fa-2x text-info"></i>-->
                             </span>
                             <div class="media-body">
                                 <h5 class="dark-grey-text mb-3">FACTURACION VS. PAGO</h5>
@@ -86,7 +88,7 @@
 
                         <div class="media">
                             <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                                <i class="fab fa-react fa-2x text-info"></i>
+                                <i class="far fa-id-card fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
                                 <h5 class="dark-grey-text mb-3">SANSIONES DISCIPLINARIAS</h5>
