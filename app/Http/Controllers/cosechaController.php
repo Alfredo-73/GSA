@@ -140,10 +140,7 @@ class cosechaController extends Controller
         Flash::success('Se ha modificado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
 
         return redirect('cosecha');
-
-
-
-               
+            
     }
 
 
