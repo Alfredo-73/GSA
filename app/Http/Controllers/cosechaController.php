@@ -132,10 +132,7 @@ class cosechaController extends Controller
         $cosecha->save();
 
         return redirect('cosecha');
-
-
-
-               
+            
     }
 
 
