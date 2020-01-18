@@ -64,11 +64,7 @@ Route::put('cosecha', 'cosechaController@update');
 Route::get('nueva_cosecha', 'cosechaController@agregar');
 
 
-Route::post('nueva_cosecha', 'cosechaController@agregar_cosecha');
 
-Route::get('modif_cosecha/{id}', 'cosechaController@edit');
-
-Route::put('modif_cosecha/{id}', 'cosechaController@update');
 
 Route::get('modalcosecha/{id}', 'cosechaController@update');
 Route::put('modalcosecha/{id}', 'cosechaController@update');

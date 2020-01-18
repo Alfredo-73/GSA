@@ -144,15 +144,20 @@ class quincenaController extends Controller
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
 
-        $this->validate($req, $reglas, $mensajes);
-        $quincena->nombre = $req['nombre'];
-       
-        
-        //grabar
-        $quincena->save();
-        Flash::success('Se ha modificado la quincena ' . $quincena->nombre . ' de forma exitosa !');
+        if($quincena->nombre != $req['nombre'])
+        {
+            $this->validate($req, $reglas, $mensajes);
+            $quincena->nombre = $req['nombre'];
+            //grabar
+            $quincena->save();
+            Flash::success('Se ha modificado la quincena ' . $quincena->nombre . ' de forma exitosa !');
 
-        return redirect('abm_quincena');
+            return redirect('abm_quincena');
+        }else
+        {
+            return redirect('abm_quincena');
+    
+        }
 
 
 
