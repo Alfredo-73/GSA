@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                       <!-- <input hidden="true" type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->id_cliente)) {{$cosecha->id_cliente}}@endif" name="id_cliente">
+                        <!--<input hidden="true" type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->id_cliente)) {{$cosecha->id_cliente}}@endif" name="id_cliente">
                         <input hidden="true" type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->id_capataz)) {{$cosecha->id_capataz}}@endif" name="id_capataz">-->
                         <div class="md-form mb-1" style="width:100%">
                             <!--<input type="date" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->fecha)) {{$cosecha->fecha}}@endif" name="">
@@ -27,10 +27,10 @@
                         </div>
 
                         <div class="md-form mb-1" style="width:100%">
-   <!-- <input type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->cliente->nombre)) {{$cosecha->cliente->nombre}}@endif" > -->
+                            <!-- <input type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->cliente->nombre)) {{$cosecha->cliente->nombre}}@endif" > -->
                             <label data-error="wrong" data-success="right" for="orangeForm-name">Cliente</label>
                             <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
-                                <option selected>{{$cosecha->cliente->nombre}}</option>
+                                <option value="{{$cosecha->id_cliente}}" selected>{{$cosecha->cliente->nombre}}</option>
                                 @foreach($clientes as $cliente)
 
                                 <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
@@ -44,20 +44,20 @@
                             <i class="fas fa-user prefix grey-text"></i>
                             <!--<input type="text" id="orangeForm-email" class="form-control" value="@if(!empty($cosecha->capataz->nombre)) {{$cosecha->capataz->nombre}}@endif" > -->
                             <label data-error="wrong" data-success="right" for="orangeForm-email">Capataz</label>
-                        <!--<label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>-->
-                   
+                            <!--<label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>-->
+
 
                             <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
-                                <option selected>{{$cosecha->capataz->nombre}}</option>
-                                    @foreach($capataz as $capat)
-                            
+                                <option value="{{$cosecha->id_capataz}}" selected>{{$cosecha->capataz->nombre}}</option>
+                                @foreach($capataz as $capat)
+
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
-                            
-                           
-                                    @endforeach
-                           
-                            </select>    
-                        
+
+
+                                @endforeach
+
+                            </select>
+
                         </div>
 
                         <div class="md-form mb-1" style="width:50%">
@@ -106,6 +106,12 @@
                             {{ __('Grabar') }}
                         </button>
                         <button class="btn btn-deep-orange">Imprimir</button>
+                        <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button hidden="true"  type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
+                            </button>
+                        </form>
 
                     </div>
                 </div>
