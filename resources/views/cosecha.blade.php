@@ -91,8 +91,8 @@
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
                                 <td class="text-center" hidden="true"> {{$cosecha->fecha}}</td>
-                                <td class="text-center"> {{$cosecha->id_cliente}}</td>
-                                <td class="text-center"> {{$cosecha->id_capataz}}</td>
+                                <td class="text-center"> {{$cosecha->cliente->nombre}}</td>
+                                <td class="text-center"> {{$cosecha->capataz->nombre}}</td>
                                 <td class="text-center"> {{$cosecha->jornales}}</td>
                                 <td class="text-center"> {{$cosecha->cosecheros}}</td>
                                 <td class="text-center"> {{$cosecha->bines}}</td>
@@ -101,11 +101,11 @@
                                 <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
                                 <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
                                 <td>
-                                    <!--<form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
+                                    <form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
-                                        </button>-->
+                                        </button>
 
                                         <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                     </form>
@@ -127,6 +127,7 @@
                                         @csrf
                                         {{method_field('PUT')}}
                                     <a href="/modalcosecha/{{ $cosecha->id }}" class="btn btn-default btn-rounded mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}"">Ver/Imp.</a>
+                                    
                                     @csrf
                                         {{method_field('PUT')}}
                                     @include('modalcosecha')
