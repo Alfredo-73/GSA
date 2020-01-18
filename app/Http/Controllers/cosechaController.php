@@ -16,10 +16,10 @@ class cosechaController extends Controller
     public function listado(Request $req)
     {
         $cosechas = Cosecha::all()->sortBy('fecha');
-        
+        $clientes = Cliente::all();
 
         // dd($cosechas);
-        $vac = compact('cosechas');
+        $vac = compact('cosechas', 'clientes');
         return view("cosecha", $vac);
     }
   
@@ -33,20 +33,17 @@ class cosechaController extends Controller
 
     public function agregar_cosecha(Request $req)
     {
-
-
- 
         $reglas = [
            // 'id_cliente' => 'numeric|max:10',
             'fecha' => 'date',
            // 'id_capataz' => 'numeric|max:10',
 
-            'jornales' => 'numeric|min:00001|max:99999',
-            'cosecheros' => 'numeric|min:00001|max:99999',
-            'bines' => 'numeric|min:00001|max:99999',
-            'maletas' => 'numeric|min:00001|max:99999',
-            'toneladas' => 'numeric|min:00000001|max:99999999',
-            'prom_kg_bin' => 'numeric|min:00000001|max:99999999',
+            'jornales' => 'numeric|min:00000|max:99999',
+            'cosecheros' => 'numeric|min:00000|max:99999',
+            'bines' => 'numeric|min:00000|max:9999999999',
+            'maletas' => 'numeric|min:00000|max:9999999999',
+            'toneladas' => 'numeric|min:00000000|max:9999999999',
+            'prom_kg_bin' => 'numeric|min:00000000|max:9999999999',
             'supervisor' => 'string|min:0|max:255',
             
         ];
@@ -106,12 +103,12 @@ class cosechaController extends Controller
             'fecha' => 'date',
             'id_capataz' => 'numeric|max:10',
 
-            'jornales' => 'numeric|min:00001|max:99999',
-            'cosecheros' => 'numeric|min:00001|max:99999',
-            'bines' => 'numeric|min:00001|max:99999',
-            'maletas' => 'numeric|min:00001|max:99999',
-            'toneladas' => 'numeric|min:00000001|max:99999999',
-            'prom_kg_bin' => 'numeric|min:00000001|max:99999999',
+            'jornales' => 'numeric|min:00000|max:99999',
+            'cosecheros' => 'numeric|min:00000|max:99999',
+            'bines' => 'numeric|min:00000|max:9999999999',
+            'maletas' => 'numeric|min:00000|max:9999999999',
+            'toneladas' => 'numeric|min:00000000|max:9999999999',
+            'prom_kg_bin' => 'numeric|min:00000000|max:9999999999',
             'supervisor' => 'string|min:0|max:255',
         ];
         $mensajes = [
