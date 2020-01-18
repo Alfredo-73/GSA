@@ -17,9 +17,10 @@ class cosechaController extends Controller
     {
         $cosechas = Cosecha::all()->sortBy('fecha');
         $clientes = Cliente::all();
+         $capataz = Capataz::all();
 
         // dd($cosechas);
-        $vac = compact('cosechas', 'clientes');
+        $vac = compact('cosechas', 'clientes', 'capataz');
         return view("cosecha", $vac);
     }
   
@@ -96,7 +97,7 @@ class cosechaController extends Controller
     }
     public function update(Request $req,$id)
     {
-
+//dd($req);
         $cosecha = cosecha::Find($id);
         $reglas = [
             'id_cliente' => 'numeric|max:10',
