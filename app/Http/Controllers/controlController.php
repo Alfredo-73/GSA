@@ -8,7 +8,7 @@ use App\Cliente;
 use App\Quincena;
 use PDF;
 use Laracasts\Flash\Flash;
-use dateTranslator;
+
 
 class controlController extends Controller
 {
@@ -103,13 +103,16 @@ class controlController extends Controller
         return view('modif_control', $vac);
         
     }
-    public function update(Request $req,$id)
+    public function update(Request $req, $id)
     {
 
         $control = Control::Find($id);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+      // dd($req);
         $reglas = [
-            'quincena_id' => 'numeric|min:1|max:30',
-            'id_cliente' => 'numeric|max:10',
+            //'quincena_id' => 'numeric|min:1|max:30',
+           // 'id_cliente' => 'numeric|max:10',
 
             'num_factura' => 'numeric|min:000000000|max:99999999999',
             'importe' => 'numeric|min:0000000|max:9999999999',
@@ -133,9 +136,7 @@ class controlController extends Controller
         ];
 
         $this->validate($req, $reglas, $mensajes);
-        $control->quincena_id = $req['quincena_id'];
-        $control->nombre_quincena = $req['quincena_id'];
-        $control->id_cliente = $req['id_cliente'];
+       
         $control->num_factura = $req['num_factura'];
         $control->importe = $req['importe'];
         $control->retencion = $req['retencion'];
@@ -147,6 +148,25 @@ class controlController extends Controller
         $control->toneladas = $req['toneladas'];
         $control->observacion = $req['observacion'];
         //grabar
+        $control->quincena_id = $req['quincena_id'];
+        $control->nombre_quincena = $req['quincena_id'];
+        $control->id_cliente = $req['id_cliente'];
+        
+     /*   foreach($clientes as $cliente)
+        {
+            if($req['id_cliente'] == $cliente['nombre'])
+            {
+                $control->id_cliente = $cliente['id'];
+            }
+        }
+        foreach ($quincenas as $quincena) {
+            if ($req['quincena_id'] == $quincena['nombre']) {
+                $control->quincena_id = $quincena['id'];
+                $control->nombre_quincena = $quincena['id'];
+            }
+        }
+        dd($control); */
+
         $control->save();
         Flash::success('Se ha modificado el control ' . $control->quincena_id . ' de forma exitosa !');
 
