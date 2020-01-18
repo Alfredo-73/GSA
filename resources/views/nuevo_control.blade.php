@@ -194,7 +194,7 @@
 
                          <!--   <div class="form-group shadow-textarea"> -->
                             <label for="observacion">{{ __('OBSERVACION') }}</label>
-                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion"value="{{ old('observacion') }} placeholder="Observaciones..."></textarea>
+                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion">{{ old('observacion') }}</textarea>
                             </div>
 
 <!--
@@ -214,10 +214,12 @@
                         
 
                         <div class="form-group row mb-0">
+                           
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Grabar') }}
                                 </button>
+                                <a class="fas fa-undo" role="button" href=  {{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
                             </div>
                         </div>
                     </form>

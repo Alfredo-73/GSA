@@ -94,15 +94,32 @@ class clienteController extends Controller
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
 
-        $this->validate($req, $reglas, $mensajes);
-        $cliente->nombre = $req['nombre'];
-        $cliente->cuit = $req['cuit'];
+       // $this->validate($req, $reglas, $mensajes);
+        if($cliente->nombre != $req['nombre'] || $cliente->cuit != $req['cuit'])
+        {
+            $this->validate($req, $reglas, $mensajes);
+
+            $cliente->nombre = $req['nombre'];
+            $cliente->cuit = $req['cuit'];
+            $cliente->save();
+            Flash::success('Se ha modificado el cliente ' . $cliente->nombre . ' de forma exitosa !');
+            return redirect('abm_cliente');
+            
+
+        }  else
+        {
+            return redirect('abm_cliente');          
+        }
+
+        //return redirect('abm_cliente');   
         
         //grabar
-        $cliente->save();
-        Flash::success('Se ha modificado el cliente ' . $cliente->nombre . ' de forma exitosa !');
-
-        return redirect('abm_cliente');
+           
+            
+            
+        
+            
+           
 
 
 
