@@ -35,6 +35,9 @@ function pregunta(){
                     <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px">
                 </a>
                 <a class="fas fa-home fa-2x " role="button" href=  {{ url('/../home') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
+                <a class="fas fa-money-check-alt fa-2x " role="button" href=  {{ url('/../control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
+
+                <a class="far fa-lemon fa-2x " role="button" href=  {{ url('/../cosecha') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
 
             
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
