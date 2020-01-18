@@ -16,10 +16,10 @@ class cosechaController extends Controller
     public function listado(Request $req)
     {
         $cosechas = Cosecha::all()->sortBy('fecha');
-        
+        $clientes = Cliente::all();
 
         // dd($cosechas);
-        $vac = compact('cosechas');
+        $vac = compact('cosechas', 'clientes');
         return view("cosecha", $vac);
     }
   
@@ -33,9 +33,6 @@ class cosechaController extends Controller
 
     public function agregar_cosecha(Request $req)
     {
-
-
- 
         $reglas = [
            // 'id_cliente' => 'numeric|max:10',
             'fecha' => 'date',

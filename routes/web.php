@@ -69,6 +69,7 @@ Route::get('nueva_cosecha', 'cosechaController@agregar');
 Route::get('modalcosecha/{id}', 'cosechaController@update');
 Route::put('modalcosecha/{id}', 'cosechaController@update');
 
+
 Route::delete('/borrar_cosecha/{id}', 'cosechaController@borrar');
 
 //Route::delete('/modalcosecha/{id}', 'cosechaController@borrar');
