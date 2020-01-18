@@ -51,9 +51,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" onclick="return confirm('¿Desea modificar el cliente?')" class="btn btn-success">
+                                <button type="submit"  class="btn btn-success">
                                     {{ __('Grabar') }}
                                 </button>
+                                <a class="fas fa-undo" role="button" href=  {{ url('/abm_cliente') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
+                           
                             </div>
                         </div>
                     </form>

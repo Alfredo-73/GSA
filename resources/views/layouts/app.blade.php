@@ -34,7 +34,9 @@ function pregunta(){
                 <a class="navbar-brand" href="/../home">
                     <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px">
                 </a>
-                V 1.0
+                <a class="fas fa-home fa-2x " role="button" href=  {{ url('/../home') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
+
+            
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
