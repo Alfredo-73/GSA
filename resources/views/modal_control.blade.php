@@ -70,10 +70,7 @@
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-deep-orange">Imprimir</button>
 
-                    <button class="btn btn-primary" href="{{action('controlController@downloadPDF', $control->id)}}">Download PDF</button>
-                   <button class="btn btn-success" href="{{action('controlController@verPDF', $control->id)}}">Ver PDF</button>
-
-
+                  
                 </div>
         </div>
         </div>                

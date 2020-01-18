@@ -109,14 +109,14 @@
 
                                 <td class="text-center"></td>
                                 <td>
-                                     <!--   <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
+                                       <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
                                             </button>
 
-                                           <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>
-                                        </form> -->
+                                           <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
+                                        </form> 
                                    <!-- <form method="POST" action="">
 
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
@@ -135,6 +135,16 @@
                                         @include('modal_control')
                                     </a>
                                 </td>
+                                <td>
+                                    <a href="{{action('controlController@downloadPDF', $control->id)}}" class="far fa-file-pdf fa-3x"   >
+                                        
+                                    </a>
+                                </td>
+                                 <td>
+                                    <a href="{{action('controlController@verPDF', $control->id)}}" class="btn btn-default btn-rounded mb-4 btn-success"  >Ver PDF
+
+                                    </td>
+
                                     
                             </tr>
                         @endforeach

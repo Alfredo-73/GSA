@@ -56,7 +56,7 @@ Route::get('modif_cosecha/{id}', 'cosechaController@edit');
 
 Route::put('modif_cosecha/{id}', 'cosechaController@update');
 
-Route::delete('/borrar_cosecha/{id}', 'cosechaController@borrar');
+Route::delete('borrar_cosecha/{id}', 'cosechaController@borrar');
 
 Route::get('cosecha', 'cosechaController@listado');
 Route::put('cosecha', 'cosechaController@update');
@@ -66,13 +66,13 @@ Route::get('nueva_cosecha', 'cosechaController@agregar');
 
 
 
-Route::get('modalcosecha/{id}', 'cosechaController@update');
+Route::get('modalcosecha/{id}', 'cosechaController@edit');
 Route::put('modalcosecha/{id}', 'cosechaController@update');
 
 
-Route::delete('/borrar_cosecha/{id}', 'cosechaController@borrar');
 
-//Route::delete('/modalcosecha/{id}', 'cosechaController@borrar');
+
+
 
 //abm cliente
 
@@ -141,6 +141,6 @@ Route::get('control/list', 'controlController@index');
 
 Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 //ver pdf
-Route::get('/verPDF/{id}', 'controlController@verPDF');
+Route::get('verPDF/{id}', 'controlController@verPDF');
 
 Route::get('/imprimir', 'controlController@imprimir');

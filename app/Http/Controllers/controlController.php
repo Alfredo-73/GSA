@@ -186,7 +186,8 @@ class controlController extends Controller
         $control = Control::find($id);
         $control->delete();
 
-        
+        Flash::success('Se ha dado de baja el control ' . $control->quincena_id . ' de forma exitosa !');
+
         return redirect('/control_quincenal');
     }
 
