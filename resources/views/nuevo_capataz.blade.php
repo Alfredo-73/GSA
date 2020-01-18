@@ -33,6 +33,8 @@
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Grabar') }}
                                 </button>
+                                <a class="fas fa-undo" role="button" href=  {{ url('/abm_cliente') }} style='margin-left:5rem' style="cursor:text" >  Regresar</a>
+
                             </div>
                         </div>
                     </form>

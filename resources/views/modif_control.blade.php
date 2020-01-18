@@ -170,7 +170,7 @@
                             <div class="col-md-6">
                                 <input id="pago_transporte" type="text" class="form-control @error('pago_transporte') is-invalid @enderror" name="pago_transporte" value="{{ $control->pago_transporte }}" required autocomplete="pago_transporte">
 
-                                @error('pago_trsnaporte')
+                                @error('pago_transporte')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -195,7 +195,7 @@
 
                          <!--   <div class="form-group shadow-textarea"> -->
                             <label for="observacion">{{ __('OBSERVACION') }}</label>
-                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion"value="{{ $control->observacion }} placeholder="Observaciones..."></textarea>
+                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion"  >{{ $control->observacion }}</textarea>
                             </div>
 <!--
                         <div class="form-group row">
@@ -219,6 +219,8 @@
                                 <button type="submit" class="btn btn-success">
                                     {{ __('Grabar') }}
                                 </button>
+                                 <a class="fas fa-undo" role="button" href=  {{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
+           
                             </div>
                         </div>
                     </form>

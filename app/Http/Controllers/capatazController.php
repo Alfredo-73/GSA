@@ -97,15 +97,23 @@ class capatazController extends Controller
             'integer' => 'El campo :attribute debe ser un numero entero',
         ];
 
-        $this->validate($req, $reglas, $mensajes);
-        $capat->nombre = $req['nombre'];
-       
-        
-        //grabar
-        $capat->save();
-        Flash::success('Se ha modificado el capataz ' . $capat->nombre . ' de forma exitosa !');
+        if($capat->nombre != $req['nombre'])
+        {
+            $this->validate($req, $reglas, $mensajes);
+            $capat->nombre = $req['nombre'];
 
-        return redirect('abm_capataz');
+
+            //grabar
+            $capat->save();
+            Flash::success('Se ha modificado el capataz ' . $capat->nombre . ' de forma exitosa !');
+            return redirect('abm_capataz');
+
+        }else
+        {
+            return redirect('abm_capataz');
+        }
+        
+     
 
 
 
