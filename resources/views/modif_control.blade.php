@@ -35,7 +35,7 @@
                    
                     <div class="col-md-6">
                     <select class="selectpicker show-menu-arrow" name="quincena_id" data-style="btn-success" data-width="auto">
-                            <option selected>{{$control->quincena->nombre}}</option>
+                            <option value="{{$control->quincena_id}}" selected>{{$control->quincena->nombre}}</option>
                             @foreach($quincenas as $quincena)
                             
                             <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
@@ -81,7 +81,7 @@
                    
 
                     <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
-                            <option selected>{{$control->cliente->nombre}}</option>
+                            <option value="{{$control->id_cliente}}" selected>{{$control->cliente->nombre}}</option>
                             @foreach($clientes as $cliente)
                             
                             <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
