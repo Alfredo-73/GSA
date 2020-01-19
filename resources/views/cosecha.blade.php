@@ -101,33 +101,23 @@
                                 <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
                                 <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
                                 <td>
-                                    <form method="POST" action="{{ url('/borrar_cosecha/'.$cosecha->id) }}">
+                                    <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
                                         </button>
-
-                                        <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                     </form>
-                                    <!-- <form method="POST" action="">
-
-                                        <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
-                                    </form> -->
                                 </td>
-                                <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
-                                <td>
                                     
                                    <!--<a id="modificar" class="btn btn-primary btn-rounded mb-4 btn-sm m-0 text-center" href="/modalcosecha/{{$cosecha->id}}" role="button">Modificar </a>-->
                                     <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
-                                </td>
                                 <td>
                                     <form method="" action="/modalcosecha/{{$cosecha->id}}">
                                         @csrf
                                         {{method_field('PUT')}}
-                                    <a href="/modalcosecha/{{ $cosecha->id }}" class="btn btn-default btn-rounded mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}"">Ver/Imp.</a>
-                                    
+                                    <a href="/modalcosecha/{{ $cosecha->id }}" class="btn btn-default btn-rounded mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}"">Ver/Imp.</a>   
                                     @csrf
                                         {{method_field('PUT')}}
                                     @include('modalcosecha')
