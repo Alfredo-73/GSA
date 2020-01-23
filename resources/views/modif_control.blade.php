@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('MODIFICACION CONTROL DE FACTURACION Y PAGO') }}</div>
+                <div class="card-header text-white text-center" style="background-color:darkblue" >{{ __('MODIFICACION CONTROL DE FACTURACION Y PAGO') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/modif_control/{{$control->id}}" >

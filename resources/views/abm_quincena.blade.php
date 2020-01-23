@@ -3,13 +3,12 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-ms-12 col-md-12 col-lg-12">
+        <div class="col-ms-6 col-md-6 col-lg-6">
             <div class="mx-auto">
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE QUINCENAS</h1>
-                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:75rem" >NUEVA </a>
-                        <a id="agregar_varios" class="btn btn-success mb-5 rounded" href="{{ url('/nueva_quincenas') }}" role="button" style="margin-left:75rem" >NUEVAS </a>
+                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:35rem;color:white" >NUEVA </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -18,47 +17,25 @@
                         </form> -->
                     </div>
                     <!--Table-->
-                    <table class="table table-hover text-center">
-
-                        <!--Table head-->
-                        <thead>
-                            <tr>
-                                <!--<th>
-                                        <input class="form-check-input" type="checkbox" id="checkbox">
-                                        <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                                    </th>-->
-                                <th class="th-lg text-center">
-                                    <a>ID
+                    
+                    <div class="table-responsive-sm table-striped ">
+                        <table class="table">
+                            <!--Table head-->
+                            <thead>
+                                <tr>
+                                    <th class="th-lg text-center">
+                                        <a>NOMBRE
                                         <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>NOMBRE
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                               
-                                 
-                            </tr>
-                        </thead>
-                        <!--Table head-->
-
-                        <!--Table body-->
-                        <tbody>
-                             @foreach ($quincenas as $quincena)
-                            <tr>
-                             
-
-                                <!--<th scope="row">
-                                        <input class="form-check-input" type="checkbox" id="checkbox1">
-                                        <label class="form-check-label" for="checkbox1" class="label-table"></label>
-                                    </th>-->
-                                <td> {{$quincena->id}}</td>
-                                <td> {{$quincena->nombre}}</td>
-                                
-                                
-                                <td class="text-center"></td>
-                                <td>
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <!--Table body-->
+                            <tbody>
+                                 @foreach ($quincenas as $quincena)
+                                <tr>
+                                    <td class="text-center"> {{$quincena->nombre}}</td>
+                                    <td>
                                         <form method="POST" action="{{ url('/borrar_quincena/'.$quincena->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
@@ -67,33 +44,21 @@
 
                                            <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                         </form>
-                                   <!-- <form method="POST" action="">
+                                   
+                                    </td>
+                                    <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
+                                    <td>
+                                         <button id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </button>
 
-                                        <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
-                                    </form> -->
-                                </td>
-                                <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
-                                <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </a>
+                                    </td>
+                              @endforeach
+                                </tr>
+                                
 
-                                 <!--   <form method="POST" action="">
-                                        <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
-                                    </form> -->
-                                </td>
-
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <div class="text-center">
-                                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Ver/Imp.</a>
-                                    </div>
-                                </td>
-                              
-                            </tr>
-                        @endforeach
-
-                        </tbody>
+                            </tbody>
                         <!--Table body-->
-                    </table>
+                        </table>
+                    </div>
 
                     <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
