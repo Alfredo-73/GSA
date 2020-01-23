@@ -3,12 +3,12 @@
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-ms-12 col-md-12 col-lg-12">
+        <div class="col-ms-6 col-md-6 col-lg-6">
             <div class="mx-auto">
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE CLIENTES</h1>
-                         <a id="agregar" class="btn btn-success mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:75rem" >NUEVO </a>
+                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:35rem;color:white" >NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -26,10 +26,10 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                                <th class="th-lg text-center">
+                             <!--   <th class="th-lg text-center">
                                     <a>ID
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
+                                        
+                                    </a>-->
                                 </th>
                                 <th class="th-lg text-center">
                                     <a>NOMBRE
@@ -56,7 +56,7 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                                <td> {{$cliente->id}}</td>
+                              <!--  <td> {{$cliente->id}}</td> -->
                                 <td> {{$cliente->nombre}}</td>
                                 <td> {{$cliente->cuit}}</td>
                                 
@@ -77,19 +77,19 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cliente/{{$cliente->id}}" role="button" >Modificar </a>
+                                    <button id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cliente/{{$cliente->id}}" role="button" >Modificar </button>
 
                                  <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
                                 </td>
 
-                                <td>
-                                    <!-- Button trigger modal -->
+                              <!--    <td>
+                                  -- Button trigger modal --
                                     <div class="text-center">
                                         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Ver/Imp.</a>
                                     </div>
-                                </td>
+                                </td> -->
                               
                             </tr>
                         @endforeach
