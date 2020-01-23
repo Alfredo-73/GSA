@@ -206,9 +206,9 @@ class controlController extends Controller
 
         return $pdf->download('control.pdf');
 
-        //para verlo
+        
     }
-
+//para verlo este usamos
     public function verPDF($id)
     {
         $control = Control::find($id);
