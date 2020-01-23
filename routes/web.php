@@ -141,6 +141,6 @@ Route::get('control/list', 'controlController@index');
 
 Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 //ver pdf
-Route::get('verPDF/{id}', 'controlController@verPDF');
+Route::get('verPDF/{id}', 'controlController@verPDF'); //usamos
 
 Route::get('/imprimir', 'controlController@imprimir');
