@@ -27,7 +27,7 @@
 </style>
 </head>
 <body>
-    <div align="center"> <img src="../public/img/gsa.png" alt="" style="width: 120px"></div>
+    <div alighn="center"> <img src="../public/img/gsa.png" alt="" style="width: 120px"></div>
   
     <h1></h1>
     <h2>INFORME control quincenal  {{$control->quincena->nombre}}</h2>
