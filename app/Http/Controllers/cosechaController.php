@@ -100,9 +100,9 @@ class cosechaController extends Controller
 //dd($req);
         $cosecha = cosecha::Find($id);
         $reglas = [
-            'id_cliente' => 'numeric|max:10',
+            //'id_cliente' => 'numeric|max:10',
             'fecha' => 'date',
-            'id_capataz' => 'numeric|max:10',
+            //'id_capataz' => 'numeric|max:10',
 
             'jornales' => 'numeric|min:0000|max:99999',
             'cosecheros' => 'numeric|min:0000|max:9999999',
@@ -122,7 +122,7 @@ class cosechaController extends Controller
             'unique' => 'El campo :attribute se encuentra repetido'
         ];
     
-
+        //dd($cosecha);
         $this->validate($req, $reglas, $mensajes);
         $cosecha->id_cliente = $req['id_cliente'];
         $cosecha->fecha = $req['fecha'];
@@ -135,7 +135,7 @@ class cosechaController extends Controller
         $cosecha->toneladas = $req['toneladas'];
         $cosecha->supervisor = $req['supervisor'];
         //grabar
-
+        
         $cosecha->save();
         Flash::success('Se ha modificado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
 
