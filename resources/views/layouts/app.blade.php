@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-     <title>Confirmación de envío de formulario</title>
-<script language="JavaScript">
-function pregunta(){
-    if (confirm('¿Estas seguro de enviar este formulario?')){
-       document.tuformulario.submit()
-    }
-}
-</script>
+    <title>Confirmación de envío de formulario</title>
+    <script language="JavaScript">
+        function pregunta() {
+            if (confirm('¿Estas seguro de enviar este formulario?')) {
+                document.tuformulario.submit()
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -32,14 +32,15 @@ function pregunta(){
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="/../home">
-                    <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px">
+                    <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px"></img>
                 </a>
-                <a class="fas fa-home fa-2x " role="button" href=  {{ url('/../home') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
-                <a class="fas fa-money-check-alt fa-2x " role="button" href=  {{ url('/../control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
+                <h6>V:1.0</h6>
+                <div style="margin-left:30%" style="margin-right:30%">
+                    <a class="fas fa-home fa-2x prefix grey-text" role="button" href="{{ url('/../home') }}" name="home"></a>
+                    <a class="fas fa-money-check-alt fa-2x prefix grey-text" role="button" href="{{ url('/../control_quincenal') }}" name="home" style="padding:2rem"></a>
+                    <a class="far fa-lemon fa-2x prefix grey-text" role="button" href="{{ url('/../cosecha') }}" name="home"> </a>
+                </div>
 
-                <a class="far fa-lemon fa-2x " role="button" href=  {{ url('/../cosecha') }} style='margin-left:5rem' style="cursor:pointer",name="Home" >  </a>
-
-            
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -107,4 +108,5 @@ $(document).ready(function() {
 $('.mdb-select').materialSelect();
 });
 </script> -->
+
 </html>
