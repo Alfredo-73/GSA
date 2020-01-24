@@ -151,6 +151,7 @@ class cosechaController extends Controller
 
         $cosecha = cosecha::find($id);
         $cosecha->delete();
+        Flash::success('Se ha borrado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
 
         
         return redirect('/cosecha');
