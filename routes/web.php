@@ -66,7 +66,7 @@ Route::get('nueva_cosecha', 'cosechaController@agregar');
 
 
 
-Route::get('modalcosecha/{id}', 'cosechaController@edit');
+Route::get('modalcosecha/{id}', 'cosechaController@update');
 Route::put('modalcosecha/{id}', 'cosechaController@update');
 
 
@@ -144,3 +144,22 @@ Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 Route::get('verPDF/{id}', 'controlController@verPDF'); //usamos
 
 Route::get('/imprimir', 'controlController@imprimir');
+
+//sanciones
+
+Route::get('control_quincenal', 'SancionController@control');
+
+Route::get('agregar_sancion', 'SancionController@agregar');
+
+Route::get('nueva_sancion', 'SancionController@agregar');
+
+
+Route::post('nueva_sancion', 'SancionController@agregar_control');
+
+Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
+
+Route::get('modif_sancion/{id}', 'SancionController@edit');
+
+Route::put('modif_sancion/{id}', 'SancionController@update');
+
+Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');

@@ -10,6 +10,11 @@ class Cliente extends Model
 
     public $guarded = [];
 
+    public function Sancion()
+    {
+        return $this->hasMany('App\Control', 'id_cliente');
+    }
+
     public function control()
     {
         return $this->hasMany('App\Control', 'id_cliente');
