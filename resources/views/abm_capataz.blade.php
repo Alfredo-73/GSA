@@ -68,7 +68,7 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <button id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_capataz/{{$capat->id}}" role="button" >Modificar </button>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_capataz/{{$capat->id}}" role="button" >Modificar </a>
 
                                  <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
