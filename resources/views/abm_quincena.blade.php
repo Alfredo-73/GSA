@@ -48,7 +48,7 @@
                                     </td>
                                     <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                     <td>
-                                         <button id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </button>
+                                         <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </a>
 
                                     </td>
                               @endforeach

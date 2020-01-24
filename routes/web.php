@@ -147,14 +147,13 @@ Route::get('/imprimir', 'controlController@imprimir');
 
 //sanciones
 
-Route::get('control_quincenal', 'SancionController@control');
 
 Route::get('agregar_sancion', 'SancionController@agregar');
 
 Route::get('nueva_sancion', 'SancionController@agregar');
 
 
-Route::post('nueva_sancion', 'SancionController@agregar_control');
+Route::post('nueva_sancion', 'SancionController@agregar_sancion');
 
 Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
 
