@@ -34,13 +34,14 @@
                 <a class="navbar-brand" href="/../home">
                     <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
                 </a>
-                <h6>V:1.0</h6>
+                <h6><b>V:1.0</h6></b>
+                @if (Auth::user())
                 <div style="margin-left:30%" style="margin-right:30%">
                     <a class="fas fa-home fa-2x prefix grey-text" role="button" href="{{ url('/../home') }}" name="home" title="Ir a Inicio"></a>
                     <a class="fas fa-money-check-alt fa-2x prefix grey-text" role="button" href="{{ url('/../control_quincenal') }}" name="home" style="padding:2rem" title="Ir a Facturacion Vs. Pago"></a>
                     <a class="far fa-lemon fa-2x prefix grey-text" role="button" href="{{ url('/../cosecha') }}" name="home" title="Ir a Parte Diario de Cosecha"> </a>
                 </div>
-
+                @endif
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
