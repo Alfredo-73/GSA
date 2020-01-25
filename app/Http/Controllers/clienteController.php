@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Cliente;
+use App\Cosecha;
+use App\Control;
 use Laracasts\Flash\Flash;
 
 
@@ -114,29 +116,24 @@ class clienteController extends Controller
         //return redirect('abm_cliente');   
         
         //grabar
-           
-            
-            
-        
-            
-           
-
-
-
-               
     }
 
-
-    public function borrar(Request $form)
-    //public function borrar($id)
+    public function borrar($id)
     {
-        $id = $form['id'];
-
-        $cliente = Cliente::find($id);
-        $cliente->delete();
-
-        
-        return redirect('/abm_cliente');
+        $cliente = Cliente::where('id', $id)->with('sancion')->first();
+        $cliente1 = Cliente::where('id', $id)->with('cosecha')->first();
+        $cliente2 = Cliente::where('id', $id)->with('control')->first();
+        if ($cliente || $cliente1 || $cliente2) {
+            if ($cliente1->cosecha->isNotEmpty() || $cliente2->control->isNotEmpty() || $cliente->sancion->isNotEmpty()) {
+                Flash('No se puede borrar el cliente ' . $cliente->nombre . ' ya que tiene datos asociados')->error();
+                return back();
+            }
+            $cliente->delete();
+            Flash::success('Se ha borrado el cliente ' . $cliente->nombre . '  de forma exitosa!!!');
+        } else {
+            return back()->withErrors('El cliente no existe');
+        }
+        return redirect('abm_cliente');
     }
    
 }
