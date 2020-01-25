@@ -18,7 +18,7 @@
                     </div>
                     <!--Table-->
                     <!--<table class="table-striped w-auto">-->
-                        <table class="table table-hover text-center">
+                        <table class="table table-hover">
 
                             <!--Table head-->
                             <thead>
