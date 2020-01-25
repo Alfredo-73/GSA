@@ -156,6 +156,25 @@ class cosechaController extends Controller
         
         return redirect('/cosecha');
     }
-    
-    //
+
+    //pdf
+    //para verlo este usamos
+    public function vercosechaPDF($id)
+    {
+        $cosecha = Cosecha::find($id);
+        $pdf = PDF::loadView('pdf_cosecha', compact('cosecha'));
+
+        $data = [
+            'titulo' => 'Cosecha.net'
+        ];
+
+        return $pdf->setPaper('a4', 'portrait')
+            ->stream('parte_diario.pdf');
+
+            // return $pdf->download('control.pdf')
+        ;
+
+        //para verlo
+    }
+
 }

@@ -108,7 +108,9 @@ Route::get('modif_capataz/{id}', 'capatazController@edit');
 
 Route::put('modif_capataz/{id}', 'capatazController@update');
 
-Route::delete('/borrar_capataz/{id}', 'capatazController@borrar');
+//Route::delete('/borrar_capataz/{id}', 'capatazController@borrar');
+
+Route::delete('/borrar_capataz/{capat}', 'capatazController@borrar');
 
 
 //quincena
@@ -142,6 +144,7 @@ Route::get('control/list', 'controlController@index');
 Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 //ver pdf
 Route::get('verPDF/{id}', 'controlController@verPDF'); //usamos
+Route::get('vercosechaPDF/{id}', 'cosechaController@vercosechaPDF');
 
 Route::get('/imprimir', 'controlController@imprimir');
 
