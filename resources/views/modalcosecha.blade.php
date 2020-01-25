@@ -91,7 +91,8 @@
                     <button type="submit" class="btn btn-primary" action="{{url('/modalcosecha/'.$cosecha->id) }}">
                         {{ __('Grabar') }}
                     </button>
-                    <button class="btn btn-deep-orange">Imprimir</button>
+                    
+                    <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}">Imprimir</a>
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}

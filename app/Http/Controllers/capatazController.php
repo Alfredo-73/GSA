@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Capataz;
+use App\Cosecha;
 use Laracasts\Flash\Flash;
 
 class capatazController extends Controller
@@ -101,8 +102,6 @@ class capatazController extends Controller
         {
             $this->validate($req, $reglas, $mensajes);
             $capat->nombre = $req['nombre'];
-
-
             //grabar
             $capat->save();
             Flash::success('Se ha modificado el capataz ' . $capat->nombre . ' de forma exitosa !');
@@ -111,26 +110,23 @@ class capatazController extends Controller
         }else
         {
             return redirect('abm_capataz');
-        }
-        
-     
-
-
-
-               
+        }          
     }
 
 
-    public function borrar(Request $form)
-    //public function borrar($id)
-    {
-        $id = $form['id'];
-
-        $capat = Capataz::find($id);
-        $capat->delete();
-
-        
-        return redirect('/abm_capataz');
+    public function borrar($id){
+        $capataz=Capataz::where('id',$id)->with('cosecha')->first();
+        if($capataz){
+            if($capataz->cosecha->isNotEmpty()){
+                Flash('No se puede borrar el Capataz '.$capataz->nombre.' ya que tiene cosechas cargadas')->error();
+                return back();
+            }
+            $capataz->delete();
+            Flash::success('Se ha borrado el capataz '.$capataz->nombre.'  de forma exitosa!!!');        
+        }else{
+            return back()->withErrors('El capataz no existe');
+        }
+        return redirect('abm_capataz');
     }
    
 }

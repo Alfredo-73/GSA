@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE CLIENTES</h1>
-                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:35rem;color:white" >NUEVO </a>
+                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:35rem;color:white">NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -26,7 +26,7 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                             <!--   <th class="th-lg text-center">
+                                <!--   <th class="th-lg text-center">
                                     <a>ID
                                         
                                     </a>-->
@@ -41,58 +41,58 @@
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
-                                 
+
                             </tr>
                         </thead>
                         <!--Table head-->
 
                         <!--Table body-->
                         <tbody>
-                             @foreach ($clientes as $cliente)
+                            @foreach ($clientes as $cliente)
                             <tr>
-                             
+
 
                                 <!--<th scope="row">
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                              <!--  <td> {{$cliente->id}}</td> -->
+                                <!--  <td> {{$cliente->id}}</td> -->
                                 <td> {{$cliente->nombre}}</td>
                                 <td> {{$cliente->cuit}}</td>
-                                
+
                                 <td class="text-center"></td>
                                 <td>
-                                        <form method="POST" action="{{ url('/borrar_cliente/'.$cliente->id) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el cliente?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
-                                            </button>
+                                    <form method="POST" action="{{ url('/borrar_cliente/'.$cliente->id) }}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" onclick="return confirm('¿Desea eliminar el cliente?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm text-center"> BORRAR
+                                        </button>
 
-                                           <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
-                                        </form>
-                                   <!-- <form method="POST" action="">
+                                        <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
+                                    </form>
+                                    <!-- <form method="POST" action="">
 
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
                                     </form> -->
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_cliente/{{$cliente->id}}" role="button" >Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-1 btn-sm text-center" href="/modif_cliente/{{$cliente->id}}" role="button">Modificar </a>
 
-                                 <!--   <form method="POST" action="">
+                                    <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
                                 </td>
 
-                              <!--    <td>
+                                <!--    <td>
                                   -- Button trigger modal --
                                     <div class="text-center">
                                         <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Ver/Imp.</a>
                                     </div>
                                 </td> -->
-                              
+
                             </tr>
-                        @endforeach
+                            @endforeach
 
                         </tbody>
                         <!--Table body-->
@@ -101,7 +101,7 @@
                     <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              
+
 
                                 <div class="modal-header text-center">
                                     <h4 class="modal-title w-100 font-weight-bold">CLIENTE @if(!empty($cleinte)) {{$cliente->id}} @endif</h4>
@@ -118,15 +118,15 @@
                                     <div class="md-form mb-5">
                                         <i class="fas fa-dollar-sign prefix grey-text"></i>
                                         <input type="text" id="orangeForm-email" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-email">CUIT  @if(!empty($cleinte)) {{$cliente->cuit}} @endif</label>
+                                        <label data-error="wrong" data-success="right" for="orangeForm-email">CUIT @if(!empty($cleinte)) {{$cliente->cuit}} @endif</label>
                                     </div>
 
-                                    
+
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
                                     <button class="btn btn-deep-orange">Imprimir</button>
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>

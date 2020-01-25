@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE QUINCENAS</h1>
-                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:35rem;color:white" >NUEVA </a>
+                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:35rem;color:white">NUEVA </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -17,53 +17,54 @@
                         </form> -->
                     </div>
                     <!--Table-->
+
                     
-                    <div class="table-responsive-sm table-striped ">
-                        <table class="table">
-                            <!--Table head-->
-                            <thead>
-                                <tr>
-                                    <th class="th-lg text-center">
-                                        <a>NOMBRE
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <!--Table body-->
-                            <tbody>
-                                 @foreach ($quincenas as $quincena)
-                                <tr>
-                                    <td class="text-center"> {{$quincena->nombre}}</td>
-                                    <td>
-                                        <form method="POST" action="{{ url('/borrar_quincena/'.$quincena->id) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar la quincena?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
-                                            </button>
+                        <table class="table table-hover text-center">
+                            
+                                <!--Table head-->
+                                <thead>
+                                    <tr>
+                                        <th class="th-lg text-center">
+                                            <a>NOMBRE
+                                                <!--<i class="fas fa-sort ml-1"></i>-->
+                                            </a>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <!--Table body-->
+                                <tbody>
+                                    @foreach ($quincenas as $quincena)
+                                    <tr>
+                                        <td class="text-center"> {{$quincena->nombre}}</td>
+                                        <td>
+                                            <form method="POST" action="{{ url('/borrar_quincena/'.$quincena->id) }}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" onclick="return confirm('¿Desea eliminar la quincena?')" id="borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                                </button>
 
-                                           <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
-                                        </form>
-                                   
-                                    </td>
-                                    <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
-                                    <td>
-                                         <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button" >Modificar </a>
+                                                <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
+                                            </form>
 
-                                    </td>
-                              @endforeach
-                                </tr>
-                                
+                                        </td>
+                                        <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
+                                        <td>
+                                            <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_quincena/{{$quincena->id}}" role="button">Modificar </a>
 
-                            </tbody>
-                        <!--Table body-->
-                        </table>
+                                        </td>
+                                        @endforeach
+                                    </tr>
+
+
+                                </tbody>
+                                <!--Table body-->
+                            </table>
                     </div>
 
                     <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                              
+
 
                                 <div class="modal-header text-center">
                                     <h4 class="modal-title w-100 font-weight-bold">quincena @if(!empty($quincena)){{$quincena->id}} @endif</h4>
@@ -77,13 +78,13 @@
                                         <input type="text" id="orangeForm-name" class="form-control validate">
                                         <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre @if(!empty($quincena)){{$quincena->nombre}} @endif</label>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                                 <div class="modal-footer d-flex justify-content-center">
                                     <button class="btn btn-deep-orange">Imprimir</button>
                                 </div>
-                             
+
                             </div>
                         </div>
                     </div>

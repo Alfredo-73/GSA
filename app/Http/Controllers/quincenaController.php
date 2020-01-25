@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Quincena;
+use App\Control;
 use Laracasts\Flash\Flash;
 
 class quincenaController extends Controller
@@ -157,24 +158,22 @@ class quincenaController extends Controller
         {
             return redirect('abm_quincena');
     
-        }
-
-
-
-               
+        }        
     }
 
-
-    public function borrar(Request $form)
-    //public function borrar($id)
+    public function borrar($id)
     {
-        $id = $form['id'];
-
-        $quincena = Quincena::find($id);
-        $quincena->delete();
-
-        
-        return redirect('/abm_quincena');
+        $quincena = Quincena::where('id', $id)->with('control')->first();
+        if ($quincena) {
+            if ($quincena->control->isNotEmpty()) {
+                Flash('No se puede borrar la quincena ' . $quincena->nombre . ' ya que tiene datos asociados')->error();
+                return back();
+            }
+            $quincena->delete();
+            Flash::success('Se ha borrado la quincena ' . $quincena->nombre . '  de forma exitosa!!!');
+        } else {
+            return back()->withErrors('La quincena no existe');
+        }
+        return redirect('abm_quincena');
     }
-   //
 }

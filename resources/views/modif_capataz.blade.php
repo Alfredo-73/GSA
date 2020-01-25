@@ -14,12 +14,7 @@
                     <form method="POST" action="/modif_capataz/{{$capat->id}}" >
                         @csrf
                         {{method_field('PUT')}}
-                        <div class="form-group row">
-                            <label for="id" class="col-md-4 col-form-label text-md-right">{{ __('ID')}} {{$capat->id}}</label>
-
-                            
-                        </div>
-
+            
                         <div class="form-group row">
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
 
@@ -41,7 +36,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Grabar') }}
                                 </button>
-                                <a class="fas fa-undo" role="button" href=  {{ url('/abm_capataz') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
+                                <a class="fas fa-undo" role="button" href=  {{ url('/abm_capataz') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" title="Volver al listado">  Regresar</a>
        
                             </div>
                         </div>
