@@ -8,10 +8,103 @@ use App\Cliente;
 use App\Quincena;
 use PDF;
 use Laracasts\Flash\Flash;
-
+use DB;
 
 class controlController extends Controller
 {
+
+   /* public function listado()
+    {
+        $controles = DB::table('control')
+        ->join('cliente', 'cliente.id', '=', 'control.id_cliente')
+        ->select('control.num_factura', 'control.importe', 'cliente.nombre as cliente')
+        ->get();
+        dd($controles);
+    }*/
+
+    public function listado(Request $request)
+    {
+        $name_cliente= $request->get('buscarpor');
+        $name_quinena=$request->get('por');
+        //dd($cliente);
+        //$variablesurl = $request->all();
+
+        $controles = Control::where('id_cliente', 'like', "%$name_cliente%")
+            ->paginate(5);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+
+        return view('control_quincenal', compact('clientes', 'controles', 'quincenas'));
+    }
+//para usar scope
+    public function indexBuscar(Request $request)
+    {
+        $cliente = $request->get('buscarporcliente');
+        $quincena = $request->get('buscarporquincena');
+        
+        $controles = Control::orderBy('quincena_id', 'asc')
+                ->cliente($cliente)
+                ->quincena($quincena)
+                ->paginate(10);
+
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+        $vac = compact('controles', 'clientes', 'quincenas');
+
+        return view('control_quincenal', $vac);
+            
+    }
+    //usando scope global y select
+
+
+    public function buscarpor(Request $request)
+    {
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+        //$variablesurl = $request->all();
+        /*$variablesurl = [
+            'tipo' => $tipo,
+            'buscarpor' => $buscar
+        ];*/
+        //$variablesurl = $request->input();
+       //$variablesurl = $request->query();
+        $variablesurl = $request->only(['tipo', 'buscarpor']);
+        // $variablesurl = $request->except(['page']);
+        //$variablesurl = $_GET;
+
+        //dd($variablesurl);
+        $controles = Control::buscarpor($tipo, $buscar)
+            ->paginate(3);
+
+        /*  $controles = Control::buscarpor($tipo, $buscar)
+                        ->paginate(3)->appends($variablesurl);*/
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+        $vac = compact('controles', 'clientes', 'quincenas');
+        
+
+        return view('control_quincenal', $vac);
+    }
+
+
+    public function busqueda(Request $request)
+    {
+        $noticia = Noticia::with('notas')->get();
+
+        $ntc_turno = $request->input('noticiero_turno');
+        if ($ntc_turno) {
+            $noticia = Noticia::where('noticiero_turno', 'LIKE', "%$ntc_turno%")
+                ->orWhere('noticiero_programa', 'LIKE', "%$ntc_turno%")
+                ->orWhere('noticiero_fecha', 'LIKE', "%$ntc_turno%")
+
+                ->paginate(2);
+
+            return view('noticia.listar', array('noticia' => $noticia));
+        } else {
+            $noticia = Noticia::paginate(3);
+            return view('noticia.listar', array('noticia' => $noticia));
+        }
+    }
     public function control(Request $req)
     {
         $controles = Control::all()->sortBy('quincena');

@@ -23,7 +23,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('control_quincenal', 'controlController@control');
+//Route::get('control_quincenal', 'controlController@buscarpor');//modifico fcon control por buscarpor para probar
+
+//Route::get('control_quincenal', 'controlController@listado');
+
+Route::get('control_quincenal', 'controlController@indexbuscar');//modifico fcon control por buscarpor para probar
 
 Route::get('agregar_control', 'controlController@agregar');
 
@@ -75,7 +79,7 @@ Route::get('abm', function () {
     return view('../abm');
 });
 
-Route::get('abm_cliente', 'clienteController@listado');
+Route::get('abm_cliente', 'clienteController@buscarpor');//cambio listado por buscarpor
 Route::get('nuevo_cliente', 'clienteController@agregar');
 
 
