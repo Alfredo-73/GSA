@@ -76,7 +76,7 @@
                     </div>
                     <div class="md-form mb-1 w-50">
                         <i class="fas fa-weight prefix" style="color:darkblue"></i>
-                        <input style="width:4rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->prom_kg_bin)) {{$cosecha->prom_kg_bin}}@endif" name="prom_kg_bin">
+                        <input style="width:4rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->prom_kg_bin)) {{$cosecha->prom_kg_bin}}@endif" name="prom_kg_bin" pattern="{0000.00}">
                         <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">PROMEDIO KG/BIN</label>
                     </div>
                     <div class="md-form mb-1 w-50">
@@ -88,11 +88,13 @@
             </div>
             <div class="modal-footer" style="width:100%">
                 <div class="mx-auto">
-                    <button type="submit" class="btn btn-primary" action="{{url('/modalcosecha/'.$cosecha->id) }}">
+                    <button type="submit" class="btn btn-primary" action="{{url('/modalcosecha/'.$cosecha->id) }}"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                         {{ __('Grabar') }}
                     </button>
-                    
-                    <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}">Imprimir</a>
+
+
+
+                    <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
