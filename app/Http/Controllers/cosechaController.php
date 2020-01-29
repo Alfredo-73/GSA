@@ -16,23 +16,29 @@ class cosechaController extends Controller
 {
     public function index(Request $request){
             
-            $fechadesde=trim($request->get('fechadesde'));
-            $fechahasta=trim($request->get('fechahasta'));
-            $buscacapataz=trim($request->get('buscacapataz'));
-            //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
+    $fechadesde=trim($request->get('fechadesde'));
+    $fechahasta=trim($request->get('fechahasta'));
+    $buscacapataz=trim($request->get('buscacapataz'));
+    //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
             if(empty($fechadesde && $fechahasta)){
-            $cosechas = Cosecha::orderBy('fecha', 'desc')->paginate(10);
-            $clientes = Cliente::all();
-            $capataz = Capataz::all();
-            $vac = compact('cosechas', 'clientes', 'capataz');
-            return view("cosecha", $vac);
-            }else{
-            $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")->whereBetween('fecha',[$fechadesde, $fechahasta])->orderBy('fecha', 'desc',)->paginate(10);
-            $clientes = Cliente::all();
-            $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
-            $vac1 = compact('cosechas', 'clientes', 'capataz');
-            return view('cosecha', $vac1);
-        }
+                $cosechas = Cosecha::orderBy('fecha', 'desc')->paginate(10);
+                $clientes = Cliente::all();
+                $capataz = Capataz::all();
+                $vac = compact('cosechas', 'clientes', 'capataz');
+                return view("cosecha", $vac);
+                    }else if ($buscacapataz == 'Capataz'){
+                        $cosechas = Cosecha::whereBetween('fecha',[$fechadesde, $fechahasta])->orderBy('fecha', 'desc',)->paginate(10);
+                        $clientes = Cliente::all();
+                        $capataz = Capataz::all();
+                        $vac1 = compact('cosechas', 'clientes', 'capataz');
+                        return view('cosecha', $vac1);
+                            }else{
+                                $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")->whereBetween('fecha',[$fechadesde, $fechahasta])->orderBy('fecha', 'desc',)->paginate(10);
+                                $clientes = Cliente::all();
+                                $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
+                                $vac1 = compact('cosechas', 'clientes', 'capataz');
+                                return view('cosecha', $vac1);
+                            }
     }
 
     public function listado(Request $req)
