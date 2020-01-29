@@ -16,6 +16,30 @@
                             <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
                         </form> -->
                     </div>
+                    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4">
+
+                    <!-- Navbar brand -->
+                            <a class="navbar-brand" href="#">Buscador</a>
+
+                            <!-- Collapsible content -->
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                                <form class="form-inline ml-auto">
+                                <div class="md-form my-0">
+                                    <input name="buscarpor" class="form-control" type="text" placeholder="Nombre del cliente..." aria-label="Search">
+                                </div>
+                                <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit">Buscar</button>
+                                <a class="fas fa-sync-alt" role="button" href=  {{ url('/abm_cliente') }} title="refrescar" style="cursor:pointer" name="Refrescar" >  Refrescar</a>
+                                </form>
+
+                            </div>
+  <!-- Collapsible content -->
+
+                    </nav>
+            <!--        <form class="form-inline md-form mr-auto mb-4 float-md-right">
+                        <input name="buscarpor" class="form-control mr-sm-2" type="text" placeholder="Buscar por cliente" aria-label="Search">
+                        <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Buscar</button>
+                    </form> -->
                     <!--Table-->
                     <table class="table table-hover text-center">
 
