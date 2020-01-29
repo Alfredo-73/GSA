@@ -9,19 +9,41 @@ use App\Cliente;
 use PDF;
 use Laracasts\Flash\Flash;
 use dateTranslator;
+use DB;
 
 
 class cosechaController extends Controller
 {
+    public function index(Request $request){
+            
+            $fechadesde=trim($request->get('fechadesde'));
+            $fechahasta=trim($request->get('fechahasta'));
+            $buscacapataz=trim($request->get('buscacapataz'));
+            //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
+            if(empty($fechadesde && $fechahasta)){
+            $cosechas = Cosecha::orderBy('fecha', 'desc')->paginate(10);
+            $clientes = Cliente::all();
+            $capataz = Capataz::all();
+            $vac = compact('cosechas', 'clientes', 'capataz');
+            return view("cosecha", $vac);
+            }else{
+            $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")->whereBetween('fecha',[$fechadesde, $fechahasta])->orderBy('fecha', 'desc',)->paginate(10);
+            $clientes = Cliente::all();
+            $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
+            $vac1 = compact('cosechas', 'clientes', 'capataz');
+            return view('cosecha', $vac1);
+        }
+    }
+
     public function listado(Request $req)
     {
-        $cosechas = Cosecha::all()->sortBy('fecha');
-        $clientes = Cliente::all();
-         $capataz = Capataz::all();
+        //$cosechas = Cosecha::orderBy('fecha','desc')->paginate(10);
+        //$clientes = Cliente::all();
+        //$capataz = Capataz::all();
 
         // dd($cosechas);
-        $vac = compact('cosechas', 'clientes', 'capataz');
-        return view("cosecha", $vac);
+        //$vac = compact('cosechas', 'clientes', 'capataz');
+        //return view("cosecha", $vac);
     }
   
     public function agregar(Request $req){
@@ -175,6 +197,15 @@ class cosechaController extends Controller
         ;
 
         //para verlo
+    }
+    //buscar por fecha
+    public function buscar(Request $request){
+        if($request){
+            $sql=trim($request->get('fechadesde'));
+            $fecha=COSECHA::table('cosecha')
+            ->where('fecha', 'LIKE'.$sql);
+            return view('cosecha',['cosecha'->$fecha,'fechadesde'->$sql]);
+        }
     }
 
 }
