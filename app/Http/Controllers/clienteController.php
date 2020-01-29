@@ -20,7 +20,19 @@ class clienteController extends Controller
         $vac = compact('clientes');
         return view("abm_cliente", $vac);
     }
-  
+
+    public function buscarpor(Request $request)
+    {
+        $name = $request->get('buscarpor');
+        //dd($cliente);
+       //$variablesurl = $request->all();
+
+        $clientes = Cliente::where('nombre', 'like', "%$name%")
+                        ->paginate(5);
+ 
+
+        return view('abm_cliente', compact('clientes'));
+    }
     public function agregar(Request $req){
        
         $clientes = Cliente::all();
