@@ -124,7 +124,10 @@
                                             <!--<i class="fas fa-sort ml-1"></i>-->
                                         </a>
                                     </th>
-
+                                    <th colspan=2 class="text-center">
+                                        <a>ACCION
+                                        </a>
+                                    </th>
                                 </tr>
                             </thead>
                             <!--Table head-->
