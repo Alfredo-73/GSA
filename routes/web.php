@@ -63,20 +63,15 @@ Route::put('modif_cosecha/{id}', 'cosechaController@update');
 Route::delete('borrar_cosecha/{id}', 'cosechaController@borrar');
 
 Route::get('cosecha', 'cosechaController@listado');
+Route::get('cosecha', 'cosechaController@index');
+
 Route::put('cosecha', 'cosechaController@update');
 
 Route::get('nueva_cosecha', 'cosechaController@agregar');
 
-
-
-
 Route::get('modalcosecha/{id}', 'cosechaController@update');
 Route::put('modalcosecha/{id}', 'cosechaController@update');
-
-
-
-
-
+Route::put('cosecha/{fecha}', 'cosechaController@buscar');
 
 //abm cliente
 

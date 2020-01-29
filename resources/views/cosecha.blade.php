@@ -1,138 +1,157 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-ms-12 col-md-12 col-lg-12">
-            <div class="mx-auto">
-                <div class="px-4">
-                    <div class="table-wrapper">
-                        <h1 class="text-center">PARTE DIARIO DE COSECHA</h1>
-                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem; color:white">NUEVO </a>
+@section('scripts')
+<script>
 
-                        <!--BOTON AGREGAR PRODUCTO-------------------
-                        
-                        <form method="POST" action="">
-                            <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
-                        </form> -->
-                    </div>
-                    <!--Table-->
-                    <!--<table class="table-striped w-auto">-->
-                        <table class="table table-hover">
+</script>
+@endsection
 
-                            <!--Table head-->
-                            <thead>
-                                <tr>
-                                    <!--<th>
+<div class="row justify">
+    <div class="col-ms-12 col-md-12 col-lg-12">
+        <div class="mx-auto">
+            <div class="px-2">
+                <div class="table-wrapper">
+                    <h1 class="text-center">PARTE DIARIO DE COSECHA</h1>
+                    <a id="agregar" class="btn primary-color-dark rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
+                </div>
+
+                <div class="px-2">
+                    <form class="form-inline">
+                        <input class="md-form mr-2 text-center" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
+                        <input class="md-form mr-2 text-center" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
+
+                        <select class="selectpicker show-menu-arrow" name="buscacapataz">
+                            <option>Capataz</option>
+                            @foreach($capataz as $capat)
+                            <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn blue-gradient btn-rounded btn-sm my-0 " type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
+                    </form>
+                </div>
+
+                {{ $cosechas->render() }}
+                <!--Table-->
+                <!--<table class="table-striped w-auto">-->
+                <table class="table table-bordered table-hover">
+
+                    <!--Table head-->
+                    <thead class="thead-dark">
+                        <tr>
+                            <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                                    <th class="th-lg text-center">
-                                        <a>FECHA
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center" hidden="true">
-                                        <a>CLIENTE
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>CAPATAZ
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>JORNALES
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>COSECHEROS
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>BINES
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>MALETAS
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>TONELADAS
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                    <th class="th-lg text-center">
-                                        <a>PROMEDIO KG/BIN
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
+                            <th class="th-lg text-center">
+                                <a>FECHA
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center" hidden="true">
+                                <a>CLIENTE
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>CAPATAZ
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>JORNALES
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>COSECHEROS
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>BINES
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>MALETAS
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>TONELADAS
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th class="th-lg text-center">
+                                <a>PROM. KG/BIN
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
 
-                                    <th class="th-lg text-center" hidden="true">
-                                        <a>SUPERVISOR
-                                            <!--<i class="fas fa-sort ml-1"></i>-->
-                                        </a>
-                                    </th>
-                                </tr>
+                            <th class="th-lg text-center" hidden="true">
+                                <a>SUPERVISOR
+                                    <!--<i class="fas fa-sort ml-1"></i>-->
+                                </a>
+                            </th>
+                            <th COLSPAN=2 class="text-center">ACCION</th>
+                        </tr>
 
-                            </thead>
-                            <!--Table head-->
+                        </<thead>
+                        <!--Table head-->
 
-                            <!--Table body-->
-                            <tbody>
-                                @foreach ($cosechas as $cosecha)
-                                <tr>
-                                    <!--<th scope="row">
+                        <!--Table body-->
+                    <tbody>
+                        @foreach ($cosechas as $cosecha)
+                        <tr>
+                            <!--<th scope="row">
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                                    <td class="text-center"> {{$cosecha->fecha}}</td>
-                                    <td class="text-center" hidden="true"> {{$cosecha->cliente->nombre}}</td>
-                                    <td class="text-center"> {{$cosecha->capataz->nombre}}</td>
-                                    <td class="text-center"> {{$cosecha->jornales}}</td>
-                                    <td class="text-center"> {{$cosecha->cosecheros}}</td>
-                                    <td class="text-center"> {{$cosecha->bines}}</td>
-                                    <td class="text-center"> {{$cosecha->maletas}}</td>
-                                    <td class="text-center"> {{$cosecha->toneladas}}</td>
-                                    <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
-                                    <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
-                                    <td>
-                                        <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class=" btn peach-gradient mb-1 btn-sm m-0 text-center"> BORRAR
-                                            </button>
-                                        </form>
-                                    </td>
-                                    <!--<a id="modificar" class="btn btn-primary btn-rounded mb-4 btn-sm m-0 text-center" href="/modalcosecha/{{$cosecha->id}}" role="button">Modificar </a>-->
-                                    <!--   <form method="POST" action="">
+                            <td class="text-center" name="fecha"> {{$cosecha->fecha}}</td>
+                            <td class="text-center" hidden="true"> {{$cosecha->cliente->nombre}}</td>
+                            <td class="text-center"> {{$cosecha->capataz->nombre}}</td>
+                            <td class="text-center"> {{$cosecha->jornales}}</td>
+                            <td class="text-center"> {{$cosecha->cosecheros}}</td>
+                            <td class="text-center"> {{$cosecha->bines}}</td>
+                            <td class="text-center"> {{$cosecha->maletas}}</td>
+                            <td class="text-center"> {{$cosecha->toneladas}}</td>
+                            <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
+                            <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
+                            <td>
+                                <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <a type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+                                    </a>
+                                </form>
+                            </td>
+                            <!--<a id="modificar" class="btn btn-primary btn-rounded mb-4 btn-sm m-0 text-center" href="/modalcosecha/{{$cosecha->id}}" role="button">Modificar </a>-->
+                            <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
                                     </form> -->
-                                    <td>
-                                        <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
-                                            @csrf
-                                            {{method_field('PUT')}}
-                                            <button type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}">VER</button>
-                                            @csrf
-                                            {{method_field('PUT')}}
-                                            @include('modalcosecha')
-                                        </form>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                            <!--Table body-->
-                        </table>
-                </div>
-                <!--Table-->
+                            <td>
+                                <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    <a type="button" class="btn blue-gradient btn-sm" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    @include('modalcosecha')
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                {{ $cosechas->render() }}
             </div>
 
+            <!--Table-->
         </div>
+
     </div>
-    <!--Section: Content-->
-    @endsection
+</div>
+<!--Section: Content-->
+@endsection
