@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE CAPATACES</h1>
-                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_capataz') }}" role="button" style="margin-left:35rem;color:white" >NUEVO </a>
+                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_capataz') }}" role="button" style="margin-left:35rem;color:white" ><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -56,7 +56,7 @@
                                         <form method="POST" action="{{ url('/borrar_capataz/'.$capat->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el capataz?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el capataz?')" id= "borrar" class="btn btn-danger btn-rounded mb-4"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
                                             </button>
 
                                            <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->

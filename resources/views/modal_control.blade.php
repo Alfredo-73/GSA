@@ -86,7 +86,7 @@
                         <a id="modificar" class="btn btn-primary " href="/../modif_control/{{$control->id}}"  >Modificar </a>
 
                       
-                        <a class="btn btn-deep-orange" href="{{action('controlController@verPDF', $control->id)}}">Imprimir</a>
+                        <a class="btn btn-deep-orange" href="{{action('controlController@verPDF', $control->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
 
                     </div>
                 </div>

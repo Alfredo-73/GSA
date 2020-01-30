@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE QUINCENAS</h1>
-                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:35rem;color:white">NUEVA </a>
+                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_quincena') }}" role="button" style="margin-left:35rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVA </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -40,7 +40,7 @@
                                             <form method="POST" action="{{ url('/borrar_quincena/'.$quincena->id) }}">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
-                                                <button type="submit" onclick="return confirm('¿Desea eliminar la quincena?')" id="borrar" class="btn btn-danger btn-rounded mb-4"> BORRAR
+                                                <button type="submit" onclick="return confirm('¿Desea eliminar la quincena?')" id="borrar" class="btn btn-danger btn-rounded mb-4"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
                                                 </button>
 
                                                 <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
