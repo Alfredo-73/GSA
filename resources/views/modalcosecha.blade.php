@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue">PARTE DIARIO DE COSECHA</h5>
+                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue; font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -92,9 +92,8 @@
                         {{ __('Grabar') }}
                     </button>
 
-
-
                     <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
+                    
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
