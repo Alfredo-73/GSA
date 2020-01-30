@@ -8,27 +8,32 @@
 @endsection
 
 <div class="row justify">
-    <div class="col-ms-12 col-md-12 col-lg-12">
+    <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="mx-auto">
             <div class="px-2">
                 <div class="table-wrapper">
-                    <h1 class="text-center">PARTE DIARIO DE COSECHA</h1>
-                    <a id="agregar" class="btn primary-color-dark rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
+                    <h1 class="text-center" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+                    <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
                 </div>
-
-                <div class="px-2">
-                    <form class="form-inline">
-                        <input class="md-form mr-2 text-center" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
-                        <input class="md-form mr-2 text-center" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-
-                        <select class="selectpicker show-menu-arrow" name="buscacapataz">
-                            <option>Capataz</option>
-                            @foreach($capataz as $capat)
-                            <option value="{{$capat->id}}">{{$capat->nombre}}</option>
-                            @endforeach
-                        </select>
-                        <button class="btn blue-gradient btn-rounded btn-sm my-0 " type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
-                    </form>
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4 rounded">
+                        <div class="row">
+                            <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE RANGO DE FECHA Y/O CAPATAZ</span>
+                        </div>
+                        <a class="navbar-brand ml-3" href="#">Buscador:</a>
+                        <form class="form-inline">
+                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
+                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
+                            <select class="selectpicker show-menu-arrow" name="buscacapataz">
+                                <option>Capataz</option>
+                                @foreach($capataz as $capat)
+                                <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                                @endforeach
+                            </select>
+                            <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
+                            <a  role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                        </form>
+                    </nav>
                 </div>
 
                 {{ $cosechas->render() }}
