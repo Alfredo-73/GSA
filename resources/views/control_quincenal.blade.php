@@ -8,7 +8,7 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
-                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:72rem;color:white">NUEVO </a>
+                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -33,9 +33,9 @@
                         @endforeach
                         </select>
 
-                        <button class="btn aqua-gradient btn-rounded btn-md" type="submit">Buscar</button>
+                        <button class="btn aqua-gradient btn-rounded btn-md" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
                         <a class="fas fa-sync-alt" role="button" href=  {{ url('/control_quincenal') }}  style="cursor:pointer" title="refrescar" name="Refrescar" >  Refrescar</a>
-
+                        <a class="btn btn-deep-orange" href="{{action('controlController@imprimir')}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir reporte</a>
                         </form>
 
                    
@@ -63,12 +63,12 @@
 </form> -->
 
 
-
+ {{ $controles->render() }}
                     <!--Table-->
                     <!--<table class="table-striped w-auto mx-auto">-->
-                        <table class="table table-hover">
+                        <table class="table table-borderer table-hover">
                             <!--Table head-->
-                            <thead>
+                            <thead class="thead-dark">
                                 <tr>
                                     <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
@@ -162,7 +162,7 @@
                                         <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"> BORRAR
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
                                             </button>
 
                                             <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
@@ -185,7 +185,7 @@
                                         <form method="PUT" action="/modal_control/{{ $control->id }}">
                                             @csrf
                                             {{method_field('PUT')}}
-                                            <p href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}">VER</p>
+                                            <p href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}"><i class="fas fa-eye mr-1" style="color:white"></i>VER</p>
                                             @csrf
                                             {{method_field('PUT')}}
                                             @include('modal_control')
@@ -198,11 +198,12 @@
 
 
                             </tbody>
-                            <!--Table body-->
+                         
                         </table>
 
 
-                        <!--Table-->
+                       
+  
                 </div>
 
             </div>

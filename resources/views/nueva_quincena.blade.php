@@ -30,7 +30,7 @@
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                                     {{ __('Grabar') }}
                                 </button>
                                 <a class="fas fa-undo" role="button" href=  {{ url('/abm_quincena') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
