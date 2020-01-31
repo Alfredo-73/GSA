@@ -36,6 +36,7 @@
 <body>
     <div alighn="center"> <img src="../public/img/gsa.png" alt="" style="width: 120px"></div>
     <h1></h1>
+    @foreach ($cosechas as $cosecha)
     <h2>PARTE DE COSECHA DE EL: {{$cosecha->fecha}}</h2>
     <hr>
     <div class="contenido">
@@ -49,5 +50,7 @@
         <p id="segundo">Promedio Kilos Bins: {{$cosecha->prom_kg_bin}}</p>
         <p id="primero">Supervisor: {{$cosecha->supervisor}} </p>
     </div>
+    @endforeach
 </body>
+
 </html>

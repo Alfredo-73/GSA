@@ -7,6 +7,23 @@
 </script>
 @endsection
 
+<?php
+
+$enviado = false;
+$fechadesde = null;
+$fechahasta = null;
+$buscacapataz = null;
+
+if (isset($_GET["buscar"])) {
+    $enviado = true;
+
+    $fechadesde = $_GET["fechadesde"];
+    $fechahasta = $_GET["fechahasta"];
+    $buscacapataz = $_GET["buscacapataz"];
+}
+
+?>
+
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="mx-auto">
@@ -22,16 +39,17 @@
                         </div>
                         <a class="navbar-brand ml-3" href="#">Buscador:</a>
                         <form class="form-inline">
-                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
-                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                            <select class="selectpicker show-menu-arrow" name="buscacapataz">
+                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button" value="">
+                            <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button" value="">
+                            <select class="selectpicker show-menu-arrow" name="buscacapataz" value="<?php echo $buscacapataz; ?>">
                                 <option>Capataz</option>
                                 @foreach($capataz as $capat)
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
                                 @endforeach
                             </select>
-                            <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
-                            <a  role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                            <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
+
+                            <a role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
                         </form>
                     </nav>
                 </div>
@@ -151,6 +169,7 @@
                     <!--Table body-->
                 </table>
                 {{ $cosechas->render() }}
+                <a class="btn btn-deep-orange"  href="{{action('cosechaController@verreportecosechaPDF.$cosecha.$cliente.$capataz')}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
             </div>
 
             <!--Table-->

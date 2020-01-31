@@ -208,4 +208,33 @@ class cosechaController extends Controller
 
         //para verlo
     }
+
+    public function verreportecosechaPDF($cosechas, $clientes, $capataz)
+    {
+        //$fechadesde = trim($request->get('fechadesde'));
+        dd($cosechas);
+        //$fechahasta = trim($request->get('fechahasta'));
+        //$buscacapataz = trim($request->get('buscacapataz'));
+
+        
+            $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
+            ->whereBetween('fecha', [$fechadesde, $fechahasta])
+            ->orderBy('fecha', 'desc',);
+            $clientes = Cliente::all();
+            $capataz = Capataz::all()->where('id', 'like', "%$buscacapataz%");
+            $vac = compact('cosechas', 'clientes', 'capataz');
+            //dd($vac);
+            $pdf = PDF::loadView('pdf_cosecha', compact('cosechas', 'clientes', 'capataz'));
+
+            $data = [
+                'titulo' => 'Cosecha.net'
+            ];
+
+            return $pdf->setPaper('a4', 'portrait')
+                ->stream('consulta_parte_diario.pdf');
+
+            // return $pdf->download('control.pdf')
+
+        //para verlo
+    }
 }
