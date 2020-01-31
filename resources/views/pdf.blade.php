@@ -14,7 +14,11 @@
         margin: 0px auto;
     }
 
-      
+    table
+    {
+      width: 100%; 
+      border: 1px solid #333;
+    }  
 
     th
     {
@@ -24,6 +28,12 @@
         background-color: #00AEEF;
         color: #ffffff;
     }  
+
+    td
+    {
+      padding: 5px;
+      text-align: center;
+    }
     @page {
       margin: 160px 50px;
     }
@@ -104,14 +114,14 @@
                     <td class="table-success"> {{$control->retencion}}           </td>
                     <td class="table-success">{{$control->monto_cobrado}}    </td>
 
-                           
-                            <div>
-                     
-                          </tr>
-                     @endforeach
+                          </tr>  
+                          
+                          
+                          @endforeach
                         </tbody>
-                    </table>
-                    <br><br>
+                      </table>
+                      <br><br>
+                                  <div>
                     
                      
                     </div>
@@ -161,7 +171,7 @@
       <tr>
         <td>
             <p class="izq">
-              Desarrolloweb.com
+              ....
             </p>
         </td>
         <td>

@@ -13,7 +13,7 @@ use DB;
 class controlController extends Controller
 {
 
-   /* public function listado()
+    /* public function listado()
     {
         $controles = DB::table('control')
         ->join('cliente', 'cliente.id', '=', 'control.id_cliente')
@@ -21,14 +21,59 @@ class controlController extends Controller
         ->get();
         dd($controles);
     }*/
+   /* public function getdata(Request $request)
+    {
+        $data = $request->all();
+        $this->func1($data);
+        $this->func2($data);
+    }
 
+    public function func1($data)
+    {
+        $cliente = $data->get('buscarporcliente');
+        $quincena = $data->get('buscarporquincena');
+
+        $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($cliente)
+            ->quincena($quincena)
+            ->paginate(10);
+
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+        $vac = compact('controles', 'clientes', 'quincenas');
+
+
+
+
+        return view('control_quincenal', $vac);
+               //Do something with data
+    }
+
+    public function func2($data)
+    {
+        $cliente = $data->get('buscarporcliente');
+        $quincena = $data->get('buscarporquincena');
+
+        $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($cliente)
+            ->quincena($quincena)
+            ->paginate(10);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+
+        $vac = compact('controles', 'clientes', 'quincenas');
+        $pdf = PDF::loadview('pdf', compact('controles', 'clientes', 'quincenas'));
+
+        return $pdf->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');//Do somithing with data
+    } -*/
     public function listado(Request $request)
     {
         $name_cliente= $request->get('buscarpor');
         $name_quinena=$request->get('por');
         //dd($cliente);
         //$variablesurl = $request->all();
-
+       
         $controles = Control::where('id_cliente', 'like', "%$name_cliente%")
             ->paginate(5);
         $clientes = Cliente::all();
@@ -41,24 +86,45 @@ class controlController extends Controller
     {
         $cliente = $request->get('buscarporcliente');
         $quincena = $request->get('buscarporquincena');
-        
+        //$data = $request->all();
+       //dd($cliente);
+        $varcliente = $cliente;
+        $varquincena = $quincena;
         $controles = Control::orderBy('quincena_id', 'asc')
                 ->cliente($cliente)
                 ->quincena($quincena)
                 ->paginate(10);
+                
+                $clientes = Cliente::all();
+                $quincenas = Quincena::all();
+                $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
 
-        $clientes = Cliente::all();
-        $quincenas = Quincena::all();
-        $vac = compact('controles', 'clientes', 'quincenas');
+                 
 
-        return view('control_quincenal', $vac);
+                
+               return view('control_quincenal', $vac);
+              
+            }
+           
             
-    }
-    //usando scope global y select
+            
+    public function imprimirBuscar($varcliente, $varquincena)
+            {
+                //dd($cliente);
+                //dd($quincena);
+                $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($varcliente)
+            ->quincena($varquincena)
+            ->paginate(10);
+        
+        $pdf = PDF::loadview('pdf', compact('controles'));
 
-
+            return $pdf->setPaper('a4', 'landscape')
+                ->stream('archivo.pdf');
+            }
+             //usando scope global y select
     public function buscarpor(Request $request)
-    {
+            {
         $buscar = $request->get('buscarpor');
         $tipo = $request->get('tipo');
         //$variablesurl = $request->all();
@@ -302,6 +368,7 @@ class controlController extends Controller
         
     }
 //para verlo este usamos
+
     public function verPDF($id)
     {
         $control = Control::find($id);
@@ -330,12 +397,4 @@ class controlController extends Controller
             ->setPaper('a4', 'landscape')
             ->stream('archivo.pdf');
     }*/
-    public function imprimir()
-    {
-        $controles = Control::all();
-        $pdf = PDF::loadview('pdf', compact('controles'));
-        return $pdf->setPaper('a4', 'landscape')
-            ->stream('archivo.pdf');
-    }
-    
 }
