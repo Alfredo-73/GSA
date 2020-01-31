@@ -145,7 +145,9 @@ Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 Route::get('verPDF/{id}', 'controlController@verPDF'); //usamos
 Route::get('vercosechaPDF/{id}', 'cosechaController@vercosechaPDF');
 
-Route::get('/imprimir', 'controlController@imprimir');
+Route::get('/imprimir/{cliente}/{quincena}', 'controlController@imprimirBuscar');
+//pdf con controlador
+Route::get('generate-pdf', 'PDFController@generatePDF');
 
 //sanciones
 

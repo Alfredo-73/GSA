@@ -101,7 +101,7 @@
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-1 btn-sm text-center" href="/modif_cliente/{{$cliente->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-1 btn-sm text-center" href="/modif_cliente/{{$cliente->id}}" role="button"><i class="fas fa-edit mr-2" style="color:white"></i>Modificar </a>
 
                                     <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
