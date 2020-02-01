@@ -3,41 +3,22 @@
 @section('content')
 @section('scripts')
 <script type="text/javascript">
-    
+
 </script>
 @endsection
 
-<?php
-
-$enviado = false;
-$fechadesde = null;
-$fechahasta = null;
-$buscacapataz = null;
-
-if (isset($_GET["buscar"])) {
-    $enviado = true;
-
-    $fechadesde = $_GET["fechadesde"];
-    $fechahasta = $_GET["fechahasta"];
-    $buscacapataz = $_GET["buscacapataz"];
-}
-
-?>
-
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="mx-auto">
-            <div class="px-2">
+        <div class="">
+            <div class="px-4">
                 <div class="table-wrapper">
-                    <h1 class="text-center" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
-                    <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:75rem; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
+                    <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+                    <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
                 </div>
+
                 <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4 rounded">
-                        <div class="row">
-                            <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE RANGO DE FECHA Y/O CAPATAZ</span>
-                        </div>
-                        <a class="navbar-brand ml-3" href="#">Buscador:</a>
+                    <nav class="navbar  navbar-dark indigo rounded mb-2">
+                        <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
                         <form class="form-inline">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
@@ -49,9 +30,9 @@ if (isset($_GET["buscar"])) {
                             </select>
                             <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
 
-                            <a role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
-
-                            <a role="button" class="btn btn-deep-orange" onclick="return validar();" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a>
+                            <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                            @if(($varfechadesde) || ($varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn btn-deep-orange" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> @endif
+                            @if((empty($varfechadesde) || empty($varfechahasta) || empty($varbuscacapataz)) || (($varbuscacapataz =='Capataz') && ($varfechadesde ==0) && ($varfechahasta==0)))<a role="button" class="btn btn-deep-orange" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> @endif
                         </form>
                     </nav>
                 </div>
@@ -151,10 +132,6 @@ if (isset($_GET["buscar"])) {
                                     </a>
                                 </form>
                             </td>
-                            <!--<a id="modificar" class="btn btn-primary btn-rounded mb-4 btn-sm m-0 text-center" href="/modalcosecha/{{$cosecha->id}}" role="button">Modificar </a>-->
-                            <!--   <form method="POST" action="">
-                                        <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
-                                    </form> -->
                             <td>
                                 <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                     @csrf

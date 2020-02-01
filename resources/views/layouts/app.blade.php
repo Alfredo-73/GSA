@@ -34,7 +34,7 @@
                 <a class="navbar-brand" href="/../home">
                     <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
                 </a>
-                <h6><b>V:1.0</h6></b>
+                <span style="font-size:12px"><b>V:1.0</span></b>
                 @if (Auth::user())
                 <div style="margin-left:30%" style="margin-right:30%">
                     <a class="fas fa-home fa-2x prefix grey-text" role="button" href="{{ url('/../home') }}" name="home" title="Ir a Inicio"></a>
