@@ -19,30 +19,34 @@ class cosechaController extends Controller
     $fechadesde=trim($request->get('fechadesde'));
     $fechahasta=trim($request->get('fechahasta'));
     $buscacapataz=trim($request->get('buscacapataz'));
+
+    $varfechadesde = $fechadesde;
+    $varfechahasta = $fechahasta;
+    $varbuscacapataz = $buscacapataz;
         
     if(empty($fechadesde && $fechahasta)){
-        $cosechas = Cosecha::orderBy('fecha', 'desc')->paginate(10);
+        $cosechas = Cosecha::orderBy('fecha', 'desc')->Paginate(10);
         //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
                 $clientes = Cliente::all();
                 $capataz = Capataz::all()->sortBy('nombre');
-                $vac = compact('cosechas', 'clientes', 'capataz');
+                $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                 return view("cosecha", $vac);
                     }else if ($buscacapataz == 'Capataz'){
                         $cosechas = Cosecha::whereBetween('fecha',[$fechadesde, $fechahasta])
-                        ->orderBy('fecha', 'desc',)->paginate(10);
+                        ->orderBy('fecha', 'desc',)->Paginate(10);
                         $clientes = Cliente::all();
                         $capataz = Capataz::all();
-                        $vac = compact('cosechas', 'clientes', 'capataz');
+                        $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                         return view('cosecha', $vac);
                             }else{
                                 $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
                                 ->whereBetween('fecha',[$fechadesde, $fechahasta])
-                                ->orderBy('fecha', 'desc',)->paginate(10);
+                                ->orderBy('fecha', 'desc',)->Paginate(10);
                                 $clientes = Cliente::all();
                                 $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
-                                $vac = compact('cosechas', 'clientes', 'capataz');
+                                $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                                 return view('cosecha', $vac);
-                            }
+                            }        
     }
 
     public function listado(Request $req)
@@ -55,7 +59,7 @@ class cosechaController extends Controller
         //$vac = compact('cosechas', 'clientes', 'capataz');
         //return view("cosecha", $vac);
     }
-  
+
     public function agregar(Request $req){
         $clientes = Cliente::all();
         $capataz = Capataz::all()->sortBy('nombre');
@@ -129,7 +133,6 @@ class cosechaController extends Controller
     }
     public function update(Request $req,$id)
     {
-//dd($req);
         $cosecha = cosecha::Find($id);
         $reglas = [
             //'id_cliente' => 'numeric|max:10',
@@ -202,10 +205,45 @@ class cosechaController extends Controller
 
         return $pdf->setPaper('a4', 'portrait')
             ->stream('parte_diario.pdf');
+    }
+
+    public function verreportecosechaPDF($varfechadesde, $varfechahasta, $varbuscacapataz)
+    {
+        if($varfechadesde !== null && $varfechahasta !== null && $varbuscacapataz !== 'Capataz'){
+            $cosechas = Cosecha::where('id_capataz', 'like', "%$varbuscacapataz%")
+            ->whereBetween('fecha',[$varfechadesde, $varfechahasta])
+            ->orderBy('fecha', 'desc')->paginate();//DEJAR PAGINATE(), SI NO TIENE EL PDF NO MUESTRA DATOS
+            //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
+            $clientes = Cliente::all();
+            $capataz = Capataz::all()->sortBy('nombre');
+            $vac = compact('cosechas', 'clientes', 'capataz');
+            $pdf = PDF::loadView('pdf_reporte_cosecha', compact('cosechas'));
+            
+            $data = [
+                'titulo' => 'Cosecha.net'
+            ];
+            
+            return $pdf->setPaper('a4', 'portrait')
+            ->stream($varfechadesde.'_'.$varfechahasta.'_'.$varbuscacapataz.'consulta_parte_diario.pdf');
+            
+        }else if(($varfechadesde !==null && $varfechahasta !==null) && ($varbuscacapataz == 'Capataz')){
+                        $cosechas = Cosecha::whereBetween('fecha',[$varfechadesde, $varfechahasta])
+                        ->orderBy('fecha', 'desc',)->paginate();//DEJAR PAGINATE(), SI NO TIENE EL PDF NO MUESTRA DATOS
+                        $clientes = Cliente::all();
+                        $capataz = Capataz::all();
+                        $vac = compact('cosechas', 'clientes', 'capataz');
+            $pdf = PDF::loadView('pdf_reporte_cosecha', compact('cosechas'));
+
+            $data = [
+                'titulo' => 'Cosecha.net'
+            ];
+
+            return $pdf->setPaper('a4', 'portrait')
+                ->stream($varfechadesde.'_'.$varfechahasta.'_'.$varbuscacapataz.'consulta_parte_diario.pdf');
 
             // return $pdf->download('control.pdf')
-        ;
 
         //para verlo
+        }
     }
 }

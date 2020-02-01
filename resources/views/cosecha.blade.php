@@ -2,8 +2,8 @@
 
 @section('content')
 @section('scripts')
-<script>
-
+<script type="text/javascript">
+    
 </script>
 @endsection
 
@@ -24,19 +24,22 @@
                         <form class="form-inline">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                            <select class="selectpicker show-menu-arrow" name="buscacapataz">
+                            <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
                                 <option>Capataz</option>
                                 @foreach($capataz as $capat)
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
                                 @endforeach
                             </select>
-                            <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
-                            <a  role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                            <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
+
+                            <a role="button" href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+
+                            <a role="button" class="btn btn-deep-orange" onclick="return validar();" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a>
                         </form>
                     </nav>
                 </div>
 
-                {{ $cosechas->render() }}
+                {{ $cosechas->appends($_GET)->links() }}
                 <!--Table-->
                 <!--<table class="table-striped w-auto">-->
                 <table class="table table-bordered table-hover">
@@ -150,9 +153,9 @@
                     </tbody>
                     <!--Table body-->
                 </table>
-                {{ $cosechas->render() }}
+                <!--{{ $cosechas->render() }}-->
             </div>
-
+            {{ $cosechas->appends($_GET)->links() }}
             <!--Table-->
         </div>
 

@@ -144,6 +144,7 @@ Route::get('/downloadPDF/{id}', 'controlController@downloadPDF');
 //ver pdf
 Route::get('verPDF/{id}', 'controlController@verPDF'); //usamos
 Route::get('vercosechaPDF/{id}', 'cosechaController@vercosechaPDF');
+Route::get('verreportecosechaPDF/{varfechadesde}/{varfechahasta}/{varbuscacapataz}', 'cosechaController@verreportecosechaPDF');
 
 Route::get('/imprimir/{cliente}/{quincena}', 'controlController@imprimirBuscar');
 //pdf con controlador
