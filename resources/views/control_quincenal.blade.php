@@ -41,8 +41,10 @@
 
                         <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
                         <a class="fas fa-sync-alt" role="button" href=  {{ url('/control_quincenal') }}  style="cursor:pointer" title="refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif" >  Refrescar</a>
-                       <a class="btn btn-deep-orange" href="/imprimir/{{$varcliente}}/{{$varquincena}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a> 
-                        </form>
+                @if(($varcliente||$varquincena)&&($varcliente != 'Cliente' || $varquincena != 'Quincena' )  )     <a class="btn btn-deep-orange" href="/imprimir/{{$varcliente}}/{{$varquincena}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> @endif
+                @if(empty($varcliente)|| empty($varquincena)||($varcliente=='Cliente') && ($varquincena=='Quincena') )  <a class="btn btn-deep-orange" href="/imprimir"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a> @endif     
+
+            </form>
                     </nav>
                 </div>
 
