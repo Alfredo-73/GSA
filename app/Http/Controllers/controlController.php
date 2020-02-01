@@ -87,9 +87,10 @@ class controlController extends Controller
         $cliente = $request->get('buscarporcliente');
         $quincena = $request->get('buscarporquincena');
         //$data = $request->all();
-       //dd($cliente);
+       //dd($cliente, $quincena);
         $varcliente = $cliente;
         $varquincena = $quincena;
+        //dd($varcliente);
         $controles = Control::orderBy('quincena_id', 'asc')
                 ->cliente($cliente)
                 ->quincena($quincena)
@@ -110,18 +111,31 @@ class controlController extends Controller
             
     public function imprimirBuscar($varcliente, $varquincena)
             {
+                
+               
                 //dd($cliente);
                 //dd($quincena);
                 $controles = Control::orderBy('quincena_id', 'asc')
             ->cliente($varcliente)
             ->quincena($varquincena)
-            ->paginate(10);
+            ->paginate();
         
         $pdf = PDF::loadview('pdf', compact('controles'));
 
-            return $pdf->setPaper('a4', 'landscape')
+            return $pdf->setPaper('legal', 'landscape')
                 ->stream('archivo.pdf');
             }
+
+    public function imprimir()
+    {
+        $controles = Control::orderBy('quincena_id', 'asc')
+                     ->paginate();
+
+        $pdf = PDF::loadview('pdf', compact('controles'));
+
+        return $pdf->setPaper('legal', 'landscape')
+            ->stream('archivo.pdf');
+    }
              //usando scope global y select
     public function buscarpor(Request $request)
             {
