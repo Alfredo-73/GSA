@@ -50,4 +50,5 @@
         <p id="primero">Supervisor: {{$cosecha->supervisor}} </p>
     </div>
 </body>
+
 </html>

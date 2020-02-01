@@ -62,7 +62,7 @@ Route::put('modif_cosecha/{id}', 'cosechaController@update');
 
 Route::delete('borrar_cosecha/{id}', 'cosechaController@borrar');
 
-Route::get('cosecha', 'cosechaController@listado');
+//Route::get('cosecha', 'cosechaController@listado');
 Route::get('cosecha', 'cosechaController@index');
 
 Route::put('cosecha', 'cosechaController@update');
