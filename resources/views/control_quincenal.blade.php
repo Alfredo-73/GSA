@@ -7,8 +7,8 @@
             <div class="mx-auto">
                 <div class="px-4">
                     <div class="table-wrapper">
-                        <h1 class="text-center">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
-                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:72rem;color:white">NUEVO </a>
+                        <h1 class="text-center" style="font-family:Verdana, Geneva, Tahoma, sans-serif">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
+                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
 
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
@@ -16,27 +16,35 @@
                             <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
                         </form> -->
                     </div>
-
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4 rounded">
+                        <div class="row">
+                            <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE ClIENTE Y/O QUINCENA</span>
+                        </div>
+                        <a class="navbar-brand ml-3" href="#">Buscador:</a>
+                        
                   
                         <form class="form-inline md-form mr-auto mb-4 float-right" action="">
-                        <select name="buscarporcliente" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                        <select name="buscarporcliente" class="selectpicker show-menu-arrow" >
                         <option>Cliente</option>
                                 @foreach($clientes as $cliente)
-                        <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                        <option value="{{$cliente->id}}" @if(old('buscarporcliente'))selected @endif >{{$cliente->nombre}}</option>
                         @endforeach
                     
                         </select>
-                        <select name="buscarporquincena" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                        <select name="buscarporquincena" class="selectpicker show-menu-arrow" >
                         <option>Quincena</option>
                         @foreach($quincenas as $quincena)
-                        <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
+                        <option value="{{$quincena->id}}" @if(old('buscarporquincena'))selected @endif>{{$quincena->nombre}}</option>
                         @endforeach
                         </select>
 
-                        <button class="btn aqua-gradient btn-rounded btn-md" type="submit">Buscar</button>
-                        <a class="fas fa-sync-alt" role="button" href=  {{ url('/control_quincenal') }}  style="cursor:pointer" title="refrescar" name="Refrescar" >  Refrescar</a>
-
+                        <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
+                        <a class="fas fa-sync-alt" role="button" href=  {{ url('/control_quincenal') }}  style="cursor:pointer" title="refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif" >  Refrescar</a>
+                       <a class="btn btn-deep-orange" href="/imprimir/{{$varcliente}}/{{$varquincena}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a> 
                         </form>
+                    </nav>
+                </div>
 
                    
 
@@ -63,12 +71,12 @@
 </form> -->
 
 
-
+ {{ $controles->render() }}
                     <!--Table-->
                     <!--<table class="table-striped w-auto mx-auto">-->
-                        <table class="table table-hover">
+                        <table class="table table-borderer table-hover">
                             <!--Table head-->
-                            <thead>
+                            <thead class="thead-dark">
                                 <tr>
                                     <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
@@ -162,7 +170,7 @@
                                         <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"> BORRAR
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
                                             </button>
 
                                             <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
@@ -185,7 +193,7 @@
                                         <form method="PUT" action="/modal_control/{{ $control->id }}">
                                             @csrf
                                             {{method_field('PUT')}}
-                                            <p href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}">VER</p>
+                                            <p href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}"><i class="fas fa-eye mr-1" style="color:white"></i>VER</p>
                                             @csrf
                                             {{method_field('PUT')}}
                                             @include('modal_control')
@@ -198,11 +206,12 @@
 
 
                             </tbody>
-                            <!--Table body-->
+                         
                         </table>
 
 
-                        <!--Table-->
+                       
+  
                 </div>
 
             </div>

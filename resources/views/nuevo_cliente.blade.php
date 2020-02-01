@@ -44,7 +44,7 @@
                             <div class="col-md-6 offset-md-4">
                               <!--   <input type="button" onclick="pregunta()" value="Enviar"> -->
                                
-                                <button type="submit"  class="btn btn-primary">
+                                <button type="submit"  class="btn btn-primary"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                                     {{ __('Grabar') }}
                                 </button> 
                                 <a class="fas fa-undo" role="button" href=  {{ url('/abm_cliente') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
