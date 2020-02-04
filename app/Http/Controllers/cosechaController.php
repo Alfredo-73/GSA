@@ -30,7 +30,7 @@ class cosechaController extends Controller
     }
         
     if(empty($fechadesde && $fechahasta) && $buscacapataz != 'Capataz'){
-            
+            //dd($fechadesde, $fechahasta, $buscacapataz);
         $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
         ->orderBy('fecha', 'desc')->Paginate(10);
         //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
@@ -46,7 +46,7 @@ class cosechaController extends Controller
                         $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                         return view('cosecha', $vac);
                             }else if(empty($fechadesde && $fechahasta) && $buscacapataz= $buscacapataz){
-                                
+            //dd($fechadesde, $fechahasta, $buscacapataz);
                                 $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
                                 ->whereBetween('fecha',[$fechadesde, $fechahasta])
                                 ->orderBy('fecha', 'desc',)->Paginate(10);
@@ -262,7 +262,23 @@ class cosechaController extends Controller
             // return $pdf->download('control.pdf')
 
         //para verlo
+        }else{
+            if (($varfechadesde != 0 && $varfechahasta != 0) && ($varbuscacapataz == 'Capataz')) {
+                $cosechas = Cosecha::whereBetween('fecha', [$varfechadesde, $varfechahasta])
+                    ->orderBy('fecha', 'desc')->paginate(); //DEJAR PAGINATE(), SI NO TIENE EL PDF NO MUESTRA DATOS
+                //$cosechas=Cosecha::where('fecha','like',"%$fechadesde%")->orderBy('fecha', 'desc')->paginate(10);
+                $clientes = Cliente::all();
+                $capataz = Capataz::all()->sortBy('nombre');
+                $vac = compact('cosechas', 'clientes', 'capataz');
+                $pdf = PDF::loadView('pdf_reporte_cosecha', compact('cosechas'));
+
+                $data = [
+                    'titulo' => 'Cosecha.net'
+                ];
+
+                return $pdf->setPaper('a4', 'portrait')
+                    ->stream($varfechadesde . '_' . $varfechahasta . '_' . $varbuscacapataz . 'consulta_parte_diario.pdf');
         }
     }
-
+}
 }
