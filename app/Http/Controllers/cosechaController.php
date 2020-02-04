@@ -123,6 +123,7 @@ class cosechaController extends Controller
         $cosecha_nueva->maletas = $req['maletas'];
         $cosecha_nueva->prom_kg_bin = $req['prom_kg_bin'];
         $cosecha_nueva->toneladas = $req['toneladas'];
+        $cosecha_nueva->transportista = $req['transportista'];
         $cosecha_nueva->supervisor = $req['supervisor'];
         //grabar
         $cosecha_nueva->save();
@@ -184,6 +185,8 @@ class cosechaController extends Controller
         $cosecha->maletas = $req['maletas'];
         $cosecha->prom_kg_bin = $req['prom_kg_bin'];
         $cosecha->toneladas = $req['toneladas'];
+        $cosecha->transportista = $req['transportista'];
+
         $cosecha->supervisor = $req['supervisor'];
         //grabar
         
