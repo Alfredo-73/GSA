@@ -166,7 +166,7 @@
                                     <td class="text-center" hidden="true">$ {{$disponible}}</td>
                                     <td class="text-center">$ {{$totalPago}}</td>
                                     <td class="text-center" hidden="true">$ {{$disponible - $totalPago}}</td>
-                                    <td class="text-center">$ {{($disponible - $totalPago)/$control->toneladas}}</td>
+                                    <td class="text-center">$ {{round((($disponible - $totalPago)/$control->toneladas),2)}}</td>
 
                                     <td>
                                         <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
