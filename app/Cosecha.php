@@ -9,6 +9,7 @@ class Cosecha extends Model
     public $table = 'cosecha';
 
     public $guarded = [];
+    
 
      public function cliente()
     {
