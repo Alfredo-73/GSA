@@ -84,6 +84,11 @@
                         <input style="width:6rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->supervisor)) {{$cosecha->supervisor}}@endif" name="supervisor">
                         <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>SUPERVISOR</label>
                     </div>
+                    <div class="md-form mb-1 w-50">
+                        <i class="fas fa-bus prefix" style="color:darkblue"></i>
+                        <input style="width:10rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->transportista)) {{$cosecha->transportista}}@endif" name="transportista">
+                        <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>TRANSPORTISTA</label>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer" style="width:100%">
@@ -93,7 +98,7 @@
                     </button>
 
                     <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
-                    
+
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
