@@ -13,8 +13,20 @@ use dateTranslator;
 
 class SancionController extends Controller
 {
-    public function listado(Request $req)
+    public function listado(Request $request)
     {
+        $fechadesde = trim($request->get('fechadesde'));
+        $fechahasta = trim($request->get('fechahasta'));
+        $buscacapataz = trim($request->get('buscacapataz'));
+        //dd($fechadesde, $fechahasta, $buscacapataz);
+        $varfechadesde = $fechadesde;
+        $varfechahasta = $fechahasta;
+        $varbuscacapataz = $buscacapataz;
+
+        if ($varfechadesde == null && $varfechadesde == null) {
+            $varfechadesde = 0000 - 00 - 00;
+            $varfechahasta = 0000 - 00 - 00;
+        }
         $sanciones = Sancion::all()->sortBy('legajo');
         $clientes = Cliente::all();
         $capataz = Capataz::all();
@@ -37,13 +49,14 @@ class SancionController extends Controller
     {
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:10',
+            'legajo' => 'numeric|max:9999999999',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
-            'dni' => 'numeric|max:99999999',
+            'dni' => 'numeric|max:999999999',
             'dias' => 'numeric|max:999',
             'fecha' => 'date',
             'reincorporacion' => 'date',
+            'motivo' => 'string|max:300',
             'observacion' => 'string|min:0|max:300',
 
             // 'id_capataz' => 'numeric|max:10',
@@ -67,10 +80,12 @@ class SancionController extends Controller
         $sancion_nueva->apellido = $req['apellido'];
         $sancion_nueva->dni = $req['dni'];
         $sancion_nueva->id_cliente = $req['id_cliente'];
-        $sancion_nueva->id_capataz = $req['capataz'];
+        $sancion_nueva->id_capataz = $req['id_capataz'];
         $sancion_nueva->dias = $req['dias'];
         $sancion_nueva->fecha = $req['fecha'];
         $sancion_nueva->reincorporacion = $req['reincorporacion'];
+        $sancion_nueva->motivo = $req['motivo'];
+
         $sancion_nueva->observacion = $req['observacion'];
         //grabar
         $sancion_nueva->save();
@@ -100,13 +115,14 @@ class SancionController extends Controller
         $sancion = sancion::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:10',
+            'legajo' => 'numeric|max:9999999999',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
-            'dni' => 'numeric|max:99999999',
+            'dni' => 'numeric|max:999999999',
             'dias' => 'numeric|max:999',
             'fecha' => 'date',
             'reincorporacion' => 'date',
+            'motivo' => 'string|max:300',
             'observacion' => 'string|min:0|max:300',
 
             // 'id_capataz' => 'numeric|max:10',
@@ -129,10 +145,12 @@ class SancionController extends Controller
         $sancion->apellido = $req['apellido'];
         $sancion->dni = $req['dni'];
         $sancion->id_cliente = $req['id_cliente'];
-        $sancion->id_capataz = $req['capataz'];
+        $sancion->id_capataz = $req['id_capataz'];
         $sancion->dias = $req['dias'];
         $sancion->fecha = $req['fecha'];
         $sancion->reincorporacion = $req['reincorporacion'];
+        $sancion->motivo = $req['motivo'];
+
         $sancion->observacion = $req['observacion'];
         //grabar
 

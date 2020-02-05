@@ -78,7 +78,7 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <a href="#!" class="card hoverable">
+                <a href="/../sancion" class="card hoverable">
 
                     <!-- Card content -->
                     <div class="card-body">
@@ -88,7 +88,7 @@
                                 <i class="far fa-id-card fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
-                                <h5 class="dark-grey-text mb-3">SANSIONES DISCIPLINARIAS</h5>
+                                <h5 class="dark-grey-text mb-3">SANCIONES DISCIPLINARIAS</h5>
                                 <p class="font-weight-light text-muted mb-0">Carga de sansiones y reportes de sansiones.</p>
                             </div>
                         </div>
