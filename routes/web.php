@@ -155,6 +155,7 @@ Route::get('generate-pdf', 'PDFController@generatePDF');
 
 //sanciones
 
+Route::get('sancion', 'SancionController@listado');
 
 Route::get('agregar_sancion', 'SancionController@agregar');
 
