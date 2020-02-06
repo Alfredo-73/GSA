@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaSanciones extends Migration
+class CrearTablaPersonal extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CrearTablaSanciones extends Migration
      */
     public function up()
     {
-        Schema::create('sanciones', function (Blueprint $table) {
+        //
+        Schema::create('personal', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('legajo')->lenght(20)->unique();
             $table->string('nombre')->lenght(100);
             $table->string('apellido')->lenght(100);
             $table->integer('dni')->lenght(8);
-            $table->integer('id_cliente')->lenght(10)->unsigned();
-            $table->foreign("id_cliente")->references("id")->on("cliente");
+            $table->date('fecha_ingreso');
+            $table->date('fecha_egreso');
+            $table->integer('id_empresa')->lenght(10)->unsigned();
+            $table->foreign("id_empresa")->references("id")->on("empresa");
             $table->integer('id_capataz')->lenght(10)->unsigned();
             $table->foreign("id_capataz")->references("id")->on("capataz");
-            $table->integer('dias')->lenght(3);
-            $table->date('fecha');
-            $table->date('reincorporacion');
+            $table->date('observciones')->lenght(200);
             $table->timestamps();
         });
     }
@@ -37,6 +38,7 @@ class CrearTablaSanciones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sanciones');
+        //
+        Schema::dropIfExists('personal');
     }
 }
