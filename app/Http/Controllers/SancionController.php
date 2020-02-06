@@ -82,11 +82,18 @@ class SancionController extends Controller
         $sancion_nueva->id_cliente = $req['id_cliente'];
         $sancion_nueva->id_capataz = $req['id_capataz'];
         $sancion_nueva->dias = $req['dias'];
-        $sancion_nueva->fecha = $req['fecha'];
-        $sancion_nueva->reincorporacion = $req['reincorporacion'];
         $sancion_nueva->motivo = $req['motivo'];
-
+        
         $sancion_nueva->observacion = $req['observacion'];
+        $sancion_nueva->fecha = $req['fecha'];
+        $fecha = $sancion_nueva->fecha;
+        $var_fecha = $req['dias'] +1;
+        $nueva_fecha = strtotime('+'. $var_fecha .'day', strtotime($fecha));
+
+        $nueva_fecha = date('Y-m-j', $nueva_fecha);
+        //dd($nueva_fecha);
+
+        $sancion_nueva->reincorporacion = $nueva_fecha;
         //grabar
         $sancion_nueva->save();
 
@@ -148,9 +155,18 @@ class SancionController extends Controller
         $sancion->id_capataz = $req['id_capataz'];
         $sancion->dias = $req['dias'];
         $sancion->fecha = $req['fecha'];
-        $sancion->reincorporacion = $req['reincorporacion'];
+       /* $sancion->reincorporacion = $req['reincorporacion'];*/
         $sancion->motivo = $req['motivo'];
 
+
+         $fecha = $sancion->fecha;
+        $var_fecha = $req['dias'] +1;
+        $nueva_fecha = strtotime('+'. $var_fecha .'day', strtotime($fecha));
+
+        $nueva_fecha = date('Y-m-j', $nueva_fecha);
+        //dd($nueva_fecha);
+
+        $sancion->reincorporacion = $nueva_fecha;
         $sancion->observacion = $req['observacion'];
         //grabar
 
