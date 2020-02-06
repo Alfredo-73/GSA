@@ -168,6 +168,14 @@ Route::get('modif_sancion/{id}', 'SancionController@edit');
 Route::put('modif_sancion/{id}', 'SancionController@update');
 
 Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
+Route::get('modal_sancio/{id}', 'SancionController@update');
+Route::put('modal_sancion/{id}', 'SancionController@update');
+Route::put('sancion/{fecha}', 'SancionController@buscar');
+
+
+
+
+
 
 //EMPRESAS
 Route::get('abm', function () {

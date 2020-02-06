@@ -7,10 +7,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-white text-center" style="background-color:darkblue" >{{ __('MODIFICACION CONTROL DE FACTURACION Y PAGO') }}</div>
+                <div class="card-header text-white text-center" style="background-color:darkblue" >{{ __('MODIFICACION SANCION DISCIPLINARIA') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/modif_control/{{$control->id}}" >
+                    <form method="POST" action="/modif_sancion/{{$sancion->id}}" >
                         @csrf
                         {{method_field('PUT')}}
                         <!--
@@ -18,7 +18,7 @@
                             <label for="quincena" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="quincena" type="text" class="form-control @error('quincena') is-invalid @enderror" name="quincena" value="{{ $control->nombre_quincena }}" required autocomplete="quincena" autofocus>
+                                <input id="quincena" type="text" class="form-control @error('quincena') is-invalid @enderror" name="quincena" value="{{ $sancion->nombre_quincena }}" required autocomplete="quincena" autofocus>
 
                                 @error('quincena')
                                 <span class="invalid-feedback" role="alert">
@@ -31,11 +31,11 @@
 
                     <div class="form-group row">   
 
-                     <label for="quincena_id" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
+                     <label for="legajo" class="col-md-4 col-form-label text-md-right">{{ __('LEGAJO') }}</label>
                    
                     <div class="col-md-6">
-                    <select class="selectpicker show-menu-arrow" name="quincena_id" data-style="btn-success" data-width="auto">
-                            <option value="{{$control->quincena_id}}" selected>{{$control->quincena->nombre}}</option>
+                    <select class="selectpicker show-menu-arrow" name="legajo" data-style="btn-success" data-width="auto">
+                            <option value="{{$sancion->legajo}}" selected>{{$sancion->quincena->nombre}}</option>
                             @foreach($quincenas as $quincena)
                             
                             <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
@@ -48,12 +48,12 @@
                     </div> 
 
                         <div class="form-group row">
-                            <label for="num_factura" class="col-md-4 col-form-label text-md-right">{{ __('Nº DE FACTURA') }}</label>
+                            <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
 
                             <div class="col-md-6">
-                                <input id="num_factura" type="text" class="form-control @error('num_factura') is-invalid @enderror" name="num_factura" value="{{ $control->num_factura }}" required autocomplete="num_factura">
+                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $sancion->nombre }}" required autocomplete="nombre">
 
-                                @error('num_factura')
+                                @error('nombre')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -62,12 +62,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="importe" class="col-md-4 col-form-label text-md-right">{{ __('IMPORTE FACTURA') }}</label>
+                            <label for="apellido" class="col-md-4 col-form-label text-md-right">{{ __('IMPORTE FACTURA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="importe" type="text" class="form-control @error('importe') is-invalid @enderror" name="importe"  value="{{ $control->importe }}" required autocomplete="importe">
+                                <input id="apellido" type="text" class="form-control @error('apellido') is-invalid @enderror" name="apellido"  value="{{ $sancion->apellido }}" required autocomplete="apellido">
 
-                                @error('importe')
+                                @error('apellido')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -77,120 +77,123 @@
 
                         <div class="form-group row">   
 
-                     <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
-                   
-
-                    <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
-                            <option value="{{$control->id_cliente}}" selected>{{$control->cliente->nombre}}</option>
-                            @foreach($clientes as $cliente)
                             
-                            <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
-                            
-                           
-                         @endforeach
-                           
-                            </select>                              
-                        
-                        </div>  
-                        
-
-<!--
-                        <div class="form-group row">
-                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE')  }} {{$control->cliente->nombre}} </label>
-
-                            <div class="col-md-6">
-                                <input id="id_cliente" type="number" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
-
-                                @error('id_cliente')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div> -->
-
-                        <div class="form-group row">
-                            <label for="retencion" class="col-md-4 col-form-label text-md-right">{{ __('RETENCION') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="retencion" type="text" class="form-control @error('retencion') is-invalid @enderror" name="retencion" value="{{ $control->retencion }}" required autocomplete="retencion">
-
-                                @error('retencion')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="monto_cobrado" class="col-md-4 col-form-label text-md-right">{{ __('MONTO COBRADO') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="monto_cobrado" type="text" class="form-control @error('monto_cobrado') is-invalid @enderror" name="monto_cobrado" value="{{ $control->monto_cobrado }}" required autocomplete="monto_cobrado">
-
-                                @error('monto_cobrado')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="gasto_bancario" class="col-md-4 col-form-label text-md-right">{{ __('GASTO BANCARIO') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="gasto_bancario" type="text" class="form-control @error('gasto_bancario') is-invalid @enderror" name="gasto_bancario" value="{{ $control->gasto_bancario }}" required autocomplete="gasto_bancario">
-
-                                @error('gasto_bancario')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="pago_personal" class="col-md-4 col-form-label text-md-right">{{ __('PAGO COSECHEROS') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="pago_personal" type="text" class="form-control @error('pago_personal') is-invalid @enderror" name="pago_personal" value="{{ $control->pago_personal }}" required autocomplete="pago_personal">
-                                @error('pago_personal')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="pago_transporte" class="col-md-4 col-form-label text-md-right">{{ __('PAGO TRANSPORTE') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="pago_transporte" type="text" class="form-control @error('pago_transporte') is-invalid @enderror" name="pago_transporte" value="{{ $control->pago_transporte }}" required autocomplete="pago_transporte">
-
-                                @error('pago_transporte')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="toneladas" class="col-md-4 col-form-label text-md-right">{{ __('TONELADAS') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="toneladas" type="text" class="form-control @error('toneladas') is-invalid @enderror" name="toneladas" value="{{ $control->toneladas }}" required autocomplete="toneladas">
-
-                                @error('toneladas')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                            <!--
+                                <div class="form-group row">
+                                    <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE')  }} {{$control->cliente->nombre}} </label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="id_cliente" type="number" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $sancion->id_cliente }}" required autocomplete="id_cliente">
+                                        
+                                        @error('id_cliente')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div> -->
+                                
+                                <div class="form-group row">
+                                    <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="dni" type="text" class="form-control @error('dni') is-invalid @enderror" name="dni" value="{{ $sancion->dni }}" required autocomplete="dni">
+                                        
+                                        @error('dni')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="fecha" class="col-md-4 col-form-label text-md-right">{{ __('FECHA SANCION') }}</label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="fecha" type="text" class="form-control @error('fecha') is-invalid @enderror" name="fecha" value="{{ $sancion->fecha }}" required autocomplete="fecha">
+                                        
+                                        @error('fecha')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="reincorporacion" class="col-md-4 col-form-label text-md-right">{{ __('FECHA REINCORPORACION') }}</label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="reincorporacion" type="text" class="form-control @error('reincorporacion') is-invalid @enderror" name="reincorporacion" value="{{ $control->reincorporacion }}" required autocomplete="reincorporacion">
+                                        
+                                        @error('reincorporacion')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="dias" class="col-md-4 col-form-label text-md-right">{{ __('DIAS SUSPENDIDO') }}</label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="dias" type="text" class="form-control @error('dias') is-invalid @enderror" name="dias" value="{{ $control->dias }}" required autocomplete="dias">
+                                        @error('dias')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label for="motivo" class="col-md-4 col-form-label text-md-right">{{ __('MOTIVO') }}</label>
+                                    
+                                    <div class="col-md-6">
+                                        <input id="motivo" type="text" class="form-control @error('motivo') is-invalid @enderror" name="motivo" value="{{ $control->motivo }}" required autocomplete="motivo">
+                                        
+                                        @error('motivo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                
+                                <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                              
+           
+                               <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
+                                       <option value="{{$sancion->id_cliente}}" selected>{{$sancion->cliente->nombre}}</option>
+                                       @foreach($clientes as $cliente)
+                                       
+                                       <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                       
+                                      
+                                    @endforeach
+                                      
+                                       </select>                              
+                                   
+                                   </div>  
+                                    <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
+                              
+           
+                               <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
+                                       <option value="{{$sancion->id_capataz}}" selected>{{$sancion->capataz->nombre}}</option>
+                                       @foreach($clientes as $cliente)
+                                       
+                                       <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                                       
+                                      
+                                    @endforeach
+                                      
+                                       </select>                              
+                                   
+                                   </div>  
+                                   
                         <div class="form-group row shadow-textarea green-border-focus">
 
                          <!--   <div class="form-group shadow-textarea"> -->
@@ -219,7 +222,7 @@
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                                     {{ __('Grabar') }}
                                 </button>
-                                 <a class="fas fa-undo" role="button" href=  {{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
+                                 <a class="fas fa-undo" role="button" href=  {{ url('/sancion') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
            
                             </div>
                         </div>
