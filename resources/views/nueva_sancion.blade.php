@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="container mt-5">
     <section>
     <div class="row justify-content-center">
@@ -118,18 +119,19 @@
                             </div>
                         </div>
 
+        <!--
                         <div class="form-group row">
-                            <label for="reincorporacion" class="col-md-4 col-form-label text-md-right">{{ __('FECHA REINCORPORACION') }}</label>
+                            <label for="reincorporacion" class="col-md-4 col-form-label text-md-right">{{ __('FECHA REINCORPORACION') }}  </label>
 
                             <div class="col-md-6">
-                                <input id="reincorporacion" type="date" class="form-control @error('reincorporacion') is-invalid @enderror" name="reincorporacion" value="{{ old('reincorporacion') }}" required autocomplete="reincorporacion">
+                                <input id="reincorporacion" type="date" class="form-control @error('reincorporacion') is-invalid @enderror" name="reincorporacion" value= "{{ old('reincorporacion') }}"  required autocomplete="reincorporacion">
                                 @error('reincorporacion')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <label for="motivo" class="col-md-4 col-form-label text-md-right">{{ __('MOTIVO') }}</label>
                             
