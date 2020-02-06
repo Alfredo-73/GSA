@@ -45,9 +45,6 @@ Route::put('modif_control/{id}', 'controlController@update');
 Route::delete('/borrar_control/{id}', 'controlController@borrar');
 
 
-
-
-
 //cosecha
 
 Route::get('cosecha', 'cosechaController@listado');
@@ -171,3 +168,19 @@ Route::get('modif_sancion/{id}', 'SancionController@edit');
 Route::put('modif_sancion/{id}', 'SancionController@update');
 
 Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
+
+//EMPRESAS
+Route::get('abm', function () {
+    return view('../abm');
+});
+Route::get('abm_empresa', 'empresaController@listado');
+Route::get('nueva_empresa', 'empresaController@agregar');
+Route::post('nueva_empresa', 'empresaController@agregar_empresa');
+
+//Route::get('nueva_sancion', 'SancionController@agregar');
+//Route::post('nueva_sancion', 'SancionController@agregar_sancion');
+//Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
+//Route::get('modif_sancion/{id}', 'SancionController@edit');
+//Route::put('modif_sancion/{id}', 'SancionController@update');
+//Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
+
