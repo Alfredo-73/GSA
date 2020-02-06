@@ -103,30 +103,27 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <o href="" class="card hoverable">
 
-                    <!-- Card content -->
-                    <div class="card-body card hoverable">
 
-                        <div class="media">
-                            <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                                <i class="fab fa-react fa-2x purple-text"></i>
-                            </span>
-                            <div class="media-body">
-                                <h5 class="dark-grey-text mb-2">ADM. DE TABLAS</h5>
-                                <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
-
+                <!-- Card content -->
+                <div class="card-body card hoverable">
+                    <div class="media">
+                        <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                            <i class="fab fa-react fa-2x purple-text"></i>
+                        </span>
+                        <div class="media-body">
+                            <h5 class="dark-grey-text mb-2">ADMINISTRACION DE TABLAS</h5>
+                            <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
+                            <div class="row">
                                 <a href="/../abm_cliente" class="card-link">CLIENTES</a>
                                 <a href="/../abm_capataz" class="card-link">CAPATACES</a>
                                 <a href="/../abm_quincena" class="card-link">QUINCENAS</a>
+                                <a href="/../abm_empresa" class="card-link">EMPRESAS</a>
                             </div>
                         </div>
-
                     </div>
-
-                </o>
+                </div>
             </div>
-        </div>
 
 
     </section>
