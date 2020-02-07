@@ -17,10 +17,9 @@ class CrearTablaEmpresa extends Migration
         Schema::create('empresa', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('razon_social')->lenght(100);
-            $table->integer('cuit')->lenght(11);
+            $table->string('razon_social')->lenght(100)->unique();
+            $table->biginteger('cuit')->lenght(11);
             $table->string('domicilio')->lenght(150);
-            $table->integer('logo');
             $table->timestamps();
         });
     }
