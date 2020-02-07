@@ -26,11 +26,12 @@ class empresaController extends Controller
         return view('nueva_empresa', $vac);
     }
 
-    public function agregar_empresa(Request $req)
+    public function empresa(Request $req)
     {
+        
         $reglas = [
-            'razon_social' => 'string|min:0|max:255|unique:razon_social',
-            'cuit' => 'numeric|min:0|max:11|unique:razon_social',
+            'razon_social' => 'string|min:0|max:255',
+            'cuit' => 'integer',
             'domicilio' => 'string|min:0|max:255|',
         ];
         $mensajes = [
@@ -40,16 +41,17 @@ class empresaController extends Controller
             'numeric' => 'El campo :attribute debe ser un numero',
             'unique' => 'La razon social ya existe',
 
-            'integer' => 'El campo :attribute debe ser un numero entero',
+            'integer' => 'El campo :attribute debe ser un numero',
         ];
 
         $this->validate($req, $reglas, $mensajes);
 
         $empresa_nueva = new Empresa();
-
+        
         $empresa_nueva->razon_social = $req['razon_social'];
         $empresa_nueva->cuit = $req['cuit'];
         $empresa_nueva->domicilio = $req['domicilio'];
+        
         
         Flash::success('Se ha dado de alta la razon social ' . $empresa_nueva->razon_social . ' de forma exitosa !');
         
