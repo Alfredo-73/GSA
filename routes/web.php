@@ -191,3 +191,20 @@ Route::post('nueva_empresa', 'empresaController@empresa');
 //Route::put('modif_sancion/{id}', 'SancionController@update');
 //Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
