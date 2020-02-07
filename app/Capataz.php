@@ -20,4 +20,8 @@ class Capataz extends Model
     {
         return $this->hasMany('App\Cosecha', 'id_capataz');
     }
+    public function empleado()
+    {
+        return $this->hasMany('App\Empleado', 'id_capataz');
+    }
 }

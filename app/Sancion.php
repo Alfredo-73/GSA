@@ -18,5 +18,9 @@ class Sancion extends Model
     {
         return $this->belongsTo('App\Capataz', 'id_capataz');
     }
+    public function Empleado()
+    {
+        return $this->hasMany('App\Empleado', 'id_sanciones');
+    }
     //
 }
