@@ -178,12 +178,11 @@ Route::put('sancion/{fecha}', 'SancionController@buscar');
 
 
 //EMPRESAS
-Route::get('abm', function () {
-    return view('../abm');
-});
+
 Route::get('abm_empresa', 'empresaController@listado');
 Route::get('nueva_empresa', 'empresaController@agregar');
-Route::post('nueva_empresa', 'empresaController@agregar_empresa');
+Route::post('nueva_empresa', 'empresaController@empresa');
+//Route::post('nueva_empresa', 'empresaController@agregar_empresa');
 
 //Route::get('nueva_sancion', 'SancionController@agregar');
 //Route::post('nueva_sancion', 'SancionController@agregar_sancion');
@@ -191,4 +190,21 @@ Route::post('nueva_empresa', 'empresaController@agregar_empresa');
 //Route::get('modif_sancion/{id}', 'SancionController@edit');
 //Route::put('modif_sancion/{id}', 'SancionController@update');
 //Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
