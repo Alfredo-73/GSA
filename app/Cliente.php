@@ -12,7 +12,7 @@ class Cliente extends Model
 
     public function Sancion()
     {
-        return $this->hasMany('App\Control', 'id_cliente');
+        return $this->hasMany('App\Sancion', 'id_cliente');
     }
 
     public function control()
