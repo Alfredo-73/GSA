@@ -13,7 +13,7 @@
             <div class="px-4">
                 <div class="table-wrapper">
                     <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">SANCIONES</h1>
-                    <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_sancion') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+               <!-- <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_sancion') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>-->
                 </div>
 
                 <div class="container-fluid">
@@ -22,17 +22,26 @@
                         <form class="form-inline">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                            <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
+                            <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre empleado" aria-label="Search">
+                            <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido empleado" aria-label="Search">
+    
+                            <select class="selectpicker show-menu-arrow" name="buscarporcapataz" value="">
                                 <option>Capataz</option>
                                 @foreach($capataz as $capat)
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
                                 @endforeach
                             </select>
+                            <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
+                                <option>Sanciones</option>
+                                @foreach($sanciones as $sancion)
+                                <option value="{{$sancion->id}}">{{$sancion->legajo}}</option>
+                                @endforeach
+                            </select>
                             <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
 
                             <a href="{{ url('/sancion') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
-                         <a role="button" class="btn btn-deep-orange" href="verreportesancionPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> 
-                        <a role="button" class="btn btn-deep-orange" href="verreportesancionPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> 
+                         <a role="button" class="btn btn-deep-orange" href="imprimir_sancion"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> 
+                        <a role="button" class="btn btn-deep-orange" href="imprimir_sanciones"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> 
                         </form>
                     </nav>
                 </div>
@@ -53,7 +62,7 @@
                                     <!--<i class="fas fa-sort ml-1"></i>-->
                                 </a>
                             </th>
-                            <th class="th-lg text-center" hidden="true">
+                            <th class="th-lg text-center">
                                 <a>NOMBRE
                                     <!--<i class="fas fa-sort ml-1"></i>-->
                                 </a>
@@ -69,7 +78,7 @@
                                 </a>
                             </th>
                             <th class="th-lg text-center">
-                                <a>FECHA 
+                                <a>FECHA DE SANCION
                                     <!--<i class="fas fa-sort ml-1"></i>-->
                                 </a>
                             </th>

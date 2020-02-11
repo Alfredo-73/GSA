@@ -10,4 +10,22 @@ class Empresa extends Model
 
     public $guarded = [];
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function Empleado()
+    {
+        return $this->hasMany('App\Empleado', 'id_empresa');
+    }
+
 }

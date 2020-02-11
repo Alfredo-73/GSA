@@ -11,9 +11,9 @@ class Capataz extends Model
 
     public $guarded = [];
 
-    public function Sancion()
+    public function sanciones()
     {
-        return $this->hasMany('App\Cosecha', 'id_capataz');
+        return $this->hasMany('App\Sancion', 'id_capataz');
     }
 
     public function cosecha()

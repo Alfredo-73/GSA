@@ -18,9 +18,39 @@ class Sancion extends Model
     {
         return $this->belongsTo('App\Capataz', 'id_capataz');
     }
-    public function Empleado()
+    /*public function empleados()
     {
-        return $this->hasMany('App\Empleado', 'id_sanciones');
+        return $this->belongsToMany('App\Empleado',  'empleados_sanciones', 'id_sanciones', 'id_empleado');
+    }*/
+
+    public function empleado()
+    {
+        return $this->belongsTo('App\Empleado', 'id_sanciones');
+    }
+    public function scopeCapataz($query, $capataz)
+    {
+        if ($capataz && ($capataz != "Capataz")) {
+            return $query->where('id_capataz', 'LIKE', "%$capataz%");
+        }
+    }
+    public function scopeSanciones($query, $sanciones)
+    {
+        if ($sanciones && ($sanciones != "sanciones")) {
+            return $query->where('id', 'LIKE', "%$sanciones%");
+        }
+    }
+    public function scopeNombres($query, $nombres) {
+    	if (trim ($nombres) != "") {
+    		return $query->where('nombre','like',"%$nombres%");
+    	}
+    }
+
+
+
+    public function scopeApellidos($query, $apellidos) {
+    	if (trim($apellidos) != "") {
+    		return $query->where('apellido','like',"%$apellidos%");
+    	}
     }
     //
 }
