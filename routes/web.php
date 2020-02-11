@@ -152,14 +152,16 @@ Route::get('generate-pdf', 'PDFController@generatePDF');
 
 //sanciones
 
-Route::get('sancion', 'SancionController@listado');
+//Route::get('sancion', 'SancionController@listado');
+
+Route::get('sancion', 'SancionController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
 
 Route::get('agregar_sancion', 'SancionController@agregar');
 
-Route::get('nueva_sancion', 'SancionController@agregar');
+Route::get('nueva_sancion/{id}', 'SancionController@agregar');
 
 
-Route::post('nueva_sancion', 'SancionController@agregar_sancion');
+Route::post('nueva_sancion/{id}', 'SancionController@agregar_sancion');
 
 Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
 
@@ -171,6 +173,19 @@ Route::delete('/borrar_sancion/{id}', 'SancionController@borrar');
 Route::get('modal_sancio/{id}', 'SancionController@update');
 Route::put('modal_sancion/{id}', 'SancionController@update');
 Route::put('sancion/{fecha}', 'SancionController@buscar');
+
+//pdf
+Route::get('sancion/list', 'sancion@index');
+//download
+
+Route::get('/downloadPDF/{id}', 'sancionController@downloadPDF');
+//ver pdf
+Route::get('PDFSancion/{id}', 'SancionController@verPDF'); //usamos
+
+Route::get('/imprimir_sancion/{sanciones}/{capataz}', 'sancionController@imprimirBuscar');
+
+Route::get('/imprimir_sanciones', 'sancionController@imprimir');
+
 
 
 
@@ -197,14 +212,34 @@ Route::post('nueva_empresa', 'empresaController@empresa');
 
 
 
+//Empleados
+Route::get('empleado', 'empleadoController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+//Route::get('empleado', 'empleadoController@listado'); //modifico fcon empleado por buscarpor para probar
+
+Route::get('agregar_empleado', 'empleadoController@agregar');
+
+Route::get('nuevo_empleado', 'empleadoController@agregar');
 
 
+Route::post('nuevo_empleado', 'empleadoController@agregar_empleado');
+
+Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
+
+Route::get('modif_empleado/{id}', 'empleadoController@edit');
+
+Route::put('modif_empleado/{id}', 'empleadoController@update');
+
+Route::delete('/borrar_empleado/{id}', 'empleadoController@borrar');
 
 
+//pdf
+Route::get('empleado/list', 'empleado@index');
+//download
 
+Route::get('/downloadPDF/{id}', 'empleadoController@downloadPDF');
+//ver pdf
+Route::get('verPDF/{id}', 'empleadoController@verPDF'); //usamos
 
+Route::get('/imprimir/{sanciones}/{capataz}', 'empleadoController@imprimirBuscar');
 
-
-
-
-
+Route::get('/imprimir', 'empleadoController@imprimir');
