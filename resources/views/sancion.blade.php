@@ -31,12 +31,12 @@
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
                                 @endforeach
                             </select>
-                            <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
+                           <!-- <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
                                 <option>Sanciones</option>
                                 @foreach($sanciones as $sancion)
                                 <option value="{{$sancion->id}}">{{$sancion->legajo}}</option>
                                 @endforeach
-                            </select>
+                            </select>-->
                             <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
 
                             <a href="{{ url('/sancion') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>

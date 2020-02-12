@@ -43,4 +43,19 @@ class Empleado extends Model
             return $query->where('id_sanciones', 'LIKE', "%$sanciones%");
         }
     }
+    public function scopeNombres($query, $nombres)
+    {
+        if (trim($nombres) != "") {
+            return $query->where('nombre', 'like', "%$nombres%");
+        }
+    }
+
+
+
+    public function scopeApellidos($query, $apellidos)
+    {
+        if (trim($apellidos) != "") {
+            return $query->where('apellido', 'like', "%$apellidos%");
+        }
+    }
 }

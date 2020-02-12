@@ -43,55 +43,66 @@ class SancionController extends Controller
     //para usar scope
     public function indexBuscar(Request $request)
     {
-        $fechadesde = trim($request->get('fechadesde'));
-        $fechahasta = trim($request->get('fechahasta'));
-        //dd($fechadesde, $fechahasta, $buscacapataz);
-        $varfechadesde = $fechadesde;
-        $varfechahasta = $fechahasta;
+        if (empty($request)) {
+            $sanciones = Sancion::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();
+            $empleados = Empleado::all();
 
-        if ($varfechadesde == null && $varfechadesde == null) {
-            $varfechadesde = 0000 - 00 - 00;
-            $varfechahasta = 0000 - 00 - 00;
-        }
-        $sanciones = $request->get('buscarporsanciones');
-        $capataz = $request->get('buscarporcapataz');
-        $nombre = $request->get('buscarpornombre');
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa');
+
+            return view('sancion', $vac);
+
+        } else
+        {
+            $fechadesde = trim($request->get('fechadesde'));
+            $fechahasta = trim($request->get('fechahasta'));
+            //dd($fechadesde, $fechahasta, $buscacapataz);
+            $varfechadesde = $fechadesde;
+            $varfechahasta = $fechahasta;
+
+            if ($varfechadesde == null && $varfechadesde == null) {
+                $varfechadesde = 0000 - 00 - 00;
+                $varfechahasta = 0000 - 00 - 00;
+            }
+            
+            $capataz = $request->get('buscarporcapataz');
+            $nombres = $request->get('buscarpornombre');
+            
+            $apellidos = $request->get('buscarporapellido');
+
+
+            //$data = $request->all();
+            //dd($sanciones, $quincena);
         
-        $apellido = $request->get('buscarporapellido');
+            $varcapataz = $capataz;
+            //dd($varsanciones);
+        
+            if(empty($fechadesde && $fechahasta))
+            {
+                $sanciones = Sancion::orderBy('apellido', 'asc')
+                    ->nombres($nombres)->apellidos($apellidos)
+                    ->capataz($capataz);
+            }else{
+                $sanciones = Sancion::orderBy('apellido', 'asc')
+                    ->nombres($nombres)->apellidos($apellidos)
+                    ->capataz($capataz)->whereBetween('fecha',[$fechadesde, $fechahasta])->get();  
+            }
+
+            
+
+            $empleados = Empleado::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();
+            $clientes = Cliente::all();
+
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'clientes', 'nombres', 'apellidos', 'varcapataz');
+
+    //dd($vac);
 
 
-        //$data = $request->all();
-        //dd($sanciones, $quincena);
-        $varsanciones = $sanciones;
-        $varcapataz = $capataz;
-        //dd($varsanciones);
-      
-      if(empty($fechadesde && $fechahasta))
-      {
-        $sanciones = Sancion::orderBy('apellido', 'asc')
-            ->sanciones($sanciones)
-            ->nombres($nombre)->apellidos($apellido)
-            ->capataz($capataz)->get();
-      }else{
-        $sanciones = Sancion::orderBy('apellido', 'asc')
-            ->sanciones($sanciones)
-            ->nombres($nombre)->apellidos($apellido)
-            ->capataz($capataz)->whereBetween('fecha',[$fechadesde, $fechahasta])->get();  
-      }
-
-           
-
-        $empleados = Empleado::all();
-        $capataz = Capataz::all();
-        $empresas = Empresa::all();
-        $clientes = Cliente::all();
-
-        $vac = compact('empleados', 'sanciones', 'capataz', 'empresas', 'clientes', 'varsanciones', 'varcapataz');
-
-//dd($vac);
-
-
-        return view('sancion', $vac);
+            return view('sancion', $vac);
+        }
     }
 
     public function agregar($id)

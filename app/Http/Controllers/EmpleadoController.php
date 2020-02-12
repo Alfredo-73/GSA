@@ -33,28 +33,44 @@ class EmpleadoController extends Controller
     //para usar scope
     public function indexBuscar(Request $request)
     {
-        $sanciones = $request->get('buscarporsanciones');
-        $capataz = $request->get('buscarporcapataz');
-        //$data = $request->all();
-        //dd($sanciones, $quincena);
-        $varsanciones = $sanciones;
-        $varcapataz = $capataz;
-        //dd($varsanciones);
-        $empleados = Empleado::orderBy('apellido', 'asc')
-            ->sanciones($sanciones)
-            ->capataz($capataz)
-            ->paginate(10);
-
-        $sanciones = Sancion::all();
-        $capataz = Capataz::all();
-        $empresa = Empresa::all();
-
-        $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'varsanciones', 'varcapataz');
+        if(empty($request))
+        {
+            $sanciones = Sancion::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();  
+            $empleados = Empleado::all();
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa');
 
 
 
 
-        return view('empleado', $vac);
+            return view('empleado', $vac);
+        }else
+        {
+            $nombres = $request->get('buscarpornombre');
+            $apellidos = $request->get('buscarporapellido');
+            //$data = $request->all();
+            //dd($sanciones, $quincena);
+            //  $varsanciones = $sanciones;
+            //$varcapataz = $capataz;
+            //dd($varsanciones);
+            $empleados = Empleado::orderBy('apellido', 'asc')
+                ->nombres($nombres)
+                ->apellidos($apellidos)
+                ->paginate(10);
+
+            $sanciones = Sancion::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();
+
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'nombres', 'apellidos');
+
+
+
+
+            return view('empleado', $vac);
+        }
+        
     }
 
 
