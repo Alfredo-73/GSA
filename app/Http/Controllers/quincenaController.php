@@ -14,7 +14,7 @@ class quincenaController extends Controller
     
     public function listado(Request $req)
     {
-        $quincenas = Quincena::all()->sortBy('nombre');
+        $quincenas = Quincena::all();
         
 
         // dd($productos);
