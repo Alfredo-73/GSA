@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Quincena;
 use App\Control;
 use Laracasts\Flash\Flash;
+
+use Illuminate\Http\Request;
+
 
 class quincenaController extends Controller
 {
