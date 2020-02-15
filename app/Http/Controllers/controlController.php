@@ -98,7 +98,7 @@ class controlController extends Controller
                 
                 $clientes = Cliente::all();
                 
-                $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
+                $vac = compact('controles', 'clientes', 'varcliente', 'varquincena');
 
                  
 
