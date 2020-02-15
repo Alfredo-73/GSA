@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
-use App\Quincena;
+use App\quincena;
 use App\Cliente;
 use PDF;
 use Laracasts\Flash\Flash;
