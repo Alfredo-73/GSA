@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('control_quincenal', 'controlController@listado');
 
-Route::get('control_quincenal', 'controlController@indexbuscar');//modifico fcon control por buscarpor para probar
+//Route::get('control_quincenal', 'controlController@indexbuscar');//modifico fcon control por buscarpor para probar
 
 Route::get('agregar_control', 'controlController@agregar');
 
