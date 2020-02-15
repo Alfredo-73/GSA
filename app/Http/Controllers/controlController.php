@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
-use App\Cliente;
 use App\Quincena;
+use App\Cliente;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
@@ -97,7 +97,7 @@ class controlController extends Controller
                 ->paginate(10);
                 
                 $clientes = Cliente::all();
-                $quincenas = Quincena::all();
+                
                 $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
 
                  
