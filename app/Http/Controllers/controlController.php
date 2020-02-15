@@ -97,7 +97,7 @@ class controlController extends Controller
                 ->paginate(10);
                 
                 $clientes = Cliente::all();
-                $quincenas = Quincena::all();
+                //$quincenas = Quincena::all();
                 $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
 
                  
