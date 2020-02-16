@@ -231,6 +231,7 @@ Route::put('modif_empleado/{id}', 'empleadoController@update');
 
 Route::delete('/borrar_empleado/{id}', 'empleadoController@borrar');
 
+Route::get('empleadoSancionado/{id}', 'SancionController@listadoEmpleadoConSanciones');
 
 //pdf
 Route::get('empleado/list', 'empleado@index');
