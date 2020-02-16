@@ -96,14 +96,14 @@
                             $nueva_fecha = date('Y-m-j', $nueva_fecha);
                         }
                         ?>
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="reincorporacion" class="col-md-4 col-form-label text-md-right">{{ __('FECHA REINCORPORACION') }}  </label>
 
                             <div class="col-md-6">
                                 <input id="reincorporacion" type="date" class="form-control"  value="@if(!empty($nueva_fecha)) {{$nueva_fecha}} @endif"  >
                                 
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group row">
                             <label for="motivo" class="col-md-4 col-form-label text-md-right">{{ __('MOTIVO') }}</label>
                             
