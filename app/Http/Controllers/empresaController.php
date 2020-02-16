@@ -52,6 +52,7 @@ class empresaController extends Controller
         $empresa_nueva->cuit = $req['cuit'];
         $empresa_nueva->domicilio = $req['domicilio'];
         
+
         
         Flash::success('Se ha dado de alta la razon social ' . $empresa_nueva->razon_social . ' de forma exitosa !');
         

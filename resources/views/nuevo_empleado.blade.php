@@ -125,12 +125,12 @@
                                 @enderror
                             </div>
                         </div> -->
-                       <!-- <div class="form-group row">   
+                        <div class="form-group row">   
     
                             <label for="id_empresa" class="col-md-4 col-form-label text-md-right">{{ __('EMPRESA') }}</label>
                         
-                                <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
-                                <option selected>Elegir Empresa</option>
+                                <select class="selectpicker show-menu-arrow" name="id_empresa" data-style="btn-success" data-width="auto">
+                                <option value="" selected>Elegir Empresa</option>
                                 @foreach($empresas as $empresa)
                              
                                 <option value="{{$empresa->id}}">{{$empresa->razon_social}}</option>
@@ -139,13 +139,13 @@
                                
                             </select>                              
                             
-                        </div>  -->                      
+                        </div>                       
                         <div class="form-group row">   
     
                             <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
                         
                                 <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
-                                <option selected>Elegir Capataz</option>
+                                <option value="" selected>Elegir Capataz</option>
                                 @foreach($capataz as $capat)
                              
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
