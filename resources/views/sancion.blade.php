@@ -16,7 +16,7 @@
                <!-- <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_sancion') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>-->
                 </div>
 
-                <div class="container-fluid">
+                 <div class="container-fluid">
                     <nav class="navbar  navbar-dark indigo rounded mb-2">
                         <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white ml-5">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
                         <form class="form-inline">
@@ -25,13 +25,13 @@
                             <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre empleado" aria-label="Search">
                             <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido empleado" aria-label="Search">
     
-                            <select class="selectpicker show-menu-arrow" name="buscarporcapataz" value="">
+                       <!--    <select class="selectpicker show-menu-arrow" name="buscarporcapataz" value="">
                                 <option>Capataz</option>
                                 @foreach($capataz as $capat)
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
                                 @endforeach
                             </select>
-                           <!-- <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
+                            <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
                                 <option>Sanciones</option>
                                 @foreach($sanciones as $sancion)
                                 <option value="{{$sancion->id}}">{{$sancion->legajo}}</option>
@@ -98,7 +98,7 @@
                                 </a>
                             </th>
                             <th class="th-lg text-center">
-                                <a>CLIENTE
+                                <a>EMPRESA
                                     <!--<i class="fas fa-sort ml-1"></i>-->
                                 </a>
                             </th>
@@ -120,12 +120,12 @@
                             <td class="text-center" > {{$sancion->legajo}}</td>
                             <td class="text-center" >{{$sancion->nombre}} </td>
                             <td class="text-center">{{$sancion->apellido}} </td>
-                            <td class="text-center"> {{$sancion->dni}}</td>
+                            <td class="text-center"> {{$sancion->dni}}</td> 
                             <td class="text-center" name="fecha"> {{$sancion->fecha}}</td>
                             <td class="text-center"> {{$sancion->dias}}</td>
                             <td class="text-center"> {{$sancion->reincorporacion}}</td>
-                            <td class="text-center"> {{$sancion->capataz->nombre}}</td>
-                            <td class="text-center"> {{$sancion->cliente->nombre}}</td>
+                            <td class="text-center"> {{$sancion->capataz->nombre}}</td> 
+                            <td class="text-center"> {{$sancion->empresa->nombre}}</td>
                             <td class="text-center" hidden="true"> {{$sancion->supervisor}}</td>
                             <td>
                                 <form method="POST" action="{{url('/borrar_sancion/'.$sancion->id) }}">

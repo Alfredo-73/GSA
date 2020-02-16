@@ -178,7 +178,7 @@ Route::put('sancion/{fecha}', 'SancionController@buscar');
 Route::get('sancion/list', 'sancion@index');
 //download
 
-Route::get('/downloadPDF/{id}', 'sancionController@downloadPDF');
+Route::get('/downloadPDF_sancion/{id}', 'sancionController@downloadPDF');
 //ver pdf
 Route::get('PDFSancion/{id}', 'SancionController@verPDF'); //usamos
 
@@ -236,10 +236,10 @@ Route::delete('/borrar_empleado/{id}', 'empleadoController@borrar');
 Route::get('empleado/list', 'empleado@index');
 //download
 
-Route::get('/downloadPDF/{id}', 'empleadoController@downloadPDF');
+Route::get('/downloadPDF_empleado/{id}', 'empleadoController@downloadPDF');
 //ver pdf
-Route::get('verPDF/{id}', 'empleadoController@verPDF'); //usamos
+Route::get('PDFEmpleado/{id}', 'empleadoController@verPDF'); //usamos
 
-Route::get('/imprimir/{sanciones}/{capataz}', 'empleadoController@imprimirBuscar');
+Route::get('/imprimir_empleado/{sanciones}/{capataz}', 'empleadoController@imprimirBuscar');
 
-Route::get('/imprimir', 'empleadoController@imprimir');
+Route::get('/imprimir_empleado', 'empleadoController@imprimir');

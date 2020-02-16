@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Quincena;
+use App\quincena;
 use App\Control;
 use Laracasts\Flash\Flash;
 

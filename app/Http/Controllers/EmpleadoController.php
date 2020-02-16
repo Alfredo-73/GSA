@@ -40,7 +40,7 @@ class EmpleadoController extends Controller
             $empresa = Empresa::all();  
             $empleados = Empleado::all();
             $vac = compact('empleados', 'sanciones', 'capataz', 'empresa');
-
+//dd($vac);
 
 
 
@@ -143,13 +143,13 @@ class EmpleadoController extends Controller
 
         $varbuscacapataz = $buscacapataz;
 
-       
+       $empresas = Empresa::all();
         $sanciones = Sancion::all()->sortBy('legajo');
         $empleados = Empleado::all();
         $capataz = Capataz::all();
 
         // dd($sanciones);
-        $vac = compact('sanciones', 'empleados', 'capataz');
+        $vac = compact('sanciones', 'empleados', 'empresas', 'capataz');
         return view("empleado", $vac);
     }
 
@@ -169,11 +169,13 @@ class EmpleadoController extends Controller
         //dd($req);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:9999999999',
+            'legajo' => 'numeric|max:99999999999999999999',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
             'dni' => 'numeric|max:999999999',
             'observacion' => 'string|min:0|max:300',
+            'id_empresa' => 'required',
+            'id_capataz' => 'required'
 
             // 'id_capataz' => 'numeric|max:10',
         ];
@@ -184,7 +186,8 @@ class EmpleadoController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
-            'unique' => 'El campo :attribute se encuentra repetido'
+            'unique' => 'El campo :attribute se encuentra repetido',
+            'required' => 'El campo :attribute no fue seleccionado'
         ];
 
         $this->validate($req, $reglas, $mensajes);
@@ -198,12 +201,18 @@ class EmpleadoController extends Controller
         $empleado_nuevo->cuil = $req['cuil'];
         $empleado_nuevo->fecha_ingreso = $req['fecha_ingreso'];
         $empleado_nuevo->fecha_egreso = $req['fecha_egreso'];
-      //  $empleado_nuevo->id_empresa = $req['id_empresa'];
-        $empleado_nuevo->id_empresa = null;
+      
+
+           $empleado_nuevo->id_empresa = $req['id_empresa'];
+      
+       // $empleado_nuevo->id_empresa = null;
         $empleado_nuevo->id_sanciones = null;
 
        // $empleado_nuevo->id_sanciones = $req['id_sanciones'];
-        $empleado_nuevo->id_capataz = $req['id_capataz'];
+       
+
+           $empleado_nuevo->id_capataz = $req['id_capataz'];
+       
         $empleado_nuevo->avatar = 'avatar.jpg';
 
         $empleado_nuevo->observaciones = $req['observaciones'];
@@ -308,7 +317,7 @@ class EmpleadoController extends Controller
     }
     public function verPDF($id)
     {
-        $empleado = Sancion::find($id);
+        $empleado = Empleado::find($id);
         $pdf = PDF::loadView('pdf1', compact('empleado'));
 
         $data = [
@@ -327,7 +336,7 @@ class EmpleadoController extends Controller
     {
         $buscar = $_GET['texto'];
 
-        $empleados = Sancion::where('nombre', 'like', "%$buscar%")
+        $empleados = Empleado::where('nombre', 'like', "%$buscar%")
             ->orwhere('apellido', 'like', "%$buscar%")->get();
 
         $vac = compact('empleados');
