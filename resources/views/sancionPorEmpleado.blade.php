@@ -19,9 +19,9 @@
                         <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white ml-5">EMPLEADO: {{$empleado->nombre}} - {{$empleado->apellido}}</span>
                         <a href="{{ url('/sancion') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
 
-                        <a role="button" class="btn btn-success" href="/../empleado"><i class="fas fa-eye mr-2" style="color:white"></i>Empleados</a> 
+                       <!--  <a role="button" class="btn btn-success" href="/../empleado"><i class="fas fa-eye mr-2" style="color:white"></i>Empleados</a> 
   
-                        <a role="button" class="btn btn-deep-orange" href="imprimir_sanciones"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> 
+                       <a role="button" class="btn btn-deep-orange" href="imprimir_sanciones"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> -->
                        
                     </nav>
                 </div>
