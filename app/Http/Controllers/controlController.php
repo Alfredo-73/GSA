@@ -4,20 +4,206 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
+use App\Cliente;
+use App\Quincena;
+use PDF;
+use Laracasts\Flash\Flash;
+use DB;
 
 class controlController extends Controller
 {
+
+    /* public function listado()
+    {
+        $controles = DB::table('control')
+        ->join('cliente', 'cliente.id', '=', 'control.id_cliente')
+        ->select('control.num_factura', 'control.importe', 'cliente.nombre as cliente')
+        ->get();
+        dd($controles);
+    }*/
+   /* public function getdata(Request $request)
+    {
+        $data = $request->all();
+        $this->func1($data);
+        $this->func2($data);
+    }
+
+    public function func1($data)
+    {
+        $cliente = $data->get('buscarporcliente');
+        $quincena = $data->get('buscarporquincena');
+
+        $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($cliente)
+            ->quincena($quincena)
+            ->paginate(10);
+
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+        $vac = compact('controles', 'clientes', 'quincenas');
+
+
+
+
+        return view('control_quincenal', $vac);
+               //Do something with data
+    }
+
+    public function func2($data)
+    {
+        $cliente = $data->get('buscarporcliente');
+        $quincena = $data->get('buscarporquincena');
+
+        $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($cliente)
+            ->quincena($quincena)
+            ->paginate(10);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+
+        $vac = compact('controles', 'clientes', 'quincenas');
+        $pdf = PDF::loadview('pdf', compact('controles', 'clientes', 'quincenas'));
+
+        return $pdf->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');//Do somithing with data
+    } -*/
+    public function listado(Request $request)
+    {
+        $name_cliente= $request->get('buscarpor');
+        $name_quinena=$request->get('por');
+        //dd($cliente);
+        //$variablesurl = $request->all();
+       
+        $controles = Control::where('id_cliente', 'like', "%$name_cliente%")
+            ->paginate(5);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+
+        return view('control_quincenal', compact('clientes', 'controles', 'quincenas'));
+    }
+//para usar scope
+    public function indexBuscar(Request $request)
+    {
+        $cliente = $request->get('buscarporcliente');
+        $quincena = $request->get('buscarporquincena');
+        //$data = $request->all();
+       //dd($cliente, $quincena);
+        $varcliente = $cliente;
+        $varquincena = $quincena;
+        //dd($varcliente);
+        $controles = Control::orderBy('quincena_id', 'asc')
+                ->cliente($cliente)
+                ->quincena($quincena)
+                ->paginate(10);
+                
+                $clientes = Cliente::all();
+                $quincenas = Quincena::all();
+                $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
+
+                 
+
+                
+               return view('control_quincenal', $vac);
+              
+            }
+           
+            
+            
+    public function imprimirBuscar($varcliente, $varquincena)
+            {
+                
+               
+                //dd($cliente);
+                //dd($quincena);
+                $controles = Control::orderBy('quincena_id', 'asc')
+            ->cliente($varcliente)
+            ->quincena($varquincena)
+            ->paginate();
+        
+        $pdf = PDF::loadview('pdf', compact('controles'));
+
+            return $pdf->setPaper('legal', 'landscape')
+                ->stream('archivo.pdf');
+            }
+
+    public function imprimir()
+    {
+        $controles = Control::orderBy('quincena_id', 'asc')
+                     ->paginate();
+
+        $pdf = PDF::loadview('pdf', compact('controles'));
+
+        return $pdf->setPaper('legal', 'landscape')
+            ->stream('archivo.pdf');
+    }
+             //usando scope global y select
+    public function buscarpor(Request $request)
+            {
+        $buscar = $request->get('buscarpor');
+        $tipo = $request->get('tipo');
+        //$variablesurl = $request->all();
+        /*$variablesurl = [
+            'tipo' => $tipo,
+            'buscarpor' => $buscar
+        ];*/
+        //$variablesurl = $request->input();
+       //$variablesurl = $request->query();
+        $variablesurl = $request->only(['tipo', 'buscarpor']);
+        // $variablesurl = $request->except(['page']);
+        //$variablesurl = $_GET;
+
+        //dd($variablesurl);
+        $controles = Control::buscarpor($tipo, $buscar)
+            ->paginate(3);
+
+        /*  $controles = Control::buscarpor($tipo, $buscar)
+                        ->paginate(3)->appends($variablesurl);*/
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+        $vac = compact('controles', 'clientes', 'quincenas');
+        
+
+        return view('control_quincenal', $vac);
+    }
+
+
+    public function busqueda(Request $request)
+    {
+        $noticia = Noticia::with('notas')->get();
+
+        $ntc_turno = $request->input('noticiero_turno');
+        if ($ntc_turno) {
+            $noticia = Noticia::where('noticiero_turno', 'LIKE', "%$ntc_turno%")
+                ->orWhere('noticiero_programa', 'LIKE', "%$ntc_turno%")
+                ->orWhere('noticiero_fecha', 'LIKE', "%$ntc_turno%")
+
+                ->paginate(2);
+
+            return view('noticia.listar', array('noticia' => $noticia));
+        } else {
+            $noticia = Noticia::paginate(3);
+            return view('noticia.listar', array('noticia' => $noticia));
+        }
+    }
     public function control(Request $req)
     {
-        $controles = Control::all();
+        $controles = Control::all()->sortBy('quincena');
+        
 
         // dd($productos);
         $vac = compact('controles');
         return view("control_quincenal", $vac);
     }
   
-    public function agregar(){
-       return view('agregar_control');
+    public function agregar(Request $req){
+        $controles = Control::all();
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+
+        
+        $vac = compact('controles', 'clientes', 'quincenas');
+        
+       return view('nuevo_control', $vac);
    }
 
     public function agregar_control(Request $req)
@@ -26,17 +212,17 @@ class controlController extends Controller
 
  
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
+            'quincena_id' => 'numeric|max:30',
             'id_cliente' => 'numeric|max:10',
 
-            'num_factura' => 'numeric|min:0000000001|max:99999999999',
-            'importe' => 'numeric|min:00000001|max:99999999',
-            'retencion' => 'numeric|min:00000001|max:99999999',
-            'monto_cobrado' => 'numeric|min:00000001|max:99999999',
-            'gasto_bancario' => 'numeric|min:00000001|max:99999999',
-            'pago_personal' => 'numeric|min:00000001|max:99999999',
-            'pago_transporte' => 'numeric|min:00000001|max:99999999',
-            'toneladas' => 'numeric|min:00000001|max:99999999',
+            'num_factura' => 'numeric|min:000000000|max:99999999999',
+            'importe' => 'numeric|min:0000000|max:9999999999',
+            'retencion' => 'numeric|min:0000000|max:9999999999',
+            'monto_cobrado' => 'numeric|min:0000000|max:9999999999',
+            'gasto_bancario' => 'numeric|min:0000000|max:9999999999',
+            'pago_personal' => 'numeric|min:0000000|max:9999999999',
+            'pago_transporte' => 'numeric|min:0000000|max:9999999999',
+            'toneladas' => 'numeric|min:0000000|max:9999999999',
             'observacion' => 'string|min:0|max:255',
             
         ];
@@ -54,7 +240,8 @@ class controlController extends Controller
 
         $control_nuevo = new Control();
         
-        $control_nuevo->quincena = $req['quincena'];
+        $control_nuevo->quincena_id = $req['quincena_id'];
+        $control_nuevo->nombre_quincena = $req['quincena_id'];
         $control_nuevo->id_cliente = $req['id_cliente'];
         $control_nuevo->num_factura = $req['num_factura'];
         $control_nuevo->importe = $req['importe'];
@@ -69,7 +256,8 @@ class controlController extends Controller
         //grabar
         $control_nuevo->save();
 
-      
+        Flash::success('Se ha dado de alta el control ' . $control_nuevo->quincena_id . ' de forma exitosa !');
+
     
 
 
@@ -80,28 +268,33 @@ class controlController extends Controller
     {
 
         $control = Control::Find($id);
+        $clientes = Cliente::all();
+        $quincenas= Quincena::all();
 
-        $vac = compact('control');
+        $vac = compact('control', 'clientes', 'quincenas');
 
         return view('modif_control', $vac);
         
     }
-    public function update(Request $req,$id)
+    public function update(Request $req, $id)
     {
 
         $control = Control::Find($id);
+        $clientes = Cliente::all();
+        $quincenas = Quincena::all();
+      // dd($req);
         $reglas = [
-            'quincena' => 'numeric|min:1|max:24',
-            'id_cliente' => 'numeric|max:10',
+            //'quincena_id' => 'numeric|min:1|max:30',
+           // 'id_cliente' => 'numeric|max:10',
 
-            'num_factura' => 'numeric|min:0000000001|max:99999999999',
-            'importe' => 'numeric|min:00000001|max:99999999',
-            'retencion' => 'numeric|min:00000001|max:99999999',
-            'monto_cobrado' => 'numeric|min:00000001|max:99999999',
-            'gasto_bancario' => 'numeric|min:00000001|max:99999999',
-            'pago_personal' => 'numeric|min:00000001|max:99999999',
-            'pago_transporte' => 'numeric|min:00000001|max:99999999',
-            'toneladas' => 'numeric|min:00000001|max:99999999',
+            'num_factura' => 'numeric|min:000000000|max:99999999999',
+            'importe' => 'numeric|min:0000000|max:9999999999',
+            'retencion' => 'numeric|min:0000000|max:9999999999',
+            'monto_cobrado' => 'numeric|min:0000000|max:9999999999',
+            'gasto_bancario' => 'numeric|min:0000000|max:9999999999',
+            'pago_personal' => 'numeric|min:0000000|max:9999999999',
+            'pago_transporte' => 'numeric|min:0000000|max:9999999999',
+            'toneladas' => 'numeric|min:0000000|max:99999999',
             'observacion' => 'string|min:0|max:255',
             
         ];
@@ -116,8 +309,7 @@ class controlController extends Controller
         ];
 
         $this->validate($req, $reglas, $mensajes);
-        $control->quincena = $req['quincena'];
-        $control->id_cliente = $req['id_cliente'];
+       
         $control->num_factura = $req['num_factura'];
         $control->importe = $req['importe'];
         $control->retencion = $req['retencion'];
@@ -129,7 +321,27 @@ class controlController extends Controller
         $control->toneladas = $req['toneladas'];
         $control->observacion = $req['observacion'];
         //grabar
+        $control->quincena_id = $req['quincena_id'];
+        $control->nombre_quincena = $req['quincena_id'];
+        $control->id_cliente = $req['id_cliente'];
+        
+     /*   foreach($clientes as $cliente)
+        {
+            if($req['id_cliente'] == $cliente['nombre'])
+            {
+                $control->id_cliente = $cliente['id'];
+            }
+        }
+        foreach ($quincenas as $quincena) {
+            if ($req['quincena_id'] == $quincena['nombre']) {
+                $control->quincena_id = $quincena['id'];
+                $control->nombre_quincena = $quincena['id'];
+            }
+        }
+        dd($control); */
+
         $control->save();
+        Flash::success('Se ha modificado el control ' . $control->quincena_id . ' de forma exitosa !');
 
         return redirect('control_quincenal');
 
@@ -137,4 +349,66 @@ class controlController extends Controller
 
                
     }
+
+
+    public function borrar(Request $form)
+    //public function borrar($id)
+    {
+        $id = $form['id'];
+
+        $control = Control::find($id);
+        $control->delete();
+
+        Flash::success('Se ha dado de baja el control ' . $control->quincena_id . ' de forma exitosa !');
+
+        return redirect('/control_quincenal');
+    }
+
+    //pdf
+    public function index()
+    {
+        $controles = Control::all();
+
+        return view('list', compact('controles'));
+    }
+
+    public function downloadPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf1', compact('control'));
+
+        return $pdf->download('control.pdf');
+
+        
+    }
+//para verlo este usamos
+
+    public function verPDF($id)
+    {
+        $control = Control::find($id);
+        $pdf = PDF::loadView('pdf1', compact('control'));
+
+        $data = [
+            'titulo' => 'Control.net'
+        ];
+
+        return $pdf->setPaper('a4', 'portrait')
+            ->stream('archivo.pdf');
+
+       // return $pdf->download('control.pdf')
+        ;
+
+        //para verlo
+    }
+    //para ver y apaisar la hoja
+   /* public function download()
+    {
+        $data = [
+            'titulo' => 'Styde.net'
+        ];
+
+        return PDF::loadView('vista-pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->stream('archivo.pdf');
+    }*/
 }

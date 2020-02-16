@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('INGRESO') }}</div>
+                <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('INGRESO') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -53,7 +53,7 @@
 
                         <div class="form-group row mb-0 mx-auto">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-success" href="('/inicio'">
+                                <button type="submit" class="btn btn-primary text-center" href="('/inicio'">
                                     {{ __('Ingresar') }}
                                 </button>
 

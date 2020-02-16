@@ -3,7 +3,6 @@
 @section('content')
 <div class="container my-5">
 
-
     <!--Section: Content-->
     <section class="dark-grey-text">
 
@@ -27,11 +26,11 @@
 
                         <div class="media">
                             <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                                <i class="fab fa-react fa-2x text-info"></i>
+                                <i class="fas fa-tasks fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
                                 <h5 class="dark-grey-text mb-3">FACTURACION VS. PAGO</h5>
-                                <p class="font-weight-light text-muted mb-0">Ingrese aquí para cargar datos de facturacion y pago, por quincena.</p>
+                                <p class="font-weight-light text-muted mb-0">Detalle de facturacion quincenal.</p>
                             </div>
                         </div>
 
@@ -47,7 +46,7 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <a href="" class="card hoverable">
+                <a href="/../cosecha" class="card hoverable">
 
                     <!-- Card content -->
                     <div class="card-body">
@@ -79,17 +78,17 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Card -->
-                <a href="#!" class="card hoverable">
+                <a href="/../sancion" class="card hoverable">
 
                     <!-- Card content -->
                     <div class="card-body">
 
                         <div class="media">
                             <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                                <i class="fab fa-react fa-2x text-info"></i>
+                                <i class="far fa-id-card fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
-                                <h5 class="dark-grey-text mb-3">SANSIONES DISCIPLINARIAS</h5>
+                                <h5 class="dark-grey-text mb-3">SANCIONES DISCIPLINARIAS</h5>
                                 <p class="font-weight-light text-muted mb-0">Carga de sansiones y reportes de sansiones.</p>
                             </div>
                         </div>
@@ -97,9 +96,37 @@
                     </div>
 
                 </a>
+            </div>
+
+
+            <!--First column-->
+            <div class="col-md-6 mb-4">
+
+                <!-- Card -->
+
+
+                <!-- Card content -->
+                <div class="card-body card hoverable">
+                    <div class="media">
+                        <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                            <i class="fab fa-react fa-2x purple-text"></i>
+                        </span>
+                        <div class="media-body">
+                            <h5 class="dark-grey-text mb-2">ADMINISTRACION DE TABLAS</h5>
+                            <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
+                            <div class="row">
+                                <a href="/../abm_cliente" class="card-link">CLIENTES</a>
+                                <a href="/../abm_capataz" class="card-link">CAPATACES</a>
+                                <a href="/../abm_quincena" class="card-link">QUINCENAS</a>
+                                <a href="/../abm_empresa" class="card-link">EMPRESAS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
     </section>
-
 
 </div>
 @endsection

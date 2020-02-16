@@ -3,20 +3,22 @@
 @section('content')
 
 <div class="container mt-5">
+    <section>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header green text-white text-center">{{ __('CONTROL DE FACTURACION Y PAGO') }}</div>
+                <div class="card-header text-white text-center" style="background-color:darkblue" >{{ __('MODIFICACION CONTROL DE FACTURACION Y PAGO') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/modif_control/{{$control->id}}" >
                         @csrf
                         {{method_field('PUT')}}
+                        <!--
                         <div class="form-group row">
                             <label for="quincena" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="quincena" type="text" class="form-control @error('quincena') is-invalid @enderror" name="quincena" value="{{ $control->quincena }}" required autocomplete="quincena" autofocus>
+                                <input id="quincena" type="text" class="form-control @error('quincena') is-invalid @enderror" name="quincena" value="{{ $control->nombre_quincena }}" required autocomplete="quincena" autofocus>
 
                                 @error('quincena')
                                 <span class="invalid-feedback" role="alert">
@@ -24,13 +26,32 @@
                                 </span>
                                 @enderror
                             </div>
+                        </div> -->
+
+
+                    <div class="form-group row">   
+
+                     <label for="quincena_id" class="col-md-4 col-form-label text-md-right">{{ __('QUINCENA') }}</label>
+                   
+                    <div class="col-md-6">
+                    <select class="selectpicker show-menu-arrow" name="quincena_id" data-style="btn-success" data-width="auto">
+                            <option value="{{$control->quincena_id}}" selected>{{$control->quincena->nombre}}</option>
+                            @foreach($quincenas as $quincena)
+                            
+                            <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
+                            
+                           
+                         @endforeach
+                           
+                            </select>                              
                         </div>
+                    </div> 
 
                         <div class="form-group row">
                             <label for="num_factura" class="col-md-4 col-form-label text-md-right">{{ __('Nº DE FACTURA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="num_factura" type="text" class="form-control @error('email') is-invalid @enderror" name="num_factura" value="{{ $control->num_factura }}" required autocomplete="num_factura">
+                                <input id="num_factura" type="text" class="form-control @error('num_factura') is-invalid @enderror" name="num_factura" value="{{ $control->num_factura }}" required autocomplete="num_factura">
 
                                 @error('num_factura')
                                 <span class="invalid-feedback" role="alert">
@@ -46,7 +67,7 @@
                             <div class="col-md-6">
                                 <input id="importe" type="text" class="form-control @error('importe') is-invalid @enderror" name="importe"  value="{{ $control->importe }}" required autocomplete="importe">
 
-                                @error('password')
+                                @error('importe')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -54,11 +75,31 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">   
+
+                     <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                   
+
+                    <select class="selectpicker show-menu-arrow" name="id_cliente" data-style="btn-success" data-width="auto">
+                            <option value="{{$control->id_cliente}}" selected>{{$control->cliente->nombre}}</option>
+                            @foreach($clientes as $cliente)
+                            
+                            <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+                            
+                           
+                         @endforeach
+                           
+                            </select>                              
+                        
+                        </div>  
+                        
+
+<!--
                         <div class="form-group row">
-                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                            <label for="id_cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE')  }} {{$control->cliente->nombre}} </label>
 
                             <div class="col-md-6">
-                                <input id="id_cliente" type="text" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
+                                <input id="id_cliente" type="number" class="form-control @error('id_cliente') is-invalid @enderror" name="id_cliente" value="{{ $control->id_cliente }}" required autocomplete="id_cliente">
 
                                 @error('id_cliente')
                                 <span class="invalid-feedback" role="alert">
@@ -66,7 +107,7 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="retencion" class="col-md-4 col-form-label text-md-right">{{ __('RETENCION') }}</label>
@@ -124,12 +165,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="pago_transporte" class="col-md-4 col-form-label text-md-right">{{ __('PAGO TRNSPORTE') }}</label>
+                            <label for="pago_transporte" class="col-md-4 col-form-label text-md-right">{{ __('PAGO TRANSPORTE') }}</label>
 
                             <div class="col-md-6">
                                 <input id="pago_transporte" type="text" class="form-control @error('pago_transporte') is-invalid @enderror" name="pago_transporte" value="{{ $control->pago_transporte }}" required autocomplete="pago_transporte">
 
-                                @error('pago_trsnaporte')
+                                @error('pago_transporte')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -150,11 +191,18 @@
                             </div>
                         </div>
 
+                        <div class="form-group row shadow-textarea green-border-focus">
+
+                         <!--   <div class="form-group shadow-textarea"> -->
+                            <label for="observacion">{{ __('OBSERVACION') }}</label>
+                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion"  >{{ $control->observacion }}</textarea>
+                            </div>
+<!--
                         <div class="form-group row">
                             <label for="observacion" class="col-md-4 col-form-label text-md-right">{{ __('OBSERVACION') }}</label>
 
                             <div class="col-md-6">
-                                <input id="observacion" type="textarea" class="form-control @error('observacion') is-invalid @enderror" name="observacion"value="{{ $control->observacion }}"  >
+                                <input id="observacion" type="text" class="form-control @error('observacion') is-invalid @enderror" name="observacion"value="{{ $control->observacion }}"  >
 
                                 @error('observacion')
                                 <span class="invalid-feedback" role="alert">
@@ -162,15 +210,17 @@
                                 </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                                     {{ __('Grabar') }}
                                 </button>
+                                 <a class="fas fa-undo" role="button" href=  {{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Regresar</a>
+           
                             </div>
                         </div>
                     </form>
@@ -178,6 +228,7 @@
             </div>
         </div>
     </div>
+    </section>
 </div>
 
 @endsection
