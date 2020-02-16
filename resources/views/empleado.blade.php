@@ -45,7 +45,7 @@
                         <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
                         <a class="fas fa-sync-alt" role="button" href=  {{ url('/empleado') }}  style="cursor:pointer" title="refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif" >  Refrescar</a>
                 <a class="btn btn-deep-orange" href=""><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> 
-                <a class="btn btn-deep-orange" href="/imprimir"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a>     
+                <a class="btn btn-deep-orange" href="/imprimir_empleado"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a>     
 
             </form>
                     </nav>

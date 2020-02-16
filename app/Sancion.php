@@ -10,9 +10,9 @@ class Sancion extends Model
 
     public $guarded = [];
 
-    public function cliente()
+    public function empresa()
     {
-        return $this->belongsTo('App\Cliente', 'id_cliente');
+        return $this->belongsTo('App\Empresa', 'id_empresa');
     }
     public function capataz()
     {
@@ -27,12 +27,12 @@ class Sancion extends Model
     {
         return $this->belongsTo('App\Empleado', 'id_sanciones');
     }
-    public function scopeCapataz($query, $capataz)
+  /* public function scopeCapataz($query, $capataz)
     {
         if ($capataz && ($capataz != "Capataz")) {
             return $query->where('id_capataz', 'LIKE', "%$capataz%");
         }
-    }
+    } */
     public function scopeSanciones($query, $sanciones)
     {
         if ($sanciones && ($sanciones != "sanciones")) {
@@ -44,8 +44,6 @@ class Sancion extends Model
     		return $query->where('nombre','like',"%$nombres%");
     	}
     }
-
-
 
     public function scopeApellidos($query, $apellidos) {
     	if (trim($apellidos) != "") {
