@@ -4,55 +4,122 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sancion;
+use App\Empleado;
+use App\Empresa;
+
 use App\Capataz;
 use App\Cliente;
 use PDF;
+use DB;
 use Laracasts\Flash\Flash;
 use dateTranslator;
 
 
 class SancionController extends Controller
 {
-    public function listado(Request $request)
+    public function listado()
     {
-        $fechadesde = trim($request->get('fechadesde'));
-        $fechahasta = trim($request->get('fechahasta'));
-        $buscacapataz = trim($request->get('buscacapataz'));
-        //dd($fechadesde, $fechahasta, $buscacapataz);
-        $varfechadesde = $fechadesde;
-        $varfechahasta = $fechahasta;
-        $varbuscacapataz = $buscacapataz;
-
-        if ($varfechadesde == null && $varfechadesde == null) {
-            $varfechadesde = 0000 - 00 - 00;
-            $varfechahasta = 0000 - 00 - 00;
-        }
         $sanciones = Sancion::all()->sortBy('legajo');
-        $clientes = Cliente::all();
         $capataz = Capataz::all();
-
+        $empresa = Empresa::all();
+        $empleados = Empleado::all();
+       // $empleadosConSanciones = Empleado::with('sanciones')->get();
         // dd($sanciones);
-        $vac = compact('sanciones', 'clientes', 'capataz');
+        $vac = compact('sanciones', 'clientes', 'capataz', 'empresa', 'empleados');
+        //dd($vac);
         return view("sancion", $vac);
     }
 
-    public function agregar(Request $req)
+    //para usar scope
+    public function indexBuscar(Request $request)
     {
+       //dd($request);
+        if (empty($request)) {
+            $empleados = Empleado::all();
+            $sanciones = Sancion::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();
+           
+
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa');
+//dd($vac);
+            return view('sancion', $vac);
+
+        } else
+        {
+            $fechadesde = trim($request->get('fechadesde'));
+            $fechahasta = trim($request->get('fechahasta'));
+            //dd($fechadesde, $fechahasta, $buscacapataz);
+            $varfechadesde = $fechadesde;
+            $varfechahasta = $fechahasta;
+
+            if ($varfechadesde == null && $varfechadesde == null) {
+                $varfechadesde = 0000 - 00 - 00;
+                $varfechahasta = 0000 - 00 - 00;
+            }
+            
+            $capataz = $request->get('buscarporcapataz');
+            $nombres = $request->get('buscarpornombre');
+            
+            $apellidos = $request->get('buscarporapellido');
+
+
+            //$data = $request->all();
+            //dd($sanciones, $quincena);
+        
+           // $varcapataz = $capataz;
+            //dd($varsanciones);
+        
+            if(empty($fechadesde && $fechahasta))
+            {
+                $sanciones = Sancion::orderBy('apellido', 'asc')
+                    ->nombres($nombres)->apellidos($apellidos)
+                    ->get();
+            }else{
+                $sanciones = Sancion::orderBy('apellido', 'asc')
+                    ->nombres($nombres)->apellidos($apellidos)
+                    ->whereBetween('fecha',[$fechadesde, $fechahasta])->get();  
+            }
+
+            
+
+            $empleados = Empleado::all();
+            $capataz = Capataz::all();
+            $empresa = Empresa::all();
+         
+
+            $vac = compact( 'sanciones', 'empleados', 'capataz', 'empresa');
+
+        //dd($vac);
+
+
+            return view('sancion', $vac);
+        }
+    }
+
+    public function agregar($id)
+    {
+        //dd($id);
         $clientes = Cliente::all();
         $capataz = Capataz::all();
+        $empleado =  Empleado::Find($id);
+        $empresas = Empresa::all();
 
-        $vac = compact('capataz', 'clientes');
+        $vac = compact('capataz', 'clientes', 'empresas', 'empleado');
+        //dd($vac);
         return view('nueva_sancion', $vac);
     }
 
-    public function agregar_sancion(Request $req)
+    public function agregar_sancion(Request $req, $id)
     {
+        //dd($req);
+        $empleado = Empleado::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:9999999999',
+            'legajo' => 'numeric|max:99999999999',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
-            'dni' => 'numeric|max:999999999',
+            'dni' => 'numeric|max:9999999999',
             'dias' => 'numeric|max:999',
             'fecha' => 'date',
             'reincorporacion' => 'date',
@@ -74,13 +141,13 @@ class SancionController extends Controller
         $this->validate($req, $reglas, $mensajes);
 
         $sancion_nueva = new Sancion();
-
-        $sancion_nueva->legajo = $req['legajo'];
-        $sancion_nueva->nombre = $req['nombre'];
-        $sancion_nueva->apellido = $req['apellido'];
-        $sancion_nueva->dni = $req['dni'];
-        $sancion_nueva->id_cliente = $req['id_cliente'];
-        $sancion_nueva->id_capataz = $req['id_capataz'];
+        $sancion_nueva->legajo = $empleado->legajo;
+        $sancion_nueva->nombre = $empleado->nombre;
+        $sancion_nueva->apellido = $empleado->apellido;
+        $sancion_nueva->dni = $empleado->dni;
+        $sancion_nueva->id_empresa = $empleado->id_empresa;
+        $sancion_nueva->id_capataz = $empleado->id_capataz;
+        $sancion_nueva->id_empleado = $empleado->id;
         $sancion_nueva->dias = $req['dias'];
         $sancion_nueva->motivo = $req['motivo'];
         
@@ -92,12 +159,14 @@ class SancionController extends Controller
 
         $nueva_fecha = date('Y-m-j', $nueva_fecha);
         //dd($nueva_fecha);
-
         $sancion_nueva->reincorporacion = $nueva_fecha;
         //grabar
         $sancion_nueva->save();
-
-
+        
+        //dd($sancion_nueva);
+        $empleado->id_sanciones = $sancion_nueva->id;
+        $empleado->save();
+//dd($empleado);
         Flash::success('Se ha dado de alta la sancion de ' . $sancion_nueva->legajo . ' de forma exitosa !');
 
 
@@ -192,8 +261,9 @@ class SancionController extends Controller
 
     public function verPDF($id)
     {
+        //dd($id);
         $sancion = Sancion::find($id);
-        $pdf = PDF::loadView('pdf1', compact('sancion'));
+        $pdf = PDF::loadView('PDFSancion', compact('sancion'));
 
         $data = [
             'titulo' => 'Control.net'
@@ -217,6 +287,21 @@ class SancionController extends Controller
         $vac = compact('sanciones');
 
         return view('sancion', $vac);
+    }
+
+    public function listadoEmpleadoConSanciones($id)
+    {
+        $empleado = Empleado::Find($id);
+       /* $sanciones = Sancion::join('empleados', 'sanciones.id_empleado', '=', 'empleados.id')
+        ->where('empleados.id', '=', 'sanciones.id_empleado')->get();*/
+        $sanciones = Sancion::whereid_empleado($id)->with('empleado')->get();
+        $capataz = Capataz::all();
+        $empresa = Empresa::all();
+        
+        // dd($sanciones);
+        $vac = compact('sanciones', 'capataz', 'empresa', 'empleado');
+       // dd($vac);
+        return view("sancionPorEmpleado", $vac);
     }
 
     //
