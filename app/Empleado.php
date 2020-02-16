@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     //
-    //public $table = 'empleados';
+    public $table = 'empleados';
 
     public $guarded = [];
 
@@ -57,5 +57,10 @@ class Empleado extends Model
         if (trim($apellidos) != "") {
             return $query->where('apellido', 'like', "%$apellidos%");
         }
+    }
+
+    public function empresa()
+    {
+        return $this->hasMany('App\Empresa', 'id_empresa');
     }
 }
