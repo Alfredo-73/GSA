@@ -12,12 +12,13 @@ class personal extends Model
     public $guarded = [];
 
 
-    //public function empresa()
-    //{
-    //    return $this->belongsTo('App\Empresa', 'id_empresa');
-    //}
     public function capataz()
     {
         return $this->belongsTo('App\Capataz', 'id_capataz');
+    }
+
+    public function empresa()
+    {
+        return $this->belongsTo('App\Empresa', 'id_empleado');
     }
 }

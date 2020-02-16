@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     //
-    //public $table = 'empleados';
+    public $table = 'empleados';
 
     public $guarded = [];
 
@@ -58,4 +58,5 @@ class Empleado extends Model
             return $query->where('apellido', 'like', "%$apellidos%");
         }
     }
+
 }

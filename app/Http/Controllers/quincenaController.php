@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\quincena;
 use App\Control;
 use Laracasts\Flash\Flash;
+ 
 
 class quincenaController extends Controller
 {

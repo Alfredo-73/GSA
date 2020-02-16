@@ -2,11 +2,11 @@
 
 @section('content')
 @section('scripts')
-<script type="text/javascript">
 
-</script>
 @endsection
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="../js/gsa.js"></script>
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="">
@@ -124,14 +124,17 @@
                             <td class="text-center"> {{$cosecha->toneladas}}</td>
                             <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
                             <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
+                            
                             <td>
-                                <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
+                                <form method="POST" action=" {{ url('/borrar_cosecha/'.$cosecha->id) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <a type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-                                    </a>
+                                    <!--<a type="submit" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR1-->
+                                    <a href="" type="button" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1" data-id="{{$cosecha->id}}"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>Borrar1</a>
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+
+                                        <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                 </form>
-                            </td>
                             <td>
                                 <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                     @csrf
