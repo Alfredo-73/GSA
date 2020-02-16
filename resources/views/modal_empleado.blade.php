@@ -79,7 +79,7 @@
                         <a id="modificar" class="btn btn-primary " href="/../modif_empleado/{{$empleado->id}}"  ><i class="far fa-edit mr-2"></i>Modificar </a>
 
                       
-                        <a class="btn btn-deep-orange" href="/../PDFEmpleado/{{$empleado->id}} "><i class="fas fa-print mr-2 " style="color:white"></i>Imprimir</a>
+                       <!-- <a class="btn btn-deep-orange" href="/../PDFEmpleado/{{$empleado->id}} "><i class="fas fa-print mr-2 " style="color:white"></i>Imprimir</a>-->
 
                     </div>
                 </div>

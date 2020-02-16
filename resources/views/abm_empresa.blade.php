@@ -10,7 +10,6 @@
                     <div class="table-wrapper">
                         <h1 class="text-center">LISTADO DE EMPRESAS</h1>
                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_empresa') }}" role="button" style="margin-left:35rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVA</a>
-                        <button onclick="swal('Hello world!','','error');">probando</button>
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
                         <form method="POST" action="">
