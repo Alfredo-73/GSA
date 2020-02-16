@@ -9,7 +9,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('CARGA DE NUEVA SANCION DISCIPLINARIA') }}</div>
-
+                    <div class="mt-3">
+                        <ul style='color:red' class="text-center">
+                            @foreach ($errors->all() as $error)
+                            <li style='list-style:none'>
+                                {{$error}}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 <div class="card-body">
                     <form method="POST" action="/../nueva_sancion/{{$empleado->id}}">
                         @csrf

@@ -8,7 +8,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('MODIFICACION PARTE DIARIO DE COSECHA') }}</div>
-
+                   <div class="mt-3">
+                        <ul style='color:red' class="text-center">
+                            @foreach ($errors->all() as $error)
+                            <li style='list-style:none'>
+                                {{$error}}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+ 
                 <div class="card-body">
                     <form method="POST" action="/modif_cosecha/{{$cosecha->id}}" >
                         @csrf
