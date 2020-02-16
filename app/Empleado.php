@@ -59,8 +59,4 @@ class Empleado extends Model
         }
     }
 
-    public function empresa()
-    {
-        return $this->hasMany('App\Empresa', 'id_empresa');
-    }
 }
