@@ -75,7 +75,7 @@
         <div class="row">
 
             <!--First column-->
-            <div class="col-md-6 mb-4">
+            <div class="col-md-3 mb-4">
 
                 <!-- Card -->
                 <a href="/../sancion" class="card hoverable">
@@ -89,7 +89,7 @@
                             </span>
                             <div class="media-body">
                                 <h5 class="dark-grey-text mb-3">SANCIONES DISCIPLINARIAS</h5>
-                                <p class="font-weight-light text-muted mb-0">Carga de sansiones y reportes de sansiones.</p>
+                                <p class="font-weight-light text-muted mb-0">Carga de sanciones.</p>
                             </div>
                         </div>
 
@@ -98,32 +98,56 @@
                 </a>
             </div>
 
+                <!--First column-->
+                <div class="col-md-3 mb-4">
 
-            <!--First column-->
-            <div class="col-md-6 mb-4">
+                    <!-- Card -->
+                    <a href="/../empleado" class="card hoverable">
 
-                <!-- Card -->
+                        <!-- Card content -->
+                        <div class="card-body">
 
-
-                <!-- Card content -->
-                <div class="card-body card hoverable">
-                    <div class="media">
-                        <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
-                            <i class="fab fa-react fa-2x purple-text"></i>
-                        </span>
-                        <div class="media-body">
-                            <h5 class="dark-grey-text mb-2">ADMINISTRACION DE TABLAS</h5>
-                            <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
-                            <div class="row">
-                                <a href="/../abm_cliente" class="card-link">CLIENTES</a>
-                                <a href="/../abm_capataz" class="card-link">CAPATACES</a>
-                                <a href="/../abm_quincena" class="card-link">QUINCENAS</a>
-                                <a href="/../abm_empresa" class="card-link">EMPRESAS</a>
+                            <div class="media">
+                                <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                                    <i class="far fa-id-card fa-2x text-info"></i>
+                                </span>
+                                <div class="media-body">
+                                    <h5 class="dark-grey-text mb-3">EMPLEADOS</h5>
+                                    <p class="font-weight-light text-muted mb-0">Mantenimiento de Empleados</p>
+                                </div>
                             </div>
+
+                        </div>
+
+                    </a>
+                </div>
+
+
+        <!--First column-->
+        <div class="col-md-6 mb-4">
+
+            <!-- Card -->
+
+
+            <!-- Card content -->
+            <div class="card-body card hoverable">
+                <div class="media">
+                    <span class="card-img-100 d-inline-flex justify-content-center align-items-center rounded-circle grey lighten-3 mr-4">
+                        <i class="fab fa-react fa-2x purple-text"></i>
+                    </span>
+                    <div class="media-body">
+                        <h5 class="dark-grey-text mb-2">ADMINISTRACION DE TABLAS</h5>
+                        <p class="font-weight-light text-muted mb-0">Carga de nuevos clientes y capataces.</p>
+                        <div class="row">
+                            <a href="/../abm_cliente" class="card-link">CLIENTES</a>
+                            <a href="/../abm_capataz" class="card-link">CAPATACES</a>
+                            <a href="/../abm_quincena" class="card-link">QUINCENAS</a>
+                            <a href="/../abm_empresa" class="card-link">EMPRESAS</a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
     </section>

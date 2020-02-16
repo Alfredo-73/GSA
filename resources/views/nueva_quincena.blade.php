@@ -8,7 +8,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('ALTA QUINCENA') }}</div>
-
+                   <div class="mt-3">
+                        <ul style='color:red' class="text-center">
+                            @foreach ($errors->all() as $error)
+                            <li style='list-style:none'>
+                                {{$error}}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+ 
                 <div class="card-body">
                     <form method="POST" action="{{ url('/nueva_quincena') }}">
                         @csrf
@@ -17,13 +26,8 @@
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" >
 
-                                @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 

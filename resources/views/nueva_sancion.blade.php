@@ -9,7 +9,15 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('CARGA DE NUEVA SANCION DISCIPLINARIA') }}</div>
-
+                    <div class="mt-3">
+                        <ul style='color:red' class="text-center">
+                            @foreach ($errors->all() as $error)
+                            <li style='list-style:none'>
+                                {{$error}}
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 <div class="card-body">
                     <form method="POST" action="/../nueva_sancion/{{$empleado->id}}">
                         @csrf
@@ -88,14 +96,14 @@
                             $nueva_fecha = date('Y-m-j', $nueva_fecha);
                         }
                         ?>
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="reincorporacion" class="col-md-4 col-form-label text-md-right">{{ __('FECHA REINCORPORACION') }}  </label>
 
                             <div class="col-md-6">
                                 <input id="reincorporacion" type="date" class="form-control"  value="@if(!empty($nueva_fecha)) {{$nueva_fecha}} @endif"  >
                                 
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group row">
                             <label for="motivo" class="col-md-4 col-form-label text-md-right">{{ __('MOTIVO') }}</label>
                             
