@@ -125,8 +125,8 @@
                             <td class="text-center"> {{$sancion->dias}}</td>
                             <td class="text-center"> {{$sancion->reincorporacion}}</td>
                             <td class="text-center"> {{$sancion->capataz->nombre}}</td> 
-                            <td class="text-center"> {{$sancion->empresa->nombre}}</td>
-                            <td class="text-center" hidden="true"> {{$sancion->supervisor}}</td>
+                            <td class="text-center"> {{$sancion->empresa->razon_social}}</td>
+                        
                             <td>
                                 <form method="POST" action="{{url('/borrar_sancion/'.$sancion->id) }}">
                                     {{ csrf_field() }}

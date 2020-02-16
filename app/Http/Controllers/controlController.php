@@ -221,9 +221,9 @@ class controlController extends Controller
 
  
         $reglas = [
-            'quincena_id' => 'numeric|max:30',
-            'id_cliente' => 'numeric|max:10',
-
+            'quincena_id' => 'required',
+            
+            'id_cliente' => 'required',
             'num_factura' => 'numeric|min:000000000|max:99999999999',
             'importe' => 'numeric|min:0000000|max:9999999999',
             'retencion' => 'numeric|min:0000000|max:9999999999',
@@ -242,6 +242,7 @@ class controlController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
+             'required' => 'El campo :attribute no fue seleccionado',
             'unique' => 'El campo :attribute se encuentra repetido'
         ];
 
