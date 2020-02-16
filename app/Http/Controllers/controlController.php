@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Control;
 use App\Cliente;
-use App\Quincena;
+use App\quincena;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
@@ -84,27 +84,36 @@ class controlController extends Controller
 //para usar scope
     public function indexBuscar(Request $request)
     {
-        $cliente = $request->get('buscarporcliente');
-        $quincena = $request->get('buscarporquincena');
-        //$data = $request->all();
-       //dd($cliente, $quincena);
-        $varcliente = $cliente;
-        $varquincena = $quincena;
-        //dd($varcliente);
-        $controles = Control::orderBy('quincena_id', 'asc')
-                ->cliente($cliente)
-                ->quincena($quincena)
-                ->paginate(10);
-                
-                $clientes = Cliente::all();
-                $quincenas = Quincena::all();
-                $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
 
-                 
+        if (empty($request)) 
+        {
+            $controles = Control::all();
+            $clientes = Cliente::all();
+            $quincenas = Quincena::all();
+            $vac = compact('controles', 'clientes', 'quincenas');
+            return view('control_quincenal', $vac);
+        }else
+        {
+            $cliente = $request->get('buscarporcliente');
+            $quincena = $request->get('buscarporquincena');
+            //$data = $request->all();
+           //dd($cliente, $quincena);
+            $varcliente = $cliente;
+            $varquincena = $quincena;
+            //dd($varcliente);
+            $controles = Control::orderBy('quincena_id', 'asc')
+                    ->cliente($cliente)
+                    ->quincena($quincena)
+                    ->paginate(10);
+                    
+                    $clientes = Cliente::all();
+                    $quincenas = Quincena::all();
+            $vac = compact('controles', 'clientes', 'quincenas', 'varcliente', 'varquincena');
+            return view('control_quincenal', $vac);
+        }
+        
 
-                
-               return view('control_quincenal', $vac);
-              
+
             }
            
             

@@ -25,7 +25,7 @@
                         
                   
                         <form class="form-inline md-form mr-auto mb-4 float-right" action="">
-                        <select name="buscarporsanciones" class="selectpicker show-menu-arrow" >
+                        <!--<select name="buscarporsanciones" class="selectpicker show-menu-arrow" >
                         <option>Sanciones</option>
                                 @foreach($sanciones as $sancion)
                         <option value="{{$sancion->id}}" @if(old('buscarporsanciones'))selected @endif >{{$sancion->nombre}}</option>
@@ -37,12 +37,15 @@
                         @foreach($capataz as $capat)
                         <option value="{{$capat->id}}" @if(old('buscarporcapataz'))selected @endif>{{$capat->nombre}}</option>
                         @endforeach
-                        </select>
+                        </select>-->
+                         <input name="buscarpornombre" class="form-control mr-sm-2 text-white" type="search" placeholder="Buscar por nombre empleado" aria-label="Search">
+                            <input name="buscarporapellido" class="form-control mr-sm-2 text-white" type="search" placeholder="Buscar por apellido empleado" aria-label="Search">
+    
 
                         <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
                         <a class="fas fa-sync-alt" role="button" href=  {{ url('/empleado') }}  style="cursor:pointer" title="refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif" >  Refrescar</a>
-                @if(($varsanciones||$varcapataz)&&($varsanciones != 'Cliente' || $varcapataz != 'Capataz' )  )     <a class="btn btn-deep-orange" href="/imprimir/{{$varsanciones}}/{{$varcapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> @endif
-                @if(empty($varsanciones)|| empty($varcapataz)||($varsanciones=='Cliente') && ($varcapataz=='Capataz') )  <a class="btn btn-deep-orange" href="/imprimir"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a> @endif     
+                <a class="btn btn-deep-orange" href=""><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> 
+                <a class="btn btn-deep-orange" href="/imprimir_empleado"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir reporte</a>     
 
             </form>
                     </nav>
