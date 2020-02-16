@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
-use App\Cliente;
 use App\quincena;
+use App\Cliente;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;

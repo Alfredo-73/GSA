@@ -114,19 +114,21 @@ class empresaController extends Controller
     }
 
     public function borrar($id)
-    {
-        $empresa = Empresa::where('id', $id)->with('personal')->first();
-        if ($empresa) {
-            if ($empresa->personal->isNotEmpty()) {
-                Flash('No se puede borrar la Razon Social ' . $empresa->razon_social . ' ya que tiene datos asociados')->error();
-                return back();
+    { {
+            $empresa = Empresa::where('id', $id)->with('personal')->get();
+            $empresa1 = Empresa::where('id', $id)->with('empleados')->get();
+            if ($empresa || $empresa1) {
+                if ($empresa1->personal->isNotEmpty() || $empresa->empleados->isNotEmpty()) {
+                    Flash('No se puede borrar el cliente ' . $empresa->razon_social . ' ya que tiene datos asociados')->error();
+                    return back();
+                }
+                $empresa->delete();
+                Flash::success('Se ha borrado el cliente ' . $empresa->razon_social . '  de forma exitosa!!!');
+            } else {
+                return back()->withErrors('La Razon Social no existe');
             }
-            $empresa->delete();
-            Flash::success('Se ha borrado la Razon Social ' . $empresa->razon_social . '  de forma exitosa!!!');
-        } else {
-            return back()->withErrors('La Razon Social no existe');
+            return redirect('abm_empresa');
         }
-        return redirect('abm_empresa');
     }
 }
 
