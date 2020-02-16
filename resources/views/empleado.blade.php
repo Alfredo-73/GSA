@@ -20,7 +20,7 @@
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4 rounded">
                         <div class="row">
-                            <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE SANCION Y/O CAPATAZ</span>
+                            <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE NOMBRE Y/O APELLIDO</span>
                         </div>
                         <a class="navbar-brand ml-3" href="#">Buscador:</a>
                         
@@ -99,7 +99,7 @@
                                 </a>
                             </th>
                             <th class="th-lg text-center">
-                                <a>SANCIONES
+                                <a>CANTIDAD SANCIONES
                                     <!--<i class="fas fa-sort ml-1"></i>-->
                                 </a>
                             </th>
@@ -114,6 +114,15 @@
                         <!--Table body-->
                     <tbody>
                         @foreach ($empleados as $empleado)
+                        <?php $cantidad_sanciones = 0; ?>
+                            @foreach($sanciones as $sancion)
+                                <?php if($sancion['legajo'] == $empleado['legajo'])
+                                {
+                                      $cantidad_sanciones = $cantidad_sanciones +1;
+                                }
+                                 ?> 
+                               
+                            @endforeach
                         <tr>
                             <!--<th scope="row">
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
@@ -126,7 +135,7 @@
                             <td class="text-center" name="fecha"> {{$empleado->fecha_ingreso}}</td>
                             <td class="text-center"> {{$empleado->empresa->razon_social}}</td>
                             <td class="text-center"> {{$empleado->capataz->nombre}}</td>
-                            <td class="text-center">@if(!empty($empleado->id_sanciones)) Tiene @else No tiene @endif</td>
+                            <td class="text-center">{{$cantidad_sanciones}}</td>
                             
                             <td class="text-center" hidden="true"> {{$empleado->observaciones}}</td>
                             <td>

@@ -101,7 +101,7 @@
                             <label for="id_empresa" class="col-md-4 col-form-label text-md-right">{{ __('EMPRESA') }}</label>
                         
                                 <select class="selectpicker show-menu-arrow" name="id_empresa" data-style="btn-success" data-width="auto">
-                                <option value="" selected>Elegir Empresa</option>
+                                <option value="{{$empleado->id_empresa}}" selected></option>
                                 @foreach($empresas as $empresa)
                              
                                 <option value="{{$empresa->id}}">{{$empresa->razon_social}}</option>
@@ -116,7 +116,7 @@
                             <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
                         
                                 <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
-                                <option value="" selected>Elegir Capataz</option>
+                                <option value="{{$empleado->id_capataz}}" selected></option>
                                 @foreach($capataz as $capat)
                              
                                 <option value="{{$capat->id}}">{{$capat->nombre}}</option>
@@ -127,21 +127,7 @@
                             
                         </div>  
                        
-                       <!-- <div class="form-group row">   
-    
-                            <label for="id_sanciones" class="col-md-4 col-form-label text-md-right">{{ __('SANCIONES') }}</label>
-                        
-                                <select class="selectpicker show-menu-arrow" name="id_sanciones" data-style="btn-success" data-width="auto">
-                                <option selected>Elegir Sancion</option>
-                                @foreach($sanciones as $sancion)
-                             
-                                <option value="{{$sancion->id}}">{{$sancion->legajo}}</option>
-                               
-                                @endforeach
-                               
-                            </select>                              
-                            
-                        </div>  -->
+                       
                              
                         <div class="form-group row shadow-textarea green-border-focus">
 
