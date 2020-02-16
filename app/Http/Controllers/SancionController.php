@@ -289,5 +289,20 @@ class SancionController extends Controller
         return view('sancion', $vac);
     }
 
+    public function listadoEmpleadoConSanciones($id)
+    {
+        $empleado = Empleado::Find($id);
+       /* $sanciones = Sancion::join('empleados', 'sanciones.id_empleado', '=', 'empleados.id')
+        ->where('empleados.id', '=', 'sanciones.id_empleado')->get();*/
+        $sanciones = Sancion::whereid_empleado($id)->with('empleado')->get();
+        $capataz = Capataz::all();
+        $empresa = Empresa::all();
+        
+        // dd($sanciones);
+        $vac = compact('sanciones', 'capataz', 'empresa', 'empleado');
+       // dd($vac);
+        return view("sancionPorEmpleado", $vac);
+    }
+
     //
 }
