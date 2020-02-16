@@ -14,6 +14,7 @@
                 <div class="table-wrapper">
                     <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">EMPLEADOS</h1>
                     <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_empleado') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+
                 </div>
 
                 <div class="container-fluid">
@@ -148,6 +149,7 @@
                             </td>
                             <td>
                                 <a id="agregar" class="btn primary-color-dark btn-sm " href="/nueva_sancion/{{ $empleado->id }}" role="button" style="color:white"><i class="fas fa-plus mr-1" style="color:white"></i>SANCIONAR </a>
+                                <a id="sancionado" class="btn primary-color-dark btn-sm " href="/empleadoSancionado/{{ $empleado->id }}" role="button" style="color:white"><i class="fas fa-eye mr-1" style="color:white"></i>SANCIONES </a>
 
                             </td>
                         </tr>
