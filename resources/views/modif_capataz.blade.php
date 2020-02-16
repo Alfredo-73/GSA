@@ -28,13 +28,8 @@
                             <label for="nombre" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $capat->nombre }}" required autocomplete="nombre">
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ $capat->nombre }}">
 
-                                @error('nombre')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 

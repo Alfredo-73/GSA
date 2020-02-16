@@ -87,9 +87,9 @@ class cosechaController extends Controller
     public function agregar_cosecha(Request $req)
     {
         $reglas = [
-           // 'id_cliente' => 'numeric|max:10',
+            'id_cliente' => 'required',
             'fecha' => 'date',
-           // 'id_capataz' => 'numeric|max:10',
+            'id_capataz' => 'required',
 
             'jornales' => 'numeric|min:00001|max:99999',
             'cosecheros' => 'numeric|min:0000|max:999999',
@@ -107,7 +107,8 @@ class cosechaController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
-            'unique' => 'El campo :attribute se encuentra repetido'
+            'unique' => 'El campo :attribute se encuentra repetido',
+             'required' => 'El campo :attribute no fue seleccionado'
         ];
 
         $this->validate($req, $reglas, $mensajes);

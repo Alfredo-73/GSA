@@ -26,13 +26,8 @@
                             <label for="fecha" class="col-md-4 col-form-label text-md-right">{{ __('FECHA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fecha" value="{{ $cosecha->fecha }}" required autocomplete="fecha" autofocus>
+                                <input id="fecha" type="date" class="form-control" name="fecha" value="{{ $cosecha->fecha }}">
 
-                                @error('fecha')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -107,13 +102,8 @@
                             <label for="jornales" class="col-md-4 col-form-label text-md-right">{{ __('JORNALES') }}</label>
 
                             <div class="col-md-6">
-                                <input id="jornales" type="text" class="form-control @error('jornales') is-invalid @enderror" name="jornales" value="{{ $cosecha->jornales }}" required autocomplete="jornales">
+                                <input id="jornales" type="text" class="form-control" name="jornales" value="{{ $cosecha->jornales }}" >
 
-                                @error('jornales')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -121,13 +111,8 @@
                             <label for="cosecheros" class="col-md-4 col-form-label text-md-right">{{ __('COSECHEROS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cosecheros" type="text" class="form-control @error('cosecheros') is-invalid @enderror" name="cosecheros" value="{{ $cosecha->cosecheros }}" required autocomplete="cosecheros">
+                                <input id="cosecheros" type="text" class="form-control" name="cosecheros" value="{{ $cosecha->cosecheros }}" >
 
-                                @error('cosecheros')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -135,13 +120,8 @@
                             <label for="bines" class="col-md-4 col-form-label text-md-right">{{ __('BINES') }}</label>
 
                             <div class="col-md-6">
-                                <input id="bines" type="text" class="form-control @error('bines') is-invalid @enderror" name="bines" value="{{ $cosecha->bines }}" required autocomplete="bines">
+                                <input id="bines" type="text" class="form-control" name="bines" value="{{ $cosecha->bines }}">
 
-                                @error('bines')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -149,13 +129,8 @@
                             <label for="maletas" class="col-md-4 col-form-label text-md-right">{{ __('MALETAS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="maletas" type="text" class="form-control @error('maletas') is-invalid @enderror" name="maletas" value="{{ $cosecha->maletas }}" required autocomplete="maletas">
+                                <input id="maletas" type="text" class="form-control" name="maletas" value="{{ $cosecha->maletas }}" >
 
-                                @error('maletas')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -163,12 +138,8 @@
                             <label for="toneladas" class="col-md-4 col-form-label text-md-right">{{ __('TONELADAS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="toneladas" type="text" class="form-control @error('toneladas') is-invalid @enderror" name="toneladas" value="{{ $cosecha->toneladas }}" required autocomplete="toneladas">
-                                @error('toneladas')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <input id="toneladas" type="text" class="form-control" name="toneladas" value="{{ $cosecha->toneladas }}" >
+                                
                             </div>
                         </div>
 
@@ -176,26 +147,16 @@
                             <label for="prom_kg_bin" class="col-md-4 col-form-label text-md-right">{{ __('PROMEDIO KG/BIN') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prom_kg_bin" type="text" class="form-control @error('prom_kg_bin') is-invalid @enderror" name="prom_kg_bin" value="{{ $cosecha->prom_kg_bin }}" required autocomplete="prom_kg_bin">
+                                <input id="prom_kg_bin" type="text" class="form-control" name="prom_kg_bin" value="{{ $cosecha->prom_kg_bin }}" >
 
-                                @error('prom_kg_bin')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="toneladas" class="col-md-4 col-form-label text-md-right">{{ __('SUPERVISOR') }}</label>
 
                             <div class="col-md-6">
-                                <input id="supervisor" type="text" class="form-control @error('supervisor') is-invalid @enderror" name="supervisor" value="{{ $cosecha->supervisor }}" required autocomplete="supervisor">
+                                <input id="supervisor" type="text" class="form-control" name="supervisor" value="{{ $cosecha->supervisor }}" >
 
-                                @error('supervisor')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 

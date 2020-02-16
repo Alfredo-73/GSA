@@ -25,13 +25,8 @@
                             <label for="fecha" class="col-md-4 col-form-label text-md-right">{{ __('FECHA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fecha" value="{{ old('fecha') }}" required autocomplete="fecha" autofocus>
+                                <input id="fecha" type="date" class="form-control" name="fecha" value="{{ old('fecha') }}" >
 
-                                @error('fecha')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -99,13 +94,8 @@
                             <label for="jornales" class="col-md-4 col-form-label text-md-right">{{ __('JORNALES') }}</label>
 
                             <div class="col-md-6">
-                                <input id="jornales" type="text" class="form-control @error('jornales') is-invalid @enderror" name="jornales" value="{{ old('jornales') }}" required autocomplete="jornales">
+                                <input id="jornales" type="text" class="form-control" name="jornales" value="{{ old('jornales') }}" >
 
-                                @error('jornales')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -113,13 +103,9 @@
                             <label for="cosecheros" class="col-md-4 col-form-label text-md-right">{{ __('COSECHEROS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cosecheros" type="text" class="form-control @error('cosecheros') is-invalid @enderror" name="cosecheros" value="{{ old('cosecheros') }}" required autocomplete="cosecheros">
+                                <input id="cosecheros" type="text" class="form-control @error('cosecheros') is-invalid @enderror" name="cosecheros" value="{{ old('cosecheros') }}" >
 
-                                @error('cosecheros')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            
                             </div>
                         </div>
 
@@ -127,13 +113,8 @@
                             <label for="bines" class="col-md-4 col-form-label text-md-right">{{ __('BINES') }}</label>
 
                             <div class="col-md-6">
-                                <input id="bines" type="text" class="form-control @error('bines') is-invalid @enderror" name="bines" value="{{ old('bines') }}" required autocomplete="bines">
+                                <input id="bines" type="text" class="form-control @error('bines') is-invalid @enderror" name="bines" value="{{ old('bines') }}" >
 
-                                @error('bines')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -141,13 +122,8 @@
                             <label for="maletas" class="col-md-4 col-form-label text-md-right">{{ __('MALETAS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="maletas" type="text" class="form-control @error('maletas') is-invalid @enderror" name="maletas" value="{{ old('maletas') }}" required autocomplete="maletas">
+                                <input id="maletas" type="text" class="form-control " name="maletas" value="{{ old('maletas') }}" >
 
-                                @error('maletas')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -155,13 +131,8 @@
                             <label for="toneladas" class="col-md-4 col-form-label text-md-right">{{ __('TONELADAS') }}</label>
 
                             <div class="col-md-6">
-                                <input id="toneladas" type="text" class="form-control @error('toneladas') is-invalid @enderror" name="toneladas" value="{{ old('toneladas') }}" required autocomplete="toneladas">
+                                <input id="toneladas" type="text" class="form-control" name="toneladas" value="{{ old('toneladas') }}">
 
-                                @error('toneladas')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -169,12 +140,8 @@
                             <label for="prom_kg_bin" class="col-md-4 col-form-label text-md-right">{{ __('PROMEDIO KG/BIN') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prom_kg_bin" type="text" class="form-control @error('prom_kg_bin') is-invalid @enderror" name="prom_kg_bin" value="{{ old('prom_kg_bin') }}" required autocomplete="prom_kg_bin">
-                                @error('prom_kg_bin')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                <input id="prom_kg_bin" type="text" class="form-control" name="prom_kg_bin" value="{{ old('prom_kg_bin') }}" >
+                            
                             </div>
                         </div>
 
@@ -182,13 +149,8 @@
                             <label for="supervisor" class="col-md-4 col-form-label text-md-right">{{ __('SUPERVISOR') }}</label>
 
                             <div class="col-md-6">
-                                <input id="supervisor" type="text" class="form-control @error('supervisor') is-invalid @enderror" name="supervisor" value="{{ old('supervisor') }}" required autocomplete="supervisor">
+                                <input id="supervisor" type="text" class="form-control " name="supervisor" value="{{ old('supervisor') }}">
 
-                                @error('supervisor')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -196,13 +158,8 @@
                             <label for="transportista" class="col-md-4 col-form-label text-md-right">{{ __('TRANSPORTISTA') }}</label>
 
                             <div class="col-md-6">
-                                <input id="transportista" type="text" class="form-control @error('transportista') is-invalid @enderror" name="transportista" value="{{ old('transportista') }}" required autocomplete="transportista">
+                                <input id="transportista" type="text" class="form-control " name="transportista" value="{{ old('transportista') }}">
 
-                                @error('transportista')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
 
