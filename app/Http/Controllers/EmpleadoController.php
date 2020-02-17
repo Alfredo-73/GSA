@@ -33,13 +33,15 @@ class EmpleadoController extends Controller
     //para usar scope
     public function indexBuscar(Request $request)
     {
+   // $cantidad_sanciones = 0;
         if(empty($request))
         {
             $sanciones = Sancion::all();
             $capataz = Capataz::all();
             $empresa = Empresa::all();  
             $empleados = Empleado::all();
-            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa');
+            
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'cantidad_sanciones');
 //dd($vac);
 
 
@@ -231,11 +233,12 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
 
-        $empleado = Sancion::Find($id);
-        $clientes = Cliente::all();
+        $empleado = Empleado::Find($id);
+        $empresas = Empresa::all();
         $capataz = Capataz::all();
-
-        $vac = compact('empleado', 'clientes', 'capataz');
+        $sanciones = Sancion::all();
+       $cantidad_sanciones = 0;
+       $vac = compact('empleado', 'empresas', 'capataz', 'sanciones');
 
         return view('modif_empleado', $vac);
     }
@@ -280,7 +283,7 @@ class EmpleadoController extends Controller
         $empleado->fecha_egreso = $req['fecha_egreso'];
         $empleado->id_empresa = $req['id_empresa'];
 
-        $empleado->id_sanciones = $req['id_sanciones'];
+      //  $empleado->id_sanciones = $req['id_sanciones'];
         $empleado->id_capataz = $req['id_capataz'];
         $empleado->avatar = 'avatar.jpg';
 

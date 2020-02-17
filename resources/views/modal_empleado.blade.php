@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue">EMPLEADO:  @if(!empty($empleado->nombre)){{$empleado->nombre}} . " " . {{$empleado->apellido}}@endif</h5>
+                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue">EMPLEADO:  @if(!empty($empleado->nombre)){{$empleado->nombre}} .  {{$empleado->apellido}}@endif</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                 </button>
@@ -66,8 +66,8 @@
                         </div>
                         <div class="md-form mb-1" style="width:50%">
                         <i class="fas fa-dollar-sign prefixapp prefix" style="color:darkblue"></i>
-                        <input  style="width:5rem" type="text" id="orangeForm-pass" class="form-control" value="@if(!empty($empleado->sanciones)) {{$empleado->sanciones->legajo}} @endif">
-                        <label data-error="wrong" data-success="right" for="orangeForm-pass" style="color:blue">SANCION </label>
+                        <input  style="width:5rem" type="text" id="orangeForm-pass" class="form-control" value="@if(!empty($empleado->sanciones)) {{$empleado->sanciones->fecha}} @endif">
+                        <label data-error="wrong" data-success="right" for="orangeForm-pass" style="color:blue">ULTIMA SANCION </label>
                         </div>
                 </div>
 
