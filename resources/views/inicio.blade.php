@@ -88,7 +88,7 @@
                                 <i class="far fa-id-card fa-2x text-info"></i>
                             </span>
                             <div class="media-body">
-                                <h5 class="dark-grey-text mb-3">SANCIONES DISCIPLINARIAS</h5>
+                                <h5 class="dark-grey-text mb-3">SANCIONES</h5>
                                 <p class="font-weight-light text-muted mb-0">Carga de sanciones.</p>
                             </div>
                         </div>

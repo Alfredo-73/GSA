@@ -23,7 +23,7 @@ class EmpleadoController extends Controller
         //$variablesurl = $request->all();
 
         $empleados = Empleado::where('id_cliente', 'like', "%$name_cliente%")
-            ->paginate(5);
+            ->paginate(10);
         $clientes = Cliente::all();
         $capataz = Capataz::all();
 
