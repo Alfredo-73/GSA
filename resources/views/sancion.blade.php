@@ -22,8 +22,8 @@
                         <form class="form-inline">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                            <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre empleado" aria-label="Search">
-                            <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido empleado" aria-label="Search">
+                            <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+                            <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido" aria-label="Search">
     
                        <!--    <select class="selectpicker show-menu-arrow" name="buscarporcapataz" value="">
                                 <option>Capataz</option>
