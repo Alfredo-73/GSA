@@ -24,6 +24,18 @@
             }
         }
     </script>
+    <style>
+          #nombre::placeholder {
+            color: white;
+            font-size:12px;
+            text-align:center;
+          }
+          #apellido::placeholder {
+            color: white;
+            font-size:12px;
+            text-align:center;
+          }
+      </style>
 </head>
 
 <body>

@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue">{{ __('INGRESO') }}</div>
 
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

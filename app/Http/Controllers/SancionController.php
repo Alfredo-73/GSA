@@ -298,8 +298,13 @@ class SancionController extends Controller
         $capataz = Capataz::all();
         $empresa = Empresa::all();
         
-        // dd($sanciones);
-        $vac = compact('sanciones', 'capataz', 'empresa', 'empleado');
+        //dd($sanciones);
+        $dias = sancion::whereid_empleado($id)->with('empleado')->sum('dias');
+        $cantidad_sancion = sancion::whereid_empleado($id)->with('empleado')->count('dias');
+        //return $dias->toJson();
+        //dd($cantidad_sancion);
+
+        $vac = compact('sanciones', 'capataz', 'empresa', 'empleado','dias','cantidad_sancion');
        // dd($vac);
         return view("sancionPorEmpleado", $vac);
     }

@@ -18,34 +18,34 @@
                     </div>
                     <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4">
 
-                    <!-- Navbar brand -->
-                            <a class="navbar-brand" href="#">Buscador</a>
+                        <!-- Navbar brand -->
+                        <a class="navbar-brand" href="#">Buscador</a>
 
-                            <!-- Collapsible content -->
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <!-- Collapsible content -->
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                                <form class="form-inline ml-auto">
+                            <form class="form-inline ml-auto">
                                 <div class="md-form my-0">
                                     <input name="buscarpor" class="form-control" type="text" placeholder="Nombre del cliente..." aria-label="Search">
                                 </div>
                                 <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
-                                <a class="fas fa-sync-alt" role="button" href=  {{ url('/abm_cliente') }} title="refrescar" style="cursor:pointer" name="Refrescar" >  Refrescar</a>
-                                </form>
+                                <a href="{{ url('/abm_cliente') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                            </form>
 
-                            </div>
-  <!-- Collapsible content -->
+                        </div>
+                        <!-- Collapsible content -->
 
                     </nav>
-            <!--        <form class="form-inline md-form mr-auto mb-4 float-md-right">
+                    <!--        <form class="form-inline md-form mr-auto mb-4 float-md-right">
                         <input name="buscarpor" class="form-control mr-sm-2" type="text" placeholder="Buscar por cliente" aria-label="Search">
                         <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Buscar</button>
                     </form> -->
                     <!--Table-->
-                    <table class="table table-hover text-center">
+                    <table class="table table-bordered table-hover">
 
                         <!--Table head-->
-                        <thead>
-                            <tr>
+                        <thead class="thead-dark">
+                            <tr height="60px" style="background-color:black; color:white">
                                 <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
@@ -65,6 +65,7 @@
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
+                                <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
 
                             </tr>
                         </thead>
@@ -81,11 +82,9 @@
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
                                 <!--  <td> {{$cliente->id}}</td> -->
-                                <td> {{$cliente->nombre}}</td>
-                                <td> {{$cliente->cuit}}</td>
-
-                                <td class="text-center"></td>
-                                <td>
+                                <td class="text-center"> {{$cliente->nombre}}</td>
+                                <td class="text-center"> {{$cliente->cuit}}</td>
+                                <td class="text-center">
                                     <form method="POST" action="{{ url('/borrar_cliente/'.$cliente->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -100,7 +99,7 @@
                                     </form> -->
                                 </td>
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
-                                <td>
+                                <td class="text-center">
                                     <a id="modificar" class="btn btn-primary btn-rounded mb-1 btn-sm text-center" href="/modif_cliente/{{$cliente->id}}" role="button"><i class="fas fa-edit mr-2" style="color:white"></i>Modificar </a>
 
                                     <!--   <form method="POST" action="">

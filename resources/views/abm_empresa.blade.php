@@ -17,12 +17,11 @@
                         </form> -->
                     </div>
                     <!--Table-->
-                    <table class="table table-hover text-center">
-                        <!--<table class="table table-bordered table-hover">-->
+                    <table class="table table-bordered table-hover">
 
                         <!--Table head-->
-                        <thead>
-                            <tr>
+                        <thead class="thead-dark">
+                            <tr height="60px" style="background-color:black; color:white">
                                 <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
@@ -43,6 +42,7 @@
                                         <!--<i class="fas fa-sort ml-1"></i>-->
                                     </a>
                                 </th>
+                                <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
                             </tr>
                         </thead>
                         <!--Table head-->
@@ -51,10 +51,10 @@
                         <tbody>
                             @foreach ($empresa as $emp)
                             <tr>
-                                <td> {{$emp->razon_social}}</td>
-                                <td> {{$emp->cuit}}</td>
-                                <td> {{$emp->domicilio}}</td>
-                                <td>
+                                <td class="text-center"> {{$emp->razon_social}}</td>
+                                <td class="text-center"> {{$emp->cuit}}</td>
+                                <td class="text-center"> {{$emp->domicilio}}</td>
+                                <td class="text-center">
                                     <form method="POST" action="{{ url('/borrar_empresa/'.$emp->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
@@ -67,7 +67,7 @@
 
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
                                     </form> -->
-                                </td>
+                                </td class="text-center">
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
                                     <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_capataz/{{$emp->id}}" role="button"><i class="far fa-edit mr-2"></i>Modificar </a>
