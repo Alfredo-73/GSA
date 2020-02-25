@@ -6,9 +6,30 @@ use Illuminate\Http\Request;
 use App\Capataz;
 use App\Cosecha;
 use Laracasts\Flash\Flash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
 
 class capatazController extends Controller
 {
+    // $role = Role::create(['name' => 'writer']);
+   // $permission = Permission::create(['name' => 'edit articles']);
+
+//$permissions = $user->permissions;
+//$roles = $user->roles()->pluck('name');
+
+  /*  public function registerCapataz(Request $request){
+        // Se crea el usuario con los datos del registro
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        // Le asignamos el rol de Cliente
+        $user->assignRole('capataz');
+    }*/
      public function listado(Request $req)
     {
         $capataz = Capataz::all()->sortBy('nombre');

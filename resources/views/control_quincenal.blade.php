@@ -8,8 +8,9 @@
                 <div class="px-4">
                     <div class="table-wrapper">
                         <h1 class="text-center" style="font-family:Verdana, Geneva, Tahoma, sans-serif">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
+                        @can('agregar_control')
                         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
-
+                        @endcan
                         <!--BOTON AGREGAR PRODUCTO-------------------
                         
                         <form method="POST" action="">
@@ -168,13 +169,15 @@
                                 <td class="text-center">$ {{$totalPago}}</td>
                                 <td class="text-center" hidden="true">$ {{$disponible - $totalPago}}</td>
                                 <td class="text-center">$ {{round((($disponible - $totalPago)/$control->toneladas),2)}}</td>
-
+                                @can('borrar_control')
                                 <td class="text-center">
                                     <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
                                         </button>
+
+
 
                                         <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                     </form>
@@ -183,6 +186,7 @@
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
                                     </form> -->
                                 </td>
+                                @endcan
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO------
                                 <td>
                                      <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>-->

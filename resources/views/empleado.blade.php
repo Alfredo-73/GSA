@@ -13,8 +13,9 @@
             <div class="px-4">
                 <div class="table-wrapper">
                     <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPLEADOS</h1>
+                    @can('agregar_empleado')
                     <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_empleado') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO </a>
-
+                    @endcan
                 </div>
 
                 <div class="container-fluid">
@@ -134,6 +135,7 @@
                             <td class="estado2 text-center">{{ $cantidad_sanciones}}</td>
                             @endif
                             <td class="text-center" hidden="true"> {{$empleado->observaciones}}</td>
+                           @can('borrar_empleado')
                             <td class="text-center">
                                 <form method="POST" action="{{url('/borrar_empleado/'.$empleado->id) }}">
                                     {{ csrf_field() }}
@@ -143,6 +145,7 @@
                                     <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm" style="color:white"><i class="fas fa-times-circle" style="color:white"></i> BORRAR</a>
                                 </form>
                             </td>
+                            @endcan
                             <td class="text-center">
                                 <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
                                     @csrf
@@ -153,12 +156,16 @@
                                     @include('modal_empleado')
                                 </form>
                             </td>
+                            @can('agregar_sancion')
                             <td>
                                 <a id="sancionar" class="btn blue-gradient btn-rounded btn-sm my-0" href="/nueva_sancion/{{ $empleado->id }}" role="button" title="Ver Registro"><i class="fas fa-gavel mr-1" style="color:white"></i>SANCIONAR</a>
                             </td>
+                            @endcan
+                            @can('leer_sancion')
                             <td>
                                 <a id="sancionado" class="btn blue-gradient btn-rounded btn-sm my-0" href="/empleadoSancionado/{{ $empleado->id }}" role="button"><i class="fas fa-list mr-1" style="color:white"></i>LISTADO SANCIONES</a>
                             </td>
+                            @endcan
                         </tr>
                         @endforeach
                     </tbody>

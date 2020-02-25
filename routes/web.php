@@ -21,6 +21,114 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Route::group(['middleware' => ['auth']], function () {
+//   Route::resource('roles', 'RoleController');
+//   Route::resource('users', 'UserController');
+// Route::resource('products', 'ProductController');}
+
+
+//Route::group(['middleware' => ['permiso:destroy_notes']], function () {
+    //    Route::get('notes/{id}/destroy', 'NotesController@destroy')->name('notes.destroy');
+    //});
+    
+    Route::group(['middleware' => ['role:Capataz']], function () {
+    //rutas accesibles solo para administrador
+        Route::get('/home', 'HomeController@index')->name('home');
+        Route::get('cosecha', 'cosechaController@listado');
+         Route::get('nueva_cosecha', 'cosechaController@agregar');
+
+
+        Route::post('nueva_cosecha', 'cosechaController@agregar_cosecha');
+
+        Route::get('modif_cosecha/{id}', 'cosechaController@edit');
+
+        Route::put('modif_cosecha/{id}', 'cosechaController@update');
+
+        Route::delete('borrar_cosecha/{id}', 'cosechaController@borrar');
+
+    //Route::get('cosecha', 'cosechaController@listado');
+        Route::get('cosecha', 'cosechaController@index');
+
+        Route::put('cosecha', 'cosechaController@update');
+
+        Route::get('nueva_cosecha', 'cosechaController@agregar');
+
+        Route::get('modalcosecha/{id}', 'cosechaController@update');
+        Route::put('modalcosecha/{id}', 'cosechaController@update');
+        Route::put('cosecha/{fecha}', 'cosechaController@buscar');
+
+        Route::delete('/borrar_control/{id}', 'controlController@borrar');
+
+});
+
+Route::group(['middleware' => ['role:Gerente']], function () {
+    //rutas accesibles solo para administrador
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fcon control por buscarpor para probar
+    Route::get('cosecha', 'cosechaController@listado');
+    Route::get('abm_capataz', 'capatazController@listado');
+    Route::get('sancion', 'SancionController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+    Route::get('abm_empresa', 'empresaController@listado');
+    Route::get('empleado', 'empleadoController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+
+});
+
+Route::group(['middleware' => ['role:Supervisor']], function () {
+    //rutas accesibles solo para administrador
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('empleado', 'empleadoController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+
+    Route::get('cosecha', 'cosechaController@listado');
+    Route::get('nueva_cosecha', 'cosechaController@agregar');
+
+
+    Route::post('nueva_cosecha', 'cosechaController@agregar_cosecha');
+
+    Route::get('modif_cosecha/{id}', 'cosechaController@edit');
+
+    Route::put('modif_cosecha/{id}', 'cosechaController@update');
+
+    Route::delete('borrar_cosecha/{id}', 'cosechaController@borrar');
+
+    //Route::get('cosecha', 'cosechaController@listado');
+    Route::get('cosecha', 'cosechaController@index');
+
+    Route::put('cosecha', 'cosechaController@update');
+
+    Route::get('nueva_cosecha', 'cosechaController@agregar');
+
+    Route::get('modalcosecha/{id}', 'cosechaController@update');
+    Route::put('modalcosecha/{id}', 'cosechaController@update');
+    Route::put('cosecha/{fecha}', 'cosechaController@buscar');
+
+    Route::delete('/borrar_control/{id}', 'controlController@borrar');
+});
+
+Route::group(['middleware' => ['role:Administrativo']], function () {
+    //rutas accesibles solo para administrador
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fcon control por buscarpor para probar
+    Route::get('cosecha', 'cosechaController@listado');
+    Route::get('abm_capataz', 'capatazController@listado');
+    Route::get('sancion', 'SancionController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+    Route::get('abm_empresa', 'empresaController@listado');
+    Route::get('empleado', 'empleadoController@indexbuscar'); //modifico fcon empleado por buscarpor para probar
+    Route::get('agregar_control', 'controlController@agregar');
+
+    Route::get('nuevo_control', 'controlController@agregar');
+
+
+    Route::post('nuevo_control', 'controlController@agregar_control');
+
+    Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
+
+    Route::get('modif_control/{id}', 'controlController@edit');
+
+    Route::put('modif_control/{id}', 'controlController@update');
+
+
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('control_quincenal', 'controlController@buscarpor');//modifico fcon control por buscarpor para probar
@@ -42,7 +150,6 @@ Route::get('modif_control/{id}', 'controlController@edit');
 
 Route::put('modif_control/{id}', 'controlController@update');
 
-Route::delete('/borrar_control/{id}', 'controlController@borrar');
 
 
 //cosecha

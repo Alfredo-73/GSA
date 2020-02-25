@@ -75,9 +75,9 @@
             
                 <div class="modal-footer" style="width:100%">
                     <div class="mx-auto">
-                    
+                    @can('update_empleado')
                         <a id="modificar" class="btn btn-primary " href="/../modif_empleado/{{$empleado->id}}"  ><i class="far fa-edit mr-2"></i>Modificar </a>
-
+                    @endcan
                       
                        <!-- <a class="btn btn-deep-orange" href="/../PDFEmpleado/{{$empleado->id}} "><i class="fas fa-print mr-2 " style="color:white"></i>Imprimir</a>-->
 

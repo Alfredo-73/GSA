@@ -13,12 +13,12 @@ class RenombrarFkClienteEmpresaSancionesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sanciones', function (Blueprint $table) {
+      /*  Schema::table('sanciones', function (Blueprint $table) {
             //
             $table->renameColumn('id_cliente', 'id_empresa');
             $table->foreign('id_empresa')->references('id')->on('empresa');
 
-        });
+        });*/
     }
 
     /**
