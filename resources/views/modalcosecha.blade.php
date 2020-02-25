@@ -93,18 +93,21 @@
             </div>
             <div class="modal-footer" style="width:100%">
                 <div class="mx-auto">
+                  @can('update_cosecha')
                     <button type="submit" class="btn btn-primary" action="{{url('/modalcosecha/'.$cosecha->id) }}"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                         {{ __('Grabar') }}
                     </button>
-
+                    @endcan
                     <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
-
+                    
+                    @can('borrar_cosecha')
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <button hidden="true" type="submit" onclick="return confirm('¿Desea eliminar el parte de cosecha?')" id="borrar" class="btn btn-danger btn-rounded mb-1 btn-sm m-0 text-center"> BORRAR
                         </button>
                     </form>
+                    @endcan
                 </div>
             </div>
 

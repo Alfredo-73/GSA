@@ -13,7 +13,9 @@
             <div class="px-4">
                 <div class="table-wrapper">
                     <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+                     @can('agregar_cosecha')
                     <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+                    @endcan
                 </div>
 
                 <div class="container-fluid">
@@ -124,6 +126,7 @@
                             <td class="text-center"> {{$cosecha->toneladas}}</td>
                             <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
                             <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
+                           @can('borrar_cosecha')
                             <td class="text-center">
                                 <form method="POST" action=" {{ url('/borrar_cosecha/'.$cosecha->id) }}">
                                     {{ csrf_field() }}
@@ -135,6 +138,7 @@
                                         <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
                                 </form>
                             </td>
+                            @endcan
                             <td class="text-center">
                                 <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                     @csrf

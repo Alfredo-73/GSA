@@ -13,11 +13,11 @@ class DesvincularFkClienteSancionesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sanciones', function (Blueprint $table) {
+      /*  Schema::table('sanciones', function (Blueprint $table) {
             //
             $table->renameColumn('id_empresa','id_cliente' );
             $table->dropForeign('sanciones_id_cliente_foreign');
-        });
+        });*/
     }
 
     /**
