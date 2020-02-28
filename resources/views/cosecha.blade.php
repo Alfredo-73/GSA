@@ -10,11 +10,14 @@
 <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="px-4">
-            <div class="table-wrapper">
-                <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+        <div class="">
+            <div class="px-4">
+                <div class="table-wrapper">
+                    <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+                     @can('agregar_cosecha')
+                    @endcan
+                </div>
                 <a id="agregar" class="btn primary-color-dark mb-5 rounded agregar" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
-            </div>
 
             <div class="container-fluid">
                 <nav class="navbar  navbar-dark indigo rounded mb-2">
@@ -114,40 +117,48 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                        <td id="cosecha" class="text-center" name="fecha"> {{$cosecha->fecha}}</td>
-                        <td id="cosecha" class="text-center" hidden="true"> {{$cosecha->cliente->nombre}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->capataz->nombre}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->jornales}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->cosecheros}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->bines}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->maletas}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->toneladas}}</td>
-                        <td id="cosecha" class="text-center"> {{$cosecha->prom_kg_bin}}</td>
-                        <td id="cosecha" class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
-                        <td class="text-center">
-                            <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-                            <!--{{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                            <td class="text-center" name="fecha"> {{$cosecha->fecha}}</td>
+                            <td class="text-center" hidden="true"> {{$cosecha->cliente->nombre}}</td>
+                            <td class="text-center"> {{$cosecha->capataz->nombre}}</td>
+                            <td class="text-center"> {{$cosecha->jornales}}</td>
+                            <td class="text-center"> {{$cosecha->cosecheros}}</td>
+                            <td class="text-center"> {{$cosecha->bines}}</td>
+                            <td class="text-center"> {{$cosecha->maletas}}</td>
+                            <td class="text-center"> {{$cosecha->toneladas}}</td>
+                            <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
+                            <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
+                           @can('borrar_cosecha')
+                            <td class="text-center">
                                 <form method="POST" action=" {{ url('/borrar_cosecha/'.$cosecha->id) }}">
-                                    <!--<button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-                                </form>-->
-                        </td>
-                        <td>
-                            <form method="PUT" action="/modalcosecha/{{$cosecha->id}}" class="ver">
-                                @csrf
-                                {{method_field('PUT')}}
-                                <a type="button" class="btn blue-gradient btn-sm ver" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
-                                @csrf
-                                {{method_field('PUT')}}
-                                @include('modalcosecha')
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <!--Table body-->
-            </table>
-            <!--{{ $cosechas->render() }}-->
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <!--<a type="submit" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR1-->
+                                    <!--<a href="" type="button" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1" data-id="{{$cosecha->id}}"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>Borrar1</a>-->
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+
+                                        <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
+                                </form>
+                            </td>
+                            @endcan
+                            <td class="text-center">
+                                <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    <a type="button" class="btn blue-gradient btn-sm" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    @include('modalcosecha')
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <!--Table body-->
+                </table>
+                <!--{{ $cosechas->render() }}-->
+            </div>
+            {{ $cosechas->appends($_GET)->links() }}
+            <!--Table-->
         </div>
         {{ $cosechas->appends($_GET)->links() }}
         <!--Table-->

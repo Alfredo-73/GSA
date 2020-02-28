@@ -20,7 +20,6 @@ class ModifEmpleadosColumnas extends Migration
             $table->biginteger('id_sanciones')->lenght(20)->unsigned()->nullable()->change();
             $table->integer('id_empresa')->lenght(10)->unsigned()->nullable()->change();
             $table->integer('id_capataz')->lenght(10)->unsigned()->nullable()->change();
-            $table->biginteger('id_sanciones')->lenght(20)->unsigned()->nullable()->change();
 
             $table->string('avatar')->lenght(100)->nullable()->change();
 
@@ -28,11 +27,7 @@ class ModifEmpleadosColumnas extends Migration
 
 
         });
-        Schema::table('empresa', function (Blueprint $table) {
-            //
-            $table->engine = 'InnoDB';
-            $table->biginteger('id_empleado')->lenght(20)->unsigned()->nullable()->change();
-        });
+       
     }
 
     /**

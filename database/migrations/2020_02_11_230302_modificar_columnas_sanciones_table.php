@@ -13,11 +13,11 @@ class ModificarColumnasSancionesTable extends Migration
      */
     public function up()
     {
-        Schema::table('sanciones', function (Blueprint $table) {
+        /*Schema::table('sanciones', function (Blueprint $table) {
             //
             $table->renameColumn('id_cliente', 'id_empresa');
             $table->bigInteger('legajo')->lenght(20)->change();
-        });
+        });*/
     }
 
     /**

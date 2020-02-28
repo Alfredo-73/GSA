@@ -10,8 +10,9 @@
             <div class="px-4">
                 <div class="table-wrapper">
                     <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPLEADOS</h1>
+                    @can('agregar_empleado')
                     <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_empleado') }}" role="button" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO </a>
-
+                    @endcan
                 </div>
 
                 <div class="container-fluid">
@@ -117,49 +118,57 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                        <td class="text-center"> {{$empleado->legajo}}</td>
-                        <td class="text-center" id="nombre">{{$empleado->nombre}} </td>
-                        <td class="text-center">{{$empleado->apellido}} </td>
-                        <td class="text-center"> {{$empleado->cuil}}</td>
-                        <td class="text-center" name="fecha"> {{$empleado->fecha_ingreso}}</td>
-                        <td class="text-center"> {{$empleado->empresa->razon_social}}</td>
-                        <td class="text-center"> {{$empleado->capataz->nombre}}</td>
-                        @if($cantidad_sanciones > '0')
-                        <td class="estado1 text-center">{{$cantidad_sanciones}}</td>
-                        @elseif($cantidad_sanciones == '0')
-                        <td class="estado2 text-center">{{ $cantidad_sanciones}}</td>
-                        @endif
-                        <td class="text-center" hidden="true"> {{$empleado->observaciones}}</td>
-                        <td class="text-center">
-                            <form method="POST" action="{{url('/borrar_empleado/'.$empleado->id) }}">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <!--<a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+                            <td class="text-center"> {{$empleado->legajo}}</td>
+                            <td class="text-center">{{$empleado->nombre}} </td>
+                            <td class="text-center">{{$empleado->apellido}} </td>
+                            <td class="text-center"> {{$empleado->cuil}}</td>
+                            <td class="text-center" name="fecha"> {{$empleado->fecha_ingreso}}</td>
+                            <td class="text-center"> {{$empleado->empresa->razon_social}}</td>
+                            <td class="text-center"> {{$empleado->capataz->nombre}}</td>
+                            @if($cantidad_sanciones > '0')
+                            <td class="estado1 text-center">{{$cantidad_sanciones}}</td>
+                            @elseif($cantidad_sanciones == '0')
+                            <td class="estado2 text-center">{{ $cantidad_sanciones}}</td>
+                            @endif
+                            <td class="text-center" hidden="true"> {{$empleado->observaciones}}</td>
+                           @can('borrar_empleado')
+                            <td class="text-center">
+                                <form method="POST" action="{{url('/borrar_empleado/'.$empleado->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <!--<a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
                                     </a>-->
-                                <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm" style="color:white"><i class="fas fa-times-circle" style="color:white"></i> BORRAR</a>
-                            </form>
-                        </td>
-                        <td class="">
-                            <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
-                                @csrf
-                                {{method_field('PUT')}}
-                                <a type="button" class="btn blue-gradient btn-sm" href="/modal_empleado/{{ $empleado->id }}" data-toggle="modal" data-target="#modal_empleado{{ $empleado->id }}" form method="POST" action="/modalempleado/{{$empleado->id}}" role="button" style="color:white"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
-                                @csrf
-                                {{method_field('PUT')}}
-                                @include('modal_empleado')
-                            </form>
-                        </td>
-                        <td>
-                            <a id="sancionar" class="btn blue-gradient btn-rounded btn-sm my-0" href="/nueva_sancion/{{ $empleado->id }}" role="button" title="Ver Registro"><i class="fas fa-gavel mr-1" style="color:white"></i>SANCIONAR</a>
-                        </td>
-                        <td>
-                            <a id="sancionado" class="btn blue-gradient btn-rounded btn-sm my-0" href="/empleadoSancionado/{{ $empleado->id }}" role="button"><i class="fas fa-list mr-1" style="color:white"></i>LISTADO SANCIONES</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <!--Table body-->
-            </table>
+                                    <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm" style="color:white"><i class="fas fa-times-circle" style="color:white"></i> BORRAR</a>
+                                </form>
+                            </td>
+                            @endcan
+                            <td class="text-center">
+                                <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    <a type="button" class="btn blue-gradient btn-sm" href="/modal_empleado/{{ $empleado->id }}" data-toggle="modal" data-target="#modal_empleado{{ $empleado->id }}" form method="POST" action="/modalempleado/{{$empleado->id}}" role="button" style="color:white"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                    @csrf
+                                    {{method_field('PUT')}}
+                                    @include('modal_empleado')
+                                </form>
+                            </td>
+                            @can('agregar_sancion')
+                            <td>
+                                <a id="sancionar" class="btn blue-gradient btn-rounded btn-sm my-0" href="/nueva_sancion/{{ $empleado->id }}" role="button" title="Ver Registro"><i class="fas fa-gavel mr-1" style="color:white"></i>SANCIONAR</a>
+                            </td>
+                            @endcan
+                            @can('leer_sancion')
+                            <td>
+                                <a id="sancionado" class="btn blue-gradient btn-rounded btn-sm my-0" href="/empleadoSancionado/{{ $empleado->id }}" role="button"><i class="fas fa-list mr-1" style="color:white"></i>LISTADO SANCIONES</a>
+                            </td>
+                            @endcan
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <!--Table body-->
+                </table>
+            </div>
+            <!--Table-->
         </div>
     </div>
     <!--Table-->

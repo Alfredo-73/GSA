@@ -13,13 +13,13 @@ class CrearIdEmpleadoEmpresaTable extends Migration
      */
     public function up()
     {
-        Schema::table('empresa', function (Blueprint $table) {
+        /*Schema::table('empresa', function (Blueprint $table) {
             //
             $table->engine = 'InnoDB';
             $table->biginteger('id_empleado')->lenght(20)->unsigned()->after('domicilio');
             $table->foreign('id_empleado')->references('id')->on('empleados');
 
-        });
+        });*/
     }
 
     /**
