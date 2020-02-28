@@ -44,27 +44,10 @@
                             </select>
 
                         </div>
-                        <!--
                         <div class="form-group row">
-                            <label for="cliente" class="col-md-4 col-form-label text-md-right">{{ __('CLIENTE') }}</label>
+                            <label for="id_capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="cliente" type="text" class="form-control @error('cliente') is-invalid @enderror" name="cliente" value="{{ old('cliente') }}" required autocomplete="cliente">
-
-                                @error('cliente')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div> -->
-
-
-                        <div class="form-group row">
-
-                            <label for="capataz" class="col-md-4 col-form-label text-md-right">{{ __('CAPATAZ') }}</label>
-
-                            <select class="selectpicker show-menu-arrow" name="capataz" data-style="btn-success" data-width="auto">
+                            <select class="selectpicker show-menu-arrow" name="id_capataz" data-style="btn-success" data-width="auto">
                                 <option selected>Elegir Capataz</option>
                                 @foreach($capataz as $capat)
 
