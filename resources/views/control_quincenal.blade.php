@@ -192,7 +192,7 @@
                                     </form>
                                 </td> -->
 
-                                <td class="text-center">
+                                <td>
                                     <form method="PUT" action="/modal_control/{{ $control->id }}">
                                         @csrf
                                         {{method_field('PUT')}}

@@ -1,0 +1,86 @@
+.agregar {
+    margin-left: 60rem;
+}
+
+
+/*
+    Max width before this PARTICULAR table gets nasty. 
+    This query will take effect for any screen smaller than 760px and also iPads specifically.
+    */
+
+@media only screen and (max-width: 760px),
+(min-device-width: 100px) and (max-device-width: 1024px) {
+    .agregar {
+        margin-left: 10rem;
+    }
+    .ver {
+        margin-left: 10rem;
+    }
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        margin: 0 0 1rem 0;
+    }
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 3;
+        font-weight: bold;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    /*
+        Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+        */
+    td:nth-of-type(1):before {
+        content: "Fecha:";
+    }
+    td:nth-of-type(3):before {
+        content: "Capataz:";
+    }
+    td:nth-of-type(4):before {
+        content: "Jornales:";
+    }
+    td:nth-of-type(5):before {
+        content: "Cosecheros:";
+    }
+    td:nth-of-type(6):before {
+        content: "Bines:";
+    }
+    td:nth-of-type(7):before {
+        content: "Maletas:";
+    }
+    td:nth-of-type(8):before {
+        content: "Toneladas:";
+    }
+    td:nth-of-type(9):before {
+        content: "Prom.Kg/Bin:";
+    }
+}

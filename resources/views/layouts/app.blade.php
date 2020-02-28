@@ -17,25 +17,20 @@
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <title>Confirmación de envío de formulario</title>
-    <script language="JavaScript">
-        function pregunta() {
-            if (confirm('¿Estas seguro de enviar este formulario?')) {
-                document.tuformulario.submit()
-            }
-        }
-    </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
-          #nombre::placeholder {
+        #nombre::placeholder {
             color: white;
-            font-size:12px;
-            text-align:center;
-          }
-          #apellido::placeholder {
+            font-size: 12px;
+            text-align: center;
+        }
+
+        #apellido::placeholder {
             color: white;
-            font-size:12px;
-            text-align:center;
-          }
-      </style>
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -114,10 +109,7 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
     <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
-    <script>
-        $('#flash-ovelay-modal').modal();
-    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 <!--
 <script>

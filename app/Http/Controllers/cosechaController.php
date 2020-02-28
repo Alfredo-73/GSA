@@ -117,7 +117,7 @@ class cosechaController extends Controller
         
         $cosecha_nueva->id_cliente = $req['id_cliente'];
         $cosecha_nueva->fecha = $req['fecha'];
-        $cosecha_nueva->id_capataz = $req['capataz'];
+        $cosecha_nueva->id_capataz = $req['id_capataz'];
         $cosecha_nueva->jornales = $req['jornales'];
         $cosecha_nueva->cosecheros = $req['cosecheros'];
         $cosecha_nueva->bines = $req['bines'];
@@ -129,10 +129,7 @@ class cosechaController extends Controller
         //grabar
         $cosecha_nueva->save();
 
-
         Flash::success('Se ha dado de alta la cosecha de ' . $cosecha_nueva->fecha . ' de forma exitosa !');
-
-
 
         return redirect('cosecha');
     }
@@ -208,8 +205,9 @@ class cosechaController extends Controller
         $cosecha->delete();
         //Flash::success('Se ha borrado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
     
-        return redirect('/cosecha')->with('success', 'User deleted successfully');    
-
+        //return redirect('/cosecha')->with('success', 'User deleted successfully');    
+        return view('/cosecha');
+        return response()->json(["mensaje"=>"borrado"]);
     }
 
     //pdf

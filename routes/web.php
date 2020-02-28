@@ -233,6 +233,10 @@ Route::delete('/borrar_empleado/{id}', 'empleadoController@borrar');
 
 Route::get('empleadoSancionado/{id}', 'SancionController@listadoEmpleadoConSanciones');
 
+Route::get('empleado/buscador', 'empleadoController@buscador'); //PARA BUSQUEDA EN TIEMPO REAL CON JS PURO
+
+Route::get('legajo/validacion', 'empleadoController@validacion'); //PARA VALIDACION EN TIEMPO REAL CON JS PURO
+
 //pdf
 Route::get('empleado/list', 'empleado@index');
 //download
