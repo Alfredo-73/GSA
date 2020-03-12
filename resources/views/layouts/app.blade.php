@@ -79,23 +79,49 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Cerrar Sesión') }}
+                        @role('Administrador')  
+                        <li class="nav-item nav-dropdown">
+	                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-group"></i> Autenticacion</a>
+	                        <ul class="nav-dropdown-items">
+                                <li><a class="nav-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user"></i> <span>ABM Usuarios</span></a></li>
+                                <li><a class="nav-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key"></i><span>ABM Permisos</span></a></li>
+                                <li><a class="nav-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users"></i><span>ABM Roles</span></a></li>
+                        	</ul>
+                        </li>
+                        
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Cerrar Sesión') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                      @csrf
+                                    </form>
+                                </div>
+                            </li>
+                            @endrole
                         @endguest
+                     <!--   @role('administrator')
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Administration <span class="caret"></span>
+        </a>
+ 
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                <a href="{{ route('admin.users.index') }}">
+                    Users
+                </a>
+            </li>
+        </ul>
+    </li>
+@endrole-->
                     </ul>
                 </div>
             </div>

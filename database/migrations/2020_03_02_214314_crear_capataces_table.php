@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaCapataz extends Migration
+class CrearCapatacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CrearTablaCapataz extends Migration
      */
     public function up()
     {
-        Schema::create('capataz', function (Blueprint $table) {
-            $table->increments('id');
-
-            $table->string('nombre')->lenght(100);
+        Schema::create('capataces', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre')->lenght(255)->unique();
             $table->timestamps();
         });
-        //
     }
 
     /**
@@ -29,7 +27,6 @@ class CrearTablaCapataz extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('capataz');
-        //
+        Schema::dropIfExists('capataces');
     }
 }
