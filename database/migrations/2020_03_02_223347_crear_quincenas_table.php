@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AgregarColumnaTrasportista extends Migration
+class CrearQuincenasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class AgregarColumnaTrasportista extends Migration
      */
     public function up()
     {
-        Schema::table('cosecha', function (Blueprint $table) {
-            $table->string('transportista')->lenght(150)->after('supervisor');
-
-            //
+        Schema::create('quincenas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre')->lenght(255)->unique();
+            $table->timestamps();
         });
     }
 
@@ -27,11 +27,6 @@ class AgregarColumnaTrasportista extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('cosecha', function (Blueprint $table) {
-            $table->dropcolumn('transportista');
-
-            //
-        });
+        Schema::dropIfExists('quincenas');
     }
 }

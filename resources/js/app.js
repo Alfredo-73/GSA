@@ -30,3 +30,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+$(document).ready(function() {
+    $(".btn-modal-change-role").click(function(e) {
+        var currentUserRole = $(this).data("userrole");
+        var currentUserId = $(this).data("userid");
+        // add the user id of the selected user to the input
+        $("input[name='user_id']").val(currentUserId);
+        // select current role for the user selected
+        $("select[name='role']").val(currentUserRole);
+        $("#roleModal").modal("show");
+    });
+});

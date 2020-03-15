@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaQuincena extends Migration
+class CrearEmpresasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CrearTablaQuincena extends Migration
      */
     public function up()
     {
-        Schema::create('quincena', function (Blueprint $table) {
+        Schema::create('empresas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('razon_social')->lenght(255)->unique();
+            $table->bigInteger('cuit')->lenght(20)->unique();
+            $table->string('domicilio')->lenght(255);
             $table->timestamps();
-            $table->string('nombre')->lenght(100);
         });
-        
     }
 
     /**
@@ -28,6 +29,6 @@ class CrearTablaQuincena extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quincena');
+        Schema::dropIfExists('empresas');
     }
 }
