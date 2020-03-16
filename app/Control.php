@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Control extends Model
 {
-    public $table = 'control';
+    public $table = 'controles';
 
     public $guarded = [];
     //
