@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Capataz extends Model
 {
     //
-    public $table = 'capataz';
+    public $table = 'capataces';
 
     public $guarded = [];
 

@@ -15,6 +15,23 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run()
     {
         //
+        app()['cache']->forget('spatie.permission.cache');
+
+        $permissions = [
+            'role-list',
+            'role-create',
+            'role-edit',
+            'role-delete',
+            'permiso-list',
+            'permiso-create',
+            'permiso-edit',
+            'permiso-delete',
+        ];
+
+
+        foreach ($permissions as $permission) {
+            Permission::create(['name' => $permission]);
+        }
         Permission::create(['name' => 'home']);
         Permission::create(['name' => 'leer_control']);
         Permission::create(['name' => 'agregar_control']);
@@ -34,15 +51,18 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'borrar_empleado']);
         Permission::create(['name' => 'leer_empresa']);
         Permission::create(['name' => 'leer_capataz']);
-
+    
         //Admin
-        $admin = Role::create(['name' => 'Admin']);
+      //  $admin = Role::create(['name' => 'Administrador']);
 
-        $admin->givePermissionTo(Permission::all());
+        //$admin->givePermissionTo(Permission::all());
         
         //$admin->givePermissionTo('products.index');
         //$admin->givePermissionTo(Permission::all());
-
+        
+        //User Admin
+       // $user = User::find(1); //Administrador
+        //$user->assignRole('Administrador');
         //Guest
         $capataz = Role::create(['name' => 'Capataz']);
 
@@ -54,11 +74,8 @@ class RolesAndPermissionsSeeder extends Seeder
             'borrar_cosecha'
         ]);
 
-        //User Admin
-        $user = User::find(5); //Administrador
-        $user->assignRole('Admin');
-        $user = User::find(6); //Capataz
-        $user->assignRole('Capataz');
+        //$user = User::find(6); //Capataz
+        //$user->assignRole('Capataz');
 
         $gerente = Role::create(['name' => 'Gerente']);
         $gerente->givePermissionTo([
@@ -92,11 +109,11 @@ class RolesAndPermissionsSeeder extends Seeder
             'leer_empresa',
             'leer_capataz'
         ]);
-        $user = User::find(7); //Anto
-        $user->assignRole('Administrativo');
-        $user = User::find(8); //Anto
-        $user->assignRole('Gerente');
-        $user = User::find(9); //Anto
-        $user->assignRole('Supervisor');
+        //$user = User::find(7); //Anto
+        //$user->assignRole('Administrativo');
+        //$user = User::find(8); //Anto
+       // $user->assignRole('Gerente');
+       // $user = User::find(9); //Anto
+       // $user->assignRole('Supervisor');
     }
 }

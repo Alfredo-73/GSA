@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AgregarColumnaMotivo extends Migration
+class CrearClientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class AgregarColumnaMotivo extends Migration
      */
     public function up()
     {
-        Schema::table('sanciones', function (Blueprint $table) {
-            $table->string('motivo')->lenght(255)->after('reincorporacion');
-
-            //
+        Schema::create('clientes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre')->lenght(255);
+            $table->biginteger('cuit')->lenght(20)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,10 +28,6 @@ class AgregarColumnaMotivo extends Migration
      */
     public function down()
     {
-        Schema::table('sanciones', function (Blueprint $table) {
-            $table->dropcolumn('motivo');
-
-            //
-        });
+        Schema::dropIfExists('clientes');
     }
 }
