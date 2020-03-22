@@ -15,8 +15,8 @@ class CrearControlesTable extends Migration
     {
         Schema::create('controles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('quincena_id');
-            $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('quincena_id')->nullable();
+            $table->unsignedBigInteger('id_cliente')->nullable();
             $table->bigInteger('num_factura')->lenght(20)->nullable();
             $table->float('importe')->lenght(12)->nullable();
             $table->float('retencion')->lenght(12)->nullable();

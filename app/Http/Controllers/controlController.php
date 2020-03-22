@@ -176,7 +176,7 @@ class controlController extends Controller
     }
 
 
-    public function busqueda(Request $request)
+   /* public function busqueda(Request $request)
     {
         $noticia = Noticia::with('notas')->get();
 
@@ -193,7 +193,7 @@ class controlController extends Controller
             $noticia = Noticia::paginate(3);
             return view('noticia.listar', array('noticia' => $noticia));
         }
-    }
+    }*/
     public function control(Request $req)
     {
         $controles = Control::all()->sortBy('quincena');
@@ -251,7 +251,7 @@ class controlController extends Controller
         $control_nuevo = new Control();
         
         $control_nuevo->quincena_id = $req['quincena_id'];
-        $control_nuevo->nombre_quincena = $req['quincena_id'];
+      //  $control_nuevo->nombre_quincena = $req['quincena_id'];
         $control_nuevo->id_cliente = $req['id_cliente'];
         $control_nuevo->num_factura = $req['num_factura'];
         $control_nuevo->importe = $req['importe'];
@@ -332,7 +332,7 @@ class controlController extends Controller
         $control->observacion = $req['observacion'];
         //grabar
         $control->quincena_id = $req['quincena_id'];
-        $control->nombre_quincena = $req['quincena_id'];
+        //$control->nombre_quincena = $req['quincena_id'];
         $control->id_cliente = $req['id_cliente'];
         
      /*   foreach($clientes as $cliente)

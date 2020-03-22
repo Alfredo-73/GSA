@@ -14,19 +14,19 @@ class CreaFKVs extends Migration
     public function up()
     {
         Schema::table('empleados', function (Blueprint $table) {
-            $table->foreign('id_empresa')->references('id')->on('empresas');
-            $table->foreign('id_capataz')->references('id')->on('capataces');
-            $table->foreign('id_sanciones')->references('id')->on('sanciones');
+            $table->foreign('id_empresa')->references('id')->on('empresas')->onDelete('set null');
+            $table->foreign('id_capataz')->references('id')->on('capataces')->onDelete('set null');
+            $table->foreign('id_sanciones')->references('id')->on('sanciones')->onDelete('set null');
 
         });
         Schema::table('cosechas', function (Blueprint $table) {
-            $table->foreign('id_cliente')->references('id')->on('clientes');
-            $table->foreign('id_capataz')->references('id')->on('capataces');
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('set null');
+            $table->foreign('id_capataz')->references('id')->on('capataces')->onDelete('set null');
         });
         Schema::table('sanciones', function (Blueprint $table) {
-            $table->foreign('id_empresa')->references('id')->on('empresas');
-            $table->foreign('id_capataz')->references('id')->on('capataces');
-            $table->foreign('id_empleado')->references('id')->on('empleados');
+            $table->foreign('id_empresa')->references('id')->on('empresas')->onDelete('set null');
+            $table->foreign('id_capataz')->references('id')->on('capataces')->onDelete('set null');
+            $table->foreign('id_empleado')->references('id')->on('empleados')->onDelete('set null');
         });
     }
 

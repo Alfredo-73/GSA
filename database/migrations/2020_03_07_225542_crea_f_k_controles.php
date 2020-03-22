@@ -14,8 +14,8 @@ class CreaFKControles extends Migration
     public function up()
     {
         Schema::table('controles', function (Blueprint $table) {
-            $table->foreign('id_cliente')->references('id')->on('clientes');
-            $table->foreign('quincena_id')->references('id')->on('quincenas');
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('set null');;
+            $table->foreign('quincena_id')->references('id')->on('quincenas')->onDelete('set null');;
         });
     }
 

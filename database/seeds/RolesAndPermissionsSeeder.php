@@ -26,6 +26,18 @@ class RolesAndPermissionsSeeder extends Seeder
             'permiso-create',
             'permiso-edit',
             'permiso-delete',
+            'cliente_listar',
+            'cliente_alta',
+            'cliente_editar',
+            'cliente_borrar',
+            'capataz_listar',
+            'capataz_alta',
+            'capataz_editar',
+            'capataz_borrar',
+            'quincena_listar',
+            'quincena_alta',
+            'quincena_editar',
+            'quincena_borrar',
         ];
 
 

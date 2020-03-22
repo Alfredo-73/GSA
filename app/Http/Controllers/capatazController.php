@@ -56,7 +56,7 @@ class capatazController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:capataz',
+            'nombre' => 'string|min:0|max:255|unique:capataces',
             
 
             
@@ -105,7 +105,7 @@ class capatazController extends Controller
 
         $capat = Capataz::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:capataz',
+            'nombre' => 'string|min:0|max:255|unique:capataces',
            
             
         ];
