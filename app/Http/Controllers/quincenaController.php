@@ -46,7 +46,7 @@ class quincenaController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:quincena',
+            'nombre' => 'string|min:0|max:255|unique:quincenas',
             
 
             
@@ -83,7 +83,7 @@ class quincenaController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:quincena',
+            'nombre' => 'string|min:0|max:255|unique:quincenas',
             
 
             

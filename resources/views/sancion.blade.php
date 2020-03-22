@@ -22,6 +22,8 @@
                         <form class="form-inline">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
                             <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
+                            <input name="name" class="form-control mr-sm-2" type="search" placeholder="Buscar por name" aria-label="Search">
+
                             <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
                             <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido" aria-label="Search">
     
@@ -117,10 +119,12 @@
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
-                            <td class="text-center" hidden='true'> {{$sancion->legajo}}</td>
-                            <td class="text-center" >{{$sancion->nombre}} </td>
-                            <td class="text-center">{{$sancion->apellido}} </td>
-                            <td class="text-center"> {{$sancion->dni}}</td> 
+                            @foreach($empleados as $empleado)
+                            @if($empleado->id == $sancion->id_empleado)
+                            <td class="text-center" hidden='true'> {{$empleado->legajo}}</td>
+                            <td class="text-center" >{{$empleado->nombre}} </td>
+                            <td class="text-center">{{$empleado->apellido}} </td>
+                            <td class="text-center"> {{$empleado->dni}}</td> 
                             <td class="text-center" name="fecha"> {{$sancion->fecha}}</td>
                             <td class="text-center"> {{$sancion->dias}}</td>
                             <td class="text-center"> {{$sancion->reincorporacion}}</td>
@@ -145,6 +149,8 @@
                                     @include('modal_sancion')
                                 </form>
                             </td>
+                            @endif
+                            @endforeach
                         </tr>
                         @endforeach
                     </tbody>

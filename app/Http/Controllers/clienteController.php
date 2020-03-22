@@ -49,7 +49,7 @@ class clienteController extends Controller
 
  
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:cliente',
+            'nombre' => 'string|min:0|max:255|unique:clientes',
             'cuit' => 'integer',
 
             
@@ -95,7 +95,7 @@ class clienteController extends Controller
 
         $cliente = Cliente::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:cliente',
+            'nombre' => 'string|min:0|max:255|unique:clientes',
             'cuit' => 'integer',
             
         ];

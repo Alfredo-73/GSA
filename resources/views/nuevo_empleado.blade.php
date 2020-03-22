@@ -156,8 +156,8 @@
                         <div class="form-group row shadow-textarea green-border-focus">
 
                          <!--   <div class="form-group shadow-textarea"> -->
-                            <label for="observaciones">{{ __('OBSERVACION') }}</label>
-                             <textarea class="form-control z-depth-1" id="observaciones" rows="3" name="observaciones">{{ old('observaciones') }}</textarea>
+                            <label for="observacion">{{ __('OBSERVACION') }}</label>
+                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion">{{ old('observacion') }}</textarea>
                             </div>
 
                         </div>
