@@ -8,7 +8,6 @@ use App\Empleado;
 use App\Empresa;
 
 use App\Capataz;
-use App\Cliente;
 use PDF;
 use DB;
 use Laracasts\Flash\Flash;
@@ -19,19 +18,19 @@ class SancionController extends Controller
 {
     public function listado()
     {
-        $sanciones = Sancion::all()->sortBy('legajo');
+        $sanciones = Sancion::all()->sortBy('id_empleado');
         $capataz = Capataz::all();
         $empresa = Empresa::all();
         $empleados = Empleado::all();
        // $empleadosConSanciones = Empleado::with('sanciones')->get();
         // dd($sanciones);
-        $vac = compact('sanciones', 'clientes', 'capataz', 'empresa', 'empleados');
+        $vac = compact('sanciones', 'capataz', 'empresa', 'empleados');
         //dd($vac);
         return view("sancion", $vac);
     }
 
     //para usar scope
-    public function indexBuscar(Request $request)
+   public function indexBuscar(Request $request)
     {
        //dd($request);
         if (empty($request)) {
@@ -72,13 +71,24 @@ class SancionController extends Controller
         
             if(empty($fechadesde && $fechahasta))
             {
-                $sanciones = Sancion::orderBy('apellido', 'asc')
-                    ->nombres($nombres)->apellidos($apellidos)
-                    ->get();
+              /*  $sanciones = Sancion::with(['empleado' => function($query) use ($nombres)
+                {
+                    $query->where('nombre', 'LIKE', "%$nombres%");
+
+                }])->get();*/
+                $sanciones = Sancion::Name($request->name)
+                ->leftJoin('empleados', 'sanciones.id_empleado', '=', 'empleados.id')
+                ->select('sanciones.*', 'empleados.nombre')
+                ->paginate(5);
+             //   ->orwhere('apellido', 'LIKE', "%$apellidos%")->get();
+               // dd($empleados);
+
+              //dd($sanciones);
             }else{
-                $sanciones = Sancion::orderBy('apellido', 'asc')
-                    ->nombres($nombres)->apellidos($apellidos)
-                    ->whereBetween('fecha',[$fechadesde, $fechahasta])->get();  
+                $sanciones = Sancion::all()->whereBetween('fecha',[$fechadesde, $fechahasta]);
+                $empleados = Empleado::orderBy('apellido', 'ASC')
+                    ->where('nombre', 'LIKE', "%$nombres%")
+                    ->orwhere('apellido', 'LIKE', "%$apellidos%")->get();
             }
 
             
@@ -100,12 +110,11 @@ class SancionController extends Controller
     public function agregar($id)
     {
         //dd($id);
-        $clientes = Cliente::all();
         $capataz = Capataz::all();
         $empleado =  Empleado::Find($id);
         $empresas = Empresa::all();
 
-        $vac = compact('capataz', 'clientes', 'empresas', 'empleado');
+        $vac = compact('capataz',  'empresas', 'empleado');
         //dd($vac);
         return view('nueva_sancion', $vac);
     }
@@ -116,10 +125,10 @@ class SancionController extends Controller
         $empleado = Empleado::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:99999999999',
-            'nombre' => 'string|min:0|max:100',
-            'apellido' => 'string|min:0|max:100',
-            'dni' => 'numeric|max:9999999999',
+           // 'legajo' => 'numeric|max:99999999999',
+           // 'nombre' => 'string|min:0|max:100',
+           // 'apellido' => 'string|min:0|max:100',
+           // 'dni' => 'numeric|max:9999999999',
             'dias' => 'numeric|max:999',
             'fecha' => 'date',
             'reincorporacion' => 'date',
@@ -141,10 +150,10 @@ class SancionController extends Controller
         $this->validate($req, $reglas, $mensajes);
 
         $sancion_nueva = new Sancion();
-        $sancion_nueva->legajo = $empleado->legajo;
-        $sancion_nueva->nombre = $empleado->nombre;
-        $sancion_nueva->apellido = $empleado->apellido;
-        $sancion_nueva->dni = $empleado->dni;
+       // $sancion_nueva->legajo = $empleado->legajo;
+       // $sancion_nueva->nombre = $empleado->nombre;
+        //$sancion_nueva->apellido = $empleado->apellido;
+        //$sancion_nueva->dni = $empleado->dni;
         $sancion_nueva->id_empresa = $empleado->id_empresa;
         $sancion_nueva->id_capataz = $empleado->id_capataz;
         $sancion_nueva->id_empleado = $empleado->id;
@@ -178,10 +187,10 @@ class SancionController extends Controller
     {
 
         $sancion = Sancion::Find($id);
-        $clientes = Cliente::all();
+        $empresas = Empresa::all();
         $capataz = Capataz::all();
 
-        $vac = compact('sancion', 'clientes', 'capataz');
+        $vac = compact('sancion', 'empresas', 'capataz');
 
         return view('modif_sancion', $vac);
     }
@@ -191,10 +200,10 @@ class SancionController extends Controller
         $sancion = sancion::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:9999999999',
-            'nombre' => 'string|min:0|max:100',
-            'apellido' => 'string|min:0|max:100',
-            'dni' => 'numeric|max:999999999',
+            //'legajo' => 'numeric|max:9999999999',
+            //'nombre' => 'string|min:0|max:100',
+            //'apellido' => 'string|min:0|max:100',
+            //'dni' => 'numeric|max:999999999',
             'dias' => 'numeric|max:999',
             'fecha' => 'date',
             'reincorporacion' => 'date',
@@ -216,11 +225,11 @@ class SancionController extends Controller
         //dd($sancion);
         $this->validate($req, $reglas, $mensajes);
 
-        $sancion->legajo = $req['legajo'];
-        $sancion->nombre = $req['nombre'];
-        $sancion->apellido = $req['apellido'];
-        $sancion->dni = $req['dni'];
-        $sancion->id_cliente = $req['id_cliente'];
+       // $sancion->legajo = $req['legajo'];
+        //$sancion->nombre = $req['nombre'];
+       // $sancion->apellido = $req['apellido'];
+       // $sancion->dni = $req['dni'];
+        $sancion->id_empresa = $req['id_empresa'];
         $sancion->id_capataz = $req['id_capataz'];
         $sancion->dias = $req['dias'];
         $sancion->fecha = $req['fecha'];

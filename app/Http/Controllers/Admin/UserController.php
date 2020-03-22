@@ -6,8 +6,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 use App\User;
 use Spatie\Permission\Models\Role;
 
@@ -113,7 +114,7 @@ class UserController extends Controller
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
-            $input = array_except($input, array('password'));
+            $input = Arr::except($input, array('password'));
         }
 
 
@@ -173,4 +174,3 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['You can\'t change your role!']);
         }
     }*/
-}

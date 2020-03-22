@@ -25,10 +25,10 @@ class EmpleadoController extends Controller
 
         $empleados = Empleado::where('id_cliente', 'like', "%$name_cliente%")
             ->paginate(10);
-        $clientes = Empresa::all();
+        $empresas = Empresa::all();
         $capataz = Capataz::all();
 
-        return view('empleado_quincenal', compact('clientes', 'empleados', 'capataz'));
+        return view('empleado_quincenal', compact('empleados', 'empresas','capataz'));
     }
 
     //para usar scope
@@ -173,6 +173,8 @@ class EmpleadoController extends Controller
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
             'dni' => 'numeric|max:999999999',
+            'cuil' => 'numeric|max:999999999999999999',
+
             'observacion' => 'string|min:0|max:300',
             'id_empresa' => 'required',
             'id_capataz' => 'required'
@@ -201,7 +203,7 @@ class EmpleadoController extends Controller
         $empleado_nuevo->cuil = $req['cuil'];
         $empleado_nuevo->fecha_ingreso = $req['fecha_ingreso'];
         $empleado_nuevo->fecha_egreso = $req['fecha_egreso'];
-      
+
 
            $empleado_nuevo->id_empresa = $req['id_empresa'];
       
@@ -215,7 +217,7 @@ class EmpleadoController extends Controller
        
         $empleado_nuevo->avatar = 'avatar.jpg';
 
-        $empleado_nuevo->observaciones = $req['observaciones'];
+        $empleado_nuevo->observacion = $req['observacion'];
         //dd($empleado_nuevo);
         //grabar
         $empleado_nuevo->save();
@@ -286,7 +288,7 @@ class EmpleadoController extends Controller
         $empleado->avatar = 'avatar.jpg';
 
         
-        $empleado->observaciones = $req['observacion'];
+        $empleado->observacion = $req['observacion'];
         //grabar
 
         $empleado->save();

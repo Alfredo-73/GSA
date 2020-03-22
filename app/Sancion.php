@@ -39,7 +39,7 @@ class Sancion extends Model
             return $query->where('id', 'LIKE', "%$sanciones%");
         }
     }
-    public function scopeNombres($query, $nombres) {
+  public function scopeNombres($query, $nombres) {
     	if (trim ($nombres) != "") {
     		return $query->where('nombre','like',"%$nombres%");
     	}
@@ -49,6 +49,12 @@ class Sancion extends Model
     	if (trim($apellidos) != "") {
     		return $query->where('apellido','like',"%$apellidos%");
     	}
+    }
+    public function scopeName($query, $name)
+    {
+        if (trim($name) != "") {
+            return $query->where('nombre','like', "%$name%");
+        }
     }
     //
 }

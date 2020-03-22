@@ -22,9 +22,9 @@ class CrearEmpleadosTable extends Migration
             $table->biginteger('cuil')->lenght(20);
             $table->date('fecha_ingreso');
             $table->date('fecha_egreso')->nullable();
-            $table->bigInteger('id_empresa')->lenght(20)->unsigned();
-            $table->bigInteger('id_capataz')->lenght(20)->unsigned();
-            $table->bigInteger('id_sanciones')->lenght(20)->unsigned();
+            $table->bigInteger('id_empresa')->lenght(20)->unsigned()->nullable();
+            $table->bigInteger('id_capataz')->lenght(20)->unsigned()->nullable();
+            $table->bigInteger('id_sanciones')->lenght(20)->unsigned()->nullable();
             $table->string('avatar')->lenght(255)->nullable();
 
             $table->string('observacion')->lenght(255)->nullable();

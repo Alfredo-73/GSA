@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', 'RoleController');
     Route::resource('users', 'UserController');
     Route::resource('permisos', 'PermissionController');
+    Route::resource('cliente', 'ClienteController');
+
 });
 
 Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fcon control por buscarpor para probar
@@ -86,7 +88,7 @@ Route::get('modif_cliente/{id}', 'clienteController@edit');
 
 Route::put('modif_cliente/{id}', 'clienteController@update');
 
-Route::delete('/borrar_cliente/{id}', 'clienteController@borrar');
+Route::delete('borrar_cliente/{id}', 'clienteController@borrar');
 
 //abm capataz
 
@@ -485,6 +487,11 @@ Route::get('/imprimir_empleado', 'empleadoController@imprimir');
 
 
 });
+Route::group(['middleware' => ['auth']], function () {
+     Route::resource('roles', 'RoleController');
+     Route::resource('users', 'UserController');
+     Route::resource('permisos', 'PermissionController');
+   
 
 
 
@@ -497,11 +504,6 @@ Route::get('/imprimir_empleado', 'empleadoController@imprimir');
 
 
 
-   Route::group(['middleware' => ['auth']], function () {
-        Route::resource('roles', 'RoleController');
-        Route::resource('users', 'UserController');
-        Route::resource('permisos', 'PermissionController');
-      
     Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fcon control por buscarpor para probar
 
     Route::get('agregar_control', 'controlController@agregar');

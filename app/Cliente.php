@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
-    public $table = 'clientes';
+   // public $table = 'clientes';
 
     public $guarded = [];
 
