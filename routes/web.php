@@ -45,6 +45,8 @@ Route::get('modif_control/{id}', 'controlController@edit');
 
 Route::put('modif_control/{id}', 'controlController@update');
 
+Route::delete('borrar_control/{id}', 'controlController@borrar');
+
 
 
 //cosecha

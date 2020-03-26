@@ -133,7 +133,7 @@ class SancionController extends Controller
             'fecha' => 'date',
             'reincorporacion' => 'date',
             'motivo' => 'string|max:300',
-            'observacion' => 'string|min:0|max:300',
+            
 
             // 'id_capataz' => 'numeric|max:10',
         ];
@@ -300,20 +300,20 @@ class SancionController extends Controller
 
     public function listadoEmpleadoConSanciones($id)
     {
-        $empleado = Empleado::Find($id);
+        $empleados = Empleado::Find($id);
        /* $sanciones = Sancion::join('empleados', 'sanciones.id_empleado', '=', 'empleados.id')
         ->where('empleados.id', '=', 'sanciones.id_empleado')->get();*/
         $sanciones = Sancion::whereid_empleado($id)->with('empleado')->get();
         $capataz = Capataz::all();
         $empresa = Empresa::all();
         
-        //dd($sanciones);
+        //dd($empleado, $sanciones, $capataz, $empresa);
         $dias = sancion::whereid_empleado($id)->with('empleado')->sum('dias');
         $cantidad_sancion = sancion::whereid_empleado($id)->with('empleado')->count('dias');
         //return $dias->toJson();
         //dd($cantidad_sancion);
 
-        $vac = compact('sanciones', 'capataz', 'empresa', 'empleado','dias','cantidad_sancion');
+        $vac = compact('sanciones', 'capataz', 'empresa', 'empleados','dias','cantidad_sancion');
        // dd($vac);
         return view("sancionPorEmpleado", $vac);
     }

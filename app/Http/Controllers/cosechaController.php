@@ -89,7 +89,7 @@ class cosechaController extends Controller
         $reglas = [
             'id_cliente' => 'required',
             'fecha' => 'date',
-            'capataz' => 'required',
+            'id_capataz' => 'required',
 
             'jornales' => 'numeric|min:00001|max:99999',
             'cosecheros' => 'numeric|min:0000|max:999999',

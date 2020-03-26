@@ -1,6 +1,7 @@
 function validar(formulario) {
     //var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    var legajo, nombre, apellido, dni, cuil, fecha_ingreso, empresa, capataz, legajovalido;
+    var legajo, nombre, apellido, dni, cuil, fecha_ingreso, empresa, capataz;
+
     legajo = document.getElementById("legajo").value;
     nombre = document.getElementById("nombre").value;
     apellido = document.getElementById("apellido").value;
@@ -10,7 +11,7 @@ function validar(formulario) {
     empresa = document.getElementById("empresa").value;
     capataz = document.getElementById("capat").value;
 
-    if ((document.getElementById("legajo").value.length) >= 1)
+    if ((document.getElementById("legajo").value.length) >= 0)
         fetch(`/legajo/validacion/?legajo= ${document.getElementById("legajo").value}`, {
             method: 'get'
         })
@@ -18,13 +19,22 @@ function validar(formulario) {
             return response.text();
         })
         .then(function(data) {
-            if (data >= 0) {
-                swal("ERROR", "Nº de LEGAJO no permitido", "error");
+
+            console.log('DATO GUARDADO EN BASE DE DATOS:', data);
+            console.log('DATO INGRESADO EN INPUT:', document.getElementById("legajo").value)
+            console.log(data.indexOf("legajo") >= 0)
+
+            if (data.indexOf("legajo") >= 0) {
+                swal("ERROR", "EL Nº de Legajo ya existe, elija otro", "error");
             }
         })
 
     if (legajo === "") {
         swal("ERROR", "El campo LEGAJO esta vacio", "error");
+        document.getElementById("legajo").focus();
+        return false;
+    } else if (legajo == 0) {
+        swal("ERROR", "El campo LEGAJO no puede ser cero", "error");
         document.getElementById("legajo").focus();
         return false;
     } else if (isNaN(legajo)) {

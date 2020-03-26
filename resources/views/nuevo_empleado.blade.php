@@ -80,10 +80,9 @@
                             <div class="form-group row" id="id_empresa">
                                 <label for="empresa" class="col-md-4 col-form-label text-md-right">{{ __('EMPRESA') }}</label>
 
-                         <!--   <div class="form-group shadow-textarea"> -->
-                            <label for="observacion">{{ __('OBSERVACION') }}</label>
-                             <textarea class="form-control z-depth-1" id="observacion" rows="3" name="observacion">{{ old('observacion') }}</textarea>
-                            </div>
+                                <select id="empresa" class="selectpicker show-menu-arrow" name="id_empresa" data-style="btn-success" data-width="auto">
+                                    <option id="empresa">Elegir Empresa</option>
+                                    @foreach($empresas as $empresa)
 
                                     <option id="empresa" value="{{$empresa->id}}">{{$empresa->razon_social}}</option>
 
