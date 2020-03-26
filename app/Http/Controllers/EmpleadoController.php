@@ -11,6 +11,7 @@ use App\Empleado;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
+use Illuminate\Notifications\Messages\DatabaseMessage;
 
 class EmpleadoController extends Controller
 {
@@ -24,31 +25,27 @@ class EmpleadoController extends Controller
 
         $empleados = Empleado::where('id_cliente', 'like', "%$name_cliente%")
             ->paginate(10);
-        $empresas = Empresa::all();
+        $clientes = Empresa::all();
         $capataz = Capataz::all();
 
-        return view('empleado_quincenal', compact('empleados', 'empresas','capataz'));
+        return view('empleado_quincenal', compact('clientes', 'empleados', 'capataz'));
     }
 
     //para usar scope
     public function indexBuscar(Request $request)
     {
-   // $cantidad_sanciones = 0;
-        if(empty($request))
-        {
+        // $cantidad_sanciones = 0;
+        if (empty($request)) {
             $sanciones = Sancion::all();
             $capataz = Capataz::all();
-            $empresa = Empresa::all();  
-            $empleados = Empleado::all();
-            
-            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'cantidad_sanciones');
-//dd($vac);
+            $empresa = Empresa::all();
+            $empleados = Empleado::orderby('legajo', 'asc');
+            $buscanombre = Empleado::where('nombre', 'like', $request->nombre . "%")->get();
 
-
-
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'cantidad_sanciones', 'buscanombre');
+            //dd($vac);
             return view('empleado', $vac);
-        }else
-        {
+        } else {
             $nombres = $request->get('buscarpornombre');
             $apellidos = $request->get('buscarporapellido');
             //$data = $request->all();
@@ -59,20 +56,21 @@ class EmpleadoController extends Controller
             $empleados = Empleado::orderBy('apellido', 'asc')
                 ->nombres($nombres)
                 ->apellidos($apellidos)
+                ->orderby('legajo', 'asc')
                 ->paginate(10);
 
             $sanciones = Sancion::all();
             $capataz = Capataz::all();
             $empresa = Empresa::all();
+            $buscanombre = Empleado::where('nombre', 'like', $request->nombre . "%")
+                ->orderby('legajo', 'asc')
+                ->get();
 
-            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'nombres', 'apellidos');
-
-
+            $vac = compact('empleados', 'sanciones', 'capataz', 'empresa', 'nombres', 'apellidos', 'buscanombre');
 
 
             return view('empleado', $vac);
         }
-        
     }
 
 
@@ -145,7 +143,7 @@ class EmpleadoController extends Controller
 
         $varbuscacapataz = $buscacapataz;
 
-       $empresas = Empresa::all();
+        $empresas = Empresa::all();
         $sanciones = Sancion::all()->sortBy('legajo');
         $empleados = Empleado::all();
         $capataz = Capataz::all();
@@ -171,13 +169,10 @@ class EmpleadoController extends Controller
         //dd($req);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:99999999999999999999',
+            'legajo' => 'numeric|max:99999999999999999999|unique:empleados',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
             'dni' => 'numeric|max:999999999',
-            'cuil' => 'numeric|max:999999999999999999',
-
-            'observacion' => 'string|min:0|max:300',
             'id_empresa' => 'required',
             'id_capataz' => 'required'
 
@@ -190,7 +185,7 @@ class EmpleadoController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
-            'unique' => 'El campo :attribute se encuentra repetido',
+            'unique' => 'El :attribute ya existe, elija uno distinto',
             'required' => 'El campo :attribute no fue seleccionado'
         ];
 
@@ -207,25 +202,25 @@ class EmpleadoController extends Controller
         $empleado_nuevo->fecha_egreso = $req['fecha_egreso'];
 
 
-           $empleado_nuevo->id_empresa = $req['id_empresa'];
-      
-       // $empleado_nuevo->id_empresa = null;
+        $empleado_nuevo->id_empresa = $req['id_empresa'];
+
+        // $empleado_nuevo->id_empresa = null;
         $empleado_nuevo->id_sanciones = null;
 
-       // $empleado_nuevo->id_sanciones = $req['id_sanciones'];
-       
+        // $empleado_nuevo->id_sanciones = $req['id_sanciones'];
 
-           $empleado_nuevo->id_capataz = $req['id_capataz'];
-       
+
+        $empleado_nuevo->id_capataz = $req['id_capataz'];
+
         $empleado_nuevo->avatar = 'avatar.jpg';
 
-        $empleado_nuevo->observacion = $req['observacion'];
+        
         //dd($empleado_nuevo);
         //grabar
         $empleado_nuevo->save();
 
 
-        Flash::success('Se ha dado de alta la empleado de ' . $empleado_nuevo->apellido . ' de forma exitosa !');
+        Flash::success('Se ha dado de alta al empleado ' . $empleado_nuevo->apellido . ' de forma exitosa !');
 
 
 
@@ -239,8 +234,8 @@ class EmpleadoController extends Controller
         $empresas = Empresa::all();
         $capataz = Capataz::all();
         $sanciones = Sancion::all();
-       $cantidad_sanciones = 0;
-       $vac = compact('empleado', 'empresas', 'capataz', 'sanciones');
+        $cantidad_sanciones = 0;
+        $vac = compact('empleado', 'empresas', 'capataz', 'sanciones');
 
         return view('modif_empleado', $vac);
     }
@@ -250,7 +245,7 @@ class EmpleadoController extends Controller
         $empleado = Empleado::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:9999999999',
+            'legajo' => 'numeric|max:9999999999|unique:empleado',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
             'dni' => 'numeric|max:999999999',
@@ -258,7 +253,7 @@ class EmpleadoController extends Controller
             'fecha' => 'date',
             'reincorporacion' => 'date',
             'motivo' => 'string|max:300',
-            'observacion' => 'string|min:0|max:300',
+            
 
             // 'id_capataz' => 'numeric|max:10',
         ];
@@ -269,7 +264,7 @@ class EmpleadoController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
-            'unique' => 'El campo :attribute se encuentra repetido'
+            'unique' => 'El campo :attribute ya existe'
         ];
 
         //dd($empleado);
@@ -285,12 +280,12 @@ class EmpleadoController extends Controller
         $empleado->fecha_egreso = $req['fecha_egreso'];
         $empleado->id_empresa = $req['id_empresa'];
 
-      //  $empleado->id_sanciones = $req['id_sanciones'];
+        //  $empleado->id_sanciones = $req['id_sanciones'];
         $empleado->id_capataz = $req['id_capataz'];
         $empleado->avatar = 'avatar.jpg';
 
-        
-        $empleado->observacion = $req['observacion'];
+
+        $empleado->observaciones = $req['observacion'];
         //grabar
 
         $empleado->save();
@@ -305,12 +300,12 @@ class EmpleadoController extends Controller
     {
         $id = $form['id'];
 
-        $empleado = Sancion::find($id);
+        $empleado = Empleado::find($id);
+        //dd($empleado);
         $empleado->delete();
-        Flash::success('Se ha borrado la empleado de ' . $empleado->legajo . ' de forma exitosa !');
+        //Flash::success('Se ha borrado el empleado' . $empleado->legajo . " " . $empleado->nombre . "," . $empleado->apellido .' de forma exitosa !');
 
-
-        return redirect('/empleado');
+        return response()->json(["mensaje" => "Empleado Borrado.$empleado"]);
     }
 
     //pdf
@@ -349,4 +344,36 @@ class EmpleadoController extends Controller
         return view('empleado', $vac);
     }
 
+    public function buscador(Request $request)
+    {
+        //$busca = $_GET['nombre'];
+
+        $empresas = Empresa::all();
+        $capataz = Capataz::all();
+        $sanciones = Sancion::all();
+        $empleados = Empleado::where('nombre', 'like', $request->nombre . "%")
+            ->orderby('legajo', 'asc')
+            ->get();
+
+        $vac = compact('empleados', 'empresas', 'capataz', 'sanciones');
+        //dd($vac);
+        return view('empleado', $vac);
+    }
+
+    public function validacion(Request $request)
+    {
+        //$empresas = Empresa::all();
+        //$capataz = Capataz::all();
+        //$sanciones = Sancion::all();
+        $empleados = Empleado::where('legajo', '=', $request->legajo . "%")
+            ->select('legajo')
+            ->get();
+
+        //$vac = compact('empleados','empresas','capataz','sanciones');
+
+        //$vac = compact('empleados');
+        //dd($empleados);
+        //return view('nuevo_empleado', $vac);
+        return response()->json([$empleados]);
+    }
 }

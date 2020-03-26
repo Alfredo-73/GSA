@@ -1,12 +1,9 @@
 @extends('layouts.app')
-
-@section('content')
 @section('scripts')
-<script type="text/javascript">
-
-</script>
 @endsection
+@section('content')
 
+<div id="resultados"></div>
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="">
@@ -25,7 +22,6 @@
                         </div>-->
                         <p class="navbar-brand ml-5" href="#">Buscador:</p>
 
-
                         <form class="form-inline md-form mr-auto mb-4 float-right" action="">
                             <input name="buscarpornombre" id="nombre" class="form-control mr-sm-2 text-white" type="search" placeholder="Nombre del Empleado" aria-label="Search">
                             <input name="buscarporapellido" id="apellido" class="form-control mr-sm-2 text-white" type="search" placeholder="Apellido del Empleado" aria-label="Search">
@@ -34,28 +30,28 @@
                         </form>
                     </nav>
                 </div>
-                <style>
-                    .estado1 {
-                        color: red !important;
-                        font-weight: bold
-                    }
+            </div>
+            <style>
+                .estado1 {
+                    color: red !important;
+                    font-weight: bold
+                }
 
-                    .estado2 {
-                        color: blue !important;
-                        font-weight: bold
-                    }
-                </style>
-                {{ $empleados->appends($_GET)->links() }}
-                <!--Table-->
-                <!--<table class="table-striped w-auto">-->
-                <table class="table table-bordered table-hover">
-                    <!--OPCIONES DE FORMATO DE TABLAS -->
-                    <!--<table border='1' width='900px' align='center' cellspacing='2' cellpadding='2'>-->
-                    <!--<table class="table-hover" align="center" cellspacing="1" cellpadding="2" border="2">-->
+                .estado2 {
+                    color: blue !important;
+                    font-weight: bold
+                }
+            </style>
+            <!--Table-->
+            <!--<table class="table-striped w-auto">-->
+            <table class="table table-bordered table-hover">
+                <!--OPCIONES DE FORMATO DE TABLAS -->
+                <!--<table border='1' width='900px' align='center' cellspacing='2' cellpadding='2'>-->
+                <!--<table class="table-hover" align="center" cellspacing="1" cellpadding="2" border="2">-->
 
-                    <!--Table head-->
-                    <thead class="thead-dark">
-                        <!--<thead class="text-center">-->
+                <!--Table head-->
+                <thead class="thead-dark">
+                    <thead class="text-center">
                         <tr height="60px" style="background-color:black; color:white">
                             <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
@@ -104,21 +100,21 @@
                             <th COLSPAN=4 class="text-center">ACCIONES DISPONIBLES</th>
                         </tr>
 
-                        </!--<thead>
-                        <!--Table head-->
+                    </thead>
+                    <!--Table head-->
 
-                        <!--Table body-->
-                    <tbody>
-                        @foreach ($empleados as $empleado)
-                        <?php $cantidad_sanciones = 0; ?>
-                        @foreach($sanciones as $sancion)
-                        <?php if ($sancion['legajo'] == $empleado['legajo']) {
-                            $cantidad_sanciones = $cantidad_sanciones + 1;
-                        }
-                        ?>
-                        @endforeach
-                        <tr>
-                            <!--<th scope="row">
+                    <!--Table body-->
+                <tbody>
+                    @foreach ($empleados as $empleado)
+                    <?php $cantidad_sanciones = 0; ?>
+                    @foreach($sanciones as $sancion)
+                    <?php if ($sancion['id_empleado'] == $empleado['id']) {
+                        $cantidad_sanciones = $cantidad_sanciones + 1;
+                    }
+                    ?>
+                    @endforeach
+                    <tr>
+                        <!--<th scope="row">
                                         <input class="form-check-input" type="checkbox" id="checkbox1">
                                         <label class="form-check-label" for="checkbox1" class="label-table"></label>
                                     </th>-->
@@ -174,8 +170,11 @@
             </div>
             <!--Table-->
         </div>
-
     </div>
+    <!--Table-->
+</div>
+</div>
 </div>
 <!--Section: Content-->
+<!--<script src="../js/busqueda.js"></script>-->
 @endsection

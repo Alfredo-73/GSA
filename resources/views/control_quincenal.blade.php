@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('scripts')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@endsection
+<script src="../js/borrar_control_quincenal.js"></script>
 
 @section('content')
 <div class="container-fluid">
@@ -81,70 +85,71 @@
 
                         <!--Table head-->
                         <thead class="thead-dark">
-                            <tr height="60px" style="background-color:black; color:white">
-                                <!--<th>
+                            <thead class="text-center">
+                                <tr height="60px" style="background-color:black; color:white">
+                                    <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                                <th class="text-center">
-                                    <a>CLIENTE
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <a>QUINCENA
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <a>Nº FACTURA
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center" hidden="true">
-                                    <a>IMPORTE
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <a>MONTO COBRADO
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center" hidden="true">
-                                    <a>GASTOS BANCARIOS
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center" hidden="true">
-                                    <a>DISPONIBLE
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <a>TOTAL PAGO
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center" hidden="true">
-                                    <a>NETO QCNA
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="text-center">
-                                    <a>COSTO Tn
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th colspan=2 class="text-center">
-                                    <a>ACCION
-                                    </a>
-                                </th>
-                            </tr>
-                        </thead>
-                        <!--Table head-->
+                                    <th class="text-center">
+                                        <a>CLIENTE
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center">
+                                        <a>QUINCENA
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center">
+                                        <a>Nº FACTURA
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center" hidden="true">
+                                        <a>IMPORTE
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center">
+                                        <a>MONTO COBRADO
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center" hidden="true">
+                                        <a>GASTOS BANCARIOS
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center" hidden="true">
+                                        <a>DISPONIBLE
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center">
+                                        <a>TOTAL PAGO
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center" hidden="true">
+                                        <a>NETO QCNA
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th class="text-center">
+                                        <a>COSTO Tn
+                                            <!--<i class="fas fa-sort ml-1"></i>-->
+                                        </a>
+                                    </th>
+                                    <th colspan=2 class="text-center">
+                                        <a>ACCION
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <!--Table head-->
 
-                        <!--Table body-->
+                            <!--Table body-->
                         <tbody>
 
                             @foreach ($controles as $control)
@@ -171,17 +176,15 @@
                                 <td class="text-center">$ {{round((($disponible - $totalPago)/$control->toneladas),2)}}</td>
                                 @can('borrar_control')
                                 <td class="text-center">
-                                    <form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
-                                        </button>
-
-
-
-                                        <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
-                                    </form>
-                                    <!-- <form method="POST" action="">
+                                    <button type="" onclick="return borrar(this)" value="{{$control->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+                                        <!--<form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
+                                            </button>
+                                        </form>-->
+                                </td>
+                                <!-- <form method="POST" action="">
 
                                         <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
                                     </form> -->
@@ -196,7 +199,7 @@
                                     </form>
                                 </td> -->
 
-                                <td class="text-center">
+                                <td>
                                     <form method="PUT" action="/modal_control/{{ $control->id }}">
                                         @csrf
                                         {{method_field('PUT')}}

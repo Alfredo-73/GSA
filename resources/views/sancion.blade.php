@@ -53,8 +53,10 @@
                 <table class="table table-bordered table-hover">
 
                     <!--Table head-->
-                    <thead class="thead-dark">
-                        <tr>
+                <thead class="thead-dark">
+                    <thead class="text-center">
+                        <tr height="60px" style="background-color:black; color:white">
+                        
                             <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
