@@ -1,4 +1,4 @@
-function borrar(borrar) {
+function borrar_empleado(borrar) {
     swal({
             title: "Esta Seguro?",
             text: "Una vez borrado, no se podra recuperar la informacion!",
@@ -9,7 +9,8 @@ function borrar(borrar) {
         .then((willDelete) => {
             if (willDelete) {
                 //codigo para borrar cpn JS
-                var route = "borrar_cosecha/" + borrar.value + "";
+                var route = "borrar_empleado/" + borrar.value + "";
+                //console.log(route);
                 $.ajax({
                     url: route,
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -19,7 +20,7 @@ function borrar(borrar) {
                     //swal("Bien!! El registro fue borrado!", { icon: "success", });
                     //}
                 });
-                window.location = '/cosecha';
+                window.location = '/empleado';
             } else {
                 swal('Cancelado', "El registro no fue eliminado!", 'error', { button: "Salir" });
             }

@@ -9,7 +9,7 @@ function borrar(borrar) {
         .then((willDelete) => {
             if (willDelete) {
                 //codigo para borrar cpn JS
-                var route = "borrar_cosecha/" + borrar.value + "";
+                var route = "borrar_sancion/" + borrar.value + "";
                 $.ajax({
                     url: route,
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -19,7 +19,7 @@ function borrar(borrar) {
                     //swal("Bien!! El registro fue borrado!", { icon: "success", });
                     //}
                 });
-                window.location = '/cosecha';
+                //window.location = '/sancion';
             } else {
                 swal('Cancelado', "El registro no fue eliminado!", 'error', { button: "Salir" });
             }

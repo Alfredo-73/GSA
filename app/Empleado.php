@@ -58,5 +58,11 @@ class Empleado extends Model
             return $query->where('apellido', 'like', "%$apellidos%");
         }
     }
+    public function scopeBuscar($query, $name)
+    {
+        if (trim($name) != "") {
+            return $query->where('nombre', 'like', "%$name%");
+        }
+    }
 
 }

@@ -34,6 +34,7 @@
 </head>
 
 <body>
+
     <div id="app">
         @include('flash::message')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -43,7 +44,7 @@
                 </a>
                 <span style="font-size:12px"><b>V:1.0</span></b>
                 @if (Auth::user())
-                <div style="margin-left:30%" style="margin-right:30%">
+                <div style="margin-left:20%" style="margin-right:30%">
                     <a class="fas fa-home fa-2x prefix grey-text" role="button" href="{{ url('/../home') }}" name="home" title="Ir a Inicio"></a>
                     <a class="fas fa-money-check-alt fa-2x prefix grey-text" role="button" href="{{ url('/../control_quincenal') }}" name="home" style="padding:2rem" title="Ir a Facturacion Vs. Pago"></a>
                     <a class="far fa-lemon fa-2x prefix grey-text" role="button" href="{{ url('/../cosecha') }}" style="padding:2rem" name="home" title="Ir a Parte Diario de Cosecha"> </a>
@@ -74,49 +75,30 @@
                         </li>
                         @endif
                         @else
-                        @role('Administrador')  
-                        <li class="nav-item nav-dropdown">
-	                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon fa fa-group"></i> Autenticacion</a>
-	                        <ul class="nav-dropdown-items">
-                                <li><a class="nav-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user"></i> <span>ABM Usuarios</span></a></li>
-                                <li><a class="nav-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key"></i><span>ABM Permisos</span></a></li>
-                                <li><a class="nav-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users"></i><span>ABM Roles</span></a></li>
-                        	</ul>
-                        </li>
-                        
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Cerrar Sesión') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                      @csrf
-                                    </form>
-                                </div>
-                            </li>
+                        <div class="dropdown text-center">
+                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </button>
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                            @role('Administrador')
+                                <a class="dropdown-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:blue"></i> ABM Usuarios</a>
+                                <a class="dropdown-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:blue"></i><span> ABM Permisos</span></a>
+                                <a class="dropdown-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:blue"></i><span> ABM Roles</span></a>
                             @endrole
-                        @endguest
-                     <!--   @role('administrator')
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Administration <span class="caret"></span>
-        </a>
- 
-        <ul class="dropdown-menu" role="menu">
-            <li>
-                <a href="{{ route('admin.users.index') }}">
-                    Users
-                </a>
-            </li>
-        </ul>
-    </li>
-@endrole-->
+                            @endguest
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();" style="color:red">
+                                <strong>{{ __('CERRAR SESION') }}</strong>
+                                </a>
+                                
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -137,12 +119,8 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-<!--
-<script>
-    // Material Select Initialization
-$(document).ready(function() {
-$('.mdb-select').materialSelect();
-});
-</script> -->
-
 </html>
+
+
+
+

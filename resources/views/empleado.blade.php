@@ -108,7 +108,7 @@
                     @foreach ($empleados as $empleado)
                     <?php $cantidad_sanciones = 0; ?>
                     @foreach($sanciones as $sancion)
-                    <?php if ($sancion['legajo'] == $empleado['legajo']) {
+                    <?php if ($sancion['id_empleado'] == $empleado['id']) {
                         $cantidad_sanciones = $cantidad_sanciones + 1;
                     }
                     ?>

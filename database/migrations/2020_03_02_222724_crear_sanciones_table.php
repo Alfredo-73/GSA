@@ -15,9 +15,9 @@ class CrearSancionesTable extends Migration
     {
         Schema::create('sanciones', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_empleado')->lenght(20)->unsigned();
-            $table->bigInteger('id_capataz')->lenght(20)->unsigned();
-            $table->bigInteger('id_empresa')->lenght(20)->unsigned();
+            $table->bigInteger('id_empleado')->lenght(20)->unsigned()->nullable();
+            $table->bigInteger('id_capataz')->lenght(20)->unsigned()->nullable();
+            $table->bigInteger('id_empresa')->lenght(20)->unsigned()->nullable();
             $table->integer('dias')->lenght(11);
             $table->date('fecha');
             $table->date('reincorporacion');

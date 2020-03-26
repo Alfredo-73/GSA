@@ -1,13 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
 @section('scripts')
-
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
 <script src="../js/borrar.js"></script>
-
 <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
+
 <div class="row justify">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="">
@@ -47,69 +45,70 @@
 
                     <!--Table head-->
                     <thead class="thead-dark">
-                        <tr height="60px" style="background-color:black; color:white">
-                            <!--<th>
+                        <thead class="text-center">
+                            <tr height="60px" style="background-color:black; color:white">
+                                <!--<th>
                                         <input class="form-check-input" type="checkbox" id="checkbox">
                                         <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
                                     </th>-->
-                            <th class="text-center">
-                                <a>FECHA
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center" hidden="true">
-                                <a>CLIENTE
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>CAPATAZ
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>JORNALES
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>COSECHEROS
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>BINES
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>MALETAS
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>TONELADAS
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th class="text-center">
-                                <a>PROM. KG/BIN
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
+                                <th class="text-center">
+                                    <a>FECHA
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center" hidden="true">
+                                    <a>CLIENTE
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>CAPATAZ
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>JORNALES
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>COSECHEROS
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>BINES
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>MALETAS
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>TONELADAS
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th class="text-center">
+                                    <a>PROM. KG/BIN
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
 
-                            <th class="text-center" hidden="true">
-                                <a>SUPERVISOR
-                                    <!--<i class="fas fa-sort ml-1"></i>-->
-                                </a>
-                            </th>
-                            <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
-                        </tr>
+                                <th class="text-center" hidden="true">
+                                    <a>SUPERVISOR
+                                        <!--<i class="fas fa-sort ml-1"></i>-->
+                                    </a>
+                                </th>
+                                <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
+                            </tr>
 
-                    </thead>
-                    <!--Table head-->
+                        </thead>
+                        <!--Table head-->
 
-                    <!--Table body-->
+                        <!--Table body-->
                     <tbody>
                         @foreach ($cosechas as $cosecha)
                         <tr>
@@ -129,15 +128,7 @@
                             <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
                             @can('borrar_cosecha')
                             <td class="text-center">
-                                <form method="POST" action=" {{ url('/borrar_cosecha/'.$cosecha->id) }}">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <!--<a type="submit" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR1-->
-                                    <!--<a href="" type="button" class="btn peach-gradient mb-1 btn-sm m-0 text-center borrar1" data-id="{{$cosecha->id}}"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>Borrar1</a>-->
-                                    <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-
-                                        <!--<button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
-                                </form>
+                                <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
                             </td>
                             @endcan
                             <td>

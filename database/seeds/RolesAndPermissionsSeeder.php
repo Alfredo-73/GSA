@@ -26,6 +26,18 @@ class RolesAndPermissionsSeeder extends Seeder
             'permiso-create',
             'permiso-edit',
             'permiso-delete',
+            'cliente_listar',
+            'cliente_alta',
+            'cliente_editar',
+            'cliente_borrar',
+            'capataz_listar',
+            'capataz_alta',
+            'capataz_editar',
+            'capataz_borrar',
+            'quincena_listar',
+            'quincena_alta',
+            'quincena_editar',
+            'quincena_borrar',
         ];
 
 
@@ -53,13 +65,16 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'leer_capataz']);
     
         //Admin
-        $admin = Role::create(['name' => 'Administrador']);
+      //  $admin = Role::create(['name' => 'Administrador']);
 
-        $admin->givePermissionTo(Permission::all());
+        //$admin->givePermissionTo(Permission::all());
         
         //$admin->givePermissionTo('products.index');
         //$admin->givePermissionTo(Permission::all());
-
+        
+        //User Admin
+       // $user = User::find(1); //Administrador
+        //$user->assignRole('Administrador');
         //Guest
         $capataz = Role::create(['name' => 'Capataz']);
 
@@ -71,9 +86,6 @@ class RolesAndPermissionsSeeder extends Seeder
             'borrar_cosecha'
         ]);
 
-        //User Admin
-        $user = User::find(1); //Administrador
-        $user->assignRole('Administrador');
         //$user = User::find(6); //Capataz
         //$user->assignRole('Capataz');
 

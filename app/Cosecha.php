@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cosecha extends Model
 {
-    public $table = 'cosecha';
+    public $table = 'cosechas';
 
     public $guarded = [];
     

@@ -176,7 +176,7 @@ class controlController extends Controller
     }
 
 
-    public function busqueda(Request $request)
+   /* public function busqueda(Request $request)
     {
         $noticia = Noticia::with('notas')->get();
 
@@ -193,7 +193,7 @@ class controlController extends Controller
             $noticia = Noticia::paginate(3);
             return view('noticia.listar', array('noticia' => $noticia));
         }
-    }
+    }*/
     public function control(Request $req)
     {
         $controles = Control::all()->sortBy('quincena');
@@ -217,22 +217,18 @@ class controlController extends Controller
 
     public function agregar_control(Request $req)
     {
-
-
  
         $reglas = [
             'quincena_id' => 'required',
-            
             'id_cliente' => 'required',
             'num_factura' => 'numeric|min:000000000|max:99999999999',
-            'importe' => 'numeric|min:0000000|max:9999999999',
+            'importe' => 'numeric|min:0000000000.00|max:9999999999.99',
             'retencion' => 'numeric|min:0000000|max:9999999999',
             'monto_cobrado' => 'numeric|min:0000000|max:9999999999',
             'gasto_bancario' => 'numeric|min:0000000|max:9999999999',
             'pago_personal' => 'numeric|min:0000000|max:9999999999',
             'pago_transporte' => 'numeric|min:0000000|max:9999999999',
             'toneladas' => 'numeric|min:0000000|max:9999999999',
-            'observacion' => 'string|min:0|max:255',
             
         ];
         $mensajes = [
@@ -242,7 +238,7 @@ class controlController extends Controller
             'date' => 'El campo :attribute debe ser fecha',
             'numeric' => 'El campo :attribute debe ser un numero',
             'integer' => 'El campo :attribute debe ser un numero entero',
-             'required' => 'El campo :attribute no fue seleccionado',
+            'required' => 'El campo :attribute no fue seleccionado',
             'unique' => 'El campo :attribute se encuentra repetido'
         ];
 
@@ -251,7 +247,7 @@ class controlController extends Controller
         $control_nuevo = new Control();
         
         $control_nuevo->quincena_id = $req['quincena_id'];
-        $control_nuevo->nombre_quincena = $req['quincena_id'];
+      //  $control_nuevo->nombre_quincena = $req['quincena_id'];
         $control_nuevo->id_cliente = $req['id_cliente'];
         $control_nuevo->num_factura = $req['num_factura'];
         $control_nuevo->importe = $req['importe'];
@@ -264,11 +260,11 @@ class controlController extends Controller
         $control_nuevo->toneladas = $req['toneladas'];
         $control_nuevo->observacion = $req['observacion'];
         //grabar
+
+        //dd($control_nuevo);
         $control_nuevo->save();
 
-        Flash::success('Se ha dado de alta el control ' . $control_nuevo->quincena_id . ' de forma exitosa !');
-
-    
+        Flash::success('Se ha dado de alta el control quincenal de forma exitosa !');
 
 
         return redirect('control_quincenal');
@@ -297,15 +293,15 @@ class controlController extends Controller
             //'quincena_id' => 'numeric|min:1|max:30',
            // 'id_cliente' => 'numeric|max:10',
 
-            'num_factura' => 'numeric|min:000000000|max:99999999999',
-            'importe' => 'numeric|min:0000000|max:9999999999',
-            'retencion' => 'numeric|min:0000000|max:9999999999',
-            'monto_cobrado' => 'numeric|min:0000000|max:9999999999',
-            'gasto_bancario' => 'numeric|min:0000000|max:9999999999',
-            'pago_personal' => 'numeric|min:0000000|max:9999999999',
-            'pago_transporte' => 'numeric|min:0000000|max:9999999999',
-            'toneladas' => 'numeric|min:0000000|max:99999999',
-            'observacion' => 'string|min:0|max:255',
+            'num_factura' => 'numeric|min:000000000.00|max:99999999999.99',
+            'importe' => 'numeric|min:0000000000.00|max:9999999999.99',
+            'retencion' => 'numeric|min:0000000.00|max:9999999999.99',
+            'monto_cobrado' => 'numeric|min:0000000.00|max:9999999999.99',
+            'gasto_bancario' => 'numeric|min:0000000.00|max:9999999999.99',
+            'pago_personal' => 'numeric|min:0000000.00|max:9999999999.99',
+            'pago_transporte' => 'numeric|min:0000000.00|max:9999999999.99',
+            'toneladas' => 'numeric|min:0000000.00|max:99999999.99',
+            
             
         ];
         $mensajes = [
@@ -332,7 +328,7 @@ class controlController extends Controller
         $control->observacion = $req['observacion'];
         //grabar
         $control->quincena_id = $req['quincena_id'];
-        $control->nombre_quincena = $req['quincena_id'];
+        //$control->nombre_quincena = $req['quincena_id'];
         $control->id_cliente = $req['id_cliente'];
         
      /*   foreach($clientes as $cliente)
@@ -351,7 +347,7 @@ class controlController extends Controller
         dd($control); */
 
         $control->save();
-        Flash::success('Se ha modificado el control ' . $control->quincena_id . ' de forma exitosa !');
+        Flash::success('Se ha modificado el control quincenal de forma exitosa !');
 
         return redirect('control_quincenal');
 
@@ -369,7 +365,7 @@ class controlController extends Controller
         $control = Control::find($id);
         $control->delete();
 
-        Flash::success('Se ha dado de baja el control ' . $control->quincena_id . ' de forma exitosa !');
+        Flash::error('Se ha dado de baja el control de liquidacion de forma exitosa !');
 
         return redirect('/control_quincenal');
     }
