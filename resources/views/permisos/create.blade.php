@@ -26,11 +26,11 @@
 
 
                 {!! Form::open(array('route' => 'permisos.store','method'=>'POST')) !!}
-                <div class="row justify-content-center">
-                    <div class="form-group col-md-6 col-form-label text-md-left">
-                        <strong>NOMBRE DEL PERMISO:</strong>
-                        {!! Form::text('name', null, array('placeholder' => 'Nombre','class' => 'form-control')) !!}
+                <div class="input-group col-10 mt-2 d-flex justify-content-center align-items-center container">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><strong>NOMBRE DEL PERMISO</strong></span>
                     </div>
+                    <input type="text" name="name" aria-label="name" class="form-control">
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

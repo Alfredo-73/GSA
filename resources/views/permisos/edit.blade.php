@@ -23,11 +23,11 @@
 
                 {!! Form::model($permiso, ['method' => 'PATCH','route' => ['permisos.update', $permiso->id]]) !!}
                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>NOMBRE DEL PERMISO:</strong>
-                            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                    <div class="input-group col-10 mt-3 d-flex justify-content-center align-items-center container">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>NOMBRE DEL PERMISO</strong></span>
                         </div>
+                        <input type="text" name="name" aria-label="name" class="form-control" value="{{$permiso->name}}">
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                         <button type="submit" class="btn btn-success">GRABAR</button>
