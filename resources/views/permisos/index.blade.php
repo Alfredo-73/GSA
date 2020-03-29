@@ -38,7 +38,7 @@
                     <td>
                         <!--<a class="btn btn-info" href="{{ route('permisos.show',$permiso->id) }}">Ver</a>-->
                         @can('role-edit')
-                        <a class="btn-sm btn-primary" href="{{ route('permisos.edit',$permiso->id) }}">EDITAR</a>
+                        <button class="btn-sm btn-primary" onclick="location.href='{{ route('permisos.edit',$permiso->id) }}'">EDITAR</button>
                         @endcan
                         @can('role-delete')
                         {!! Form::open(['method' => 'DELETE','route' => ['permisos.destroy', $permiso->id],'style'=>'display:inline']) !!}
