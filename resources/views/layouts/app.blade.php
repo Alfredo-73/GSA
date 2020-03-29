@@ -66,38 +66,37 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('INGRESÁ') }}</a>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRATE') }}</a>
-                        </li>
+                        </li>-->
                         @endif
                         @else
                         <div class="dropdown text-center">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </button>
-                            
+
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
-                            @role('Administrador')
+                                @role('Administrador')
                                 <a class="dropdown-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:blue"></i> ABM Usuarios</a>
                                 <a class="dropdown-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:blue"></i><span> ABM Permisos</span></a>
                                 <a class="dropdown-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:blue"></i><span> ABM Roles</span></a>
-                            @endrole
-                            @endguest
-                            <div class="dropdown-divider"></div>
+                                @endrole
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();" style="color:red">
-                                <strong>{{ __('CERRAR SESION') }}</strong>
+                                    <strong>{{ __('CERRAR SESION') }}</strong>
                                 </a>
-                                
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+                                @endguest
                             </div>
-                            </div>
+                        </div>
                         </li>
                     </ul>
                 </div>
@@ -119,8 +118,5 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
+
 </html>
-
-
-
-

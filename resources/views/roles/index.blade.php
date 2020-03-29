@@ -40,7 +40,7 @@
                     <td>
                         <!--<a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">VER</a>-->
                         @can('role-edit')
-                        <a class="btn-sm btn-primary" href="{{ route('roles.edit',$role->id) }}">EDITAR</a>
+                        <button class="btn-sm btn-primary"  onclick="location.href='{{ route('roles.edit',$role->id) }}'">EDITAR</button>
                         @endcan
                         @can('role-delete')
                         {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
