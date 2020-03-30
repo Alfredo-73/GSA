@@ -38,6 +38,7 @@
     <div id="app">
         @include('flash::message')
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+           
             <div class="container">
                 <a class="navbar-brand" href="/../home">
                     <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
@@ -100,13 +101,13 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-
+            </nav>
+                   
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
     <!-- Bootstrap tooltips -->
