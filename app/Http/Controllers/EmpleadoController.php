@@ -8,6 +8,10 @@ use App\Capataz;
 use App\Sancion;
 use App\Empleado;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\EmpleadosExport;
+use App\Imports\EmpleadosImport;
+
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
@@ -32,6 +36,7 @@ class EmpleadoController extends Controller
     }
 
     //para usar scope
+    //usamos para ver el listado de empleados
     public function indexBuscar(Request $request)
     {
         // $cantidad_sanciones = 0;
@@ -376,4 +381,21 @@ class EmpleadoController extends Controller
         //return view('nuevo_empleado', $vac);
         return response()->json([$empleados]);
     }
+
+    public function exportExcel()
+    {
+        return Excel::download(new EmpleadosExport, 'listado_de_empleados.xlsx');
+    }
+    
+    public function importExcel(Request $req){
+        
+        $file = $req->file('archivo');
+        
+        Excel::import(new EmpleadosImport, $file);
+
+        return back()->with('message', 'Importacion de Empleados completada');
+}
+
+
+
 }
