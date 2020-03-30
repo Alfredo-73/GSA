@@ -237,6 +237,12 @@ Route::delete('/borrar_empleado/{id}', 'empleadoController@borrar');
 
 Route::get('empleadoSancionado/{id}', 'SancionController@listadoEmpleadoConSanciones');
 
+Route::get('user-list-excel',           'empleadoController@exportExcel')->name('empleado.excel');
+
+Route::post('import-list-excel', 'empleadoController@importExcel')->name('empleados.importar.excel');
+
+
+
 //pdf
 Route::get('empleado/list', 'empleado@index');
 //download
