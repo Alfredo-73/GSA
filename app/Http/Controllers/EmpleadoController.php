@@ -11,7 +11,7 @@ use App\Empleado;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\EmpleadosExport;
 use App\Imports\EmpleadosImport;
-
+use File;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
@@ -39,6 +39,7 @@ class EmpleadoController extends Controller
     //usamos para ver el listado de empleados
     public function indexBuscar(Request $request)
     {
+
         // $cantidad_sanciones = 0;
         if (empty($request)) {
             $sanciones = Sancion::all();
@@ -110,6 +111,7 @@ class EmpleadoController extends Controller
     //usando scope global y select
     public function buscarpor(Request $request)
     {
+
         $buscar = $request->get('buscarpor');
         $tipo = $request->get('tipo');
         //$variablesurl = $request->all();
@@ -140,6 +142,7 @@ class EmpleadoController extends Controller
 
     public function listado(Request $request)
     {
+
         $buscasanciones = trim($request->get('buscarporsanciones'));
 
         $buscacapataz = trim($request->get('buscarporcapataz'));
@@ -316,6 +319,7 @@ class EmpleadoController extends Controller
     //pdf
     public function index()
     {
+
         $empleados = Empleado::all();
 
         return view('list', compact('empleados'));
@@ -388,12 +392,57 @@ class EmpleadoController extends Controller
     }
     
     public function importExcel(Request $req){
-        
-        $file = $req->file('archivo');
-        
-        Excel::import(new EmpleadosImport, $file);
+        //dd($req);
 
-        return back()->with('message', 'Importacion de Empleados completada');
+        if ($req->hasFile('file')) 
+        { 
+            $extension = File::extension($req->file->getClientOriginalName());
+            if ($extension == "xlsx" || $extension == "xls" || $extension == "csv")
+             { //'Your file is a valid xls or csv file'
+                $file = $req->file('archivo');
+
+                Excel::import(new EmpleadosImport, $file);
+                return back()->with('message', 'Importacion de Empleados completada');
+            }
+               else { //'File is a '.$extension.' file.!! Please upload a valid xls/csv file..!!');
+                return redirect()->back()->with('message', 'Por favor suba un archivo valido xls o xlsx');
+            } 
+        }else{
+
+           return redirect()->back()->with('message', 'Por favor suba un archivo valido xls o xlsx');
+
+        }
+
+   /*     $validator = Validator::make(
+            [
+                'file'      => $req->file,
+                'extension' => strtolower($req->file->getClientOriginalExtension()),
+            ],
+            [
+                'file'          => 'required',
+                'extension'      => 'required|in:xlsx,xls',
+            ]
+
+        );
+        if (Input::hasFile('file')) {
+            $uploadedFileMimeType = Input::file('file')->getMimeType();
+
+            $mimes = array('application/excel', 'application/vnd.ms-excel', 'application/vnd.msexcel');
+
+            if (in_array($_FILES['file']['type'], $mimes)) {
+
+                $file = $req->file('archivo');
+
+                Excel::import(new EmpleadosImport, $file);
+                return back()->with('message', 'Importacion de Empleados completada');
+//True
+            } else {
+
+                return redirect()->back()->withInput()->withFlashDanger("Please select Only Excel File");
+            }
+        }*/
+        
+
 }
 
 
