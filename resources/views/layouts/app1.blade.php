@@ -30,141 +30,153 @@
             font-size: 12px;
             text-align: center;
         }
+
         #sidebar {
-    overflow: hidden;
-    z-index: 3;
-}
-#sidebar .list-group {
-    min-width: 400px;
-    background-color: #333;
-    min-height: 100vh;
-}
-#sidebar i {
-    margin-right: 6px;
-}
+            overflow: hidden;
+            z-index: 3;
+        }
 
-#sidebar .list-group-item {
-    border-radius: 0;
-    background-color: #333;
-    color: #ccc;
-    border-left: 0;
-    border-right: 0;
-    border-color: #2c2c2c;
-    white-space: nowrap;
-}
+        #sidebar .list-group {
+            min-width: 400px;
+            background-color: #333;
+            min-height: 185vh;
+            /*doy altura al menu lateral*/
+        }
 
-/* highlight active menu */
-#sidebar .list-group-item:not(.collapsed) {
-    background-color: #222;
-}
+        #sidebar i {
+            margin-right: 6px;
+        }
 
-/* closed state */
-#sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-  content: " \f0d7";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 5px;
-}
+        #sidebar .list-group-item {
+            border-radius: 0;
+            background-color: #333;
+            color: #ccc;
+            border-left: 0;
+            border-right: 0;
+            border-color: #2c2c2c;
+            white-space: nowrap;
+        }
 
-/* open state */
-#sidebar .list-group .list-group-item[aria-expanded="true"] {
-  background-color: #222;
-}
-#sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-  content: " \f0da";
-  font-family: FontAwesome;
-  display: inline;
-  text-align: right;
-  padding-left: 5px;
-}
+        /* highlight active menu */
+        #sidebar .list-group-item:not(.collapsed) {
+            background-color: #222;
+        }
 
-/* level 1*/
-#sidebar .list-group .collapse .list-group-item,
-#sidebar .list-group .collapsing .list-group-item  {
-  padding-left: 20px;
-}
+        /* closed state */
+        #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
+            content: " \f0d7";
+            font-family: FontAwesome;
+            display: inline;
+            text-align: right;
+            padding-left: 5px;
+        }
 
-/* level 2*/
-#sidebar .list-group .collapse > .collapse .list-group-item,
-#sidebar .list-group .collapse > .collapsing .list-group-item {
-  padding-left: 30px;
-}
+        /* open state */
+        #sidebar .list-group .list-group-item[aria-expanded="true"] {
+            background-color: #222;
+        }
 
-/* level 3*/
-#sidebar .list-group .collapse > .collapse > .collapse .list-group-item {
-  padding-left: 40px;
-}
+        #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
+            content: " \f0da";
+            font-family: FontAwesome;
+            display: inline;
+            text-align: right;
+            padding-left: 5px;
+        }
 
-@media (max-width:768px) {
-    #sidebar {
-        min-width: 35px;
-        max-width: 40px;
-        overflow-y: auto;
-        overflow-x: visible;
-        transition: all 0.25s ease;
-        transform: translateX(-45px);
-        position: fixed;
-    }
-    
-    #sidebar.show {
-        transform: translateX(0);
-    }
+        /* level 1*/
+        #sidebar .list-group .collapse .list-group-item,
+        #sidebar .list-group .collapsing .list-group-item {
+            padding-left: 20px;
+        }
 
-    #sidebar::-webkit-scrollbar{ width: 0px; }
-    
-    #sidebar, #sidebar .list-group {
-        min-width: 1px;
-        overflow: visible;
-    }
-    /* overlay sub levels on small screens */
-    #sidebar .list-group .collapse.show, #sidebar .list-group .collapsing {
-        position: relative;
-        z-index: 1;
-        width: 190px;
-        top: 0;
-    }
-    #sidebar .list-group > .list-group-item {
-        text-align: center;
-        padding: .75rem .5rem;
-    }
-    /* hide caret icons of top level when collapsed */
-    #sidebar .list-group > .list-group-item[aria-expanded="true"]::after,
-    #sidebar .list-group > .list-group-item[aria-expanded="false"]::after {
-        display:none;
-    }
-}
+        /* level 2*/
+        #sidebar .list-group .collapse>.collapse .list-group-item,
+        #sidebar .list-group .collapse>.collapsing .list-group-item {
+            padding-left: 30px;
+        }
 
-.collapse.show {
-  visibility: visible;
-}
-.collapsing {
-  visibility: visible;
-  height: 0;
-  -webkit-transition-property: height, visibility;
-  transition-property: height, visibility;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.collapsing.width {
-  -webkit-transition-property: width, visibility;
-  transition-property: width, visibility;
-  width: 0;
-  height: 100%;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
+        /* level 3*/
+        #sidebar .list-group .collapse>.collapse>.collapse .list-group-item {
+            padding-left: 40px;
+        }
 
+        @media (max-width:768px) {
+            #sidebar {
+                /*min-width: 35px;
+                max-width: 40px;*/
+                overflow-y: auto;
+                overflow-x: visible;
+                transition: all 0.25s ease;
+                transform: translateX(-45px);
+                position: fixed;
+            }
+
+            #sidebar.show {
+                transform: translateX(0);
+            }
+
+            #sidebar::-webkit-scrollbar {
+                width: 0px;
+            }
+
+            #sidebar,
+            #sidebar .list-group {
+                min-width: 1px;
+                overflow: visible;
+            }
+
+            /* overlay sub levels on small screens */
+            #sidebar .list-group .collapse.show,
+            #sidebar .list-group .collapsing {
+                position: relative;
+                z-index: 1;
+                width: 195px;
+                top: 0;
+            }
+
+            #sidebar .list-group>.list-group-item {
+                text-align: center;
+                padding: .75rem .5rem;
+            }
+
+            /* hide caret icons of top level when collapsed */
+            #sidebar .list-group>.list-group-item[aria-expanded="true"]::after,
+            #sidebar .list-group>.list-group-item[aria-expanded="false"]::after {
+                display: none;
+            }
+        }
+
+        .collapse.show {
+            visibility: visible;
+        }
+
+        .collapsing {
+            visibility: visible;
+            height: 0;
+            -webkit-transition-property: height, visibility;
+            transition-property: height, visibility;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+
+        .collapsing.width {
+            -webkit-transition-property: width, visibility;
+            transition-property: width, visibility;
+            width: 0;
+            height: 100%;
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
     </style>
 </head>
 
 <body>
-    
-<div class="container-fluid">
-    <div class="row d-flex d-md-block flex-nowrap wrapper">
-        <div class="col-md-2 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
-            <div class="list-group border-0 text-center text-md-left">
-               <!-- <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Dashboard</span> </a>
+    <div class="container-fluid">
+        <div class="row d-flex d-sm-block flex-nowrap wrapper">
+            <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
+                <div class="list-group border-0 text-center text-md-left">
+                    <!-- <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">Dashboard</span> </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">
                     <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
                     <div class="collapse" id="menu1sub1" data-parent="#menu1">
@@ -200,14 +212,14 @@
                     </div>
                     <a href="#" class="list-group-item">Subitem 3</a>
                 </div>-->
-                <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL</span></a>
-                <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
-                <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
-                <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
-                <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS </span></a>
-                <div class="collapse" id="menu3" data-parent="#sidebar">
-                    <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
-                   <!-- <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
+                    <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL</span></a>
+                    <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
+                    <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
+                    <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
+                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS </span></a>
+                    <div class="collapse" id="menu3" data-parent="#sidebar">
+                        <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
+                        <!-- <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
                     <div class="collapse" id="menu3sub2">
                         <a href="#" class="list-group-item" data-parent="#menu3sub2">Empresas</a>
                         <a href="#" class="list-group-item" data-parent="#menu3sub2">Clientes</a>
@@ -215,84 +227,91 @@
                         <a href="#" class="list-group-item" data-parent="#menu3sub2">Quincenas</a>
 
                     </div>-->
-                    <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
-                    <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
-                    <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
+                        <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
+                        <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
+                        <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
 
+                    </div>
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
+                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>
                 </div>
-                               <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>
+            </div>
+
+            <div class="col-10 float-left pl-md-2 pt-2 main">
+                <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
+
+                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">
+                    Abrir menu
+                </a>
+                <a id="cerrar" class="abrir-cerrar" href="javascript:void(0)" onclick="ocultar()">
+                    Cerrar menu
+                </a>
+
+                <div class="">
+                    <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
+                        <div class="row">
+                            <a class="navbar-brand" href="/../home">
+                                <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
+                            </a>
+                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <!-- Left Side Of Navbar -->
+
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <!-- Authentication Links -->
+                                @guest
+                                <!--<li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('INGRESÁ') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRATE') }}</a>
+                            </li>-->
+                                @endif
+                                @else
+                                <div class="dropdown text-center">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    </button>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
+                                        @role('Administrador')
+                                        <a class="dropdown-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:blue"></i> ABM Usuarios</a>
+                                        <a class="dropdown-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:blue"></i><span> ABM Permisos</span></a>
+                                        <a class="dropdown-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:blue"></i><span> ABM Roles</span></a>
+                                        @endrole
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();" style="color:red">
+                                            <strong>{{ __('CERRAR SESION') }}</strong>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                        @endguest
+                                    </div>
+                                </div>
+
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
             </div>
         </div>
-        <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>
-            <div class="page-header">
-                <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-           
-            <div class="container">
-        
-                <a class="navbar-brand" href="/../home">
-                    <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <!--<li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('INGRESÁ') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('REGISTRATE') }}</a>
-                        </li>-->
-                        @endif
-                        @else
-                        <div class="dropdown text-center">
-                            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </button>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuMenu">
-                                @role('Administrador')
-                                <a class="dropdown-item" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:blue"></i> ABM Usuarios</a>
-                                <a class="dropdown-item" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:blue"></i><span> ABM Permisos</span></a>
-                                <a class="dropdown-item" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:blue"></i><span> ABM Roles</span></a>
-                                @endrole
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();" style="color:red">
-                                    <strong>{{ __('CERRAR SESION') }}</strong>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                                @endguest
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
-                </div>
-                </nav>
-            </div>
-            
-        </main>
     </div>
-    <main class="py-4">
-            @yield('content')
-        </main>
-</div>
-    
+
+    <main class="py-1">
+        @yield('content')
+    </main>
+
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
     <!-- Bootstrap tooltips -->
@@ -303,6 +322,22 @@
     <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script>
+        function mostrar() {
+            document.getElementById("sidebar").style.width = "300px";
+            document.getElementById("contenido").style.marginLeft = "300px";
+            document.getElementById("abrir").style.display = "none";
+            document.getElementById("cerrar").style.display = "inline";
+        }
+
+        function ocultar() {
+            document.getElementById("sidebar").style.width = "0";
+            document.getElementById("contenido").style.marginLeft = "0";
+            document.getElementById("abrir").style.display = "inline";
+            document.getElementById("cerrar").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
