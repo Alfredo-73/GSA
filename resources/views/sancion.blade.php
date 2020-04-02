@@ -28,18 +28,6 @@
             <input name="buscarpornombre" class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
             <input name="buscarporapellido" class="form-control mr-sm-2" type="search" placeholder="Buscar por apellido" aria-label="Search">
 
-            <!--    <select class="selectpicker show-menu-arrow" name="buscarporcapataz" value="">
-                                <option>Capataz</option>
-                                @foreach($capataz as $capat)
-                                <option value="{{$capat->id}}">{{$capat->nombre}}</option>
-                                @endforeach
-                            </select>
-                            <select class="selectpicker show-menu-arrow" name="buscarporsanciones" value="">
-                                <option>Sanciones</option>
-                                @foreach($sanciones as $sancion)
-                                <option value="{{$sancion->id}}">{{$sancion->legajo}}</option>
-                                @endforeach
-                            </select>-->
             <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
 
             <a href="{{ url('/sancion') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
@@ -55,19 +43,14 @@
             <thead class="thead-dark">
                 <thead class="text-center">
                     <tr height="60px" style="background-color:black; color:white">
-
-                        <!--<th>
-                                        <input class="form-check-input" type="checkbox" id="checkbox">
-                                        <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                                    </th>-->
-                        <th class="th-lg text-center" hidden='true'>LEGAJO</th>
-                        <th class="th-lg text-center">NOMBRE</th>
-                        <th class="th-lg text-center">APELLIDO</th>
-                        <th class="th-lg text-center">DNI</th>
-                        <th class="th-lg text-center">FECHA DE SANCION</th>
-                        <th class="th-lg text-center">DIAS SANCIONADO</th>
-                        <th class="th-lg text-center">FECHA REINCORPORACION</th>
-                        <th class="th-lg text-center">CAPATAZ</th>
+                        <th class="text-center">LEGAJO</th>
+                        <th class="text-center">NOMBRE</th>
+                        <th class="text-center">APELLIDO</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">FECHA DE SANCION</th>
+                        <th class="text-center">DIAS SANCIONADO</th>
+                        <th class="text-center">FECHA REINCORPORACION</th>
+                        <th class="text-center">CAPATAZ</th>
                         <!--<th class="th-lg text-center">EMPRESA</th>-->
                         <th COLSPAN=2 class="text-center">ACCION</th>
                     </tr>
@@ -79,20 +62,16 @@
                 <tbody>
                     @foreach ($sanciones as $sancion)
                     <tr>
-                        <!--<th scope="row">
-                                        <input class="form-check-input" type="checkbox" id="checkbox1">
-                                        <label class="form-check-label" for="checkbox1" class="label-table"></label>
-                                    </th>-->
                         @foreach($empleados as $empleado)
                         @if($empleado->id == $sancion->id_empleado)
-                        <td class="text-center" hidden='true'> {{$empleado->legajo}}</td>
-                        <td class="text-center">{{$empleado->nombre}} </td>
-                        <td class="text-center">{{$empleado->apellido}} </td>
-                        <td class="text-center"> {{$empleado->dni}}</td>
-                        <td class="text-center" name="fecha"> {{$sancion->fecha}}</td>
-                        <td class="text-center"> {{$sancion->dias}}</td>
-                        <td class="text-center"> {{$sancion->reincorporacion}}</td>
-                        <td class="text-center"> {{$sancion->capataz->nombre}}</td>
+                        <td class="text-center text-truncate"> {{$empleado->legajo}}</td>
+                        <td class="text-center text-truncate">{{$empleado->nombre}} </td>
+                        <td class="text-center text-truncate">{{$empleado->apellido}} </td>
+                        <td class="text-center text-truncate"> {{$empleado->dni}}</td>
+                        <td class="text-center text-truncate" name="fecha"> {{$sancion->fecha}}</td>
+                        <td class="text-center text-truncate"> {{$sancion->dias}}</td>
+                        <td class="text-center text-truncate"> {{$sancion->reincorporacion}}</td>
+                        <td class="text-center text-truncate"> {{$sancion->capataz->nombre}}</td>
                         <!--<td class="text-center"> {{$sancion->empresa->razon_social}}</td>-->
 
                         <td>

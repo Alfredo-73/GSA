@@ -52,7 +52,7 @@
                             </div>
                         </div>-->
 
-                        <div class="form-group row mb-0 mx-auto">
+                        <div class="form-group row mb-0 px-4 mx-auto">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary text-center" href="('/inicio'">
                                     {{ __('Ingresar') }}

@@ -36,29 +36,22 @@
 <body>
     <div class="container-fluid">
         <div id="app" class="">
-            
                 @include('flash::message')
-                <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <nav class="">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="/../home">
                             <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
                         </a>
                         <span style="font-size:12px"><b>V:1.0</span></b>
                         @if (Auth::user())
-                        <div style="margin-left:20%" style="margin-right:30%">
-                            <a class="fas fa-home fa-2x prefix grey-text" role="button" href="{{ url('/../home') }}" name="home" title="Ir a Inicio"></a>
-                            <a class="fas fa-money-check-alt fa-2x prefix grey-text" role="button" href="{{ url('/../control_quincenal') }}" name="home" style="padding:2rem" title="Ir a Facturacion Vs. Pago"></a>
-                            <a class="far fa-lemon fa-2x prefix grey-text" role="button" href="{{ url('/../cosecha') }}" style="padding:2rem" name="home" title="Ir a Parte Diario de Cosecha"> </a>
-                            <a class="fas fa-users fa-2x prefix grey-text" role="button" href="{{ url('/../empleado') }}" name="home" title="Ir a Empleados"> </a>
-
-                        </div>
+                        
                     </div>
-            @endif
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                        @endif
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
 
@@ -101,14 +94,16 @@
                     </div>
                     </li>
                 </ul>
+            </nav>
             </div>
         </div>
         </nav>
     </div>
+
     <main class="col-lg-12">
         @yield('content')
     </main>
-    </div>
+    
 
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
