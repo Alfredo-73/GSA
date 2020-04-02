@@ -5,25 +5,15 @@
 <script src="../js/borrar_control_quincenal.js"></script>
 
 @section('content')
-<!--<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-ms-12 col-md-12 col-lg-12">
-            <div class="mx-auto">
-                <div class="px-4">
-                    <div class="table-wrapper">-->
 <div class="row container-fluid col-10" id="contenido">
     <h1 class="mx-auto mt-5 mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
     @can('agregar_control')
     <a id="agregar" class="btn primary-color-dark mb-2 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:52rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
     @endcan
-    <!--BOTON AGREGAR PRODUCTO-------------------
-                        
-                        <form method="POST" action="">
-                            <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
-                        </form> -->
 </div>
+
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4 rounded">
+    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-2 rounded">
         <div class="row">
             <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE ClIENTE Y/O QUINCENA</span>
         </div>
@@ -54,52 +44,23 @@
     </nav>
 </div>
 
-
-
-<!--<nav class="navbar navbar-light float-right">
-    <form class="form-inline md-form mr-auto mb-4" action="">
- <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
-      <option>Buscar por ...</option>
-      <option>id_quincena</option>
-      <option>id_cliente</option>
-      <option>num_factura</option>
-      <option>toneladas</option>
-    </select>
-    <input name="buscarpor" class="form-control mr-sm-2" type="text" placeholder="..." aria-label="Search">
-
-  <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Buscar</button>
-
-    </form>
-   <a class="fas fa-undo" role="button" href=  {{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer",name="Regresar" >  Refrescar</a>
-
-</nav>-->
-<!-- <form class="form-inline md-form mr-auto mb-4 float-md-right">
-  <input name="buscarpor" class="form-control mr-sm-2" type="text" placeholder="Buscar por cliente" aria-label="Search">
-  <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Buscar</button>
-</form> -->
-
-
 {{ $controles->render() }}
 <!--Table-->
-<div class="">
+<div class="table-sm">
     <div class="table-wrapper">
         <table class="table-bordered table-hover mx-auto">
             <thead class="thead-dark">
                 <thead class="text-center">
                     <tr height="60px" style="background-color:black; color:white">
-                        <!--<th>
-                                        <input class="form-check-input" type="checkbox" id="checkbox">
-                                        <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                                    </th>-->
                         <th class="text-center">CLIENTE</th>
                         <th class="text-center">QUINCENA</th>
                         <th class="text-center">Nº FACTURA</th>
-                        <th class="text-center" hidden="true">IMPORTE</th>
+                        <th class="text-center">IMPORTE</th>
                         <th class="text-center">MONTO COBRADO</th>
-                        <th class="text-center" hidden="true">GASTOS BANCARIOS</th>
-                        <th class="text-center" hidden="true">DISPONIBLE</th>
+                        <th class="text-center">GASTOS BANCARIOS</th>
+                        <th class="text-center">DISPONIBLE</th>
                         <th class="text-center">TOTAL PAGO</th>
-                        <th class="text-center" hidden="true">NETO QCNA</th>
+                        <th class="text-center">NETO QCNA</th>
                         <th class="text-center">COSTO Tn</th>
                         <th colspan=2 class="text-center">ACCION</th>
                     </tr>
@@ -111,81 +72,42 @@
 
                 @foreach ($controles as $control)
                 <tr>
-
-
-                    <!--<th scope="row">
-                                        <input class="form-check-input" type="checkbox" id="checkbox1">
-                                        <label class="form-check-label" for="checkbox1" class="label-table"></label>
-                                    </th>-->
                     <?php $disponible = $control->importe - ($control->retencion + $control->gasto_bancario); ?>
                     <?php $totalPago = $control->pago_personal + $control->pago_transporte; ?>
 
-                    <td class="text-center"> {{$control->cliente->nombre}}</td>
-
-                    <td class="text-center"> {{$control->quincena->nombre}}</td>
-                    <td class="text-center"> {{$control->num_factura}}</td>
-                    <td class="text-center" hidden="true">$ {{$control->importe}}</td>
-                    <td class="text-center">$ {{$control->monto_cobrado}}</td>
-                    <td class="text-center" hidden="true">$ {{$control->gasto_bancario}}</td>
-                    <td class="text-center" hidden="true">$ {{$disponible}}</td>
-                    <td class="text-center">$ {{$totalPago}}</td>
-                    <td class="text-center" hidden="true">$ {{$disponible - $totalPago}}</td>
-                    <td class="text-center">$ {{round((($disponible - $totalPago)/$control->toneladas),2)}}</td>
+                    <td class="text-center text-truncate"> {{$control->cliente->nombre}}</td>
+                    <td class="text-center text-truncate"> {{$control->quincena->nombre}}</td>
+                    <td class="text-center text-truncate"> {{$control->num_factura}}</td>
+                    <td class="text-center text-truncate">$ {{$control->importe}}</td>
+                    <td class="text-center text-truncate">$ {{$control->monto_cobrado}}</td>
+                    <td class="text-center text-truncate">$ {{$control->gasto_bancario}}</td>
+                    <td class="text-center text-truncate">$ {{$disponible}}</td>
+                    <td class="text-center text-truncate">$ {{$totalPago}}</td>
+                    <td class="text-center text-truncate">$ {{$disponible - $totalPago}}</td>
+                    <td class="text-center text-truncate">$ {{round((($disponible - $totalPago)/$control->toneladas),2)}}</td>
                     @can('borrar_control')
                     <td class="text-center">
-                        <button type="" onclick="return borrar(this)" value="{{$control->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-                            <!--<form method="POST" action="{{ url('/borrar_control/'.$control->id) }}">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" onclick="return confirm('¿Desea eliminar el control quincenal?')" id="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
-                                            </button>
-                                        </form>-->
-                    </td>
-                    <!-- <form method="POST" action="">
-
-                                        <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
-                                    </form> -->
+                        <button type="" onclick="return borrar(this)" value="{{$control->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
+                        
                     </td>
                     @endcan
-                    <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO------
-                                <td>
-                                     <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_control/{{$control->id}}" role="button" >Modificar </a>-->
-
-                    <!-- <form method="POST" action="">
-                                        <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
-                                    </form>
-                                </td> -->
-
-                    <td>
+                    <td class="text-center">
                         <form method="PUT" action="/modal_control/{{ $control->id }}">
                             @csrf
                             {{method_field('PUT')}}
-                            <p href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}"><i class="fas fa-eye mr-1" style="color:white"></i>VER</p>
+                            <a type="button" href="/modal_control/{{ $control->id }}" class="btn blue-gradient mb-1 btn-sm m-0 text-center" data-toggle="modal" data-target="#modal_control{{ $control->id }}" form method="POST" action="/modal_control/{{$control->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
                             @csrf
                             {{method_field('PUT')}}
                             @include('modal_control')
                         </form>
                     </td>
-
-
                 </tr>
                 @endforeach
-
-
             </tbody>
-
         </table>
-
-
-
-
     </div>
 
-</div>
-</div>
-</div>
-</div>
-<!--Section: Content-->
-{{ $controles->appends($_GET)->links() }}
+    <!--Section: Content-->
+    {{ $controles->appends($_GET)->links() }}
 
-@endsection
+    @endsection

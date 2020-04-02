@@ -2,38 +2,38 @@
 @section('scripts')
 @endsection
 @section('content')
+<div class="row container-fluid col-10" id="contenido">
+    <h1 class="mx-auto mb-3 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPLEADOS</h1>
+    @can('agregar_empleado')
+</div>
 
-    <div class="row container-fluid col-10" id="contenido">
-        <h1 class="mx-auto mb-3 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPLEADOS</h1>
-        @can('agregar_empleado')
-    </div>
-    <div class="row mb-3">
-        <a id="agregar" class="btn primary-color-dark mb-2 rounded" href="{{ url('/nuevo_empleado') }}" role="button" style="margin-left:52rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO</a>
-        @endcan
-    </div>
+<div class="row mb-3">
+    <a id="agregar" class="btn primary-color-dark mb-2 rounded" href="{{ url('/nuevo_empleado') }}" role="button" style="margin-left:52rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO</a>
+    @endcan
+</div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark indigo mb-3 rounded text-wrap">
-        <p class="navbar-brand ml-2" href="#">Buscador:</p>
+<nav class="navbar navbar-expand-lg navbar-dark indigo mb-3 rounded text-wrap">
+    <p class="navbar-brand ml-2" href="#">Buscador:</p>
 
-        <form class="form-inline md-form mr-auto mb-4 float-right" action="">
-            <input name="buscarpornombre" id="nombre" class="form-control mr-sm-2 text-white" type="search" placeholder="Nombre del Empleado" aria-label="Search">
-            <input name="buscarporapellido" id="apellido" class="form-control mr-sm-2 text-white" type="search" placeholder="Apellido del Empleado" aria-label="Search">
-            <button class="btn blue-gradient btn-rounded btn-sm" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
-            <a href="{{ url('/empleado') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+    <form class="form-inline md-form mr-auto mb-4 float-right" action="">
+        <input name="buscarpornombre" id="nombre" class="form-control mr-sm-2 text-white" type="search" placeholder="Nombre del Empleado" aria-label="Search">
+        <input name="buscarporapellido" id="apellido" class="form-control mr-sm-2 text-white" type="search" placeholder="Apellido del Empleado" aria-label="Search">
+        <button class="btn blue-gradient btn-rounded btn-sm" type="submit"><i class="fas fa-search fa-2x mr-2" style="color:white"></i>Buscar</button>
+        <a href="{{ url('/empleado') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+    </form>
+    <a id="importar" class="badge badge-success text-wrap text-center" style="width:8rem;" href="{{ route ('empleado.excel') }}" role="button"><i class="far fa-file-excel mr-2"></i>EXPORTAR AEXCEL</a>
+    <!--<a id="importar" class="btn-sm btn-danger ml-3" href="{{ route ('empleado.excel') }}" role="button">IMPORTAR EXCEL<i class="fa-2x far fa-file-excel ml-2"></i></a>-->
+    <div class="badge badge-pill badge-primary ml-2">
+        <form action="{{ route('empleados.importar.excel') }}" method="post" enctype="multipart/form-data" class="ml-2" onclick="return alert('Seleccionar solo archivos con extencion .xlsx')">
+            @csrf
+            @if(Session::has('message'))
+            <p>{{ Session::get('message') }}</p>
+            @endif
+            <input type="file" name="archivo">
+            <button class="badge badge-primary text-wrap">IMP. EMPLEADOS</button>
         </form>
-        <a id="importar" class="badge badge-success text-wrap text-center" style="width:8rem;" href="{{ route ('empleado.excel') }}" role="button"><i class="far fa-file-excel mr-2"></i>EXPORTAR AEXCEL</a>
-        <!--<a id="importar" class="btn-sm btn-danger ml-3" href="{{ route ('empleado.excel') }}" role="button">IMPORTAR EXCEL<i class="fa-2x far fa-file-excel ml-2"></i></a>-->
-        <div class="badge badge-pill badge-primary ml-2">
-            <form action="{{ route('empleados.importar.excel') }}" method="post" enctype="multipart/form-data" class="ml-2" onclick="return alert('Seleccionar solo archivos con extencion .xlsx')">
-                @csrf
-                @if(Session::has('message'))
-                <p>{{ Session::get('message') }}</p>
-                @endif
-                <input type="file" name="archivo">
-                <button class="badge badge-primary text-wrap">IMP. EMPLEADOS</button>
-            </form>
-        </div>
-    </nav>
+    </div>
+</nav>
 
 </div>
 <style>
@@ -50,7 +50,6 @@
 </style>
 {{ $empleados->appends($_GET)->links() }}
 <!--Table-->
-<!--<table class="table-striped w-auto">-->
 <div class="">
     <div class="table-wrapper">
         <table class="table-bordered table-hover mx-auto">
@@ -81,31 +80,31 @@
                 ?>
                 @endforeach
                 <tr>
-                    <td class="text-center"> {{$empleado->legajo}}</td>
-                    <td class="text-center">{{$empleado->nombre}} </td>
-                    <td class="text-center">{{$empleado->apellido}} </td>
-                    <td class="text-center"> {{$empleado->cuil}}</td>
-                    <td class="text-center" name="fecha"> {{$empleado->fecha_ingreso}}</td>
-                    <td class="text-center"> {{$empleado->empresa->razon_social}}</td>
-                    <td class="text-center"> {{$empleado->capataz->nombre}}</td>
+                    <td class="text-center text-truncate"> {{$empleado->legajo}}</td>
+                    <td class="text-center text-truncate">{{$empleado->nombre}} </td>
+                    <td class="text-center text-truncate">{{$empleado->apellido}} </td>
+                    <td class="text-center text-truncate"> {{$empleado->cuil}}</td>
+                    <td class="text-center text-truncate" name="fecha"> {{$empleado->fecha_ingreso}}</td>
+                    <td class="text-center text-truncate"> {{$empleado->empresa->razon_social}}</td>
+                    <td class="text-center text-truncate"> {{$empleado->capataz->nombre}}</td>
                     @if($cantidad_sanciones > '0')
-                    <td class="estado1 text-center">{{$cantidad_sanciones}}</td>
+                    <td class="estado1 text-center text-truncate">{{$cantidad_sanciones}}</td>
                     @elseif($cantidad_sanciones == '0')
-                    <td class="estado2 text-center">{{ $cantidad_sanciones}}</td>
+                    <td class="estado2 text-center text-truncate">{{ $cantidad_sanciones}}</td>
                     @endif
                     <td class="text-center" hidden="true"> {{$empleado->observaciones}}</td>
                     @can('borrar_empleado')
-                    <td class="text-center">
+                    <td class="text-center text-truncate">
                         <form method="POST" action="{{url('/borrar_empleado/'.$empleado->id) }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <!--<a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
                                     </a>-->
-                            <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm" style="color:white"><i class="fas fa-times-circle" style="color:white"></i> BORRAR</a>
+                            <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm" style="color:white"><i class="fas fa-trash mr-2" style="color:white"></i> BORRAR</a>
                         </form>
                     </td>
                     @endcan
-                    <td class="text-center">
+                    <td class="text-center text-truncate">
                         <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
                             @csrf
                             {{method_field('PUT')}}

@@ -41,26 +41,22 @@
 
 {{ $cosechas->appends($_GET)->links() }}
 <!--Table-->
-<div class="">
+<div class="table table-md">
     <div class="table-wrapper">
         <table class="table-bordered table-hover mx-auto">
             <thead class="thead-dark">
                 <thead class="text-center">
                     <tr height="60px" style="background-color:black; color:white">
-                        <!--<th>
-                                        <input class="form-check-input" type="checkbox" id="checkbox">
-                                        <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                                    </th>-->
-                        <th class="text-center">FECHA</th>
-                        <th class="text-center" hidden="true">CLIENTE</th>
-                        <th class="text-center">CAPATAZ</th>
-                        <th class="text-center">JORNALES</th>
-                        <th class="text-center">COSECHEROS</th>
-                        <th class="text-center">BINES</th>
-                        <th class="text-center">MALETAS</th>
-                        <th class="text-center">TONELADAS</th>
-                        <th class="text-center">PROM.KG/BIN</th>
-                        <th class="text-center" hidden="true">SUPERVISOR</th>
+                        <th class="text-center text-truncate">FECHA</th>
+                        <th class="text-center text-truncate">CLIENTE</th>
+                        <th class="text-center text-truncate">CAPATAZ</th>
+                        <th class="text-center text-truncate">JORNALES</th>
+                        <th class="text-center text-truncate">COSECHEROS</th>
+                        <th class="text-center text-truncate">BINES</th>
+                        <th class="text-center text-truncate">MALETAS</th>
+                        <th class="text-center text-truncate">TONELADAS</th>
+                        <th class="text-center text-truncate">PROM.KG/BIN</th>
+                        <th class="text-center text-truncate">SUPERVISOR</th>
                         <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
                     </tr>
                 </thead>
@@ -70,30 +66,26 @@
             <tbody>
                 @foreach ($cosechas as $cosecha)
                 <tr>
-                    <!--<th scope="row">
-                                        <input class="form-check-input" type="checkbox" id="checkbox1">
-                                        <label class="form-check-label" for="checkbox1" class="label-table"></label>
-                                    </th>-->
-                    <td class="text-center" name="fecha"> {{$cosecha->fecha}}</td>
-                    <td class="text-center" hidden="true"> {{$cosecha->cliente->nombre}}</td>
-                    <td class="text-center"> {{$cosecha->capataz->nombre}}</td>
-                    <td class="text-center"> {{$cosecha->jornales}}</td>
-                    <td class="text-center"> {{$cosecha->cosecheros}}</td>
-                    <td class="text-center"> {{$cosecha->bines}}</td>
-                    <td class="text-center"> {{$cosecha->maletas}}</td>
-                    <td class="text-center"> {{$cosecha->toneladas}}</td>
-                    <td class="text-center"> {{$cosecha->prom_kg_bin}}</td>
-                    <td class="text-center" hidden="true"> {{$cosecha->supervisor}}</td>
+                    <td class="text-center text-truncate" name="fecha"> {{$cosecha->fecha}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->cliente->nombre}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->capataz->nombre}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->jornales}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->cosecheros}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->bines}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->maletas}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->toneladas}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->prom_kg_bin}}</td>
+                    <td class="text-center text-truncate"> {{$cosecha->supervisor}}</td>
                     @can('borrar_cosecha')
                     <td class="text-center">
-                        <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
+                        <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
                     </td>
                     @endcan
                     <td>
                         <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                             @csrf
                             {{method_field('PUT')}}
-                            <a type="button" class="btn blue-gradient btn-sm" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                            <a type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center text-truncate" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
                             @csrf
                             {{method_field('PUT')}}
                             @include('modalcosecha')
@@ -111,8 +103,7 @@
 </div>
 {{ $cosechas->appends($_GET)->links() }}
 <!--Table-->
-</div>
-</div>
+
 <!--Section: Content-->
 
 @endsection
