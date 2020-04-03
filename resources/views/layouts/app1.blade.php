@@ -236,12 +236,6 @@
                     <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
                     <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>
                 </div>
-<<<<<<< Updated upstream
-=======
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
-                <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>
->>>>>>> Stashed changes
             </div>
 
             <div class="col-10 float-left pl-md-2 pt-2 main">
