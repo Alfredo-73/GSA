@@ -30,11 +30,7 @@
                 <p>{{ Session::get('message') }}</p>
                 @endif
                 <input type="file" name="archivo">
-<<<<<<< Updated upstream
                 <button class="badge badge-primary text-wrap">IMP. EMPLEADOS</button>
-=======
-                  button class="btn btn-sm btn-primary">IMP. EMPLEADOS</button>
->>>>>>> Stashed changes
             </form>
         </div>
     </nav>
