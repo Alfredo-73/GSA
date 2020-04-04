@@ -39,7 +39,7 @@
         #sidebar .list-group {
             min-width: 400px;
             background-color: #333;
-            min-height: 145vh;
+            min-height: 105vh;
             /*doy altura al menu lateral*/
         }
 
@@ -181,12 +181,12 @@
                     <span class="px-5 ml-5 grey-text" style="font-size:12px"><b>V:1.0</span></b>
                     <span>&nbsp;</span>
 
-                    <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
+                    <a href="#menu1" class="list-group-item d-inline-block collapsed px-5" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">
                         @role('Administrador')
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
+                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
+                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
+                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
                         @endrole
                     </div>
 
@@ -243,63 +243,21 @@
             </div>
         </div>
 
-        <div class="col-10 float-left pl-md-2 pt-2 main">
-            <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
 
-            <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">
-                Abrir menu
-            </a>
-            <a id="cerrar" class="abrir-cerrar" href="javascript:void(0)" onclick="ocultar()">
-                Cerrar menu
-            </a>
+        <main class="py-1">
+            @yield('content')
+        </main>
 
-            <div class="container col-12">
-                <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-none">
-
-                    <div class="row">
-                        <a class="navbar-brand" href="/../home">
-                            <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
-                        </a>
-                    </div>
-
-                </nav>
-            </div>
-        </div>
-
-    </div>
-    </div>
-    </div>
-
-    <main class="py-1">
-        @yield('content')
-    </main>
-
-    <!-- jQuery -->
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
-    <!-- Your custom scripts (optional) -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script>
-        function mostrar() {
-            document.getElementById("sidebar").style.width = "300px";
-            document.getElementById("contenido").style.marginLeft = "300px";
-            document.getElementById("abrir").style.display = "none";
-            document.getElementById("cerrar").style.display = "inline";
-        }
-
-        function ocultar() {
-            document.getElementById("sidebar").style.width = "0";
-            document.getElementById("contenido").style.marginLeft = "0";
-            document.getElementById("abrir").style.display = "inline";
-            document.getElementById("cerrar").style.display = "none";
-        }
-    </script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
+        <!-- Your custom scripts (optional) -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
