@@ -39,7 +39,7 @@
         #sidebar .list-group {
             min-width: 400px;
             background-color: #333;
-            min-height: 145vh;
+            min-height: 130vh;
             /*doy altura al menu lateral*/
         }
 
@@ -180,6 +180,8 @@
                     <span>&nbsp;</span>
                     <span class="px-5 ml-5 grey-text" style="font-size:12px"><b>V:1.0</span></b>
                     <span>&nbsp;</span>
+                    <a href="/../home" class="px-5 ml-3 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                    <span>&nbsp;</span>
 
                     <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">
@@ -246,12 +248,12 @@
         <div class="col-10 float-left pl-md-2 pt-2 main">
             <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
 
-            <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">
+            <!--<a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">
                 Abrir menu
             </a>
             <a id="cerrar" class="abrir-cerrar" href="javascript:void(0)" onclick="ocultar()">
                 Cerrar menu
-            </a>
+            </a>-->
 
             <div class="container col-12">
                 <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-none">
@@ -285,7 +287,7 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
+   <!-- <script>
         function mostrar() {
             document.getElementById("sidebar").style.width = "300px";
             document.getElementById("contenido").style.marginLeft = "300px";
@@ -299,7 +301,7 @@
             document.getElementById("abrir").style.display = "inline";
             document.getElementById("cerrar").style.display = "none";
         }
-    </script>
+    </script>-->
 </body>
 
 </html>

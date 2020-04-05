@@ -1,49 +1,58 @@
 @extends('layouts.app1')
-@section('content')
 @section('scripts')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endsection
 <script src="../js/borrar.js"></script>
 <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
 
-<div class="container-fluid col-md-8 col-lg-8">
+@section('content')
+<div class="row container-fluid col-md-10 col-lg-10 id=" contenido">
 
-    <div class="text-center" id="contenido">
+    <div class="container-fluid mx-auto text-center">
         <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
-        @can('agregar_cosecha')
-        @endcan
-    </div>
-    <a id="agregar" class="btn primary-color-dark mb-2 rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="margin-left:52rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
-
-    <div class="container-fluid">
-        <nav class="navbar  navbar-dark indigo rounded mb-2 px-5 ml-5 mb-3">
-            <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white ml-5">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
-            <form class="form-inline">
-                <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
-                <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
-                    <option>Capataz</option>
-                    @foreach($capataz as $capat)
-                    <option value="{{$capat->id}}">{{$capat->nombre}}</option>
-                    @endforeach
-                </select>
-                <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
-
-                <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
-                @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn btn-deep-orange" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Busqueda</a> @endif
-                @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn btn-deep-orange" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir Reporte</a> @endif
-            </form>
-        </nav>
     </div>
 
-    {{ $cosechas->appends($_GET)->links() }}
+
+    <div class="container-fluid text-nowrap mb-5">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-xl navbar-dark indigo">
+                <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white ml-5">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
+                <form class="form-inline">
+                    <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
+                    <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
+                    <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
+                        <option>Capataz</option>
+                        @foreach($capataz as $capat)
+                        <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                        @endforeach
+                    </select>
+                    <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
+
+                    <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+
+                    @can('agregar_cosecha')
+                    <div>
+                        <a id="agregar" class="btn primary-color-dark rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+                    </div>
+                    @endcan
+
+                    @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                    @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                </form>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row container-fluid">
+        {{ $cosechas->appends($_GET)->links() }}
+    </div>
     <!--Table-->
-    <div class="table table-md">
-        <div class="table-wrapper">
-            <table class="table-bordered table-hover mx-auto">
+    <div class="container-fluid">
+        <div class="table-responsive-lg text-nowrap btn-table">
+            <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <thead class="text-center">
-                        <tr height="60px" style="background-color:black; color:white">
+                        <tr height="65px" style="background-color:black; color:white">
                             <th class="text-center text-truncate">FECHA</th>
                             <th class="text-center text-truncate">CLIENTE</th>
                             <th class="text-center text-truncate">CAPATAZ</th>

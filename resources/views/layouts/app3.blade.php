@@ -180,6 +180,8 @@
                     <span>&nbsp;</span>
                     <span class="px-5 ml-5 grey-text" style="font-size:12px"><b>V:1.0</span></b>
                     <span>&nbsp;</span>
+                    <a href="/../home" class="px-5 ml-3 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                    <span>&nbsp;</span>
 
                     <a href="#menu1" class="list-group-item d-inline-block collapsed px-5" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">
