@@ -1,7 +1,6 @@
 @extends('layouts.app1')
-
-
 @section('content')
+
 <div class="row container-fluid col-10" id="contenido">
   <h1 class="mx-auto mt-5 mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">MANTENIMIENTO DE USUARIOS</h1>
 </div>
