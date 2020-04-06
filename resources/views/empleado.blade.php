@@ -110,7 +110,8 @@
                                 {{ method_field('DELETE') }}
                                 <!--<a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
                                     </a>-->
-                                <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient btn-sm m-0" style="color:white"><i class="fas fa-trash mr-1" style="color:white"></i> BORRAR</a>
+                                <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate" style="color:white"><i class="fas fa-trash mr-0" style="color:white"></i> BORRAR</a>
+
                             </form>
                         </td>
                         @endcan
@@ -144,5 +145,6 @@
             </div>
         </div>
     </div>
-    <!--Table-->
-    @endsection
+</div>
+<!--Table-->
+@endsection
