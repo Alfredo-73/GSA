@@ -49,45 +49,45 @@
                         </div>
                         <div class="md-form mb-1" style="width:50%">
                             <i class="fas fa-users prefix" style="color:darkblue"></i>
-                            <input style="width:2rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->jornales)) {{$cosecha->jornales}}@endif" name="jornales">
+                            <input style="width:2rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->jornales)) {{$cosecha->jornales}}@endif" name="jornales">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">{{ __('JORNALES') }}</label>
                         </div>
 
                         <div class="md-form mb-1" style="width:50%">
                             <i class="fas fa-users prefix" style="color:darkblue"></i>
-                            <input style="width:2rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->cosecheros)) {{$cosecha->cosecheros}}@endif" name="cosecheros">
+                            <input style="width:2rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->cosecheros)) {{$cosecha->cosecheros}}@endif" name="cosecheros">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">COSECHEROS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
                             <i class="fas fa-truck-loading prefix" style="color:darkblue"></i>
-                            <input style="width:3rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->bines)) {{$cosecha->bines}}@endif" name="bines">
+                            <input style="width:3rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->bines)) {{$cosecha->bines}}@endif" name="bines">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">BINES</label>
                         </div>
 
                         <div class="md-form mb-1 w-50">
                             <i class="fas fa-lemon prefix" style="color:darkblue"></i>
-                            <input style="width:4rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->maletas)) {{$cosecha->maletas}}@endif" name="maletas">
+                            <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->maletas)) {{$cosecha->maletas}}@endif" name="maletas">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">MALETAS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
 
                             <i class="fas fa-weight-hanging prefix" style="color:darkblue"></i>
-                            <input style="width:4rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->toneladas)) {{$cosecha->toneladas}}@endif" name="toneladas">
+                            <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->toneladas)) {{$cosecha->toneladas}}@endif" name="toneladas">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">TONELADAS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
                             <i class="fas fa-weight prefix" style="color:darkblue"></i>
-                            <input style="width:4rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->prom_kg_bin)) {{$cosecha->prom_kg_bin}}@endif" name="prom_kg_bin" pattern="{0000.00}">
+                            <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->prom_kg_bin)) {{$cosecha->prom_kg_bin}}@endif" name="prom_kg_bin" pattern="{0000.00}">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">PROMEDIO KG/BIN</label>
                         </div>
                         <div class="md-form mb-1 w-50">
                             <i class="fas fa-user prefix" style="color:darkblue"></i>
-                            <input style="width:6rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->supervisor)) {{$cosecha->supervisor}}@endif" name="supervisor">
+                            <input style="width:6rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->supervisor)) {{$cosecha->supervisor}}@endif" name="supervisor">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>SUPERVISOR</label>
                         </div>
                         <div class="md-form mb-1 w-50">
                             <i class="fas fa-bus prefix" style="color:darkblue"></i>
-                            <input style="width:10rem" type="text" id="orangeForm-pass" class="form-control text-center" value="@if(!empty($cosecha->transportista)) {{$cosecha->transportista}}@endif" name="transportista">
+                            <input style="width:10rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->transportista)) {{$cosecha->transportista}}@endif" name="transportista">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>TRANSPORTISTA</label>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <title>Confirmación de envío de formulario</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <style>
         #nombre::placeholder {
             color: white;
@@ -39,7 +39,7 @@
         #sidebar .list-group {
             min-width: 400px;
             background-color: #333;
-            min-height: 130vh;
+            min-height: 155vh;
             /*doy altura al menu lateral*/
         }
 
@@ -59,7 +59,7 @@
 
         /* highlight active menu */
         #sidebar .list-group-item:not(.collapsed) {
-            background-color: #222;
+            background-color: #2222;
         }
 
         /* closed state */
@@ -103,8 +103,8 @@
 
         @media (max-width:768px) {
             #sidebar {
-                /*min-width: 35px;
-                max-width: 40px;*/
+                min-width: 35px;
+                max-width: 40px;
                 overflow-y: auto;
                 overflow-x: visible;
                 transition: all 0.25s ease;
@@ -172,104 +172,98 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row d-flex d-sm-block flex-nowrap wrapper">
-            <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
-                <div class="list-group border-0 text-center text-md-left">
+    <div class="sidebar">
+        <div class="container-fluid">
+            <div class="row d-flex d-sm-block flex-nowrap wrapper">
+                <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
+                    <div class="list-group border-0 text-center text-md-left">
 
-                    <span>&nbsp;</span>
-                    <span class="px-5 ml-5 grey-text" style="font-size:12px"><b>V:1.0</span></b>
-                    <span>&nbsp;</span>
-                    <a href="/../home" class="px-5 ml-3 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
-                    <span>&nbsp;</span>
+                        <div class="inicio">
+                            <span>&nbsp;</span>
+                            <span class="px-5 ml-1 grey-text" style="font-size:12px"><b>V:1.0</span></b>
+                            <span>&nbsp;</span>
+                            <a href="/../home" class="px-5 ml-1 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                            <span>&nbsp;</span>
+                        </div>
 
-                    <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
-                    <div class="collapse" id="menu1" data-parent="#sidebar">
-                        @role('Administrador')
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
-                        <a class="list-group-item" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
-                        @endrole
-                    </div>
+                        <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
+                        <div class="collapse" id="menu1" data-parent="#sidebar">
+                            @role('Administrador')
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
+                            @endrole
+                        </div>
 
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL FACTURACION</span></a>
+                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL FACTURACION</span></a>
 
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
+                        <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
 
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
+                        <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
 
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
+                        <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
 
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS</span></a>
-                    <div class="collapse" id="menu3" data-parent="#sidebar">
-                        <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
-                        <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
-                        <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
-                        <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
-                    </div>
+                        <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS</span></a>
+                        <div class="collapse" id="menu3" data-parent="#sidebar">
+                            <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
+                            <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
+                            <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
+                            <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
+                        </div>
 
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <!--<a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
+                        <!--<a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
                     <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
                     <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>-->
 
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
 
-                    <a class="list-group-item d-inline-block collapsed" data-parent="#sidebar" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="list-group-item d-inline-block collapsed" data-parent="#sidebar" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();" style="color:red">
-                        <i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline"><strong>{{ __('CERRAR SESION') }}</span></strong>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                            <i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline"><strong>{{ __('CERRAR SESION') }}</span></strong>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-10 abre">
+                <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
+                <div class="row ml-3">
+                    <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display:none; color:blue"><strong>Abrir menu</strong></a>
+                    <a id="cerrar" class="abrir-cerrar ml-3" href="javascript:void(0)" onclick="ocultar()" style="display:inline; color:red"><strong>Cerrar menu</strong></a>
+                </div>
+
+                <div class="container col-12">
+                    <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-none">
+                        <div class="row">
+                            <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
-
-        <div class="col-10 float-left pl-md-2 pt-2 main">
-            <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
-
-            <!--<a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">
-                Abrir menu
-            </a>
-            <a id="cerrar" class="abrir-cerrar" href="javascript:void(0)" onclick="ocultar()">
-                Cerrar menu
-            </a>-->
-
-            <div class="container col-12">
-                <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-none">
-
-                    <div class="row">
-                        <a class="navbar-brand" href="/../home">
-                            <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img>
-                        </a>
-                    </div>
-
-                </nav>
-            </div>
-        </div>
-
-    </div>
-    </div>
     </div>
 
     <main class="py-1">
@@ -287,21 +281,25 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-   <!-- <script>
+    <script>
         function mostrar() {
             document.getElementById("sidebar").style.width = "300px";
-            document.getElementById("contenido").style.marginLeft = "300px";
+            document.getElementById("contenido").style.marginLeft = "0px";
             document.getElementById("abrir").style.display = "none";
             document.getElementById("cerrar").style.display = "inline";
         }
 
         function ocultar() {
-            document.getElementById("sidebar").style.width = "0";
-            document.getElementById("contenido").style.marginLeft = "0";
+            document.getElementById("sidebar").style.width = "0px";
+            document.getElementById("contenido").style.marginLeft = "150px";
             document.getElementById("abrir").style.display = "inline";
             document.getElementById("cerrar").style.display = "none";
+            document.getElementById("customSwitch1").style.display = "checked";
         }
-    </script>-->
+
+        document.cookie = 'same-site-cookie=foo; SameSite=Lax';
+        document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+    </script>
 </body>
 
 </html>
