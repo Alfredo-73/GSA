@@ -91,7 +91,11 @@
                             <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                 @csrf
                                 {{method_field('PUT')}}
+<<<<<<< Updated upstream
                                 <a type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center text-truncate ver" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+=======
+                                <a type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center text-truncate" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-2" style="color:white"></i>VER</a>
+>>>>>>> Stashed changes
                                 @csrf
                                 {{method_field('PUT')}}
                                 @include('modalcosecha')
