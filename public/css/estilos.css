@@ -1,8 +1,3 @@
-.agregar {
-    margin-left: 60rem;
-}
-
-
 /*
     Max width before this PARTICULAR table gets nasty. 
     This query will take effect for any screen smaller than 760px and also iPads specifically.
@@ -10,11 +5,30 @@
 
 @media only screen and (max-width: 760px),
 (min-device-width: 100px) and (max-device-width: 1024px) {
-    .agregar {
-        margin-left: 10rem;
+    .sidebar {
+        width: 10px;
     }
-    .ver {
-        margin-left: 10rem;
+    .table-responsive-lg {
+        margin-left: 2rem;
+    }
+    .navbar {
+        width: 100%;
+        margin-left: 2rem;
+    }
+    .titulo {
+        width: 100%;
+        margin-left: 6rem;
+        font-size: 3rem;
+    }
+    .nuevo {
+        margin-left: 8rem;
+        margin-top: 1rem;
+    }
+    .inicio {
+        display: none;
+    }
+    .abre {
+        display: none;
     }
     /* Force table to not be like tables anymore */
     table,
@@ -42,7 +56,7 @@
         border: none;
         border-bottom: 1px solid #eee;
         position: relative;
-        padding-left: 50%;
+        padding-left: 40%;
     }
     td:before {
         /* Now like a table header */
@@ -61,6 +75,9 @@
         */
     td:nth-of-type(1):before {
         content: "Fecha:";
+    }
+    td:nth-of-type(2):before {
+        content: "Cliente:";
     }
     td:nth-of-type(3):before {
         content: "Capataz:";
@@ -83,4 +100,13 @@
     td:nth-of-type(9):before {
         content: "Prom.Kg/Bin:";
     }
+    td:nth-of-type(10):before {
+        content: "Supervisor:";
+    }
+}
+
+.row:before,
+.row:after {
+    width: 0px;
+    height: 0px;
 }
