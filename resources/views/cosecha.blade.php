@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
 
 @section('content')
-<div class="row container-fluid col-md-10 col-lg-10 id=" contenido">
+<div class="row container-fluid col-md-10 col-lg-10" id="contenido">
 
     <div class="container-fluid mx-auto text-center">
         <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
