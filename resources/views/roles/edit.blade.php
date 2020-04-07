@@ -1,18 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 
 @section('content')
-<div class="container mt-5">
+<div class="row container-fluid col-10 mt-5" id="contenido">
 
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-8">
+    <div class="col-8 mx-auto mt-5">
             <div class="card">
                 <div class="card-header text-white text-center" style="background-color:darkblue; font-size:25px">MODIFICACION DE ROL</div>
-                <div class="pull-right">
-
-                </div>
-
-
                 @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> Tenemos un problema con su entrada.<br><br>
@@ -34,7 +28,7 @@
                         </div>
                     </div>-->
 
-                <div class="input-group col-10 mt-3 mb-4 d-flex justify-content-center align-items-center container">
+                <div class="input-group col-10 mt-4 d-flex justify-content-center align-items-center container">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><strong>NOMBRE DEL ROL</strong></span>
                     </div>
@@ -68,12 +62,13 @@
                     </div>
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-3">
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center mb-3">
                     <button type="submit" class="btn btn-success">GRABAR</button>
                     <a class="btn btn-primary" href="{{ route('roles.index') }}"> REGRESAR</a>
                 </div>
             </div>
             {!! Form::close() !!}
-
+        </div>
+    </div>
 
             @endsection

@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="{{ asset('css/estilos.css')}}">
 
 @section('content')
-<div class="row container-fluid col-md-10 col-lg-10 id=" id="contenido">
+<div class="row container-fluid col-md-10 col-lg-10" id="contenido">
 
     <div class="container-fluid mx-auto text-center">
-        <h1 class="mx-auto mt-5 mb-5  titulo" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
+        <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
     </div>
 
 
@@ -31,13 +31,13 @@
                     <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
 
                     @can('agregar_cosecha')
-                    <div class="nuevo">
-                        <a id="agregar" class="btn blue-gradient btn-rounded btn-sm my-0 nuevo" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+                    <div>
+                        <a id="agregar" class="btn primary-color-dark rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
                     </div>
                     @endcan
 
-                    @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn btn-deep-orange ml-3" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
-                    @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn btn-deep-orange ml-3" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                    @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                    @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
                 </form>
             </nav>
         </div>
@@ -72,26 +72,26 @@
                 <tbody>
                     @foreach ($cosechas as $cosecha)
                     <tr>
-                        <td class="text-center text-truncate" name="fecha">{{$cosecha->fecha}} </td>
+                        <td class="text-center text-truncate" name="fecha"> {{$cosecha->fecha}}</td>
                         <td class="text-center text-truncate"> {{$cosecha->cliente->nombre}}</td>
                         <td class="text-center text-truncate"> {{$cosecha->capataz->nombre}}</td>
-                        <td class="text-center text-truncate"> {{$cosecha->jornales}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->cosecheros}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->bines}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->maletas}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->toneladas}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->prom_kg_bin}} </td>
-                        <td class="text-center text-truncate"> {{$cosecha->supervisor}} </td>
+                        <td class="text-center text-truncate"> {{$cosecha->jornales}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->cosecheros}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->bines}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->maletas}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->toneladas}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->prom_kg_bin}}</td>
+                        <td class="text-center text-truncate"> {{$cosecha->supervisor}}</td>
                         @can('borrar_cosecha')
                         <td class="text-center">
                             <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
                         </td>
                         @endcan
-                        <td  class="">
+                        <td>
                             <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                 @csrf
                                 {{method_field('PUT')}}
-                                <a type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center text-truncate ver" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                <a type="button" class="btn blue-gradient mb-1 btn-sm m-0 text-center text-truncate" href="/modalcosecha/{{ $cosecha->id }}" data-toggle="modal" data-target="#modalcosecha{{ $cosecha->id }}" form method="POST" action="/modalcosecha/{{$cosecha->id}}" role="button" style="text-align:justify"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
                                 @csrf
                                 {{method_field('PUT')}}
                                 @include('modalcosecha')
@@ -102,13 +102,13 @@
                 </tbody>
                 <!--Table body-->
             </table>
+            <!--{{ $cosechas->render() }}-->
         </div>
-        <div class="mt-3">
-            {{ $cosechas->appends($_GET)->links() }}
-            <!--Table-->
-        </div>
+        {{ $cosechas->appends($_GET)->links() }}
+        <!--Table-->
     </div>
 </div>
+{{ $cosechas->appends($_GET)->links() }}
 <!--Table-->
 
 <!--Section: Content-->
