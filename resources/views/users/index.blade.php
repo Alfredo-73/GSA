@@ -5,9 +5,9 @@
   <h1 class="mx-auto mt-5 mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">MANTENIMIENTO DE USUARIOS</h1>
 </div>
 <div class="pull-right col-lg-12 col-md-12 col-sm-12">
+  @can('user-create')
   <a class="btn primary-color-dark mb-5 rounded" href="{{ route('users.create') }}" style="margin-left:65rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO</a>
-</div>
-</div>
+  @endcan
 </div>
 
 
@@ -44,10 +44,14 @@
               </td>
               <td>
                 <!--<a class="btn-sm btn-info" href="{{ route('users.show',$user->id) }}">VER</a>-->
+                 @can('user-edit')
                 <button class="btn-sm btn-primary" onclick="location.href='{{ route('users.edit',$user->id) }}'">EDITAR</button>
+                @endcan
+                @can('user-delete')
                 {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('BORRAR', ['class' => 'btn-sm btn-danger']) !!}
                 {!! Form::close() !!}
+                @endcan
               </td>
             </tr>
             @endforeach
