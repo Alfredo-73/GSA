@@ -103,8 +103,8 @@
 
         @media (max-width:768px) {
             #sidebar {
-                min-width: 35px;
-                max-width: 40px;
+                /*min-width: 35px;
+                max-width: 40px;*/
                 overflow-y: auto;
                 overflow-x: visible;
                 transition: all 0.25s ease;
@@ -175,7 +175,7 @@
     <div class="sidebar">
         <div class="container-fluid">
             <div class="row d-flex d-sm-block flex-nowrap wrapper">
-                <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
+                <div class="col-sm-2 float-left col-1 pl-0 collapse width show" id="sidebar">
                     <div class="list-group border-0 text-center text-md-left">
 
                         <div class="inicio">
@@ -248,23 +248,19 @@
                 </div>
             </div>
 
-            <div class="col-10 abre">
+        </div>
+    </div>
+            <div class="container col-8 abre">
                 <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
-                <div class="row ml-3">
                     <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display:none; color:blue"><strong>Abrir menu</strong></a>
                     <a id="cerrar" class="abrir-cerrar ml-3" href="javascript:void(0)" onclick="ocultar()" style="display:inline; color:red"><strong>Cerrar menu</strong></a>
-                </div>
-
-                <div class="container col-12">
-                    <nav class="row navbar navbar-expand-lg navbar-light bg-white shadow-none">
+                
+                   
                         <div class="row">
                             <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>
                         </div>
-                    </nav>
-                </div>
+                   
             </div>
-        </div>
-    </div>
 
     <main class="py-1">
         @yield('content')

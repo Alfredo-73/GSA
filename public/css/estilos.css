@@ -104,9 +104,3 @@
         content: "Supervisor:";
     }
 }
-
-.row:before,
-.row:after {
-    width: 0px;
-    height: 0px;
-}
