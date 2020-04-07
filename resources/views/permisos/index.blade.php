@@ -2,15 +2,18 @@
 
 
 @section('content')
+<div class="container mt-6">
+
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="pull-left">
-            <h1 class="text-center mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">MANTENIMIENTO DE PERMISOS</h1>
-        </div>
-        <div class="pull-right col-lg-12 col-md-12 col-sm-12">
-            <a class="btn primary-color-dark mb-5 rounded" href="{{ route('permisos.create') }}" style="margin-left:72rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
-        </div>
+    <div class="row container-fluid col-10" id="contenido">
+            <h1 class="mx-auto mt-5 mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">MANTENIMIENTO DE PERMISOS</h1>
     </div>
+    <div class="pull-right col-lg-12 col-md-12 col-sm-12">
+        @can('permiso-create')
+        <a class="btn primary-color-dark mb-5 rounded" href="{{ route('permisos.create') }}" style="margin-left:60rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
+        @endcan
+    </div>
+    
 </div>
 
 
@@ -37,10 +40,10 @@
                     <td>{{ $permiso->name }}</td>
                     <td>
                         <!--<a class="btn btn-info" href="{{ route('permisos.show',$permiso->id) }}">Ver</a>-->
-                        @can('role-edit')
+                        @can('permiso-edit')
                         <button class="btn-sm btn-primary" onclick="location.href='{{ route('permisos.edit',$permiso->id) }}'">EDITAR</button>
                         @endcan
-                        @can('role-delete')
+                        @can('permiso-delete')
                         {!! Form::open(['method' => 'DELETE','route' => ['permisos.destroy', $permiso->id],'style'=>'display:inline']) !!}
                         {!! Form::submit('BORRAR', ['class' => 'btn-sm btn-danger']) !!}
                         {!! Form::close() !!}
@@ -50,8 +53,11 @@
                 @endforeach
     </table>
 
+</div>
 
     {!! $permisos->render() !!}
+</div>
+
 
 
     @endsection
