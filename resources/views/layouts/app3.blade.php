@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <title>Confirmación de envío de formulario</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         #nombre::placeholder {
@@ -177,11 +176,13 @@
             <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
                 <div class="list-group border-0 text-center text-md-left">
 
-                    <span>&nbsp;</span>
-                    <span class="px-5 ml-5 grey-text" style="font-size:12px"><b>V:1.0</span></b>
-                    <span>&nbsp;</span>
-                    <a href="/../home" class="px-5 ml-3 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
-                    <span>&nbsp;</span>
+                    <div class="inicio">
+                        <span>&nbsp;</span>
+                        <span class="px-5 ml-1 grey-text" style="font-size:12px"><b>V:1.0</span></b>
+                        <span>&nbsp;</span>
+                        <a href="/../home" class="px-5 ml-1 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                        <span>&nbsp;</span>
+                    </div>
 
                     <a href="#menu1" class="list-group-item d-inline-block collapsed px-5" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
                     <div class="collapse" id="menu1" data-parent="#sidebar">

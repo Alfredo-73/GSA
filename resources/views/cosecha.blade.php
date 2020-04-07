@@ -87,7 +87,7 @@
                             <button type="" onclick="return borrar(this)" value="{{$cosecha->id}}" id="borrar" name="borrar" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
                         </td>
                         @endcan
-                        <td  class="text-center">
+                        <td  class="">
                             <form method="PUT" action="/modalcosecha/{{$cosecha->id}}">
                                 @csrf
                                 {{method_field('PUT')}}

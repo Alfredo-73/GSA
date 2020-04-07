@@ -44,7 +44,7 @@
               </td>
               <td>
                 <!--<a class="btn-sm btn-info" href="{{ route('users.show',$user->id) }}">VER</a>-->
-                <button class="btn-sm btn-primary" onclick="location.href='{{ route('users.edit',$user->id) }}'">EDITAR</button>
+                <button class="btn-sm btn-primary" onclick="location.href='{{ route('users.edit'.$user->id) }}'">EDITAR</button>
                 {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                 {!! Form::submit('BORRAR', ['class' => 'btn-sm btn-danger']) !!}
                 {!! Form::close() !!}
