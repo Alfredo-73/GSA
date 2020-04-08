@@ -1,7 +1,7 @@
 @extends('layouts.app1')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" id="contenido">
     <div class="row justify-content-center">
         <div class="col-ms-6 col-md-6 col-lg-6">
             <div class="mx-auto">
