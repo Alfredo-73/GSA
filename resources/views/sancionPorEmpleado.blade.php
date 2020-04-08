@@ -5,7 +5,7 @@
 
 @endsection
 
-<div class="row justify">
+<div class="row justify" id="contenido">
     <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="">
             <div class="px-4">

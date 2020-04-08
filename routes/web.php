@@ -206,8 +206,8 @@ Route::delete('/borrar_empresa/{id}', 'empresaController@borrar');
 //Route::get('nueva_sancion', 'SancionController@agregar');
 //Route::post('nueva_sancion', 'SancionController@agregar_sancion');
 //Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
-//Route::get('modif_sancion/{id}', 'SancionController@edit');
-//Route::put('modif_sancion/{id}', 'SancionController@update');
+Route::get('modif_empresa/{id}', 'empresaController@edit');
+Route::put('modif_empresa/{id}', 'empresaController@update');
 
 
 
