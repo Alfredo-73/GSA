@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
 @section('content')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
