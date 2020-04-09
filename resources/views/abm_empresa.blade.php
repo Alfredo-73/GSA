@@ -2,7 +2,7 @@
 
 @section('content')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<div class="container-fluid">
+<div class="container-fluid" id="contenido">
     <div class="row justify-content-center">
         <div class="col-ms-8 col-md-8 col-lg-8">
             <div class="mx-auto">
@@ -70,7 +70,7 @@
                                 </td class="text-center">
                                 <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
                                 <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_capataz/{{$emp->id}}" role="button"><i class="far fa-edit mr-2"></i>Modificar </a>
+                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_empresa/{{$emp->id}}" role="button"><i class="far fa-edit mr-2"></i>Modificar </a>
 
                                     <!--   <form method="POST" action="">
                                         <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
