@@ -20,9 +20,9 @@ function validar(formulario) {
         })
         .then(function(data) {
 
-            console.log('DATO GUARDADO EN BASE DE DATOS:', data);
-            console.log('DATO INGRESADO EN INPUT:', document.getElementById("legajo").value)
-            console.log(data.indexOf("legajo") >= 0)
+            //console.log('DATO GUARDADO EN BASE DE DATOS:', data);
+            //console.log('DATO INGRESADO EN INPUT:', document.getElementById("legajo").value)
+            //console.log(data.indexOf("legajo") >= 0)
 
             if (data.indexOf("legajo") >= 0) {
                 swal("ERROR", "EL Nº de Legajo ya existe, elija otro", "error");

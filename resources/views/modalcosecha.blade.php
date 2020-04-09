@@ -13,7 +13,7 @@
                         <!--<input hidden="true" type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->id_cliente)) {{$cosecha->id_cliente}}@endif" name="id_cliente">
                         <input hidden="true" type="text" id="orangeForm-name" class="form-control" value="@if(!empty($cosecha->id_capataz)) {{$cosecha->id_capataz}}@endif" name="id_capataz">-->
                         <div class="md-form mb-1" style="width:30%">
-                            <i class="far fa-calendar-alt prefix" style="color:darkblue"></i>
+                            <i class="far fa-calendar-alt prefix" style="margin-left:-4rem; color:darkblue"></i>
                             <input id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror text-center" name="fecha" value="{{ $cosecha->fecha }}" required autocomplete="fecha" autofocus>
                             <label style="color:darkblue">FECHA</label>
                             @error('fecha')
@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="md-form mt-3 mx-auto" style="width:30%">
-                            <i class="fas fa-id-card-alt prefix" style="color:darkblue"></i>
+                            <i class="fas fa-id-card-alt prefix" style="margin-left:-4rem; color:darkblue"></i>
                             <label style="color:darkblue">CLIENTE</label>
                             <br>
                             <br>
@@ -36,7 +36,7 @@
                             </select>
                         </div>
                         <div class="md-form mt-3" style="width:50%">
-                            <i class="fas fa-users prefix" style="color:darkblue"></i>
+                            <i class="fas fa-user prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <label style="color:darkblue">CAPATAZ</label>
                             <br>
                             <br>
@@ -48,45 +48,45 @@
                             </select>
                         </div>
                         <div class="md-form mb-1" style="width:50%">
-                            <i class="fas fa-users prefix" style="color:darkblue"></i>
+                            <i class="fas fa-users prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:2rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->jornales)) {{$cosecha->jornales}}@endif" name="jornales">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">{{ __('JORNALES') }}</label>
                         </div>
 
                         <div class="md-form mb-1" style="width:50%">
-                            <i class="fas fa-users prefix" style="color:darkblue"></i>
+                            <i class="fas fa-users prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:2rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->cosecheros)) {{$cosecha->cosecheros}}@endif" name="cosecheros">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">COSECHEROS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
-                            <i class="fas fa-truck-loading prefix" style="color:darkblue"></i>
+                            <i class="fas fa-truck-loading prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:3rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->bines)) {{$cosecha->bines}}@endif" name="bines">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">BINES</label>
                         </div>
 
                         <div class="md-form mb-1 w-50">
-                            <i class="fas fa-lemon prefix" style="color:darkblue"></i>
+                            <i class="fas fa-lemon prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->maletas)) {{$cosecha->maletas}}@endif" name="maletas">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">MALETAS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
 
-                            <i class="fas fa-weight-hanging prefix" style="color:darkblue"></i>
+                            <i class="fas fa-weight-hanging prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->toneladas)) {{$cosecha->toneladas}}@endif" name="toneladas">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">TONELADAS</label>
                         </div>
                         <div class="md-form mb-1 w-50">
-                            <i class="fas fa-weight prefix" style="color:darkblue"></i>
+                            <i class="fas fa-weight prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:4rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->prom_kg_bin)) {{$cosecha->prom_kg_bin}}@endif" name="prom_kg_bin" pattern="{0000.00}">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass">PROMEDIO KG/BIN</label>
                         </div>
                         <div class="md-form mb-1 w-50">
-                            <i class="fas fa-user prefix" style="color:darkblue"></i>
+                            <i class="fas fa-user prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:6rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->supervisor)) {{$cosecha->supervisor}}@endif" name="supervisor">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>SUPERVISOR</label>
                         </div>
                         <div class="md-form mb-1 w-50">
-                            <i class="fas fa-bus prefix" style="color:darkblue"></i>
+                            <i class="fas fa-bus prefix" style="margin-left:-7rem; color:darkblue"></i>
                             <input style="width:10rem" type="text" class="form-control text-center" value="@if(!empty($cosecha->transportista)) {{$cosecha->transportista}}@endif" name="transportista">
                             <label style="color:darkblue" data-error="wrong" data-success="right" for="orangeForm-pass" s>TRANSPORTISTA</label>
                         </div>
@@ -95,13 +95,13 @@
             </div>
             <div class="modal-footer" style="width:100%">
                 <div class="mx-auto">
-                  @can('update_cosecha')
+                    @can('update_cosecha')
                     <button type="submit" class="btn btn-primary" action="{{url('/modalcosecha/'.$cosecha->id) }}"><i class="fas fa-2x fa-save mr-2" style="color:white"></i>
                         {{ __('Grabar') }}
                     </button>
                     @endcan
                     <a class="btn btn-deep-orange" href="{{action('cosechaController@vercosechaPDF', $cosecha->id)}}"><i class="fas fa-2x fa-print mr-2" style="color:white"></i>Imprimir</a>
-                    
+
                     @can('borrar_cosecha')
                     <form method="POST" action="{{url('/borrar_cosecha/'.$cosecha->id) }}">
                         {{ csrf_field() }}

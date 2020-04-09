@@ -74,33 +74,53 @@
     You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
         */
     td:nth-of-type(1):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Fecha:";
     }
     td:nth-of-type(2):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Cliente:";
     }
     td:nth-of-type(3):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Capataz:";
     }
     td:nth-of-type(4):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Jornales:";
     }
     td:nth-of-type(5):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Cosecheros:";
     }
     td:nth-of-type(6):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Bines:";
     }
     td:nth-of-type(7):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Maletas:";
     }
     td:nth-of-type(8):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Toneladas:";
     }
     td:nth-of-type(9):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Prom.Kg/Bin:";
     }
     td:nth-of-type(10):before {
+        text-transform: uppercase;
+        margin-top: 1rem;
         content: "Supervisor:";
     }
 }
