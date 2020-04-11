@@ -8,8 +8,8 @@
         <h1 class="mx-auto mb-5 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPLEADOS</h1>
     </div>
 
-    <div class="container-fluid text-nowrap mb-5">
-        <nav class="navbar navbar-expand-xl navbar-dark indigo">
+    <div class="container-fluid">
+        <nav class="navbar  navbar-dark indigo rounded mb-2">
             <p class="navbar-brand ml-2" href="#">Buscador:</p>
 
             <form class="form-inline md-form mr-auto mb-4 float-right" action="">

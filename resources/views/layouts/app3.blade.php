@@ -62,8 +62,8 @@
         }
 
         /* closed state */
-        #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-            content: " \f0d7";
+        #sidebar .list-group .list-group-item[aria-expanded=""]::after {
+            content: "";
             font-family: FontAwesome;
             display: inline;
             text-align: right;
@@ -71,12 +71,12 @@
         }
 
         /* open state */
-        #sidebar .list-group .list-group-item[aria-expanded="true"] {
+        #sidebar .list-group .list-group-item[aria-expanded=""] {
             background-color: #222;
         }
 
-        #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-            content: " \f0da";
+        #sidebar .list-group .list-group-item[aria-expanded=""]::after {
+            content: "";
             font-family: FontAwesome;
             display: inline;
             text-align: right;
@@ -178,47 +178,47 @@
 
                     <div class="inicio">
                         <span>&nbsp;</span>
-                        <span class="px-5 ml-1 grey-text" style="font-size:12px"><b>V:1.0</span></b>
+                        <span class="px-4 grey-text" style="font-size:12px"><b>Versión:1.0</span></b>
                         <span>&nbsp;</span>
-                        <a href="/../home" class="px-5 ml-1 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                        <a href="/../home" class="ml-4 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
                         <span>&nbsp;</span>
                     </div>
-
-                    <a href="#menu1" class="list-group-item d-inline-block collapsed px-5" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
-                    <div class="collapse" id="menu1" data-parent="#sidebar">
-                        @role('Administrador')
-                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
-                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
-                        <a class="list-group-item px-5" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
-                        @endrole
-                    </div>
-
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-                    <span>&nbsp;</span>
-
-                    <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL FACTURACION</span></a>
+                    <span>&nbsp;</span>>
+                        <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="px-5 text-uppercase">{{ Auth::user()->name }}</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a></a>
+                        <div class="collapse" id="menu1" data-parent="#sidebar">
+                            @role('Administrador')
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
+                            <a class="list-group-item" data-parent="#menu1" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
+                            @endrole
+                        </div>
 
                     <span>&nbsp;</span>
+                    <span>&nbsp;</span>
+                    <span>&nbsp;</span>
 
-                    <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
+                    <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL DE FACTURACION</span></a>
 
                     <span>&nbsp;</span>
 
-                    <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
+                    <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">PARTE DIARIO DE COSECHA</span></a>
 
                     <span>&nbsp;</span>
 
-                    <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
+                    <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">LISTADO DE EMPLEADOS</span></a>
 
                     <span>&nbsp;</span>
 
-                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS</span></a>
+                    <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">DETALLE DE SANCIONES</span></a>
+
+                    <span>&nbsp;</span>
+
+                    <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">ADMINISTRACION DE TABLAS</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
                     <div class="collapse" id="menu3" data-parent="#sidebar">
-                        <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
-                        <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
-                        <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
-                        <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
+                        <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3"><i class="fas fa-industry"></i>ABM Empresas</a>
+                        <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3"><i class="far fa-handshake"></i>ABM Clientes</a>
+                        <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3"><i class="fas fa-user-friends"></i>ABM Capataces</a>
+                        <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3"><i class="far fa-calendar-alt"></i>ABM Quincenas</a>
                     </div>
 
                     <span>&nbsp;</span>

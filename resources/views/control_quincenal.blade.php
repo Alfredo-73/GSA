@@ -6,21 +6,16 @@
 <link rel="stylesheet" href="{{ asset('css/estilos_control.css')}}">
 
 @section('content')
-<div class="row container-fluid col-md-8 col-lg-8" id="contenido">
+<div class="row container-fluid col-md-10 col-lg-10" id="contenido">
 
     <div class="container-fluid mx-auto text-center" id="titulo">
-        <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">CONTROL QUINCENAL </h1>
-        <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">DE FACTURACION Y PAGO</h1>
-
-        @can('agregar_control')
-        <a id="agregar" class="btn primary-color-dark mb-2 rounded" href="{{ url('/nuevo_control') }}" role="button" style="margin-left:52rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
-        @endcan
+        <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">CONTROL QUINCENAL DE FACTURACION Y PAGO</h1>
     </div>
-    
+
     <div class="container-fluid text-nowrap mb-5">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg navbar-dark indigo mb-2 rounded">
-               <!-- <div class="row">
+                <!-- <div class="row">
                     <p class="text-wrap" style="color:white; position:absolute; z-index:2; margin-left:8rem; margin-top:-2.5rem">INGRESE ClIENTE Y/O QUINCENA</span>
                 </div>-->
                 <a class="navbar-brand ml-3" href="#">Buscador:</a>
@@ -34,7 +29,7 @@
                         @endforeach
 
                     </select>
-                    <select name="buscarporquincena" class="selectpicker show-menu-arrow">
+                    <select name="buscarporquincena" class="selectpicker show-menu-arrow ml-1">
                         <option>Quincena</option>
                         @foreach($quincenas as $quincena)
                         <option value="{{$quincena->id}}" @if(old('buscarporquincena'))selected @endif>{{$quincena->nombre}}</option>
@@ -45,20 +40,23 @@
                     <a href="{{ url('/control_quincenal') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
                     @if(($varcliente||$varquincena)&&($varcliente != 'Cliente' || $varquincena != 'Quincena' ) ) <a class="btn btn-deep-orange" href="/imprimir/{{$varcliente}}/{{$varquincena}}"><i class="fas fa-print fa-2x mr-2" style="color:white"></i>Imprimir Busqueda</a> @endif
                     @if(empty($varcliente)|| empty($varquincena)||($varcliente=='Cliente') && ($varquincena=='Quincena') ) <a class="btn btn-deep-orange btn-rounded btn-sm my-0" href="/imprimir"><i class="fas fa-print fa-2x mr-2" style="color:white"></i>Imprimir reporte</a> @endif
-
+                    <div>
+                        @can('agregar_control')
+                        <a id="agregar" class="btn blue-gradient btn-rounded btn-sm my-0" href="{{ url('/nuevo_control') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+                        @endcan
+                    </div>
                 </form>
             </nav>
         </div>
     </div>
 
     <div class="row container-fluid">
-
-    {{ $controles->render() }}
+        {{ $controles->render() }}
     </div>
     <!--Table-->
     <div class="container-fluid">
         <div class="table-responsive-lg text-nowrap btn-table">
-            <table class="table-bordered table-hover">
+            <table class="table table-bordered table-hover">
                 <thead class="thead-dark">
                     <thead class="text-center">
                         <tr height="65px" style="background-color:black; color:white">
@@ -101,7 +99,7 @@
 
                         </td>
                         @endcan
-                        <td >
+                        <td>
                             <form method="PUT" action="/modal_control/{{ $control->id }}">
                                 @csrf
                                 {{method_field('PUT')}}

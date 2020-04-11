@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>GSA</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- GSA icon -->
     <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>GSA</title>
 
     <style>
         #nombre::placeholder {
@@ -64,7 +64,7 @@
 
         /* closed state */
         #sidebar .list-group .list-group-item[aria-expanded="false"]::after {
-            content: " \f0d7";
+            content: "";
             font-family: FontAwesome;
             display: inline;
             text-align: right;
@@ -77,7 +77,7 @@
         }
 
         #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-            content: " \f0da";
+            content:'';
             font-family: FontAwesome;
             display: inline;
             text-align: right;
@@ -180,13 +180,13 @@
 
                         <div class="inicio">
                             <span>&nbsp;</span>
-                            <span class="px-5 ml-1 grey-text" style="font-size:12px"><b>V:1.0</span></b>
+                            <span class="px-4 grey-text" style="font-size:12px"><b>Versión:1.0</span></b>
                             <span>&nbsp;</span>
-                            <a href="/../home" class="px-5 ml-1 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                            <a href="/../home" class="ml-4 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
                             <span>&nbsp;</span>
                         </div>
-
-                        <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="d-none d-md-inline text-uppercase">{{ Auth::user()->name }}</span> </a>
+                        <span>&nbsp;</span>
+                        <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="usuario px-5 text-uppercase">{{ Auth::user()->name }}</span>&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapse" id="menu1" data-parent="#sidebar">
                             @role('Administrador')
                             <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
@@ -199,28 +199,28 @@
                         <span>&nbsp;</span>
                         <span>&nbsp;</span>
 
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL FACTURACION</span></a>
+                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">COSECHA</span></a>
+                        <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">PARTE DIARIO DE COSECHA</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">EMPLEADOS</span></a>
+                        <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">LISTADO DE EMPLEADOS</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">SANCIONES</span></a>
+                        <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">DETALLE DE SANCIONES</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">TABLAS</span></a>
+                        <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">ADMINISTRACION DE TABLAS</span>&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapse" id="menu3" data-parent="#sidebar">
-                            <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3">Empresas</a>
-                            <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3">Clientes</a>
-                            <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3">Capataces</a>
-                            <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3">Quincenas</a>
+                            <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3"><i class="fas fa-industry"></i>ABM Empresas</a>
+                            <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3"><i class="far fa-handshake"></i>ABM Clientes</a>
+                            <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3"><i class="fas fa-user-friends"></i>ABM Capataces</a>
+                            <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3"><i class="far fa-calendar-alt"></i>ABM Quincenas</a>
                         </div>
 
                         <span>&nbsp;</span>
@@ -250,17 +250,17 @@
 
         </div>
     </div>
-            <div class="container col-8 abre">
-                <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
-                    <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display:none; color:blue"><strong>Abrir menu</strong></a>
-                    <a id="cerrar" class="abrir-cerrar ml-3" href="javascript:void(0)" onclick="ocultar()" style="display:inline; color:red"><strong>Cerrar menu</strong></a>
-                
-                   
-                        <div class="row">
-                            <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>
-                        </div>
-                   
-            </div>
+    <div class="container col-8 abre">
+        <!--<a href="#" data-target="#sidebar" data-toggle="collapse" id="Menu"><i class="text-dark fa fa-navicon fa-lg py-2 p-1"></i>Menu</a>-->
+        <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" style="display:none; color:blue"><strong>Abrir menu</strong></a>
+        <a id="cerrar" class="abrir-cerrar ml-3" href="javascript:void(0)" onclick="ocultar()" style="display:inline; color:red"><strong>Cerrar menu</strong></a>
+
+
+        <div class="row">
+            <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>
+        </div>
+
+    </div>
 
     <main class="py-1">
         @yield('content')

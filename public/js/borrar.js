@@ -8,18 +8,27 @@ function borrar(borrar) {
         })
         .then((willDelete) => {
             if (willDelete) {
-                //codigo para borrar cpn JS
                 var route = "borrar_cosecha/" + borrar.value + "";
                 $.ajax({
                     url: route,
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     type: 'DELETE',
                     dataType: 'json',
-                    //success: function(data) {
-                    //swal("Bien!! El registro fue borrado!", { icon: "success", });
-                    //}
+                    beforeSend: function() {},
+                    success: function(response) {
+                        swal("Muy bien!",
+                            "Registro Borrado",
+                            "success"
+                        ).then(okay => {
+                            if (okay) {
+                                window.location.href = "/cosecha";
+                            }
+                        })
+                    },
+                    error: function() {
+                        swal('ERROR', "NO SE BORRO EL REGISTRO", 'error', { button: "Salir" });
+                    },
                 });
-                window.location = '/cosecha';
             } else {
                 swal('Cancelado', "El registro no fue eliminado!", 'error', { button: "Salir" });
             }
