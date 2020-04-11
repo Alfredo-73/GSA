@@ -12,33 +12,37 @@
         <h1 class="mx-auto mt-5 mb-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">PARTE DIARIO DE COSECHA</h1>
     </div>
 
-
     <div class="container-fluid text-nowrap mb-5">
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-xl navbar-dark indigo">
-                <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif" class="text-white ml-5">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
-                <form class="form-inline">
-                    <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
-                    <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
-                    <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
-                        <option>Capataz</option>
-                        @foreach($capataz as $capat)
-                        <option value="{{$capat->id}}">{{$capat->nombre}}</option>
-                        @endforeach
-                    </select>
-                    <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
+            <!-- <nav class="navbar navbar-expand-xl navbar-dark indigo rounded">-->
+            <nav class="navbar navbar-expand-lg navbar-dark indigo mb-2 rounded">
+                <div class="row">
+                    <span style="font-size:15px; font-family:Verdana, Geneva, Tahoma, sans-serif;" class="text-white ml-2 mx-2">INGRESE RANGO DE FECHA Y/O CAPATAZ:</span>
+                </div>
+                <div>
+                    <form class="form-inline ml-3">
+                        <input class="md-form mr-2 text-center rounded" type="date" placeholder="Desde" aria-label="Search" name="fechadesde" role="button">
+                        <input class="md-form mr-2 text-center rounded" type="date" placeholder="Hasta" aria-label="Search" name="fechahasta" role="button">
+                        <select class="selectpicker show-menu-arrow" name="buscacapataz" value="">
+                            <option>Capataz</option>
+                            @foreach($capataz as $capat)
+                            <option value="{{$capat->id}}">{{$capat->nombre}}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn blue-gradient btn-rounded btn-sm my-0"><i class="fas fa-search fa-2x mr-2" style="color:white" name="buscar"></i>Buscar</button>
 
-                    <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
+                        <a href="{{ url('/cosecha') }}" title="Refrescar" name="Refrescar" style="color:white; font-family:Verdana, Geneva, Tahoma, sans-serif"><i class="fas fa-sync-alt ml-1" style="color:white"></i>Refrescar</a>
 
-                    @can('agregar_cosecha')
-                    <div>
-                        <a id="agregar" class="btn primary-color-dark rounded" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
-                    </div>
-                    @endcan
+                        @can('agregar_cosecha')
+                        <div>
+                            <a id="agregar" class="btn blue-gradient btn-rounded btn-sm" href="{{ url('/nueva_cosecha') }}" role="button" style="color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO </a>
+                        </div>
+                        @endcan
 
-                    @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
-                    @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
-                </form>
+                        @if(($varfechadesde || $varfechahasta) || ($varbuscacapataz) && ($varbuscacapataz !='Capataz'))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF/{{$varfechadesde}}/{{$varfechahasta}}/{{$varbuscacapataz}}"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                        @if((empty($varfechadesde) && empty($varfechahasta) || ($varbuscacapataz=='Capataz')) && (($varbuscacapataz =='Capataz') && ($varfechadesde ==null) && ($varfechahasta==null)))<a role="button" class="btn-sm btn-deep-orange ml-3" href="verreportecosechaPDF"><i class="fas fa-print mr-2" style="color:white"></i>Imprimir</a> @endif
+                    </form>
+                </div>
             </nav>
         </div>
     </div>

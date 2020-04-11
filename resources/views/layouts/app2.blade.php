@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <title>Confirmación de envío de formulario</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         #nombre::placeholder {
@@ -142,15 +141,6 @@
     }
 }
     </style>
-    <script>
-        $(document).ready(function () {
-
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
-
-});
-    </script>
 </head>
 
 <body>
@@ -220,10 +210,6 @@
     </div>
 </div>
 
-  <!-- <main class="py-4">
-            @yield('content')
-        </main>
-    </div> -->
     
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>

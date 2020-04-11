@@ -206,7 +206,7 @@ class cosechaController extends Controller
         //Flash::success('Se ha borrado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
     
         //return redirect('/cosecha')->with('success', 'User deleted successfully');    
-        return view('/cosecha');
+        //return view('/cosecha');
         return response()->json(["mensaje"=>"borrado"]);
     }
 
