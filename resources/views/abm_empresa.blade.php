@@ -2,126 +2,49 @@
 
 @section('content')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<div class="container-fluid" id="contenido">
-    <div class="row justify-content-center">
-        <div class="col-ms-8 col-md-8 col-lg-8">
-            <div class="mx-auto">
-                <div class="px-4">
-                    <div class="table-wrapper">
-                        <h1 class="text-center">LISTADO DE EMPRESAS</h1>
-                        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_empresa') }}" role="button" style="margin-left:35rem;color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVA</a>
-                        <!--BOTON AGREGAR PRODUCTO-------------------
-                        
-                        <form method="POST" action="">
-                            <button class="btn btn-success mb-5" type="submit" id="agregar" style="margin-left:75rem">NUEVO</button>
-                        </form> -->
-                    </div>
-                    <!--Table-->
-                    <table class="table table-bordered table-hover">
 
-                        <!--Table head-->
-                        <thead class="thead-dark">
-                            <tr height="60px" style="background-color:black; color:white">
-                                <!--<th>
-                                        <input class="form-check-input" type="checkbox" id="checkbox">
-                                        <label class="form-check-label" for="checkbox" class="mr-2 label-table"></label>
-                                    </th>-->
+<div class="row container-fluid col-6 mx-auto" id="contenido">
 
-                                <th class="th-lg text-center">
-                                    <a>RAZON SOCIAL
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>CUIT
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th class="th-lg text-center">
-                                    <a>DOMICILIO
-                                        <!--<i class="fas fa-sort ml-1"></i>-->
-                                    </a>
-                                </th>
-                                <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
-                            </tr>
-                        </thead>
-                        <!--Table head-->
+    <div class="container-fluid mx-auto text-center">
+        <h1 class="mx-auto mb-5 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE EMPRESAS</h1>
+        
+        <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nueva_empresa') }}" role="button" style="margin-left:50%; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVA</a>
+    
+    </div>
 
-                        <!--Table body-->
-                        <tbody>
-                            @foreach ($empresa as $emp)
-                            <tr>
-                                <td class="text-center"> {{$emp->razon_social}}</td>
-                                <td class="text-center"> {{$emp->cuit}}</td>
-                                <td class="text-center"> {{$emp->domicilio}}</td>
-                                <td class="text-center">
-                                    <form method="POST" action="{{ url('/borrar_empresa/'.$emp->id) }}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" onclick="return confirm('¿Desea eliminar la empresa?')" id="borrar" class="btn btn-danger btn-rounded mb-4"><i class="fas fa-trash mr-2" style="color:white" role="button"></i> BORRAR
-                                        </button>
+    <div class="container-fluid mx-auto">
+        <div class="table-responsive text-nowrap btn-table">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <thead class="text-center">
+                        <tr height="65px" style="background-color:black; color:white">
+                            <th class="th-lg text-center">RAZON SOCIAL</th>
+                            <th class="th-lg text-center">CUIT</th>
+                            <th class="th-lg text-center">DOMICILIO</th>
+                            <th COLSPAN=2 class="text-center">ACCIONES DISPONIBLES</th>
+                        </tr>
+                    </thead>
 
-                                        <!-- <button class="btn btn-danger" type="submit" id="borrar">Borrar</button>-->
-                                    </form>
-                                    <!-- <form method="POST" action="">
-
-                                        <button class="btn btn-danger btn-rounded mb-4" type="submit" id="borrar">Borrar</button>
-                                    </form> -->
-                                </td class="text-center">
-                                <!--BOTON MODIFICAR NO FUNCIONA LA VISTA MODIFPRODUCTO, SI TOMA EL ID DEL PREODUCTO-------->
-                                <td>
-                                    <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_empresa/{{$emp->id}}" role="button"><i class="far fa-edit mr-2"></i>Modificar </a>
-
-                                    <!--   <form method="POST" action="">
-                                        <button class="btn btn-primary btn-rounded mb-4" type="submit" id="borrar">Modifica</button>
-                                    </form> -->
-                                </td>
-
-                                <!--<td>
-                                   - Button trigger modal 
-                                    <div class="text-center">
-                                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Ver/Imp.</a>
-                                    </div>
-                                </td>-->
-                            </tr>
-                            @endforeach
-
-                        </tbody>
-                        <!--Table body-->
-                    </table>
-
-                    <div class="modal fade" id="modalRegisterForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-
-
-                                <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Empresa @if(!empty($emp)){{$emp->id}} @endif</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body mx-3">
-                                    <div class="md-form mb-5">
-                                        <i class="fas fa-book prefix grey-text"></i>
-                                        <input type="text" id="orangeForm-name" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="orangeForm-name">Razon Social @if(!empty($emp)){{$emp->razon_social}} @endif</label>
-                                    </div>
-
-
-                                </div>
-                                <div class="modal-footer d-flex justify-content-center">
-                                    <button class="btn btn-deep-orange">Imprimir</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Table-->
-                </div>
-
-            </div>
+                <tbody>
+                    @foreach ($empresa as $emp)
+                    <tr>
+                        <td class="text-center"> {{$emp->razon_social}}</td>
+                        <td class="text-center"> {{$emp->cuit}}</td>
+                        <td class="text-center"> {{$emp->domicilio}}</td>
+                        <td class="text-center">
+                            <form method="POST" action="{{ url('/borrar_empresa/'.$emp->id) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <button type="submit" onclick="return confirm('¿Desea eliminar la empresa?')" id="borrar" class="btn btn-danger btn-rounded mb-4"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
+                            </form>
+                        </td class="text-center">
+                        <td>
+                            <a id="modificar" class="btn btn-primary btn-rounded mb-4" href="/modif_empresa/{{$emp->id}}" role="button"><i class="far fa-edit mr-2"></i>Modificar</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

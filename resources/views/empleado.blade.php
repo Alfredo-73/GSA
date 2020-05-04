@@ -59,7 +59,6 @@
     </style>
     <!--Table-->
 
-    <!-- <table class="table-bordered table-hover mx-auto">-->
     <div class="container-fluid">
         <div class="table-responsive-lg text-nowrap btn-table">
             <table class="table table-bordered table-hover">
