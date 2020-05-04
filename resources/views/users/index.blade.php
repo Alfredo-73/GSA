@@ -1,34 +1,33 @@
 @extends('layouts.app1')
 @section('content')
 
-<div class="row container-fluid col-10" id="contenido">
+<div class="row container-fluid col-10 mx-auto" id="contenido">
   <h1 class="mx-auto mt-5 mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">MANTENIMIENTO DE USUARIOS</h1>
-</div>
-<div class="pull-right col-lg-12 col-md-12 col-sm-12">
-  @can('user-create')
-  <a class="btn primary-color-dark mb-5 rounded" href="{{ route('users.create') }}" style="margin-left:65rem;color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO</a>
-  @endcan
-</div>
+
+  <div class="pull-right col-lg-12 col-md-12 col-sm-12">
+    @can('user-create')
+    <a class="btn primary-color-dark mb-5 rounded" href="{{ route('users.create') }}" style="margin-left:60%; color:white"><i class="fas fa-2x fa-user-plus mr-2" style="color:white"></i>NUEVO</a>
+    @endcan
+  </div>
 
 
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-  <p>{{ $message }}</p>
-</div>
-@endif
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success">
+    <p>{{ $message }}</p>
+  </div>
+  @endif
 
-<div class="container-fluid">
-  <div class="table table-lg">
-    <div class="table-wrapper">
-      <table class="table-bordered table-hover mx-auto">
+  <div class="container mx-auto">
+    <div class="table-responsive text-nowrap btn-table">
+      <table class="table table-bordered table-hover">
         <thead class="thead-dark">
           <thead class="text-center">
-            <tr height="60px" style="background-color:black; color:white">
-              <th style="font-size:15px">#</th>
-              <th style="font-size:15px">NOMBRE USUARIO</th>
-              <th style="font-size:15px">CORREO ELECTRONICO</th>
-              <th style="font-size:15px">ROL ASIGNADO</th>
-              <th style="font-size:15px" width="250px">ACCIONES</th>
+            <tr height="65px" style="background-color:black; color:white">
+              <th class="text-center">#</th>
+              <th class="text-center">NOMBRE USUARIO</th>
+              <th class="text-center">CORREO ELECTRONICO</th>
+              <th class="text-center">ROL ASIGNADO</th>
+              <th class="text-center" width="250px">ACCIONES</th>
             </tr>
             @foreach ($data as $key => $user)
             <tr>
@@ -44,7 +43,7 @@
               </td>
               <td>
                 <!--<a class="btn-sm btn-info" href="{{ route('users.show',$user->id) }}">VER</a>-->
-                 @can('user-edit')
+                @can('user-edit')
                 <button class="btn-sm btn-primary" onclick="location.href='{{ route('users.edit',$user->id) }}'">EDITAR</button>
                 @endcan
                 @can('user-delete')
@@ -59,8 +58,10 @@
         </thead>
       </table>
     </div>
+  </div>
+</div>
 
-    {!! $data->render() !!}
+{!! $data->render() !!}
 
 
-    @endsection
+@endsection

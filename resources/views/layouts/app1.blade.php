@@ -77,7 +77,7 @@
         }
 
         #sidebar .list-group .list-group-item[aria-expanded="true"]::after {
-            content:'';
+            content: '';
             font-family: FontAwesome;
             display: inline;
             text-align: right;
@@ -175,19 +175,19 @@
     <div class="sidebar">
         <div class="container-fluid">
             <div class="row d-flex d-sm-block flex-nowrap wrapper">
-                <div class="col-sm-2 float-left col-1 pl-0 collapse width show" id="sidebar">
+                <div class="col-md-2 float-left col-1 pl-0 collapse width show" id="sidebar">
                     <div class="list-group border-0 text-center text-md-left">
 
-                        <div class="inicio">
+                        <div class="inicio mt-3">
                             <span>&nbsp;</span>
                             <span class="px-4 grey-text" style="font-size:12px"><b>Versión:1.0</span></b>
                             <span>&nbsp;</span>
                             <a href="/../home" class="ml-4 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
                             <span>&nbsp;</span>
                         </div>
-                        <span>&nbsp;</span>
-                        <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="usuario px-5 text-uppercase">{{ Auth::user()->name }}</span>&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapse" id="menu1" data-parent="#sidebar">
+                        <span>&nbsp;</span>>
+                        <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="usuario px-5 text-uppercase">{{ Auth::user()->name }}</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a></a>
+                        <div class="collapse mb-1" id="menu1" data-parent="#sidebar">
                             @role('Administrador')
                             <a class="list-group-item" data-parent="#menu1" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
                             <a class="list-group-item" data-parent="#menu1" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
@@ -195,11 +195,7 @@
                             @endrole
                         </div>
 
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL DE FACTURACION</span></a>
+                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
@@ -215,7 +211,7 @@
 
                         <span>&nbsp;</span>
 
-                        <a href="#menu3" class="list-group-item d-inline-block collapsed" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">ADMINISTRACION DE TABLAS</span>&nbsp;&nbsp;&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
+                        <a href="#menu3" class="list-group-item d-inline-block collapsed mt-3" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">ADMINISTRACION DE TABLAS</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapse" id="menu3" data-parent="#sidebar">
                             <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3"><i class="fas fa-industry"></i>ABM Empresas</a>
                             <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3"><i class="far fa-handshake"></i>ABM Clientes</a>
@@ -225,25 +221,14 @@
 
                         <span>&nbsp;</span>
 
-                        <!--<a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-calendar"></i> <span class="d-none d-md-inline">Buscar por fecha</span></a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-envelope"></i> <span class="d-none d-md-inline">Correo</span></a>
-                    <a href="#" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-print"></i> <span class="d-none d-md-inline">Imprimir</span></a>-->
-
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-
-                        <a class="list-group-item d-inline-block collapsed" data-parent="#sidebar" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="list-group-item d-inline-block collapsed mt-3" data-parent="#sidebar" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();" style="color:red">
-                            <i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline"><strong>{{ __('CERRAR SESION') }}</span></strong>
+                            <i class="fas fa-sign-out-alt"></i><span class="px-5 d-none d-md-inline mt-5"><strong>{{ __('CERRAR SESION') }}</span></strong>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
 
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
                     </div>
                 </div>
             </div>
