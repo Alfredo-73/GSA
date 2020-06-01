@@ -194,28 +194,28 @@
                             @endrole
                         </div>
 
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline">CONTROL DE FACTURACION</span></a>
+                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline">PARTE DIARIO DE COSECHA</span></a>
+                        <a href="/../cosecha" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-lemon"></i> <span class="d-none d-md-inline" style="font-size:80%">PARTE DIARIO DE COSECHA</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline">LISTADO DE EMPLEADOS</span></a>
+                        <a href="/../empleado" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-users"></i> <span class="d-none d-md-inline" style="font-size:80%">LISTADO DE EMPLEADOS</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline">DETALLE DE SANCIONES</span></a>
+                        <a href="/../sancion" class="list-group-item d-inline-block collapsed" data-parent="#sidebar"><i class="fa fa-gavel"></i> <span class="d-none d-md-inline" style="font-size:80%">DETALLE DE SANCIONES</span></a>
 
                         <span>&nbsp;</span>
 
-                        <a href="#menu3" class="list-group-item d-inline-block collapsed mt-3" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline">ADMINISTRACION DE TABLAS</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
+                        <a href="#menu3" class="list-group-item d-inline-block collapsed mt-3" data-toggle="collapse" aria-expanded="false"><i class="fa fa-table"></i> <span class="d-none d-md-inline" style="font-size:80%">ADMINISTRACION DE TABLAS</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapse" id="menu3" data-parent="#sidebar">
-                            <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3"><i class="fas fa-industry"></i>ABM Empresas</a>
-                            <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3"><i class="far fa-handshake"></i>ABM Clientes</a>
-                            <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3"><i class="fas fa-user-friends"></i>ABM Capataces</a>
-                            <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3"><i class="far fa-calendar-alt"></i>ABM Quincenas</a>
+                            <a href="/../abm_empresa" class="list-group-item" data-parent="#menu3" style="font-size:75%"><i class="fas fa-industry"></i>ABM Empresas</a>
+                            <a href="/../abm_cliente" class="list-group-item" data-parent="#menu3" style="font-size:75%"><i class="far fa-handshake"></i>ABM Clientes</a>
+                            <a href="/../abm_capataz" class="list-group-item" data-parent="#menu3" style="font-size:75%"><i class="fas fa-user-friends"></i>ABM Capataces</a>
+                            <a href="/../abm_quincena" class="list-group-item" data-parent="#menu3" style="font-size:75%"><i class="far fa-calendar-alt"></i>ABM Quincenas</a>
                         </div>
 
                         <span>&nbsp;</span>
