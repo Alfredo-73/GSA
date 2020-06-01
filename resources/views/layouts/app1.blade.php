@@ -242,7 +242,7 @@
 
 
         <div class="row">
-            <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>
+            <a class="navbar-brand" href="/../home"><img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px" title="Ir a Inicio"></img></a>            
         </div>
 
     </div>
@@ -252,35 +252,35 @@
     </main>
 
     <!-- jQuery -->
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
-    <!-- Your custom scripts (optional) -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
+            <!-- Bootstrap tooltips -->
+            <script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
+            <!-- Bootstrap core JavaScript -->
+            <script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
+            <!-- MDB core JavaScript -->
+            <script type="text/javascript" src="{{ asset('js/mdb.min.js')}}"></script>
+            <!-- Your custom scripts (optional) -->
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script>
-        function mostrar() {
-            document.getElementById("sidebar").style.width = "300px";
-            document.getElementById("contenido").style.marginLeft = "0px";
-            document.getElementById("abrir").style.display = "none";
-            document.getElementById("cerrar").style.display = "inline";
-        }
+            <script>
+                function mostrar() {
+                    document.getElementById("sidebar").style.width = "300px";
+                    document.getElementById("contenido").style.marginLeft = "0px";
+                    document.getElementById("abrir").style.display = "none";
+                    document.getElementById("cerrar").style.display = "inline";
+                }
 
-        function ocultar() {
-            document.getElementById("sidebar").style.width = "0px";
-            document.getElementById("contenido").style.marginLeft = "150px";
-            document.getElementById("abrir").style.display = "inline";
-            document.getElementById("cerrar").style.display = "none";
-            document.getElementById("customSwitch1").style.display = "checked";
-        }
+                function ocultar() {
+                    document.getElementById("sidebar").style.width = "0px";
+                    document.getElementById("contenido").style.marginLeft = "150px";
+                    document.getElementById("abrir").style.display = "inline";
+                    document.getElementById("cerrar").style.display = "none";
+                    document.getElementById("customSwitch1").style.display = "checked";
+                }
 
-        document.cookie = 'same-site-cookie=foo; SameSite=Lax';
-        document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
-    </script>
+                document.cookie = 'same-site-cookie=foo; SameSite=Lax';
+                document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+            </script>
 </body>
 
 </html>

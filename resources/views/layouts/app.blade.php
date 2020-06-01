@@ -19,9 +19,10 @@
 
 <body>
     <div class="container-fluid">
-                <div class="container-fluid">
-                        <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px"></img>
-                </div>         
+        <div class="container-fluid">
+            <img src="{{ asset('img/gsagricolas.jpg')}}" alt="" style="width: 150px"></img>
+            <!-- <img src="{{ asset('img/logotipo-y-logo.jpg')}}" alt="" style="width: 120px"></img>-->
+        </div>
     </div>
     <main class="col-lg-12">
         @yield('content')
