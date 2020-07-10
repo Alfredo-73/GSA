@@ -12,3 +12,12 @@ npm-debug.log
 yarn-error.log
 config/app.php
 config/database.php
+.DS_Store
+APPGSA.zip
+.DS_Store
+public/PUBLIC.zip
+public/.DS_Store
+.DS_Store
+GSA.code-workspace
+.DS_Store
+public/.DS_Store

@@ -8,7 +8,7 @@ function borrar(borrar) {
         })
         .then((willDelete) => {
             if (willDelete) {
-                var route = "borrar_control/" + borrar.value + "";
+                var route = "borrar_cosecha/" + borrar.value + "";
                 $.ajax({
                     url: route,
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
@@ -21,7 +21,7 @@ function borrar(borrar) {
                             "success"
                         ).then(okay => {
                             if (okay) {
-                                window.location.href = "/control_quincenal";
+                                window.location.href = "/cosecha";
                             }
                         })
                     },

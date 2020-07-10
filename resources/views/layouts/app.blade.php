@@ -15,6 +15,7 @@
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
 </head>
 
 <body>

@@ -246,14 +246,18 @@ class EmpleadoController extends Controller
         $vac = compact('empleado', 'empresas', 'capataz', 'sanciones');
 
         return view('modif_empleado', $vac);
+
+        dd($empleado);
+        
     }
+    
     public function update(Request $req, $id)
     {
         //dd($req);
         $empleado = Empleado::Find($id);
         $reglas = [
             // 'id_cliente' => 'numeric|max:10',
-            'legajo' => 'numeric|max:9999999999|unique:empleado',
+            'legajo' => 'numeric|max:9999999999|:empleados',
             'nombre' => 'string|min:0|max:100',
             'apellido' => 'string|min:0|max:100',
             'dni' => 'numeric|max:999999999',
@@ -293,7 +297,7 @@ class EmpleadoController extends Controller
         $empleado->avatar = 'avatar.jpg';
 
 
-        $empleado->observaciones = $req['observacion'];
+        $empleado->observacion = $req['observacion'];
         //grabar
 
         $empleado->save();
