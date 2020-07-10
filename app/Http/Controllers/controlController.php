@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
-use App\quincena;
+use App\Quincena;
 use App\Cliente;
 use PDF;
 use Laracasts\Flash\Flash;
@@ -77,7 +77,7 @@ class controlController extends Controller
         $controles = Control::where('id_cliente', 'like', "%$name_cliente%")
             ->paginate(5);
         $clientes = Cliente::all();
-        $quincenas = Quincena::all();
+        $quincenas = quincena::all();
 
         return view('control_quincenal', compact('clientes', 'controles', 'quincenas'));
     }
@@ -359,16 +359,17 @@ class controlController extends Controller
 
     public function borrar(Request $form)
     //public function borrar($id)
-    {
-        $id = $form['id'];
+     {
+    $id = $form['id'];
 
-        $control = Control::find($id);
-        $control->delete();
+    $cosecha = Control::find($id);
+    $cosecha->delete();
+    //Flash::success('Se ha borrado la cosecha de ' . $cosecha->fecha . ' de forma exitosa !');
 
-        Flash::error('Se ha dado de baja el control de liquidacion de forma exitosa !');
-
-        return redirect('/control_quincenal');
-    }
+    //return redirect('/cosecha')->with('success', 'User deleted successfully');    
+    //return view('/cosecha');
+    return response()->json(["mensaje" => "borrado"]);
+}
 
     //pdf
     public function index()

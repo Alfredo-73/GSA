@@ -1,14 +1,18 @@
 @extends('layouts.app1')
+@section('scripts')
 
+@endsection
 @section('content')
 <script src="../js/validacion_nuevo_control.js"></script>
 
-<div class="row container-fluid col-8 mt-1" id="contenido">
+
+<div class="row container-fluid col-10 mt-1" id="contenido">
     <div class="col-6 mx-auto mt-0">
         <div class="card">
             <div class="card-header text-white text-center text-truncate" style="background-color:darkblue; font-size:1.5rem">NUEVO CONTROL DE FACTURACION Y PAGO</div>
 
             <form method="POST" action="{{ url('/nuevo_control') }}" onsubmit="return validar_control(this)" name="formulario" id="formulario">
+
                 @csrf
 
 
@@ -16,7 +20,7 @@
                     <div class="col-8 col-md-6 mt-2 mb-2">
                         <!--<label for="quincena_id" class="col-form-label text-md-right">QUINCENA</label>-->
                         <label class="input-group-text justify-content-center" for="gender3">QUINCENA</label>
-                        <select class="custom-select" id="quincena_id" name="quincena_id">
+                        <select class="custom-select" id="id_quincena" name="quincena_id">
                             <option selected>Elegir Quincena</option>
                             @foreach($quincenas as $quincena)
                             <option value="{{$quincena->id}}">{{$quincena->nombre}}</option>
@@ -168,7 +172,7 @@
                 </div>-->
 
                 <div class="row justify-content-center mt-3">
-                    <div class="form-group col-md-6 col-form-label text-center">
+                    <div class="form-group col-md-10 col-form-label text-center">
                         <button type="submit" class="btn btn-success">GRABAR</button>
                         <a class="btn btn-primary" href="{{ ('control_quincenal') }}"> Regresar</a>
                     </div>

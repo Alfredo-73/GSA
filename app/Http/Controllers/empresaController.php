@@ -75,8 +75,8 @@ class empresaController extends Controller
     public function update(Request $req, $id)
     {
         $emp = Empresa::Find($id);
-        $reglas=['razon_social' => 'string|min:0|max:255|unique:razon_social',
-            'cuit' => 'numeric|min:0|max:11|unique:razon_social',
+        $reglas=['razon_social' => 'string|min:0|max:255|:razon_social',
+            'cuit' => 'integer',
             'domicilio' => 'string|min:0|max:255|',
         ];
         $mensajes = [

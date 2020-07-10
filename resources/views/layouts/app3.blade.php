@@ -15,159 +15,11 @@
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
+    <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
+    <!--css de barra lateral para inicio solamente en app3.blade.php-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        #nombre::placeholder {
-            color: white;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        #apellido::placeholder {
-            color: white;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        #sidebar {
-            overflow: hidden;
-            z-index: 3;
-        }
-
-        #sidebar .list-group {
-            min-width: 400px;
-            background-color: #333;
-            min-height: 105vh;
-            /*doy altura al menu lateral*/
-        }
-
-        #sidebar i {
-            margin-right: 6px;
-        }
-
-        #sidebar .list-group-item {
-            border-radius: 0;
-            background-color: #333;
-            color: #ccc;
-            border-left: 0;
-            border-right: 0;
-            border-color: #2c2c2c;
-            white-space: nowrap;
-        }
-
-        /* highlight active menu */
-        #sidebar .list-group-item:not(.collapsed) {
-            background-color: #222;
-        }
-
-        /* closed state */
-        #sidebar .list-group .list-group-item[aria-expanded=""]::after {
-            content: "";
-            font-family: FontAwesome;
-            display: inline;
-            text-align: right;
-            padding-left: 5px;
-        }
-
-        /* open state */
-        #sidebar .list-group .list-group-item[aria-expanded=""] {
-            background-color: #222;
-        }
-
-        #sidebar .list-group .list-group-item[aria-expanded=""]::after {
-            content: "";
-            font-family: FontAwesome;
-            display: inline;
-            text-align: right;
-            padding-left: 5px;
-        }
-
-        /* level 1*/
-        #sidebar .list-group .collapse .list-group-item,
-        #sidebar .list-group .collapsing .list-group-item {
-            padding-left: 20px;
-        }
-
-        /* level 2*/
-        #sidebar .list-group .collapse>.collapse .list-group-item,
-        #sidebar .list-group .collapse>.collapsing .list-group-item {
-            padding-left: 30px;
-        }
-
-        /* level 3*/
-        #sidebar .list-group .collapse>.collapse>.collapse .list-group-item {
-            padding-left: 40px;
-        }
-
-        @media (max-width:768px) {
-            #sidebar {
-                /*min-width: 35px;
-                max-width: 40px;*/
-                overflow-y: auto;
-                overflow-x: visible;
-                transition: all 0.25s ease;
-                transform: translateX(-45px);
-                position: fixed;
-            }
-
-            #sidebar.show {
-                transform: translateX(0);
-            }
-
-            #sidebar::-webkit-scrollbar {
-                width: 0px;
-            }
-
-            #sidebar,
-            #sidebar .list-group {
-                min-width: 1px;
-                overflow: visible;
-            }
-
-            /* overlay sub levels on small screens */
-            #sidebar .list-group .collapse.show,
-            #sidebar .list-group .collapsing {
-                position: relative;
-                z-index: 1;
-                width: 195px;
-                top: 0;
-            }
-
-            #sidebar .list-group>.list-group-item {
-                text-align: center;
-                padding: .75rem .5rem;
-            }
-
-            /* hide caret icons of top level when collapsed */
-            #sidebar .list-group>.list-group-item[aria-expanded="true"]::after,
-            #sidebar .list-group>.list-group-item[aria-expanded="false"]::after {
-                display: none;
-            }
-        }
-
-        .collapse.show {
-            visibility: visible;
-        }
-
-        .collapsing {
-            visibility: visible;
-            height: 0;
-            -webkit-transition-property: height, visibility;
-            transition-property: height, visibility;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-        }
-
-        .collapsing.width {
-            -webkit-transition-property: width, visibility;
-            transition-property: width, visibility;
-            width: 0;
-            height: 100%;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-        }
-    </style>
 </head>
 
 <body>
@@ -234,6 +86,87 @@
 
         </div>
     </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark success-color barra">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="/../home"><strog>GSA</strog></a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/../home">Inicio
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/../control_quincenal">Facturacion</a>
+                </li>
+                <li class="nav-item text-truncate">
+                    <a class="nav-link" href="/../cosecha">Parte Diario</a>
+                </li>
+
+                <!-- Dropdown Empleados-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empleados</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/../empleado">Listado de Empleados</a>
+                        <a class="dropdown-item" href="/../sancion">Sanciones</a>
+                    </div>
+                </li>
+
+                <!-- Dropdown Tablas-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tablas</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/../abm_empresa"><i class="fas fa-industry"></i>ABM Empresas</a>
+                        <a class="dropdown-item" href="/../abm_cliente"><i class="far fa-handshake"></i>ABM Clientes</a>
+                        <a class="dropdown-item" href="/../abm_capataz"><i class="fas fa-user-friends"></i>ABM Capataces</a>
+                        <a class="dropdown-item" href="/../abm_quincena"><i class="far fa-calendar-alt"></i>ABM Quincenas</a>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mx-auto">
+                <div>
+                    <li class="nav-item dropdown ml-5">
+                        <a href="#menu2" class="nav-link dropdown-toggle" data-toggle="collapse" aria-expanded="false"><span class="">{{ Auth::user()->name }}</span></a>
+                        <div class="dropdown-menu dropdown-primary" id="menu2" aria-labelledby="navbarDropdownMenuLink">
+                            @role('Administrador')
+                            <a class="dropdown-item" data-parent="#menu2" href="{{ route('users.index') }}"><i class="nav-icon fa fa-user" style="color:ligth-gray"></i>ABM Usuarios</a>
+                            <a class="dropdown-item" data-parent="#menu2" href="{{ route('permisos.index') }}"><i class="nav-icon fa fa-key" style="color:ligth-gray"></i><span>ABM Permisos</span></a>
+                            <a class="dropdown-item" data-parent="#menu2" href="{{ route('roles.index') }}"><i class="nav-icon fa fa-users" style="color:ligth-gray"></i><span>ABM Roles</span></a>
+                            @endrole
+                            <a class="dropdown-item" data-parent="menu2" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();" style="color:red">
+                                <i class="fas fa-sign-out-alt"></i><span class="d-none d-sm-inline"><strong>{{ __('CERRAR SESION') }}</span></strong>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                        </div>
+                    </li>
+                </div>
+            </ul>
+
+            <!-- Links -->
+
+            <!-- <form class="form-inline">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+        </form>
+    </div>-->
+            <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
 
     <main class="py-1">
         @yield('content')

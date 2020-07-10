@@ -73,15 +73,14 @@
                                 <form method="POST" action="{{url('/borrar_sancion/'.$sancion->id) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
-                                    <a type="submit" onclick="return confirm('¿Desea eliminar el parte de sancion?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
-                                    </a>
+                                    <button type="submit" onclick="return confirm('¿Desea eliminar el parte de sancion?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR</button>
                                 </form>
                             </td>
                             <td>
                                 <form method="PUT" action="/modal_sancion/{{$sancion->id}}">
                                     @csrf
                                     {{method_field('PUT')}}
-                                    <a type="button" class="btn blue-gradient btn-sm" href="/modal_sancion/{{ $sancion->id }}" data-toggle="modal" data-target="#modal_sancion{{ $sancion->id }}" form method="POST" action="/modalsancion/{{$sancion->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                    <button type="button" class="btn blue-gradient btn-sm" href="/modal_sancion/{{ $sancion->id }}" data-toggle="modal" data-target="#modal_sancion{{ $sancion->id }}" form method="POST" action="/modalsancion/{{$sancion->id}}" role="button"><i class="fas fa-eye mr-1" style="color:white"></i>VER</button>
                                     @csrf
                                     {{method_field('PUT')}}
                                     @include('modal_sancion')

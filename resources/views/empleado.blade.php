@@ -109,8 +109,8 @@
                                 {{ method_field('DELETE') }}
                                 <!--<a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" class="btn peach-gradient btn-sm"><i class="fas fa-trash mr-2" style="color:white" role="button"></i>BORRAR
                                     </a>-->
-                                <a type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate" style="color:white"><i class="fas fa-trash mr-0" style="color:white"></i> BORRAR</a>
-
+                                <button type="submit" onclick="return confirm('¿Desea eliminar el parte de empleado?')" id="borrar" title="Borrar Registro" class="btn peach-gradient mb-1 btn-sm m-0 text-center text-truncate" style="color:white"><i class="fas fa-trash mr-0" style="color:white"></i> BORRAR</button>
+                               
                             </form>
                         </td>
                         @endcan
@@ -118,7 +118,7 @@
                             <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
                                 @csrf
                                 {{method_field('PUT')}}
-                                <a type="button" class="btn blue-gradient btn-sm m-0" href="/modal_empleado/{{ $empleado->id }}" data-toggle="modal" data-target="#modal_empleado{{ $empleado->id }}" form method="POST" action="/modalempleado/{{$empleado->id}}" role="button" style="color:white"><i class="fas fa-eye mr-1" style="color:white"></i>VER</a>
+                                <button type="button" class="btn blue-gradient btn-sm m-0" href="/modal_empleado/{{ $empleado->id }}" data-toggle="modal" data-target="#modal_empleado{{ $empleado->id }}" form method="POST" action="/modalempleado/{{$empleado->id}}" role="button" style="color:white"><i class="fas fa-eye mr-1" style="color:white"></i>VER</button>
                                 @csrf
                                 {{method_field('PUT')}}
                                 @include('modal_empleado')

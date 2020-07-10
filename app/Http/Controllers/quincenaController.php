@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\quincena;
+use App\Quincena;
 use App\Control;
 use Laracasts\Flash\Flash;
  
@@ -23,7 +23,7 @@ class quincenaController extends Controller
   
     public function agregar(Request $req){
        
-        $quincenas = quincena::all();
+        $quincenas = Quincena::all();
 
         
         $vac = compact( 'quincenas');
@@ -32,7 +32,7 @@ class quincenaController extends Controller
    }
    public function agregar_vs(Request $req){
        
-        $quincenas = quincena::all();
+        $quincenas = Quincena::all();
 
         
         $vac = compact( 'quincenas');
@@ -132,7 +132,7 @@ class quincenaController extends Controller
 
         $quincena = Quincena::Find($id);
         $reglas = [
-            'nombre' => 'string|min:0|max:255|unique:quincena',
+            'nombre' => 'string|min:0|max:255|unique:quincenas',
            
             
         ];
