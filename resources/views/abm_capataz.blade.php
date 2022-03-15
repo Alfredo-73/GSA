@@ -4,6 +4,7 @@
 <div class="row container-fluid col-6 mx-auto" id="contenido">
 
     <div class="container-fluid mx-auto text-center">
+        @include('flash::message')
         <h1 class="mx-auto mb-5 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE CAPATACES</h1>
         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_capataz') }}" role="button" style="margin-left:50%; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVA</a>
     </div>

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Control;
+use App\Factura;
 use App\Quincena;
 use App\Cliente;
+use App\Empresa;
 use PDF;
 use Laracasts\Flash\Flash;
 use DB;
@@ -101,7 +103,7 @@ class controlController extends Controller
             $varcliente = $cliente;
             $varquincena = $quincena;
             //dd($varcliente);
-            $controles = Control::orderBy('quincena_id', 'asc')
+            $controles = Control::orderBy('fecha','desc')->orderby('id_cliente','desc')->orderby('quincena_id','desc')//ordeno por fecha la vista de la tabla control
                     ->cliente($cliente)
                     ->quincena($quincena)
                     ->paginate(10);
@@ -124,7 +126,7 @@ class controlController extends Controller
                
                 //dd($cliente);
                 //dd($quincena);
-                $controles = Control::orderBy('quincena_id', 'asc')
+                $controles = Control::orderBy('fecha', 'desc')
             ->cliente($varcliente)
             ->quincena($varquincena)
             ->paginate();
@@ -196,7 +198,7 @@ class controlController extends Controller
     }*/
     public function control(Request $req)
     {
-        $controles = Control::all()->sortBy('quincena');
+        $controles = Control::all();
         
 
         // dd($productos);
@@ -208,28 +210,38 @@ class controlController extends Controller
         $controles = Control::all();
         $clientes = Cliente::all();
         $quincenas = Quincena::all();
+        $empresas = Empresa::all();
+        $facturas = Factura::all();
 
         
-        $vac = compact('controles', 'clientes', 'quincenas');
+        $vac = compact('controles', 'clientes', 'quincenas','empresas','facturas');
         
-       return view('nuevo_control', $vac);
+       return view('nuevo_control_factura', $vac);
    }
+
+    
 
     public function agregar_control(Request $req)
     {
- 
-        $reglas = [
+        
+        /*$reglas = [
             'quincena_id' => 'required',
             'id_cliente' => 'required',
             'num_factura' => 'numeric|min:000000000|max:99999999999',
             'importe' => 'numeric|min:0000000000.00|max:9999999999.99',
-            'retencion' => 'numeric|min:0000000|max:9999999999',
-            'monto_cobrado' => 'numeric|min:0000000|max:9999999999',
-            'gasto_bancario' => 'numeric|min:0000000|max:9999999999',
-            'pago_personal' => 'numeric|min:0000000|max:9999999999',
-            'pago_transporte' => 'numeric|min:0000000|max:9999999999',
-            'toneladas' => 'numeric|min:0000000|max:9999999999',
-            
+            //'retencion' => 'numeric|min:0000000|max:9999999999.99',
+            'monto_cobrado' => 'numeric|min:0000000|max:9999999999.99',
+            'gasto_bancario' => 'numeric|min:0000000|max:9999999999.99',
+            'pago_personal' => 'numeric|min:0000000|max:9999999999.99',
+            'pago_transporte' => 'numeric|min:0000000|max:9999999999.99',
+            'toneladas' => 'numeric|min:0000000|max:9999999999.99',
+            'fecha' => 'date',
+            'nueve_treintayuno' => 'numeric|min:0000000|max:9999999999.99',
+            'bines' => 'numeric|min:0000000|max:9999999999.99',
+            'promedio' => 'numeric|min:0000000|max:9999999999.99',
+            'diferencia' => 'numeric|min:0000000|max:9999999999.99',
+            'importe_a_pagar'=> 'numeric|min:0000000|max:9999999999.99',
+                  
         ];
         $mensajes = [
             'string' => 'El campo :attribute debe ser un texto',
@@ -242,32 +254,163 @@ class controlController extends Controller
             'unique' => 'El campo :attribute se encuentra repetido'
         ];
 
-        $this->validate($req, $reglas, $mensajes);
+        $this->validate($req, $reglas, $mensajes);*/
 
-        $control_nuevo = new Control();
-        
-        $control_nuevo->quincena_id = $req['quincena_id'];
-      //  $control_nuevo->nombre_quincena = $req['quincena_id'];
-        $control_nuevo->id_cliente = $req['id_cliente'];
-        $control_nuevo->num_factura = $req['num_factura'];
-        $control_nuevo->importe = $req['importe'];
-        $control_nuevo->retencion = $req['retencion'];
-        $control_nuevo->monto_cobrado = $req['monto_cobrado'];
-        $control_nuevo->gasto_bancario = $req['gasto_bancario'];
-        $control_nuevo->libre_dispon = $req['importe']-($req['retencion']+ $req['gasto_bancario']);
-        $control_nuevo->pago_personal = $req['pago_personal'];
-        $control_nuevo->pago_transporte = $req['pago_transporte'];
-        $control_nuevo->toneladas = $req['toneladas'];
-        $control_nuevo->observacion = $req['observacion'];
+
+        //$collection = collect($req);
+        //$plucked = $collection->pluck('id_cliente');
+        //var_export($req->all());
+        //$plucked->all();
+        //dd($req['fecha'],$req['id_cliente'],$req['id_empresa'],$req['promedio'],$collection);
+        //$keys = $collection->keys();
+
+        //dd($collection);
+        //------------------------------------------------------------------------------------------------
+
+        /*$array = $collection->map(function ($item, $key) {
+            return $item;
+        });
+
+        $array->all();*/
+
+        //$factura = ($req);
+
+        /*for ($i = 0; $i < count($productos); $i++) {*/
+
+        /* foreach ($factura as $control_nuevo) {
+            
+
+                $control_nuevo = new Control();
+                //$factura_nuevo = new Factura();
+                dd($factura);*/
+
+                $control_nuevo = new Control();
+
+                $control_nuevo->quincena_id = $req['quincena_id'];
+                // $control_nuevo->nombre_quincena = $req['quincena_id'];
+                $control_nuevo->id_cliente = $req['id_cliente'];
+                $control_nuevo->id_empresa = $req['id_empresa'];
+                $control_nuevo->num_factura = $req['num_factura'];
+                $control_nuevo->importe = $req['importe'];
+                //$control_nuevo->retencion = $req['retencion'];
+                $control_nuevo->monto_cobrado = $req['monto_cobrado'];
+                //$control_nuevo->gasto_bancario = $req['gasto_bancario'];
+                //$control_nuevo->libre_dispon = $req['importe']-($req['retencion']+ $req['gasto_bancario']);
+                $control_nuevo->pago_personal = $req['pago_personal'];
+                //$control_nuevo->pago_transporte = $req['pago_transporte'];
+                //$control_nuevo->toneladas = $req['toneladas'];
+                $control_nuevo->observaciones = $req['observaciones'];
+                $control_nuevo->fecha = $req['fecha'];
+                $control_nuevo->nueve_treintayuno = $req['nueve_treintayuno'];
+                //$control_nuevo->bines = $req['bines'];
+                //$control_nuevo->promedio = $req['promedio'];
+                //$control_nuevo->diferencia = $req['diferencia'];
+                $control_nuevo->importe_a_pagar = $req['importe_a_pagar'];
+                $control_nuevo->cantidad_cosecheros = $req['cantidad_cosecheros'];
+                $control_nuevo->cantidad_jornales = $req['cantidad_jornales'];
+                $control_nuevo->importe_jornales = $req['importe_jornales'];
+                $control_nuevo->cantidad_capataces = $req['cantidad_capataces'];
+                $control_nuevo->importe_capataces = $req['importe_capataces'];
+                $control_nuevo->cantidad_colectivos = $req['cantidad_colectivos'];
+                $control_nuevo->importe_colectivos = $req['importe_colectivos'];
+                $control_nuevo->cantidad_maletas = $req['cantidad_maletas'];
+                $control_nuevo->cantidad_bines = $req['cantidad_bines'];
+                $control_nuevo->cantidad_horas = $req['cantidad_horas'];
+                $control_nuevo->promedio = $req['promedio'];
+        //print_r($control_nuevo);
+        dd($req->all());
+
+                //$id_cliente = $req->input('id_cliente');
+                //$id_empresa = $req->input('id_empresa');
+                //$promedio = $req->input('promedio');
+
+                //$data = array($control_nuevo);
+                //dd($control_nuevo);
+                //$data = array($req['id_cliente'],$req['id_empresa'],$req['promedio']);
+                /*$data = array("id_cliente"=>$id_cliente,
+                              "id_empresa"=>$id_empresa,
+                              "promedio"=>$promedio*/
+            
+                //dd($data);
+                /*$datos_a_insertar = array();
+                foreach($control_nuevo as $key => $valor){
+                    
+                    $datos_a_insertar[$key]['id_cliente'] = $control_nuevo->id_cliente;
+                    $datos_a_insertar[$key]['id_empresa'] = $control_nuevo->id_empresa;
+                    $datos_a_insertar[$key]['promedio'] = $control_nuevo->promedio;
+                }
+        print_r($datos_a_insertar);
+                dd($datos_a_insertar);
+                //Control::insert($datos_a_insertar);
+                //dd($datos_a_insertar);
+                print_r('============================================================================================================================ ');
+                print_r($datos_a_insertar);
+                dd($datos_a_insertar);
+
+                //DB::table('controles')->insert($datos_a_insertar);
+                //$client = DB::table('controles')->select('*')->where('id',$datos_a_insertar)->first();
+                //dd($datos_a_insertar);*/
+
+                 /*Control::create($req->all());
+        return 'ok';*/
+
+
+        /*foreach ($control_nuevo['promedio'] as $clave => $valor) {
+            echo '<p>', htmlspecialchars('promedio ' .$clave . ' = ' . $valor), '</p>', PHP_EOL;
+        };
+
+        foreach ($control_nuevo['id_empresa'] as $clave => $valor) {
+            //echo '<p>', htmlspecialchars('Empresa ' . $clave . ' = ' . $valor), '</p>', PHP_EOL;
+            $control_nuevo['id_empresa']->save($valor);
+        };*/
+
+        //$factura_nuevo->quincena_controles = $req['controles_id'];
+        //$factura_nuevo->quincena_controles = $req['quincena_id'];
         //grabar
 
         //dd($control_nuevo);
-        $control_nuevo->save();
+        
+        /*------------------------------------------------------------*/
+        //$control_array = array($req['id_cliente'], $req['id_empresa'] );
+        //dd($control_array);
+
+        //dd($control_nuevo);
+        //$control_nuevo->toJson();
+
+        /*------------------------------------------------------------*/
+        
+        //$control=json_encode($control_nuevo);
+        //dd($control);
+        //$controles = json_decode($control);
+        //$nuevocontrol = json_decode($control);
+        //dd($control);
+        
+        /*for($i=0;$i<count($control);$i++){
+                $control= new Control();
+                $control->id_cliente=$control[$i]->id_cliente;
+            }
+        dd($control);*/
+
+        /*------------------------------------------------------------*/
+           /* $controles_nuevo = collect([
+                ['id_cliente'], ['id_empresa']
+            ]);
+        $keyed = $controles_nuevo->mapWithKeys(function ($item){
+                return[$item['id_cliente']=>$item['id_empresa']];
+        });
+
+        $keyed->all();*/
+
+
+        //return $control_nuevo->toJson(JSON_PRETTY_PRINT);
+                //$control_nuevo->save();
+                //$factura_nuevo->save();
 
         Flash::success('Se ha dado de alta el control quincenal de forma exitosa !');
 
 
         return redirect('control_quincenal');
+            
     }
 
     public function edit($id)
@@ -374,7 +517,7 @@ class controlController extends Controller
     //pdf
     public function index()
     {
-        $controles = Control::all();
+        $controles = Control::all()->orderby('fecha','desc');
 
         return view('list', compact('controles'));
     }

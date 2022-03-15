@@ -7,7 +7,7 @@
 
 
 <div class="row container-fluid col-10 mt-1" id="contenido">
-    <div class="col-6 mx-auto mt-0">
+    <div class="col-8 mx-auto mt-0">
         <div class="card">
             <div class="card-header text-white text-center text-truncate" style="background-color:darkblue; font-size:1.5rem">NUEVO CONTROL DE FACTURACION Y PAGO</div>
 
@@ -17,7 +17,13 @@
 
 
                 <div class="row mx-auto" style="width: 85%;">
-                    <div class="col-8 col-md-6 mt-2 mb-2">
+
+                    <div class="col-4 col-md-4 mt-2 mb-2">
+                        <label class="input-group-text justify-content-center" for="gender3">FECHA</label>
+                        <input id="fecha" type="date" name="fecha" value="{{ old('fecha') }}" aria-label=" name" class="form-control" placeholder="dd/mm/aaaa">
+                    </div>
+
+                    <div class="col-4 col-md-4 mt-2 mb-2">
                         <!--<label for="quincena_id" class="col-form-label text-md-right">QUINCENA</label>-->
                         <label class="input-group-text justify-content-center" for="gender3">QUINCENA</label>
                         <select class="custom-select" id="id_quincena" name="quincena_id">
@@ -28,7 +34,7 @@
                         </select>
                     </div>
 
-                    <div class="col-8 col-md-6 mt-2">
+                    <div class="col-4 col-md-4 mt-2">
                         <!--<label for="quincena_id" class="col-form-label text-md-right">QUINCENA</label>-->
                         <label for="id_cliente" class="input-group-text justify-content-center" for="gender3">CLIENTE</label>
                         <select class="custom-select" id="id_cliente" name="id_cliente">
@@ -46,7 +52,7 @@
                 <div class="row justify-content-center">
                     <div class="col-8 col-sm-10 col-md-10">
                         <div class="row justify-content-center text-center">
-                            <div class="form-group col-sm-9 col-lg-6">
+                            <div class="form-group col-sm-4 col-lg-4">
                                 <label class="">FACTURA</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -56,18 +62,32 @@
                                     <input id="num_factura" type="text" name="num_factura" value="{{ old('num_factura') }}" aria-label=" name" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-group col-sm-9 col-lg-6">
-                                <label>IMPORTE FACTURA</label>
+                            <div class="form-group col-sm-4 col-lg-4">
+                                <label>IMP. FACTURA (SIN IVA)</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">&nbsp;$&nbsp;</div>
                                     </div>
                                     <!-- <input type="number" name="price" id="price" class="form-control">-->
-                                    <input id="importe" type="double" name="importe" value="{{ old('importe') }}" aria-label=" name" class="form-control">
+                                    <input id="importe" type="double" name="importe" value="{{ old('importe') }}" aria-label="Dollar amount (with dot and two decimal places)" class="form-control">
                                 </div>
                             </div>
+
+                            <div class="form-group col-sm-4 col-lg-4">
+                                <label>RETENCIONES CLIENTE</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">&nbsp;$&nbsp;</div>
+                                    </div>
+                                    <!-- <input type="number" name="price" id="price" class="form-control">-->
+                                    <input id="retencion" type="double" name="retencion" value="{{ old('retencion') }}" aria-label=" name" class="form-control">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
+
                 </div>
 
                 <div class="modal-footer justify-content-around" style="width:100%; padding-top:0px"></div>
@@ -75,8 +95,8 @@
                 <div class="row justify-content-center">
                     <div class="col-8 col-sm-10 col-md-10">
                         <div class="row justify-content-center  text-center">
-                            <div class="form-group col-sm-9 col-lg-6">
-                                <label>RETENCION</label>
+                            <div class="form-group col-sm-4 col-lg-4">
+                                <label>RETENCIONES CLIENTE</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">&nbsp;$&nbsp;</div>
@@ -144,6 +164,35 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-9 col-lg-6">
+                                <label>IMPORTE F-931</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">&nbsp;$&nbsp;</div>
+                                    </div>
+                                    <!-- <input type="number" name="price" id="price" class="form-control">-->
+                                    <input id="nuevetreintayuno" type="double" aria-label="name" class="form-control" name="nueve_treintayuno" value="{{ old('nueve_treintayuno') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-around" style="width:100%; padding-top:0px"></div>
+
+                <div class="row justify-content-center">
+                    <div class="col-8  col-sm-10 col-md-10">
+                        <div class="row justify-content-center text-center">
+                            <div class="form-group col-sm-9 col-lg-6">
+                                <label>CANTIDAD DE BINES</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">CANT.</div>
+                                    </div>
+                                    <!-- <input type="number" name="price" id="price" class="form-control">-->
+                                    <input id="bines" type="double" aria-label="name" class="form-control" name="bines" value="{{ old('bines') }}">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-9 col-lg-6">
                                 <label>TONELADAS</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -156,6 +205,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal-footer justify-content-around" style="width:100%; padding-top:0px"></div>
+
+                <div class="row justify-content-center">
+                    <div class="col-8  col-sm-10 col-md-10">
+                        <div class="row justify-content-center text-center">
+                            <div class="form-group col-sm-9 col-lg-6">
+                                <label>PROMEDIO KG</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">PROM.</div>
+                                    </div>
+                                    <!-- <input type="number" name="price" id="price" class="form-control">-->
+                                    <input id="promedio" type="double" aria-label="name" class="form-control" name="promedio" value="{{ old('promedio') }}">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-9 col-lg-6">
+                                <label>DIFERENCIA Tn</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Dif. Tn</div>
+                                    </div>
+                                    <!-- <input type="number" name="price" id="price" class="form-control">-->
+                                    <input id="diferencia" type="double" aria-label="name" class="form-control" name="diferencia" value="{{ old('diferencia') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="modal-footer" style="width:100%; padding-top:0px"></div>
                 <div class="container-fluid col-10">
                     <div class="form-group row shadow-textarea green-border-focus">
@@ -170,6 +249,7 @@
                         <a class="fas fa-undo" role="button" href={{ url('/control_quincenal') }} style='margin-left:5rem' style="cursor:pointer" ,name="Regresar">Regresar</a>
                     </div>
                 </div>-->
+
 
                 <div class="row justify-content-center mt-3">
                     <div class="form-group col-md-10 col-form-label text-center">

@@ -18,6 +18,10 @@ class Empresa extends Model
     {
         return $this->hasMany('App\Sancion', 'id_empresa');
     }
+    public function Personal()
+    {
+        return $this->hasMany('App\Empresa', 'id_empresa');
+    }
 
 
 }

@@ -114,7 +114,7 @@
                             </form>
                         </td>
                         @endcan
-                        <td class="text-center text-truncate">
+                        <td class="text-truncate">
                             <form method="PUT" action="/modal_empleado/{{$empleado->id}}">
                                 @csrf
                                 {{method_field('PUT')}}

@@ -5,17 +5,17 @@
 
     <div class="container-fluid mx-auto text-center">
         <h1 class="mx-auto mb-5 mt-5" style="font-family:Verdana, Geneva, Tahoma, sans-serif">LISTADO DE CLIENTES</h1>
-
+        @include('flash::message')
         <a id="agregar" class="btn primary-color-dark mb-5 rounded" href="{{ url('/nuevo_cliente') }}" role="button" style="margin-left:50%; color:white"><i class="fas fa-2x fa-plus mr-2" style="color:white"></i>NUEVO</a>
 
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark indigo mb-4" style="width:100%">
         <div class="mx-auto">
-            
+
             <!-- Collapsible content -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
+
                 <span class="navbar-brand">Buscador:</span>
                 <form class="form-inline">
                     <div class="md-form">

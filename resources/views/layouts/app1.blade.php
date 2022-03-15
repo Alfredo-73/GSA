@@ -33,7 +33,7 @@
                             <span>&nbsp;</span>
                             <span class="px-4 grey-text d-none d-md-inline" style="font-size:12px"><b>Versión:1.0</span></b>
                             <span>&nbsp;</span>
-                            <a href="/../home" class="ml-0 grey-text"><i class="fas fa-home"></i></i> <span class="d-none d-sm-inline">INICIO</span></a>
+                            <a href="/../home" class="ml-0 grey-text"><i class="fas fa-home"></i><span class="d-none d-sm-inline">INICIO</span></a>
                             <span>&nbsp;</span>
                         </div>
                         <span>&nbsp;</span>
@@ -98,11 +98,11 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark success-color barra">
+    <nav class="navbar navbar-expand-lg navbar-dark barra">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="/../home">
-            <strog>GSA</strog>
+        <a class="navbar-brand mr-5" href="/../home">
+            <img src="{{ asset('img/favicon.ico')}}" alt="" style="width:250%"></img>
         </a>
 
         <!-- Collapse button -->
@@ -115,11 +115,11 @@
 
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!--<li class="nav-item active">
                     <a class="nav-link" href="/../home">Inicio
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/../control_quincenal">Facturacion</a>
                 </li>

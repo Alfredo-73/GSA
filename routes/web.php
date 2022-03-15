@@ -34,10 +34,15 @@ Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fco
 
 Route::get('agregar_control', 'controlController@agregar');
 
-Route::get('nuevo_control', 'controlController@agregar');
+Route::get('agregar_nuevo_control_factura', 'controlController@agregar');
+Route::get('nuevo_control_factura', 'controlController@agregar');//nueva ruta para vista con varias facturas
+
+/*Route::get('nuevo_control_factura', 'facturaController@agregar_control_factura');*/
+/*Route::get('nuevo_control_factura', 'facturaController@agregar');*/
 
 
-Route::post('nuevo_control', 'controlController@agregar_control');
+Route::post('nuevo_control_factura', 'controlController@agregar_control');
+/*Route::post('nuevo_control_factura', 'facturaController@agregar_control_factura');*/
 
 Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
 

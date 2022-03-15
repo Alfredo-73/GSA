@@ -3,13 +3,20 @@
 namespace App;
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Stmt\If_;
 
 class Control extends Model
 {
     public $table = 'controles';
 
     public $guarded = [];
-    //
+//---------------MODIFICO FOMATO DE LA FECHA A DD-MM-YYYY------------------------------------------------
+    public function getFechaAttribute($value)
+    {
+
+        return date('d-m-Y', strtotime($value));
+    } 
+//--------------------------------------------------------------------------------------------------------
 //queryscope
     public function scopeCliente($query, $cliente)
     {
@@ -30,6 +37,12 @@ class Control extends Model
             return $query->where(\DB::raw('nombre', 'like', "%$name%"));
         }
     }
+    public function scopenombreEmpresa($query, $name)
+    {
+        if (trim($name) != "") {
+            return $query->where(\DB::raw('razon_social', 'like', "%razon_social%"));
+        }
+    }
 
     //scope global
     public function scopeBuscarpor($query, $tipo, $buscar)
@@ -45,5 +58,9 @@ class Control extends Model
      public function quincena()
     {
         return $this->belongsTo('App\Quincena', 'quincena_id');
+    }
+    public function empresa()
+    {
+        return $this->belongsTo('App\Empresa', 'id_empresa');
     }
 }
