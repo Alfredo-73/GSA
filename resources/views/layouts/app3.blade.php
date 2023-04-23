@@ -9,14 +9,15 @@
     <!-- GSA icon -->
     <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">-->
+    <script src="https://kit.fontawesome.com/4c51a94b4c.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href="{{ asset('css/mdb.min.css')}}">
     <!-- Your custom styles (optional) -->
     <link rel="stylesheet" href="{{ asset('css/normalize.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style-app1.css')}}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
     <!--css de barra lateral para inicio solamente en app3.blade.php-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -33,10 +34,10 @@
                             <span>&nbsp;</span>
                             <span class="px-4 grey-text" style="font-size:12px"><b>Versión:1.0</span></b>
                             <span>&nbsp;</span>
-                            <a href="/../home" class="ml-4 grey-text"><i class="fas fa-home"></i></i> <span>INICIO</span></a>
+                            <a href="/../home" class="ml-4 grey-text"><i class="fas fa-home"></i> <span>INICIO</span></a>
                             <span>&nbsp;</span>
                         </div>
-                        <span>&nbsp;</span>>
+                        <span>&nbsp;</span>
                         <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i class="fas fa-align-justify"></i> <span class="usuario px-5 text-uppercase">{{ Auth::user()->name }}</span>&nbsp;<i class="fas fa-angle-down rotate-icon"></i></a></a>
                         <div class="collapse mb-1" id="menu1" data-parent="#sidebar">
                             @role('Administrador')
@@ -46,7 +47,7 @@
                             @endrole
                         </div>
 
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
+                        <a href="/../resumen_control" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
@@ -87,26 +88,27 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark success-color barra">
+    <nav class="navbar navbar-expand-lg navbar-dark barra">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="/../home"><strog>GSA</strog></a>
-
+        <a class="navbar-brand mr-5" href="/../home">
+            <img src="{{ asset('img/favicon.ico')}}" alt="" style="width:250%"></img>
+        </a>
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
+        <div class="collapse navbar-collapse ml-2" id="basicExampleNav">
 
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!--<li class="nav-item active">
                     <a class="nav-link" href="/../home">Inicio
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="/../control_quincenal">Facturacion</a>
                 </li>

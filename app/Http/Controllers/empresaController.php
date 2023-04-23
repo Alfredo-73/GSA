@@ -68,7 +68,7 @@ class empresaController extends Controller
         $empresa = empresa::Find($id);
 
         $vac = compact('empresa');
-
+        
         return view('modif_empresa', $vac);
     }
 

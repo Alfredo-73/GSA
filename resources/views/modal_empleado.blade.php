@@ -1,10 +1,10 @@
  
 
-<div class="modal fade" id="modal_empleado{{ $empleado->id }}" tabindex="3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_empleado{{ $empleado->id }}" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue">EMPLEADO:  @if(!empty($empleado->nombre)){{$empleado->nombre}} .  {{$empleado->apellido}}@endif</h5>
+                <h5 class="modal-title w-100 font-weight-bold text-center" style="color:darkblue">EMPLEADO:  @if(!empty($empleado->nombre)){{$empleado->nombre}}, {{$empleado->apellido}}@endif</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                 </button>

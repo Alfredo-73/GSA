@@ -1,5 +1,5 @@
 function mostrar() {
-    document.getElementById("sidebar").style.width = "300px";
+    document.getElementById("sidebar").style.width = "250px";
     document.getElementById("contenido").style.marginLeft = "0px";
     document.getElementById("abrir").style.display = "none";
     document.getElementById("cerrar").style.display = "inline";

@@ -31,7 +31,7 @@
                             <td>{{ $permiso->name }}</td>
                             <td>
                                 @can('permiso-edit')
-                                <button class="btn-sm btn-primary" onclick="location.href='{{ route('permisos.edit',$permiso->id) }}'">EDITAR</button>
+                                <button class="btn-sm btn-primary" onclick="location.href='{{ route('permisos.edit', $permiso->id)}}'">EDITAR</button>
                                 @endcan
                                 @can('permiso-delete')
                                 {!! Form::open(['method' => 'DELETE','route' => ['permisos.destroy', $permiso->id],'style'=>'display:inline']) !!}

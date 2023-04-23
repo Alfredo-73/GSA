@@ -34,18 +34,35 @@ Route::get('control_quincenal', 'controlController@indexbuscar'); //modifico fco
 
 Route::get('agregar_control', 'controlController@agregar');
 
-Route::get('nuevo_control', 'controlController@agregar');
+Route::get('agregar_nuevo_control_factura', 'controlController@agregar');
+Route::get('nuevo_control_factura', 'controlController@agregar');//nueva ruta para vista con varias facturas
+
+/*Route::get('nuevo_control_factura', 'facturaController@agregar_control_factura');*/
+/*Route::get('nuevo_control_factura', 'facturaController@agregar');*/
 
 
-Route::post('nuevo_control', 'controlController@agregar_control');
+Route::post('nuevo_control_factura', 'controlController@agregar_control');
+/*Route::post('nuevo_control_factura', 'facturaController@agregar_control_factura');*/
 
 Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
 
-Route::get('modif_control/{id}', 'controlController@edit');
+Route::get('modif_control/{id_factura}', 'controlController@edit');
 
-Route::put('modif_control/{id}', 'controlController@update');
+Route::put('modif_control/{id_factura}', 'controlController@update');
 
-Route::delete('borrar_control/{id}', 'controlController@borrar');
+Route::get('resumen_control', 'controlController@resumen');
+
+Route::put('resumen_control', 'controlController@resumen');
+
+Route::delete('modif_control/{id}', 'controlController@borrar');
+
+Route::get('detalle_control/{id_factura}', 'controlController@detalle');
+
+Route::delete('resumen_control/{id_factura}', 'controlController@borrar_resumen');
+
+Route::delete('resumen_control/{id_factura}', 'controlController@borrar_resumen');
+
+Route::get('pdf_detalle_control/{id_factura}', 'controlController@verPDF'); //usamos
 
 
 
@@ -136,7 +153,6 @@ Route::put('modif_quincena/{id}', 'quincenaController@update');
 
 Route::delete('/borrar_quincena/{id}', 'quincenaController@borrar');
 
-
 //pdf
 Route::get('control/list', 'controlController@index');
 //download
@@ -192,10 +208,6 @@ Route::get('/imprimir_sanciones', 'sancionController@imprimir');
 
 
 
-
-
-
-
 //EMPRESAS
 
 Route::get('abm_empresa', 'empresaController@listado');
@@ -208,11 +220,6 @@ Route::delete('/borrar_empresa/{id}', 'empresaController@borrar');
 //Route::get('ver_imprimir', 'ver_imprimirController@ver_imprimir');
 Route::get('modif_empresa/{id}', 'empresaController@edit');
 Route::put('modif_empresa/{id}', 'empresaController@update');
-
-
-
-
-
 
 
 

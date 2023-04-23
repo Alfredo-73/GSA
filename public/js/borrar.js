@@ -1,4 +1,6 @@
-function borrar(borrar) {
+function borrar(borra) {
+    var route = "borrar_cosecha/" + borra.value + "";
+    console.log(route);
     swal({
             title: "Esta Seguro?",
             text: "Una vez borrado, no se podra recuperar la informacion!",
@@ -8,9 +10,10 @@ function borrar(borrar) {
         })
         .then((willDelete) => {
             if (willDelete) {
-                var route = "borrar_cosecha/" + borrar.value + "";
+                var route1 = "borrar_cosecha/" + borra.value + "";
+                console.log(route1);
                 $.ajax({
-                    url: route,
+                    url: route1,
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     type: 'DELETE',
                     dataType: 'json',

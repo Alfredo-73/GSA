@@ -9,7 +9,9 @@
     <!-- GSA icon -->
     <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">-->
+    <script src="https://kit.fontawesome.com/4c51a94b4c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5cccd5eea8.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Material Design Bootstrap -->
@@ -33,7 +35,7 @@
                             <span>&nbsp;</span>
                             <span class="px-4 grey-text d-none d-md-inline" style="font-size:12px"><b>Versión:1.0</span></b>
                             <span>&nbsp;</span>
-                            <a href="/../home" class="ml-0 grey-text"><i class="fas fa-home"></i></i> <span class="d-none d-sm-inline">INICIO</span></a>
+                            <a href="/../home" class="ml-0 grey-text"><i class="fas fa-home"></i><span class="d-none d-sm-inline">INICIO</span></a>
                             <span>&nbsp;</span>
                         </div>
                         <span>&nbsp;</span>
@@ -46,7 +48,7 @@
                             @endrole
                         </div>
 
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
+                        <a href="/../resumen_control" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
@@ -98,11 +100,11 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark success-color barra">
+    <nav class="navbar navbar-expand-lg navbar-dark barra">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="/../home">
-            <strog>GSA</strog>
+        <a class="navbar-brand mr-5" href="/../home">
+            <img src="{{ asset('img/favicon.ico')}}" alt="" style="width:250%"></img>
         </a>
 
         <!-- Collapse button -->
@@ -115,13 +117,13 @@
 
             <!-- Links -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!--<li class="nav-item active">
                     <a class="nav-link" href="/../home">Inicio
                         <span class="sr-only">(current)</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="/../control_quincenal">Facturacion</a>
+                    <a class="nav-link" href="/../resumen_control">Facturacion</a>
                 </li>
                 <li class="nav-item text-truncate">
                     <a class="nav-link" href="/../cosecha">Parte Diario</a>
@@ -197,10 +199,6 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/abre_cierra.js')}}"></script>
-
-    <script>
-
-    </script>
 </body>
 
 </html>
