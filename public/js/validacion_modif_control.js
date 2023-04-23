@@ -1,4 +1,7 @@
-function validar_control(formulario) {
+function validar_modif_control(modif_control) {
+    var route = "modif_control/" + modif_control.value + "";
+    console.log();
+    return;
     //var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     var fecha, quincena, factura, importe, retencion, monto_cobrado, gasto_bancario, pago_personal, pago_transporte, toneladas;
     var fecha_reg = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9]|3[1-9]|4[1-9]|5[1-9])$/;

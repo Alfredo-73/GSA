@@ -39,8 +39,7 @@ class cosechaController extends Controller
                 $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                 return view("cosecha", $vac);
                     }else if ($buscacapataz == 'Capataz'){
-                        $cosechas = Cosecha::whereBetween('fecha',[$fechadesde, $fechahasta])
-                        ->orderBy('fecha', 'desc',)->Paginate(10);
+                        //$cosechas = Cosecha::whereBetween('fecha',[$fechadesde, $fechahasta])->orderBy('fecha', 'desc',)->Paginate(10);
                         $clientes = Cliente::all();
                         $capataz = Capataz::all();
                         $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
@@ -48,16 +47,16 @@ class cosechaController extends Controller
                             }else if(empty($fechadesde && $fechahasta) && $buscacapataz= $buscacapataz){
             //dd($fechadesde, $fechahasta, $buscacapataz);
                                 $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
-                                ->whereBetween('fecha',[$fechadesde, $fechahasta])
-                                ->orderBy('fecha', 'desc',)->Paginate(10);
+                                ->whereBetween('fecha',[$fechadesde, $fechahasta]);
+                                //->orderBy('fecha', 'desc',)->Paginate(10);
                                 $clientes = Cliente::all();
                                 $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
                                 $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
                                 return view('cosecha', $vac);
                             }else{
                                 $cosechas = Cosecha::where('id_capataz', 'like', "%$buscacapataz%")
-                                ->whereBetween('fecha',[$fechadesde, $fechahasta])
-                                ->orderBy('fecha', 'desc',)->Paginate(10);
+                                ->whereBetween('fecha',[$fechadesde, $fechahasta]);
+                                //->orderBy('fecha', 'desc',)->Paginate(10);
                                 $clientes = Cliente::all();
                                 $capataz = Capataz::all()->where('id','like',"%$buscacapataz%");
                                 $vac = compact('cosechas', 'clientes', 'capataz', 'varfechadesde', 'varfechahasta', 'varbuscacapataz');
@@ -138,6 +137,7 @@ class cosechaController extends Controller
     {
 
         $cosecha = cosecha::Find($id);
+        //dd($cosecha);
         $clientes = Cliente::all();
          $capataz = Capataz::all();
 
@@ -247,8 +247,8 @@ class cosechaController extends Controller
             
         }else if(($varfechadesde ==0 && $varfechahasta ==0) && ($varbuscacapataz != 'Capataz')){
             //dd($varbuscacapataz);
-                        $cosechas = Cosecha::where('id_capataz', 'like', "%$varbuscacapataz%")
-                        ->orderBy('fecha', 'desc',)->paginate();//DEJAR PAGINATE(), SI NO TIENE EL PDF NO MUESTRA DATOS
+                        $cosechas = Cosecha::where('id_capataz', 'like', "%$varbuscacapataz%");
+                        //->orderBy('fecha', 'desc',)->paginate();//DEJAR PAGINATE(), SI NO TIENE EL PDF NO MUESTRA DATOS
                         $clientes = Cliente::all();
                         $capataz = Capataz::all();
                         $vac = compact('cosechas', 'clientes', 'capataz');

@@ -9,7 +9,8 @@
     <!-- GSA icon -->
     <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">-->
+    <script src="https://kit.fontawesome.com/4c51a94b4c.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Material Design Bootstrap -->
@@ -42,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/../control_quincenal">Facturacion</a>
+                <a class="nav-link" href="/../ersumen_control">Facturacion</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/../cosecha">Parte Diario</a>

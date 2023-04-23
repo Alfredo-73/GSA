@@ -1,6 +1,8 @@
-function borrar(borra) {
-    var route = "borrar_cosecha/" + borra.value + "";
+function borrar() {
+    var route = "modif_control/" + borra.value + "";
     console.log(route);
+    var rowCount = $('#modif_control tbody tr').length;
+    console.log('Nº DE LINEAS: ' + rowCount);
     swal({
             title: "Esta Seguro?",
             text: "Una vez borrado, no se podra recuperar la informacion!",
@@ -10,7 +12,7 @@ function borrar(borra) {
         })
         .then((willDelete) => {
             if (willDelete) {
-                var route1 = "borrar_cosecha/" + borra.value + "";
+                var route1 = borra.value + "";
                 console.log(route1);
                 $.ajax({
                     url: route1,
@@ -23,8 +25,11 @@ function borrar(borra) {
                             "Registro Borrado",
                             "success"
                         ).then(okay => {
-                            if (okay) {
-                                window.location.href = "/cosecha";
+                            var rowCount = $('#modif_control tbody tr').length;
+                            if (rowCount > 0) {
+                                window.location.href = "/resumen_control";
+                            } else {
+                                window.location.href = "/resumen_control";
                             }
                         })
                     },

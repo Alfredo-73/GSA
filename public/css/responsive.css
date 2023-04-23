@@ -27,7 +27,7 @@
     a:hover {
         color: white;
     }
-    .borrar {
+    /*.borrar {
         width: 5px;
         height: 5px;
         font-weight: 600;
@@ -40,7 +40,7 @@
     .borrar:hover {
         color: #e90a0a;
         background-color: #ffffff;
-    }
+    }*/
     .ver {
         width: 5px;
         height: 5px;
@@ -106,7 +106,7 @@
     a:hover {
         color: white;
     }
-    .borrar {
+    /*.borrar {
         width: 5px;
         height: 5px;
         font-weight: 600;
@@ -119,7 +119,7 @@
     .borrar:hover {
         color: #e90a0a;
         background-color: #ffffff;
-    }
+    }*/
     .ver {
         width: 5px;
         height: 5px;
@@ -148,7 +148,7 @@
     .barra {
         display: none;
     }
-    .borrar {
+    /*.borrar {
         margin-top: 10%;
         padding: 0px;
         width: 16px;
@@ -163,7 +163,7 @@
     .borrar:hover {
         color: #e90a0a;
         background-color: #ffffff;
-    }
+    }*/
     .ver {
         margin-top: 10%;
         padding: 0px;

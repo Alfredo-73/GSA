@@ -11,9 +11,9 @@ class Factura extends Model
 
     public $guarded = [];
 
-    public function control()
+   /* public function control()
     {
         return $this->belongsTo('App\Control', 'id');
-    }
+    }*/
 }
 

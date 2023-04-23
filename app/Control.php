@@ -8,8 +8,9 @@ use PhpParser\Node\Stmt\If_;
 class Control extends Model
 {
     public $table = 'controles';
-
+    //protected $fillable = ['id_cliente','id_empresa','num_factura','monto_cobrado'];
     public $guarded = [];
+    
 //---------------MODIFICO FOMATO DE LA FECHA A DD-MM-YYYY------------------------------------------------
     public function getFechaAttribute($value)
     {
@@ -54,6 +55,7 @@ class Control extends Model
     public function cliente()
     {
         return $this->belongsTo('App\Cliente', 'id_cliente');
+        //return $this->hasMany('App\Cliente', 'id_cliente');
     }
      public function quincena()
     {
@@ -63,4 +65,9 @@ class Control extends Model
     {
         return $this->belongsTo('App\Empresa', 'id_empresa');
     }
+    public function control()
+    {
+        return $this->hasMany('App\Control','id_factura');
+    }
 }
+

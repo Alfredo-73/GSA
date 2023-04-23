@@ -9,7 +9,9 @@
     <!-- GSA icon -->
     <link rel="icon" href="{{ asset ('img/favicon.ico')}}" type="image/x-icon">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">-->
+    <script src="https://kit.fontawesome.com/4c51a94b4c.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5cccd5eea8.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <!-- Material Design Bootstrap -->
@@ -46,7 +48,7 @@
                             @endrole
                         </div>
 
-                        <a href="/../control_quincenal" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
+                        <a href="/../resumen_control" class="list-group-item d-inline-block collapsed mt-5"><i class="fas fa-money-check-alt"></i> <span class="d-none d-md-inline" style="font-size:80%">CONTROL DE FACTURACION</span></a>
 
                         <span>&nbsp;</span>
 
@@ -121,7 +123,7 @@
                     </a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="/../control_quincenal">Facturacion</a>
+                    <a class="nav-link" href="/../resumen_control">Facturacion</a>
                 </li>
                 <li class="nav-item text-truncate">
                     <a class="nav-link" href="/../cosecha">Parte Diario</a>
@@ -197,10 +199,6 @@
     <!-- Your custom scripts (optional) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/abre_cierra.js')}}"></script>
-
-    <script>
-
-    </script>
 </body>
 
 </html>

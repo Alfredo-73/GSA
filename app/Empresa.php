@@ -20,7 +20,7 @@ class Empresa extends Model
     }
     public function Personal()
     {
-        return $this->hasMany('App\Empresa', 'id_empresa');
+        return $this->hasMany('App\Empresa', 'id_empresa')->ondelete('cascade');
     }
 
 
